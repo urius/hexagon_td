@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debugText: {fileID: 0}
+  _spawnPoint: {fileID: 0}
 --- !u!111 &8803046843353783617
 Animation:
   m_ObjectHideFlags: 0
@@ -266,8 +267,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 670224309865224971, guid: 94d8f15f9ece94cd680b3bbead11e4da,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: ef9ae9cbdfbf042e7995ad43a5b32e71, type: 2}
     - target: {fileID: -927199367670048503, guid: d157e5fe5278a4409af935f36e4079cc,
         type: 3}
       propertyPath: m_Name

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 602591993}
   - component: {fileID: 602591992}
   - component: {fileID: 602591991}
+  - component: {fileID: 3948760786807140577}
   m_Layer: 0
   m_Name: Base_round_big
   m_TagString: Untagged
@@ -79,3 +80,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3948760786807140577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602591990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec4571d59a574be8bc5916eda3874df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

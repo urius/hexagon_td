@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class BaseCellView : CellView
+public class SpawnBaseCellView : CellView
 {
     public event Action PLatformBottomPointReached = delegate { };
     public event Action PLatformTopPointReached = delegate { };

@@ -40,6 +40,11 @@ public class PrefabPainterEditor : EditorWindow
     //Calls also if project reloads
     private void OnEnable()
     {
+        if (_grid == null || _configsProvider == null)
+        {
+            return;
+        }
+
         if (_levelConfig != null)
         {
             DrawLevel(_levelConfig);
@@ -259,6 +264,11 @@ public class PrefabPainterEditor : EditorWindow
                 var snappedPoint = _grid.CellToWorld(_grid.WorldToCell(hit.point));
                 Handles.ArrowHandleCap(2, snappedPoint, normalRotation, brushSize, EventType.Repaint);
                 Handles.CircleHandleCap(3, snappedPoint, normalRotation, brushSize, EventType.Repaint);
+
+                var gridPosition = GetGridPosition(hit.point);
+                Handles.BeginGUI();
+                GUILayout.Label($"({gridPosition.x},{gridPosition.y})");
+                Handles.EndGUI();
             }
         }
 
