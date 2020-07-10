@@ -1,13 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using strange.extensions.mediation.impl;
 using UnityEngine;
 
-public class GridView : MonoBehaviour
+public interface ICellPositionConverter
+{
+    Vector3 CellVec2ToWorld(Vector2Int cellPosition);
+}
+
+public class GridView : EventView, ICellPositionConverter
 {
     [SerializeField] private Grid _grid;
     [SerializeField] private GameObject _plane;
 
     private bool _isTransposed;
+
+    private Dictionary<Vector2Int, GameObject> _allCreatedCells = new Dictionary<Vector2Int, GameObject>();
 
     public void SetTransposed(bool isTransposed)
     {
@@ -16,9 +25,46 @@ public class GridView : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(isTransposed ? Vector3.left : Vector3.forward, Vector3.up);
     }
 
+    public void EraseCell(Vector2Int cellPosition)
+    {
+        if (_allCreatedCells.ContainsKey(cellPosition))
+        {
+            DestroyImmediate(_allCreatedCells[cellPosition]);
+            _allCreatedCells.Remove(cellPosition);
+        }
+    }
+
+    public GameObject DrawCell(Vector2Int cellPosition, GameObject prefab)
+    {
+        var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
+        var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, _grid.transform);
+        _allCreatedCells[cellPosition] = go;
+
+        return go;
+    }
+
+    public SpawnBaseCellView GetSpawnCellView(Vector2Int cellPosition)
+    {
+        return _allCreatedCells[cellPosition].GetComponent<SpawnBaseCellView>();
+    }
+
+    public void DestroyAllCells()
+    {
+        foreach (var cellGo in _allCreatedCells.Values)
+        {
+            DestroyImmediate(cellGo);
+        }
+
+        _allCreatedCells.Clear();
+    }
+
     public void UpdatePLaneSize()
     {
         var childCells = _grid.gameObject.GetComponentsInChildren<CellView>();
+        if (childCells.Length == 0)
+        {
+            return;
+        }
         var maxX = childCells.Max(c => c.transform.position.x);
         var minX = childCells.Min(c => c.transform.position.x);
 
@@ -37,6 +83,16 @@ public class GridView : MonoBehaviour
             (maxY + minY) / 2);
     }
 
+    public Vector3 CellVec2ToWorld(Vector2Int cellPosition)
+    {
+        return _grid.CellToWorld(CellVec2ToVec3(cellPosition));
+    }
+
     public Func<Vector3Int, Vector3> CellToWorld => _grid.CellToWorld;
     public Func<Vector3, Vector3Int> WorldToCell => _grid.WorldToCell;
+
+    private static Vector3Int CellVec2ToVec3(Vector2Int vec2)
+    {
+        return new Vector3Int(vec2.x, vec2.y, 0);
+    }
 }

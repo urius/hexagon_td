@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debugText: {fileID: 0}
-  _spawnPoint: {fileID: 0}
+  _spawnAnimation: {fileID: 8803046843353783617}
+  _spawnPoint: {fileID: 3073796333089438}
 --- !u!111 &8803046843353783617
 Animation:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 393d5e969aaf64756963031c196f2e51, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1001 &8494308666786389444

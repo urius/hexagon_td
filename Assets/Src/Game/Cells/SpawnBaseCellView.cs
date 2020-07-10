@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class SpawnBaseCellView : CellView
 {
     public event Action PLatformBottomPointReached = delegate { };
-    public event Action PLatformTopPointReached = delegate { };
+
+    [SerializeField] private Animation _spawnAnimation;
+    private TaskCompletionSource<bool> _animationTsc;
 
     [SerializeField] private Transform _spawnPoint;
     public Transform SpawnPoint => _spawnPoint;
@@ -16,6 +19,14 @@ public class SpawnBaseCellView : CellView
 
     public void OnPLatformTopPointReached()
     {
-        PLatformTopPointReached();
+        _animationTsc.TrySetResult(true);
+    }
+
+    public Task PlaySpawnAnimationAsync()
+    {
+        _animationTsc = new TaskCompletionSource<bool>();
+        _spawnAnimation.Play();
+
+        return _animationTsc.Task;
     }
 }

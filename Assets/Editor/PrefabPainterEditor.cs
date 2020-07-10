@@ -18,7 +18,6 @@ public class PrefabPainterEditor : EditorWindow
     private CellConfig _currentBrushCellConfig;
 
     //
-    private Dictionary<Vector2Int, GameObject> _allCreatedCells = new Dictionary<Vector2Int, GameObject>();
     private string _saveFileName = "LevelConfig";
     private bool _isTransposed = false;
     private int _numCellsHor = 13;
@@ -227,11 +226,7 @@ public class PrefabPainterEditor : EditorWindow
 
     private void DestroyAllCells()
     {
-        foreach (var cellGo in _allCreatedCells.Values)
-        {
-            DestroyImmediate(cellGo);
-        }
-        _allCreatedCells.Clear();
+        _grid.DestroyAllCells();
 
         var unregisteredCellViews = SceneView.FindObjectsOfType<CellView>();
         foreach (var cellView in unregisteredCellViews)
@@ -331,8 +326,7 @@ public class PrefabPainterEditor : EditorWindow
     private void EraseCell(Vector2Int cellPosition)
     {
         _levelConfig.Remove(cellPosition);
-        DestroyImmediate(_allCreatedCells[cellPosition]);
-        _allCreatedCells.Remove(cellPosition);
+        _grid.EraseCell(cellPosition);
     }
 
     private bool IsGround(Vector2Int cellPosition)
@@ -344,12 +338,10 @@ public class PrefabPainterEditor : EditorWindow
     private void DrawCell(CellDataMin cellDataMin)
     {
         var cellPosition = cellDataMin.CellPosition;
-        var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
-        var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;
-        var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, _grid.transform);
-        go.GetComponent<CellView>().SetDebugText(cellDataMin.CellPosition.x + "," + cellDataMin.CellPosition.y);
+        var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;        
+        var go = _grid.DrawCell(cellPosition, prefab);
 
-        _allCreatedCells[cellPosition] = go;
+        go.GetComponent<CellView>().SetDebugText(cellDataMin.CellPosition.x + "," + cellDataMin.CellPosition.y);
     }
 
     private CellConfig GetCellFullConfig(CellConfigMin cellConfigMin)
