@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MediatorEvents
 {
+    public static string SECOND_PART_PASSED = "SECOND_PART_PASSED";
     public static string SECOND_PASSED = "SECOND_PASSED";
 
     public static string DRAW_GRID_COMPLETE = "DRAW_GRID_COMPLETE";

@@ -17,6 +17,7 @@ public class LevelModel
     private readonly LevelConfig _levelConfig;
     private readonly List<UnitModel> _unitModels = new List<UnitModel>();
     private readonly Dictionary<(Vector2Int, Vector2Int), IReadOnlyList<Vector2Int>> _cachedPaths = new Dictionary<(Vector2Int, Vector2Int), IReadOnlyList<Vector2Int>>();
+    private readonly Vector2Int[] _teleportCellPositions;
 
     private Dictionary<Vector2Int, UnitModel> _cellOwners = new Dictionary<Vector2Int, UnitModel>();
 
@@ -25,11 +26,14 @@ public class LevelModel
         _levelConfig = levelConfig;
         WaveModel = new WaveModel(levelConfig.WaveConfigs);
 
-        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase);
+        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
         GoalCell = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).First();
+        _teleportCellPositions = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
 
         _pathfinderCellsProvider = new LevelPathfinderCellsProvider(_levelConfig);
     }
+
+    public IEnumerable<UnitModel> WaitingUnits => _unitModels.Where(m => m.CurrentState.StateName == UnitStateName.WaitingForCell);
 
     public UnitModel GetCellOwner(Vector2Int cellPosition)
     {
@@ -37,10 +41,16 @@ public class LevelModel
         return result;
     }
 
+    public bool IsTeleport(Vector2Int cellPosition)
+    {
+        return _teleportCellPositions.Any(p => p == cellPosition);
+    }
+
     internal void SpawnUnit(Vector2Int cellPosition, UnitConfig unitConfig)
     {
         var path = GetPath(cellPosition);
         var unitModel = new UnitModel(path, unitConfig);
+        /*
         void OnUnitStateUpdated()
         {
             if (unitModel.State == UnitStateName.Moving)
@@ -56,11 +66,29 @@ public class LevelModel
             }
         }
         unitModel.StateUpdated += OnUnitStateUpdated;
+        */
 
-        _cellOwners[unitModel.CurrentCellPosition] = unitModel;
+        OwnCellByUnit(unitModel);
+        //_cellOwners[unitModel.CurrentCellPosition] = unitModel;
         _unitModels.Add(unitModel);
 
         StartSpawnUnit(unitModel);
+    }
+
+    public void OwnCellByUnit(UnitModel unitModel)
+    {
+        _cellOwners[unitModel.CurrentCellPosition] = unitModel;
+    }
+
+    public void FreeCell(Vector2Int cellPosition)
+    {
+        _cellOwners.Remove(cellPosition);
+    }
+
+    public void RemoveUnit(UnitModel unitModel)
+    {
+        _cellOwners.Remove(unitModel.CurrentCellPosition);
+        _unitModels.Remove(unitModel);
     }
 
     public bool IsCellFree(Vector2Int cellPosition)

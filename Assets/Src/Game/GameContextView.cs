@@ -10,10 +10,10 @@ using UnityEngine;
 
 public class GameContextView : ContextView
 {
-    [SerializeField] public LevelConfigProvider LevelConfigProvider;
-    [SerializeField] public CellConfigProvider CellConfigProvider;
-    [SerializeField] public UnitConfigsProvider UnitConfigsProvider;
-    [SerializeField] public GridView GridView;
+    public LevelConfigProvider LevelConfigProvider;
+    public CellConfigProvider CellConfigProvider;
+    public UnitConfigsProvider UnitConfigsProvider;
+    public GridView GridView;
 
     private void Awake()
     {
@@ -33,15 +33,20 @@ public class GameContextViewMediator : EventMediator
         DOTween.Init(true, false, LogBehaviour.ErrorsOnly).SetCapacity(50, 0);
         DOTween.defaultEaseType = Ease.Linear;
 
-        StartCoroutine(DispatchSecondPassed());
+        StartCoroutine(DispatchTimePassed());
     }
 
-    private IEnumerator DispatchSecondPassed()
+    private IEnumerator DispatchTimePassed()
     {
         while (true)
         {
+            for (var i = 0; i < 10; i++)
+            {
+                yield return new WaitForSeconds(0.1f);
+
+                eventDispatcher.Dispatch(MediatorEvents.SECOND_PART_PASSED);
+            }
             eventDispatcher.Dispatch(MediatorEvents.SECOND_PASSED);
-            yield return new WaitForSeconds(1f);
         }
     }
 }
@@ -72,8 +77,10 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<GridView>().To<GridViewMediator>();
         mediationBinder.Bind<UnitView>().To<UnitViewMediator>();
 
+        commandBinder.Bind(MediatorEvents.SECOND_PART_PASSED).To<SecondPartPassedCommand>();
         commandBinder.Bind(MediatorEvents.SECOND_PASSED).To<SecondPassedCommand>();
         commandBinder.Bind(MediatorEvents.DRAW_GRID_COMPLETE).To<StartLevelCommand>().Once();
+        commandBinder.Bind(CommandEvents.UPDATE_UNIT_STATE).To<UpdateUnitStateCommand>();
         commandBinder.Bind(MediatorEvents.UNIT_SPAWNED).To<UpdateUnitStateCommand>();
         commandBinder.Bind(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED).To<UpdateUnitStateCommand>();
     }
