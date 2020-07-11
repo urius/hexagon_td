@@ -50,26 +50,7 @@ public class LevelModel
     {
         var path = GetPath(cellPosition);
         var unitModel = new UnitModel(path, unitConfig);
-        /*
-        void OnUnitStateUpdated()
-        {
-            if (unitModel.State == UnitStateName.Moving)
-            {
-                _cellOwners.Remove(unitModel.PreviousCellPosition);
-                _cellOwners[unitModel.CurrentCellPosition] = unitModel;
-            }
-            else if (unitModel.State == UnitStateName.Destroing)
-            {
-                _cellOwners.Remove(unitModel.CurrentCellPosition);
-                _unitModels.Remove(unitModel);
-                unitModel.StateUpdated -= OnUnitStateUpdated;
-            }
-        }
-        unitModel.StateUpdated += OnUnitStateUpdated;
-        */
-
         OwnCellByUnit(unitModel);
-        //_cellOwners[unitModel.CurrentCellPosition] = unitModel;
         _unitModels.Add(unitModel);
 
         StartSpawnUnit(unitModel);

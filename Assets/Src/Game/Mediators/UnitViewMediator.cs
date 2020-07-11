@@ -53,14 +53,12 @@ public class UnitViewMediator : EventMediator
 
     private async Task TeleportAsync()
     {
-        unitView.gameObject.SetActive(false);
+        await Task.Delay(200);
+
         unitView.transform.position = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
         await RotateUnitAsync(0);
 
         DispatchHalfStatePassed();
-
-        await Task.Delay(200);
-        unitView.gameObject.SetActive(true);
     }
 
     private Task RotateUnitAsync(float duration = 0.2f)
