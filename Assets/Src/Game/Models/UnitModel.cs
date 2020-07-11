@@ -29,6 +29,7 @@ public class UnitModel
     public UnitStateBase CurrentState { get; private set; }
     public UnitStateName CurrentStateName => CurrentState.StateName;
     public bool IsOnLastCell => _currentPathCellIndex >= _path.Count - 1;
+    public bool IsNextCellNear => !IsCellsNotNear(NextCellPosition, CurrentCellPosition);
 
     public void IncrementCellIndex()
     {
@@ -41,6 +42,16 @@ public class UnitModel
         CurrentState = state;
 
         StateUpdated();
+    }
+
+    public static bool IsCellsNotNear(Vector2Int nextCellPosition, Vector2Int currentCellPosition)
+    {
+        if (Math.Abs(nextCellPosition.x - currentCellPosition.x) > 1
+            || Math.Abs(nextCellPosition.y - currentCellPosition.y) > 1)
+        {
+            return true;
+        }
+        return false;
     }
 
     private int ClapmCellIndex(int index)
@@ -90,20 +101,10 @@ public class MovingState : UnitStateBase
         : base(targetPosition)
     {
         FromPosition = fromPosition;
-        IsTeleporting = IsCellsNotNear(targetPosition, fromPosition);
+        IsTeleporting = UnitModel.IsCellsNotNear(targetPosition, fromPosition);
     }
 
     public override UnitStateName StateName => UnitStateName.Moving;
-
-    private static bool IsCellsNotNear(Vector2Int nextCellPosition, Vector2Int currentCellPosition)
-    {
-        if (Math.Abs(nextCellPosition.x - currentCellPosition.x) > 1
-            || Math.Abs(nextCellPosition.y - currentCellPosition.y) > 1)
-        {
-            return true;
-        }
-        return false;
-    }
 }
 
 public class DestroingState : UnitStateBase

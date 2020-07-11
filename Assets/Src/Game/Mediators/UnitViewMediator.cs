@@ -36,8 +36,11 @@ public class UnitViewMediator : EventMediator
             }
             else
             {
-                await RotateUnitAsync();
                 await MoveUnitAsync();
+                if (_unitModel.IsNextCellNear && !_unitModel.IsOnLastCell)
+                {
+                    await RotateUnitAsync();
+                }
             }
 
             dispatcher.Dispatch(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED, _unitModel);
@@ -48,34 +51,33 @@ public class UnitViewMediator : EventMediator
         }
     }
 
-    private Task TeleportAsync()
+    private async Task TeleportAsync()
     {
+        unitView.gameObject.SetActive(false);
         unitView.transform.position = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
+        await RotateUnitAsync(0);
 
+        DispatchHalfStatePassed();
+
+        await Task.Delay(200);
+        unitView.gameObject.SetActive(true);
+    }
+
+    private Task RotateUnitAsync(float duration = 0.2f)
+    {
         var tsc = new TaskCompletionSource<bool>();
 
         var lookAtVector = cellPositionConverter.CellVec2ToWorld(_unitModel.NextCellPosition) - cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        var rotation = Quaternion.LookRotation(lookAtVector).eulerAngles;
-        var tweener = unitView.transform.DORotate(rotation, 0.5f);
-        tweener.OnComplete(() => tsc.TrySetResult(true));
-
-        DispatchHalfStatePassed();
-        return tsc.Task;
-    }
-
-    private Task RotateUnitAsync()
-    {
-        var tsc = new TaskCompletionSource<bool>();
-
-        var lookAtVector = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition) - cellPositionConverter.CellVec2ToWorld(_unitModel.PreviousCellPosition);
-        var rotation = Quaternion.LookRotation(lookAtVector).eulerAngles;
-        if (rotation != unitView.transform.rotation.eulerAngles)
+        var targetRotation = Quaternion.LookRotation(lookAtVector);
+        if (Quaternion.Angle(targetRotation, unitView.transform.rotation) > 1)
         {
-            var tweener = unitView.transform.DORotate(rotation, 0.2f);
+            var tweener = unitView.transform.DORotate(targetRotation.eulerAngles, duration);
             tweener.OnComplete(() => tsc.TrySetResult(true));
             return tsc.Task;
-        } else
+        }
+        else
         {
+            unitView.transform.rotation = targetRotation;
             return Task.CompletedTask;
         }
     }
@@ -83,11 +85,12 @@ public class UnitViewMediator : EventMediator
     private Task MoveUnitAsync()
     {
         const float duration = 0.5f;
+        const float halfDuration = duration * 0.3f;
         var tsc = new TaskCompletionSource<bool>();
 
         var targetPosition = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
         var tweener = unitView.transform.DOMove(targetPosition, duration);
-        DOVirtual.DelayedCall(duration * 0.3f, DispatchHalfStatePassed);
+        DOVirtual.DelayedCall(halfDuration, DispatchHalfStatePassed);
         tweener.OnComplete(() => tsc.TrySetResult(true));
 
         return tsc.Task;
