@@ -82,6 +82,7 @@ public class GameContext : MVCSContext
         commandBinder.Bind(MediatorEvents.DRAW_GRID_COMPLETE).To<StartLevelCommand>().Once();
         commandBinder.Bind(CommandEvents.UPDATE_UNIT_STATE).To<UpdateUnitStateCommand>();
         commandBinder.Bind(MediatorEvents.UNIT_SPAWNED).To<UpdateUnitStateCommand>();
+        commandBinder.Bind(MediatorEvents.UNIT_HALF_STATE_PASSED).To<HalfStatePassedCommand>();
         commandBinder.Bind(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED).To<UpdateUnitStateCommand>();
     }
 }

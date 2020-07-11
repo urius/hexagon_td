@@ -59,6 +59,7 @@ public class UnitViewMediator : EventMediator
         var tweener = unitView.transform.DORotate(rotation, 0.5f);
         tweener.OnComplete(() => tsc.TrySetResult(true));
 
+        DispatchHalfStatePassed();
         return tsc.Task;
     }
 
@@ -81,12 +82,19 @@ public class UnitViewMediator : EventMediator
 
     private Task MoveUnitAsync()
     {
+        const float duration = 0.5f;
         var tsc = new TaskCompletionSource<bool>();
 
         var targetPosition = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        var tweener = unitView.transform.DOMove(targetPosition, 0.5f);
+        var tweener = unitView.transform.DOMove(targetPosition, duration);
+        DOVirtual.DelayedCall(duration * 0.3f, DispatchHalfStatePassed);
         tweener.OnComplete(() => tsc.TrySetResult(true));
 
         return tsc.Task;
+    }
+
+    private void DispatchHalfStatePassed()
+    {
+        dispatcher.Dispatch(MediatorEvents.UNIT_HALF_STATE_PASSED, _unitModel);
     }
 }
