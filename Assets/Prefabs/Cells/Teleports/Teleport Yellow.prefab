@@ -15,17 +15,17 @@ PrefabInstance:
     - target: {fileID: 1856762261804741793, guid: f4b1aa31b7f1f4859b90ef59b5c61205,
         type: 3}
       propertyPath: _color.g
-      value: 0.95803595
+      value: 0.95686275
       objectReference: {fileID: 0}
     - target: {fileID: 1856762261804741793, guid: f4b1aa31b7f1f4859b90ef59b5c61205,
         type: 3}
       propertyPath: _color.b
-      value: 0.03137256
+      value: 0.03137255
       objectReference: {fileID: 0}
     - target: {fileID: 3132990516639914565, guid: f4b1aa31b7f1f4859b90ef59b5c61205,
         type: 3}
       propertyPath: m_Name
-      value: Teleport
+      value: Teleport Yellow
       objectReference: {fileID: 0}
     - target: {fileID: 3132990516639914570, guid: f4b1aa31b7f1f4859b90ef59b5c61205,
         type: 3}

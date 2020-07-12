@@ -54,7 +54,7 @@ public class GridViewMediator : EventMediator
     {
         foreach (var cellDataMin in levelModel.Cells)
         {
-            var prefab = cellConfigProvider.GetConfig(cellDataMin.CellConfigMin.CellType).Prefab;
+            var prefab = cellConfigProvider.GetConfig(cellDataMin.CellConfigMin.CellType, cellDataMin.CellConfigMin.CellSubType).Prefab;
             gridView.DrawCell(cellDataMin.CellPosition, prefab);
         }
     }

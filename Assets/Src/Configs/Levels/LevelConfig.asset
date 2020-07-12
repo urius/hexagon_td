@@ -678,10 +678,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: 5, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
   - CellPosition: {x: 5, y: 0}
     CellConfigMin:
       CellType: 0
@@ -703,10 +699,6 @@ MonoBehaviour:
       CellType: 0
       CellSubType: 0
   - CellPosition: {x: 5, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: 6}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -846,6 +838,14 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
+  - CellPosition: {x: 5, y: 6}
+    CellConfigMin:
+      CellType: 3
+      CellSubType: 2
+  - CellPosition: {x: 5, y: -1}
+    CellConfigMin:
+      CellType: 3
+      CellSubType: 2
   _waveConfigs:
   - Units: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     WillSpawnFromBaseConfigs: []

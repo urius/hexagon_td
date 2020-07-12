@@ -12,4 +12,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063db04f1b3474648a57f2d7023cc01c, type: 3}
   m_Name: TurretConfigProvider
   m_EditorClassIdentifier: 
-  Configs: []
+  Configs:
+  - TurretType: 0
+    TurretLevelIndex: 0
+    Prefab: {fileID: 939335178, guid: 29f393efdc386ee41aee6077912722cf, type: 3}
+    IconSprite: {fileID: 21300000, guid: 7aac2a256a54a46a99cb6e0da60443f8, type: 3}
+  - TurretType: 0
+    TurretLevelIndex: 1
+    Prefab: {fileID: 280364142, guid: 1850d7deb5ad47340963836d87e867d2, type: 3}
+    IconSprite: {fileID: 21300000, guid: 77a351bd2ce394cf9927377d080bb2ea, type: 3}
+  - TurretType: 0
+    TurretLevelIndex: 2
+    Prefab: {fileID: 1436960668, guid: 168f869cbd92bd94eb79cd621c52a457, type: 3}
+    IconSprite: {fileID: 21300000, guid: 91199ca8743cd456dbc16d155a241535, type: 3}
+  - TurretType: 1
+    TurretLevelIndex: 0
+    Prefab: {fileID: 986537615, guid: ae42018fa4e94ee4b87544887c8be934, type: 3}
+    IconSprite: {fileID: 21300000, guid: 2d405ba2b24734c459c457075a1e5cdf, type: 3}
+  - TurretType: 1
+    TurretLevelIndex: 1
+    Prefab: {fileID: 73178697, guid: 6845bfa9a89be1c45b4ac19a874dfc24, type: 3}
+    IconSprite: {fileID: 21300000, guid: f84565e29f13240de983c1f1be6f0dfc, type: 3}
+  - TurretType: 1
+    TurretLevelIndex: 2
+    Prefab: {fileID: 1732579405, guid: 0f0d6b6326c66e54bad67ed85dccb9b9, type: 3}
+    IconSprite: {fileID: 21300000, guid: 3864a3a2d34164e8e875d8aa1630ee3b, type: 3}
+  - TurretType: 2
+    TurretLevelIndex: 0
+    Prefab: {fileID: 921247165, guid: ee45cea8f0aef334c8e29c013992713f, type: 3}
+    IconSprite: {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
+  - TurretType: 2
+    TurretLevelIndex: 1
+    Prefab: {fileID: 953633823, guid: 2a3d0544514f6394a91bba6f70777707, type: 3}
+    IconSprite: {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
+  - TurretType: 2
+    TurretLevelIndex: 2
+    Prefab: {fileID: 364968948, guid: 79168e49fb83af74ab331da3a5b479a2, type: 3}
+    IconSprite: {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
+  - TurretType: 3
+    TurretLevelIndex: 0
+    Prefab: {fileID: 3603398599403053873, guid: ebfe1a980b75c4196b0a28e50592cefd,
+      type: 3}
+    IconSprite: {fileID: 21300000, guid: 62d0dec67b6d44816bbc5f1ae004e311, type: 3}
+  - TurretType: 3
+    TurretLevelIndex: 1
+    Prefab: {fileID: 3603398599403053873, guid: fdd75a7711d76497bb38fb13def76689,
+      type: 3}
+    IconSprite: {fileID: 21300000, guid: b3ed97a3e7a1a4c3aad18084c6a850ee, type: 3}
+  - TurretType: 3
+    TurretLevelIndex: 2
+    Prefab: {fileID: 8395432880648847230, guid: 90816b6ccb16b48a2b443549a9775ca1,
+      type: 3}
+    IconSprite: {fileID: 21300000, guid: 4cdedd2847c0a4bde8523eb5579f5ab7, type: 3}
