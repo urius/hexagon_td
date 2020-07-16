@@ -40,9 +40,9 @@ public class GameContextViewMediator : EventMediator
     {
         while (true)
         {
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 5; i++)
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.2f);
 
                 eventDispatcher.Dispatch(MediatorEvents.SECOND_PART_PASSED);
             }
