@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PrefabPainterEditor : EditorWindow
@@ -26,8 +27,14 @@ public class PrefabPainterEditor : EditorWindow
     [MenuItem("Tools/Cells Prefab Painter")]
     private static void InitWindow()
     {
+        EditorSceneManager.OpenScene("Assets/Scenes/EditLevelScene.unity");
+
         var window = GetWindow<PrefabPainterEditor>();
         window.titleContent = new GUIContent(_windowTitle);
+
+        EditorUtility.FocusProjectWindow();
+        UnityEngine.Object obj = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>("Assets/Src/Configs/Levels/LevelConfig");
+        Selection.activeObject = obj;
     }
 
     private void Awake()
