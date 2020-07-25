@@ -71,11 +71,15 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<CellConfigProvider>().ToValue(gameContextView.CellConfigProvider);
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
         injectionBinder.Bind<UnitModelByView>().ToSingleton();
+        injectionBinder.Bind<GridViewProvider>().ToSingleton();        
         injectionBinder.Bind<ICellPositionConverter>().ToValue(gameContextView.GridView);
 
         mediationBinder.Bind<GameContextView>().To<GameContextViewMediator>();
         mediationBinder.Bind<GridView>().To<GridViewMediator>();
         mediationBinder.Bind<UnitView>().To<UnitViewMediator>();
+        mediationBinder.Bind<GameCameraView>().To<CameraViewMediator>();
+        //UI
+        mediationBinder.Bind<ScreenPanelView>().To<ScreenPanelMediator>();
 
         commandBinder.Bind(MediatorEvents.SECOND_PART_PASSED).To<SecondPartPassedCommand>();
         commandBinder.Bind(MediatorEvents.SECOND_PASSED).To<SecondPassedCommand>();

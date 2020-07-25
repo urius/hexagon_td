@@ -10,10 +10,13 @@ public class GridViewMediator : EventMediator
     [Inject] public LevelModel levelModel { get; set; }
     [Inject] public CellConfigProvider cellConfigProvider { get; set; }
     [Inject] public UnitModelByView modelByView { get; set; }
+    [Inject] public GridViewProvider gridViewProvider { get; set; }
 
     public override void OnRegister()
     {
         levelModel.StartSpawnUnit += OnStartSpawnUnit;
+
+        gridViewProvider.SetGridView(gridView);
     }
 
     public override void OnRemove()

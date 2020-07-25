@@ -90,6 +90,8 @@ public class GridView : EventView, ICellPositionConverter
 
     public Func<Vector3Int, Vector3> CellToWorld => _grid.CellToWorld;
     public Func<Vector3, Vector3Int> WorldToCell => _grid.WorldToCell;
+    public Vector3 CellSize => _grid.cellSize;
+    public bool IsTransposed => _isTransposed;
 
     private static Vector3Int CellVec2ToVec3(Vector2Int vec2)
     {
