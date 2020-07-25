@@ -3,7 +3,7 @@ using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ScreenPanelView : View, IPointerDownHandler, IPointerUpHandler
+public class GameScreenPanelView : View, IPointerDownHandler, IPointerUpHandler
 {
     public event Action PointerDown = delegate { };
     public event Action PointerUp = delegate { };

@@ -79,7 +79,7 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<UnitView>().To<UnitViewMediator>();
         mediationBinder.Bind<GameCameraView>().To<CameraViewMediator>();
         //UI
-        mediationBinder.Bind<ScreenPanelView>().To<ScreenPanelMediator>();
+        mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
 
         commandBinder.Bind(MediatorEvents.SECOND_PART_PASSED).To<SecondPartPassedCommand>();
         commandBinder.Bind(MediatorEvents.SECOND_PASSED).To<SecondPassedCommand>();

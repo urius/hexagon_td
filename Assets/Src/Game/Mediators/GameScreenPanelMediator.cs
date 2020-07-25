@@ -1,8 +1,8 @@
 ﻿using strange.extensions.mediation.impl;
 
-public class ScreenPanelMediator : EventMediator
+public class GameScreenPanelMediator : EventMediator
 {
-    [Inject] public ScreenPanelView ScreenPanelView { get; set; }
+    [Inject] public GameScreenPanelView ScreenPanelView { get; set; }
 
     public override void OnRegister()
     {
