@@ -61,7 +61,7 @@ public class CameraViewMediator : EventMediator
             return;
         }
 
-        var newCameraPos = CameraView.CameraPosition - _deltaWorldMouse;        
+        var newCameraPos = CameraView.CameraPosition - _deltaWorldMouse;
         CameraView.CameraPosition = ClampByBounds(newCameraPos);
     }
 
@@ -107,22 +107,12 @@ public class CameraViewMediator : EventMediator
 
         var (size, bounds) = CalculateCameraSettings(transform, minX, maxX, minZ, maxZ, 0.2f);
         CameraView.Camera.orthographicSize = size;
-        var camPos = CameraView.Camera.transform.position;
-        camPos.x = bounds.center.x;
-        camPos.z = bounds.center.y;
-        CameraView.Camera.transform.position = camPos;
-
-        var bounds3 = new Bounds(Vec2ToCameraVec3(bounds.center), Vec2ToCameraVec3(bounds.size));
-        _cameraBounds = bounds3;
-    }
-
-    private Vector3 Vec2ToCameraVec3(Vector2 vec2)
-    {
-        return new Vector3(vec2.x, CameraView.CameraPosition.y, vec2.y);
+        CameraView.CameraPosition = bounds.center;
+        _cameraBounds = bounds;
     }
 
     #region CalculateCamera bounds and size
-    private (float size, Rect bounds) CalculateCameraSettings(
+    private (float size, Bounds bounds) CalculateCameraSettings(
         Transform cameraTransform,
         float horizontalMin,
         float horizontalMax,
@@ -130,6 +120,11 @@ public class CameraViewMediator : EventMediator
         float verticalMax,
         float offsetToGUIPercent)
     {
+        Vector3 Vec2ToCameraVec3(Vector2 vec2)
+        {
+            return new Vector3(vec2.x, cameraTransform.position.y, vec2.y);
+        }
+
         var cameraAngle = cameraTransform.rotation.eulerAngles.x;
         var gameViewportSize = new Vector2(Screen.width, Screen.height * (1 - offsetToGUIPercent));
 
@@ -157,8 +152,7 @@ public class CameraViewMediator : EventMediator
         cameraCenter.z = fieldCenter.z + (float)cameraZOffset;
 
         var boundsSize = new Vector2(fieldWidth - 2 * viewportHorizontalSize, (float)(fieldHeight - fieldHeightCoveredByViewport));
-        var bounds = new Rect(cameraCenter.x - boundsSize.x * 0.5f, cameraCenter.z - boundsSize.y * 0.5f, boundsSize.x, boundsSize.y);
-
+        var bounds = new Bounds(cameraCenter, Vec2ToCameraVec3(boundsSize));
         return (cameraOrtographicSize, bounds);
     }
     #endregion
