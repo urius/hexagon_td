@@ -10,12 +10,14 @@ public class CameraViewMediator : EventMediator
 {
     [Inject] public GameCameraView CameraView { get; set; }
     [Inject] public GridViewProvider GridViewProvider { get; set; }
+    [Inject] public WorldMousePositionProvider WorldMousePositionProvider { get; set; }
 
     private Plane _zeroPlane;
     private Bounds _cameraBounds;
     private Vector3 _startDragWorldMousePos;
     private bool _isDragging = false;
     private Vector3 _deltaWorldMouse;
+    private Vector3 _currentMouseWorldPoint;
 
     public override void OnRegister()
     {
@@ -42,6 +44,8 @@ public class CameraViewMediator : EventMediator
 
     private void Update()
     {
+        _currentMouseWorldPoint = GetMouseWorldPoint();
+        WorldMousePositionProvider.SetPosition(_currentMouseWorldPoint);
         ProcessCameraMove();
     }
 
@@ -49,7 +53,7 @@ public class CameraViewMediator : EventMediator
     {
         if (_isDragging)
         {
-            _deltaWorldMouse = GetMouseWorldPoint() - _startDragWorldMousePos;
+            _deltaWorldMouse = _currentMouseWorldPoint - _startDragWorldMousePos;
         }
         else if (_deltaWorldMouse.magnitude > 0.05f)
         {
@@ -99,8 +103,8 @@ public class CameraViewMediator : EventMediator
         var allCells = gridView.GetComponentsInChildren<CellView>();
         var cellSize = gridView.CellSize;
         var offsetVertical = gridView.IsTransposed ? 0 : cellSize.y * 0.5f;
-        var offsetHorizontal = gridView.IsTransposed ? cellSize.y * 0.5f : 0;
-        var minZ = allCells.Min(c => c.transform.position.z) - offsetVertical;
+        var offsetHorizontal = gridView.IsTransposed ? cellSize.x * 0.5f : 0;
+        var minZ = allCells.Min(c => c.transform.position.z);// - offsetVertical;
         var maxZ = allCells.Max(c => c.transform.position.z) + offsetVertical;
         var minX = allCells.Min(c => c.transform.position.x) - offsetHorizontal;
         var maxX = allCells.Max(c => c.transform.position.x) + offsetHorizontal;

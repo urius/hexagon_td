@@ -13,6 +13,7 @@ public class GameContextView : ContextView
     public LevelConfigProvider LevelConfigProvider;
     public CellConfigProvider CellConfigProvider;
     public UnitConfigsProvider UnitConfigsProvider;
+    public TurretConfigProvider TurretConfigsProvider;
     public GridView GridView;
 
     private void Awake()
@@ -70,8 +71,10 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<LevelModel>().ToValue(new LevelModel(gameContextView.LevelConfigProvider.LevelConfig));
         injectionBinder.Bind<CellConfigProvider>().ToValue(gameContextView.CellConfigProvider);
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
+        injectionBinder.Bind<TurretConfigProvider>().ToValue(gameContextView.TurretConfigsProvider);
         injectionBinder.Bind<UnitModelByView>().ToSingleton();
         injectionBinder.Bind<GridViewProvider>().ToSingleton();        
+        injectionBinder.Bind<WorldMousePositionProvider>().ToSingleton();
         injectionBinder.Bind<ICellPositionConverter>().ToValue(gameContextView.GridView);
 
         mediationBinder.Bind<GameContextView>().To<GameContextViewMediator>();
@@ -80,6 +83,7 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<GameCameraView>().To<CameraViewMediator>();
         //UI
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
+        mediationBinder.Bind<BuildTurretButtonView>().To<BuildTurretButtonMediator>();
 
         commandBinder.Bind(MediatorEvents.SECOND_PART_PASSED).To<SecondPartPassedCommand>();
         commandBinder.Bind(MediatorEvents.SECOND_PASSED).To<SecondPassedCommand>();

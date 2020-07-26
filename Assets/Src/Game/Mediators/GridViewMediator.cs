@@ -6,15 +6,21 @@ using UnityEngine;
 
 public class GridViewMediator : EventMediator
 {
+    private GameObject _flyingTurret;
+
     [Inject] public GridView gridView { get; set; }
     [Inject] public LevelModel levelModel { get; set; }
     [Inject] public CellConfigProvider cellConfigProvider { get; set; }
     [Inject] public UnitModelByView modelByView { get; set; }
     [Inject] public GridViewProvider gridViewProvider { get; set; }
+    [Inject] public TurretConfigProvider turretsConfigProvider { get; set; }
+    [Inject] public WorldMousePositionProvider worldMousePositionProvider { get; set; }
 
     public override void OnRegister()
     {
         levelModel.StartSpawnUnit += OnStartSpawnUnit;
+        dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
+        dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, OnBuildTurretMouseUp);
 
         gridViewProvider.SetGridView(gridView);
     }
@@ -22,6 +28,31 @@ public class GridViewMediator : EventMediator
     public override void OnRemove()
     {
         levelModel.StartSpawnUnit -= OnStartSpawnUnit;
+        dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
+        dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, OnBuildTurretMouseUp);
+    }
+
+    private void Update()
+    {
+        if (_flyingTurret != null)
+        {
+            _flyingTurret.transform.position = gridView.CellToWorld(gridView.WorldToCell(worldMousePositionProvider.Position));
+        }
+    }
+
+    private void OnBuildTurretMouseDown(IEvent payload)
+    {
+        var turretType = (TurretType)payload.data;
+        _flyingTurret = Instantiate(turretsConfigProvider.GetConfig(turretType, 0).BuildModePrefab);
+    }
+
+    private void OnBuildTurretMouseUp(IEvent payload)
+    {
+        if (_flyingTurret != null)
+        {
+            Destroy(_flyingTurret);
+            _flyingTurret = null;
+        }
     }
 
     private async void OnStartSpawnUnit(UnitModel unitModel)

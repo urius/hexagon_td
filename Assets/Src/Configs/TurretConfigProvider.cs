@@ -19,13 +19,14 @@ public class TurretConfig
     public TurretType TurretType;
     public int TurretLevelIndex;
     public GameObject Prefab;
+    public GameObject BuildModePrefab;
     public Sprite IconSprite;
 }
 
 public enum TurretType
 {
-    Gun,
-    Laser,
-    Rocket,
-    SlowField,
+    Gun = 0,
+    Laser = 1,
+    Rocket = 2,
+    SlowField = 3,
 }

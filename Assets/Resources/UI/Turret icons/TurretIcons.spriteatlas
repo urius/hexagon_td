@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TurretIcons
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 33074db00059e4e348141a5b156b1068, type: 3}
+    totalSpriteSurfaceArea: 196608
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 4343727234628468602, guid: 1e14f4f234006478987789022a635cff,
+    type: 2}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
+  - {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
+  - {fileID: 21300000, guid: 3864a3a2d34164e8e875d8aa1630ee3b, type: 3}
+  - {fileID: 21300000, guid: 2d405ba2b24734c459c457075a1e5cdf, type: 3}
+  - {fileID: 21300000, guid: f84565e29f13240de983c1f1be6f0dfc, type: 3}
+  - {fileID: 21300000, guid: b3ed97a3e7a1a4c3aad18084c6a850ee, type: 3}
+  - {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
+  - {fileID: 21300000, guid: 7aac2a256a54a46a99cb6e0da60443f8, type: 3}
+  - {fileID: 21300000, guid: 62d0dec67b6d44816bbc5f1ae004e311, type: 3}
+  - {fileID: 21300000, guid: 4cdedd2847c0a4bde8523eb5579f5ab7, type: 3}
+  - {fileID: 21300000, guid: 91199ca8743cd456dbc16d155a241535, type: 3}
+  - {fileID: 21300000, guid: 077e35bcf4912471083485a8653eca5d, type: 3}
+  - {fileID: 21300000, guid: 77a351bd2ce394cf9927377d080bb2ea, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - icon_turret_3_2
+  - icon_turret_3_3
+  - icon_turret_2_3
+  - icon_turret_2_1
+  - icon_turret_2_2
+  - icon_turret_4_2
+  - icon_turret_3_1
+  - icon_turret_1_1
+  - icon_turret_4_1
+  - icon_turret_4_3
+  - icon_turret_1_3
+  - bg_Window3
+  - icon_turret_1_2
+  m_Tag: UI Atlas
+  m_IsVariant: 1
