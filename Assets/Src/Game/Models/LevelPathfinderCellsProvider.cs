@@ -49,7 +49,7 @@ public class LevelPathfinderCellsProvider : ICellsProvider<Vector2Int>
         return 100;
     }
 
-    public IEnumerable<Vector2Int> GetNearCells(Vector2Int cellPosition)
+    public IEnumerable<Vector2Int> GetWalkableNearCells(Vector2Int cellPosition)
     {
         var currentCell = _walkableCellsByCoord[cellPosition];
         var result = new List<Vector2Int>();

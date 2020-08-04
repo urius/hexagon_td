@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class Pathfinder
 {
@@ -8,13 +6,13 @@ public class Pathfinder
     {
         var openList = new Queue<TCell>(new[] { start });
         var cellsInfo = new Dictionary<TCell, CellInfo<TCell>>();
-        cellsInfo[start] = new CellInfo<TCell> (start, start, 0);
+        cellsInfo[start] = new CellInfo<TCell>(start, start, 0);
 
         while (openList.Count > 0)
         {
             var currentCellInfo = cellsInfo[openList.Dequeue()];
 
-            var nearCells = cellsProvider.GetNearCells(currentCellInfo.Current);
+            var nearCells = cellsProvider.GetWalkableNearCells(currentCellInfo.Current);
             foreach (var cell in nearCells)
             {
                 if (!cellsInfo.ContainsKey(cell))
@@ -36,14 +34,21 @@ public class Pathfinder
         }
 
         var result = new List<TCell>() { end };
-        var tempCellInfo = cellsInfo[end];
-        while (!cellsProvider.IsCellEquals(tempCellInfo.Back, tempCellInfo.Current))
+        if (cellsInfo.TryGetValue(end, out var tempCellInfo))
         {
-            result.Add(tempCellInfo.Back);
-            tempCellInfo = cellsInfo[tempCellInfo.Back];
+
+            while (!cellsProvider.IsCellEquals(tempCellInfo.Back, tempCellInfo.Current))
+            {
+                result.Add(tempCellInfo.Back);
+                tempCellInfo = cellsInfo[tempCellInfo.Back];
+            }
+            result.Reverse();
+            return result.ToArray();
         }
-        result.Reverse();
-        return result.ToArray();
+        else
+        {
+            return new TCell[0];
+        }
     }
 
     private class CellInfo<TCell>
@@ -64,7 +69,7 @@ public class Pathfinder
 
 public interface ICellsProvider<TCell>
 {
-    IEnumerable<TCell> GetNearCells(TCell cell);
+    IEnumerable<TCell> GetWalkableNearCells(TCell cell);
     int GetCellMoveCost(TCell cell);
     bool IsCellEquals(TCell cellA, TCell cellB);
 }

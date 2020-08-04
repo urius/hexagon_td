@@ -5,40 +5,35 @@ using UnityEngine;
 
 public class LevelModel
 {
-    public bool IsInitialized = false;
+    public event Action<Vector2Int, Vector2Int> Teleporting = delegate { };
 
-    public event Action<UnitModel> StartSpawnUnit = delegate { };
+    public bool IsInitialized = false;
 
     public readonly IEnumerable<CellDataMin> SpawnCells;
     public readonly CellDataMin GoalCell;
     public readonly WaveModel WaveModel;
+    public readonly LevelTurretsModel LevelTurretsModel = new LevelTurretsModel();
+    public readonly LevelUnitsModel LevelUnitsModel = new LevelUnitsModel();
+    public readonly PathsManager PathsManager;
 
-    private readonly LevelPathfinderCellsProvider _pathfinderCellsProvider;
     private readonly LevelConfig _levelConfig;
-    private readonly List<UnitModel> _unitModels = new List<UnitModel>();
-    private readonly Dictionary<(Vector2Int, Vector2Int), IReadOnlyList<Vector2Int>> _cachedPaths = new Dictionary<(Vector2Int, Vector2Int), IReadOnlyList<Vector2Int>>();
-    private readonly Vector2Int[] _teleportCellPositions;
 
-    private Dictionary<Vector2Int, UnitModel> _cellOwners = new Dictionary<Vector2Int, UnitModel>();
+    private readonly Vector2Int[] _teleportCellPositions;
 
     public LevelModel(LevelConfig levelConfig)
     {
         _levelConfig = levelConfig;
         WaveModel = new WaveModel(levelConfig.WaveConfigs);
+        PathsManager = new PathsManager(levelConfig, LevelTurretsModel, LevelUnitsModel);
 
         SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
         GoalCell = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).First();
         _teleportCellPositions = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
-
-        _pathfinderCellsProvider = new LevelPathfinderCellsProvider(_levelConfig);
     }
 
-    public IEnumerable<UnitModel> WaitingUnits => _unitModels.Where(m => m.CurrentState.StateName == UnitStateName.WaitingForCell);
-
-    public UnitModel GetCellOwner(Vector2Int cellPosition)
+    public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
     {
-        _cellOwners.TryGetValue(cellPosition, out var result);
-        return result;
+        Teleporting(previousCellPosition, currentCellPosition);
     }
 
     public bool IsTeleport(Vector2Int cellPosition)
@@ -46,52 +41,43 @@ public class LevelModel
         return _teleportCellPositions.Any(p => p == cellPosition);
     }
 
-    internal void SpawnUnit(Vector2Int cellPosition, UnitConfig unitConfig)
+    public bool IsReadyToBuild(Vector2Int cellPosition)
     {
-        var path = GetPath(cellPosition);
-        var unitModel = new UnitModel(path, unitConfig);
-        OwnCellByUnit(unitModel);
-        _unitModels.Add(unitModel);
+        //TODO: add check for path availability from all spawn cells to any goal cell
+        if (IsGround(cellPosition) && !LevelTurretsModel.HaveTurret(cellPosition))
+        {
+            if (PathsManager.ContainsInCachedPaths(cellPosition))
+            {
+                foreach (var spawnCell in SpawnCells)
+                {
+                    if (!PathsManager.IsPathExists(spawnCell.CellPosition, GoalCell.CellPosition, cellPosition))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 
-        StartSpawnUnit(unitModel);
+        return false;
     }
 
-    public void OwnCellByUnit(UnitModel unitModel)
+    public void Update()
     {
-        _cellOwners[unitModel.CurrentCellPosition] = unitModel;
+        LevelTurretsModel.Update();
     }
 
-    public void FreeCell(Vector2Int cellPosition)
+    private bool IsGround(Vector2Int cellPosition)
     {
-        _cellOwners.Remove(cellPosition);
-    }
-
-    public void RemoveUnit(UnitModel unitModel)
-    {
-        _cellOwners.Remove(unitModel.CurrentCellPosition);
-        _unitModels.Remove(unitModel);
-    }
-
-    public bool IsCellFree(Vector2Int cellPosition)
-    {
-        return !_cellOwners.TryGetValue(cellPosition, out var _);
+        var cell = _levelConfig.Cells.FirstOrDefault(c => c.CellPosition == cellPosition);
+        return cell != null && cell.CellConfigMin.CellType == CellType.Ground;
     }
 
     public IReadOnlyList<CellDataMin> Cells => _levelConfig.Cells;
 
-    private IReadOnlyList<Vector2Int> GetPath(Vector2Int startCell)
+    public IReadOnlyList<Vector2Int> GetPath(Vector2Int cellPosition)
     {
-        var finishCell = GoalCell.CellPosition;
-        if (_cachedPaths.TryGetValue((startCell, finishCell), out var path))
-        {
-            return path;
-        }
-        else
-        {
-            path = Pathfinder.FindPath(_pathfinderCellsProvider, startCell, finishCell);
-            _cachedPaths[(startCell, finishCell)] = path;
-            return path;
-        }
+        return PathsManager.GetPath(cellPosition, GoalCell.CellPosition);
     }
 }
 
@@ -115,5 +101,11 @@ public class WaveModel
         var result = CurrentWave.Units[UnitIndex];
         UnitIndex++;
         return result;
+    }
+
+    public void Reset()
+    {
+        WaveIndex = 0;
+        UnitIndex = 0;
     }
 }

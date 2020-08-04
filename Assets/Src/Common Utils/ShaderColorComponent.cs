@@ -29,10 +29,12 @@ public class ShaderColorComponent : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     void Update()
     {
         UpdateColor();
     }
+#endif
 
     [Serializable]
     private class SettingUnit

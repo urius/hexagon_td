@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CommandEvents
+﻿public class CommandEvents
 {
-    public static string UPDATE_UNIT_STATE = "UPDATE_UNIT_STATE";
+    public static string UPDATE_UNIT_STATE = "CE:UPDATE_UNIT_STATE";
+    public static string START_SPAWN_UNIT = "CE:START_SPAWN_UNIT";
+    public static string SECOND_PASSED = "CE:SECOND_PASSED";
+    public static string BUILD_TURRET = "CE:BUILD_TURRET";
+    public static string UNIT_DESTROYING = "CE:UNIT_DESTROYING";    
 }

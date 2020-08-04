@@ -21,6 +21,10 @@ public class TurretConfig
     public GameObject Prefab;
     public GameObject BuildModePrefab;
     public Sprite IconSprite;
+    public int AttackRadiusCells;
+    public int Damage;
+    public int ReloadTimeFrames;
+    public GameObject BulletPrefab;
 }
 
 public enum TurretType

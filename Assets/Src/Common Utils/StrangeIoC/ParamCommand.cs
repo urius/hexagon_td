@@ -4,7 +4,7 @@ using strange.extensions.command.impl;
 using strange.extensions.dispatcher.eventdispatcher.impl;
 using UnityEngine;
 
-public abstract class ParamCommand<TParam> : Command
+public abstract class ParamCommand<TParam> : EventCommand
 {
     public sealed override void Execute()
     {

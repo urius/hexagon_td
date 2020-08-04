@@ -7,12 +7,15 @@ using UnityEngine;
 public interface ICellPositionConverter
 {
     Vector3 CellVec2ToWorld(Vector2Int cellPosition);
+    Func<Vector3Int, Vector3> CellToWorld { get; }
+    Func<Vector3, Vector3Int> WorldToCell { get; }
 }
 
 public class GridView : EventView, ICellPositionConverter
 {
     [SerializeField] private Grid _grid;
     [SerializeField] private GameObject _plane;
+    [SerializeField] private GameObject _staticObjectsParent;
 
     private bool _isTransposed;
 
@@ -25,6 +28,14 @@ public class GridView : EventView, ICellPositionConverter
         transform.rotation = Quaternion.LookRotation(isTransposed ? Vector3.left : Vector3.forward, Vector3.up);
     }
 
+    public void BakeStatic()
+    {
+        if (_staticObjectsParent != null)
+        {
+            StaticBatchingUtility.Combine(_staticObjectsParent);
+        }
+    }
+
     public void EraseCell(Vector2Int cellPosition)
     {
         if (_allCreatedCells.ContainsKey(cellPosition))
@@ -34,18 +45,23 @@ public class GridView : EventView, ICellPositionConverter
         }
     }
 
-    public GameObject DrawCell(Vector2Int cellPosition, GameObject prefab)
+    public GameObject DrawCell(Vector2Int cellPosition, GameObject prefab, bool isStatic = false)
     {
         var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
-        var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, _grid.transform);
+        var cellParent = (isStatic && _staticObjectsParent != null) ? _staticObjectsParent.transform : _grid.transform;
+        var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, cellParent);
         _allCreatedCells[cellPosition] = go;
-
         return go;
     }
 
     public SpawnBaseCellView GetSpawnCellView(Vector2Int cellPosition)
     {
         return _allCreatedCells[cellPosition].GetComponent<SpawnBaseCellView>();
+    }
+
+    public TeleportCellView GetTeleportCellView(Vector2Int cellPosition)
+    {
+        return _allCreatedCells[cellPosition].GetComponent<TeleportCellView>();
     }
 
     public void DestroyAllCells()

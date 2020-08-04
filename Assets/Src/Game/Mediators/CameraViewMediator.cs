@@ -57,7 +57,7 @@ public class CameraViewMediator : EventMediator
         }
         else if (_deltaWorldMouse.magnitude > 0.05f)
         {
-            _deltaWorldMouse *= 0.8f;
+            _deltaWorldMouse *= 0.9f;
         }
         else
         {

@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1169459583158964371, guid: 9ef325034cbbe4687af763014ef841f4,
         type: 3}
       propertyPath: m_Name
-      value: Teleport (2) Variant
+      value: Teleport Red
       objectReference: {fileID: 0}
     - target: {fileID: 1169459583158964380, guid: 9ef325034cbbe4687af763014ef841f4,
         type: 3}
@@ -81,6 +81,36 @@ PrefabInstance:
         type: 3}
       propertyPath: _color.b
       value: 0.19339621
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288339844758197783, guid: 9ef325034cbbe4687af763014ef841f4,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288339844758197783, guid: 9ef325034cbbe4687af763014ef841f4,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.23415302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288339844758197783, guid: 9ef325034cbbe4687af763014ef841f4,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.21960661
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288339844758197783, guid: 9ef325034cbbe4687af763014ef841f4,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288339844758197783, guid: 9ef325034cbbe4687af763014ef841f4,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.2145833
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288339844758197783, guid: 9ef325034cbbe4687af763014ef841f4,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef325034cbbe4687af763014ef841f4, type: 3}

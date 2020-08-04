@@ -10,13 +10,13 @@ public class UnitViewMediator : EventMediator
 {
     [Inject] public ICellPositionConverter cellPositionConverter { get; set; }
     [Inject] public UnitView unitView { get; set; }
-    [Inject] public UnitModelByView modelByView { get; set; }
+    [Inject] public IUnitModelByViewProvider modelByView { get; set; }
 
     private UnitModel _unitModel;
 
     public override void OnRegister()
     {
-        _unitModel = modelByView.ModelByView[unitView];
+        _unitModel = modelByView.GetModel(unitView);
 
         _unitModel.StateUpdated += OnStateUpdated;
     }
@@ -47,15 +47,17 @@ public class UnitViewMediator : EventMediator
         }
         else if (_unitModel.CurrentState.StateName == UnitStateName.Destroing)
         {
-            Destroy(gameObject);
+            //destroy animation
+            dispatcher.Dispatch(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, unitView);
         }
     }
 
     private async Task TeleportAsync()
     {
-        await Task.Delay(200);
+        await Task.Delay(400);
 
         unitView.transform.position = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
+        await Task.Delay(300);
         await RotateUnitAsync(0);
 
         DispatchHalfStatePassed();

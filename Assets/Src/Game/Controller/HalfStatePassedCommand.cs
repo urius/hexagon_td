@@ -1,9 +1,9 @@
 ﻿public class HalfStatePassedCommand : ParamCommand<UnitModel>
 {
-    [Inject] public LevelModel LevelModel { get; set; }
+    [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
 
     public override void Execute(UnitModel unit)
     {
-        LevelModel.FreeCell(unit.PreviousCellPosition);        
+        LevelUnitsModel.FreeCell(unit.PreviousCellPosition);        
     }
 }

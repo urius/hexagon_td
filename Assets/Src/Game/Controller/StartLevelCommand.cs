@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using strange.extensions.command.impl;
-using UnityEngine;
+﻿using strange.extensions.command.impl;
 
 public class StartLevelCommand : Command
 {
@@ -10,5 +7,7 @@ public class StartLevelCommand : Command
     public override void Execute()
     {
         levelModel.IsInitialized = true;
+
+        injectionBinder.GetInstance<ProcessUpdatesCommand>().Start();
     }
 }

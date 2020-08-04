@@ -6,7 +6,7 @@ public class UnitModel
 {
     public event Action StateUpdated = delegate { };
 
-    private int _currentPathCellIndex;
+    private int _currentPathCellIndex = 0;
 
     private readonly IReadOnlyList<Vector2Int> _path;
     private readonly UnitConfig _config;
@@ -20,9 +20,9 @@ public class UnitModel
     }
 
     public GameObject Prefab => _config.Prefab;
-    public Vector2Int PreviousCellPosition => _path[ClapmCellIndex(_currentPathCellIndex - 1)];
+    public Vector2Int PreviousCellPosition => _path[ClampCellIndex(_currentPathCellIndex - 1)];
     public Vector2Int CurrentCellPosition => _path[_currentPathCellIndex];
-    public Vector2Int NextCellPosition => _path[ClapmCellIndex(_currentPathCellIndex + 1)];
+    public Vector2Int NextCellPosition => _path[ClampCellIndex(_currentPathCellIndex + 1)];
 
     public UnitStateBase PreviousState { get; private set; }
     public UnitStateName PreviousStateName => PreviousState.StateName;
@@ -54,7 +54,7 @@ public class UnitModel
         return false;
     }
 
-    private int ClapmCellIndex(int index)
+    private int ClampCellIndex(int index)
     {
         if (index <= 0)
         {
