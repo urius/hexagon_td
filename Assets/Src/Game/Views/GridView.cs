@@ -6,6 +6,7 @@ using UnityEngine;
 
 public interface ICellPositionConverter
 {
+    Vector2Int CellVec3ToVec2(Vector3Int cellPosition);
     Vector3 CellVec2ToWorld(Vector2Int cellPosition);
     Func<Vector3Int, Vector3> CellToWorld { get; }
     Func<Vector3, Vector3Int> WorldToCell { get; }
@@ -102,6 +103,11 @@ public class GridView : EventView, ICellPositionConverter
     public Vector3 CellVec2ToWorld(Vector2Int cellPosition)
     {
         return _grid.CellToWorld(CellVec2ToVec3(cellPosition));
+    }
+
+    public Vector2Int CellVec3ToVec2(Vector3Int cellPosition)
+    {
+        return new Vector2Int(cellPosition.x, cellPosition.y);
     }
 
     public Func<Vector3Int, Vector3> CellToWorld => _grid.CellToWorld;

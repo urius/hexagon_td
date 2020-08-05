@@ -1,16 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelTurretsModel
 {
+    public event Action<TurretModel> TurretAdded = delegate { };
+    public event Action<TurretModel> TurretRemoved = delegate { };
+
     public readonly List<TurretModel> TurretsList = new List<TurretModel>();
+
     private readonly Dictionary<Vector2Int, TurretModel> _turrets = new Dictionary<Vector2Int, TurretModel>();
 
     public void AddTurret(TurretModel turretModel)
     {
         _turrets[turretModel.Position] = turretModel;
         TurretsList.Add(turretModel);
+
+        TurretAdded(turretModel);
+    }
+
+    public void RemoveTurret(TurretModel turretModel)
+    {
+        _turrets.Remove(turretModel.Position);
+        TurretsList.Remove(turretModel);
+
+        TurretRemoved(turretModel);
     }
 
     public void Update()

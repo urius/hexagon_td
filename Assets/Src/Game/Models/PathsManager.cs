@@ -18,6 +18,9 @@ public class PathsManager : ICellsProvider<Vector2Int>
 
         _turretsModel = turretsModel;
         _unitsModel = unitsModel;
+
+        _turretsModel.TurretAdded += OnTurretAdded;
+        _turretsModel.TurretRemoved += OnTurretRemoved;
     }
 
     public IReadOnlyList<Vector2Int> GetPath(Vector2Int startCell, Vector2Int finishCell)
@@ -67,6 +70,21 @@ public class PathsManager : ICellsProvider<Vector2Int>
         return false;
     }
 
+    public (Vector2Int, Vector2Int)[] GetPathsContainsCell(Vector2Int cellPosition)
+    {
+        var result = new List<(Vector2Int, Vector2Int)>();
+
+        foreach (var kvp in _cachedPaths)
+        {
+            if (kvp.Value.Contains(cellPosition))
+            {
+                result.Add(kvp.Key);
+            }
+        }
+
+        return result.ToArray();
+    }
+
     public int GetCellMoveCost(Vector2Int cell)
     {
         return 100;
@@ -101,7 +119,6 @@ public class PathsManager : ICellsProvider<Vector2Int>
     {
         return _walkableCellsByCoord.TryGetValue(cell, out var _)
             && !_turretsModel.HaveTurret(cell)
-            //&& _unitsModel.IsCellWithoutUnit(cell)
             && !_tempUnwalkableCells.TryGetValue(cell, out _);
     }
 
@@ -123,5 +140,44 @@ public class PathsManager : ICellsProvider<Vector2Int>
                 }
             }
         }
+    }
+
+    private void OnTurretRemoved(TurretModel turret)
+    {
+        //clear all pathes and recalculate pathes for current units
+        ClearAllPaths();
+        foreach (var unit in _unitsModel.Units)
+        {
+            if (!unit.IsOnLastCell && !unit.IsOnPreLastCell)
+            {
+                var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
+                unit.SubstitutePath(Pathfinder.FindPath(this, currentCell, finishCell));
+            }
+        }
+    }
+
+    private void OnTurretAdded(TurretModel turret)
+    {
+        //Clear pathes, that affects by new turret, so they wil be recalculated next time on demand
+        var patchsToRefresh = GetPathsContainsCell(turret.Position);
+        foreach (var pathEdgePoints in patchsToRefresh)
+        {
+            _cachedPaths.Remove(pathEdgePoints);
+        }
+
+        //Update pathes for units affected by new turret
+        foreach (var unit in _unitsModel.Units)
+        {
+            if (unit.IsRestPathContainsCell(turret.Position))
+            {
+                var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
+                unit.SubstitutePath(Pathfinder.FindPath(this, currentCell, finishCell));
+            }
+        }
+    }
+
+    private void ClearAllPaths()
+    {
+        _cachedPaths.Clear();
     }
 }

@@ -7,8 +7,8 @@ public class UnitModel
     public event Action StateUpdated = delegate { };
 
     private int _currentPathCellIndex = 0;
+    private IReadOnlyList<Vector2Int> _path;
 
-    private readonly IReadOnlyList<Vector2Int> _path;
     private readonly UnitConfig _config;
 
     public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config)
@@ -16,30 +16,36 @@ public class UnitModel
         _path = path;
         _config = config;
 
+        PreviousCellPosition = CurrentCellPosition = _path[0];
+        NextCellPosition = _path[1];
+
         CurrentState = new SpawningState(CurrentCellPosition);
     }
 
     public GameObject Prefab => _config.Prefab;
-    public Vector2Int PreviousCellPosition => _path[ClampCellIndex(_currentPathCellIndex - 1)];
-    public Vector2Int CurrentCellPosition => _path[_currentPathCellIndex];
-    public Vector2Int NextCellPosition => _path[ClampCellIndex(_currentPathCellIndex + 1)];
+    public Vector2Int PreviousCellPosition { get; private set; }
+    public Vector2Int CurrentCellPosition { get; private set; }
+    public Vector2Int NextCellPosition { get; private set; }
 
     public UnitStateBase PreviousState { get; private set; }
     public UnitStateName PreviousStateName => PreviousState.StateName;
     public UnitStateBase CurrentState { get; private set; }
     public UnitStateName CurrentStateName => CurrentState.StateName;
     public bool IsOnLastCell => _currentPathCellIndex >= _path.Count - 1;
+    public bool IsOnPreLastCell => _currentPathCellIndex == _path.Count - 2;
     public bool IsNextCellNear => !IsCellsNotNear(NextCellPosition, CurrentCellPosition);
-
-    public void IncrementCellIndex()
-    {
-        _currentPathCellIndex++;
-    }
 
     public void SetState(UnitStateBase state)
     {
         PreviousState = CurrentState;
         CurrentState = state;
+        if (state.StateName == UnitStateName.Moving)
+        {
+            _currentPathCellIndex++;
+            PreviousCellPosition = CurrentCellPosition;
+            CurrentCellPosition = NextCellPosition;
+            NextCellPosition = _path[ClampCellIndex(_currentPathCellIndex + 1)];
+        }
 
         StateUpdated();
     }
@@ -52,6 +58,31 @@ public class UnitModel
             return true;
         }
         return false;
+    }
+
+    public (Vector2Int, Vector2Int) GetRestPathEdgePoints()
+    {
+        return (CurrentCellPosition, _path[_path.Count - 1]);
+    }
+
+    public bool IsRestPathContainsCell(Vector2Int cell)
+    {
+        for (var i = _currentPathCellIndex; i < _path.Count; i++)
+        {
+            if (_path[i] == cell)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void SubstitutePath(Vector2Int[] newPath)
+    {
+        _path = newPath;
+        _currentPathCellIndex = 0;
+        NextCellPosition = _path[1];
     }
 
     private int ClampCellIndex(int index)

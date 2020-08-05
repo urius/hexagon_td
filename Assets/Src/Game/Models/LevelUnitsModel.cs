@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class LevelUnitsModel
 {
+    public event Action<Vector2Int> CellOwned = delegate { };
+    public event Action<Vector2Int> CellReleased = delegate { };
+
     private readonly List<UnitModel> _unitModels = new List<UnitModel>();
     private Dictionary<Vector2Int, UnitModel> _cellOwners = new Dictionary<Vector2Int, UnitModel>();
 
     public IEnumerable<UnitModel> WaitingUnits => _unitModels.Where(m => m.CurrentState.StateName == UnitStateName.WaitingForCell);
+    public IEnumerable<UnitModel> Units => _unitModels;
 
     public UnitModel GetUnitOnCell(Vector2Int cellPosition)
     {
@@ -18,11 +23,15 @@ public class LevelUnitsModel
     public void OwnCellByUnit(UnitModel unitModel)
     {
         _cellOwners[unitModel.CurrentCellPosition] = unitModel;
+
+        CellOwned(unitModel.CurrentCellPosition);
     }
 
     public void FreeCell(Vector2Int cellPosition)
     {
         _cellOwners.Remove(cellPosition);
+
+        CellReleased(cellPosition);
     }
 
     public void AddUnit(UnitModel unitModel)
@@ -33,7 +42,7 @@ public class LevelUnitsModel
 
     public void RemoveUnit(UnitModel unitModel)
     {
-        _cellOwners.Remove(unitModel.CurrentCellPosition);
+        FreeCell(unitModel.CurrentCellPosition);
         _unitModels.Remove(unitModel);
     }
 

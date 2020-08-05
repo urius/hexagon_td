@@ -43,8 +43,7 @@ public class LevelModel
 
     public bool IsReadyToBuild(Vector2Int cellPosition)
     {
-        //TODO: add check for path availability from all spawn cells to any goal cell
-        if (IsGround(cellPosition) && !LevelTurretsModel.HaveTurret(cellPosition))
+        if (IsGround(cellPosition) && !LevelTurretsModel.HaveTurret(cellPosition) && LevelUnitsModel.IsCellWithoutUnit(cellPosition))
         {
             if (PathsManager.ContainsInCachedPaths(cellPosition))
             {

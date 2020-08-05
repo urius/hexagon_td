@@ -15,10 +15,9 @@ public class UpdateUnitStateCommand : ParamCommand<UnitModel>
         }
         else if (LevelUnitsModel.IsCellWithoutUnit(unit.NextCellPosition))
         {
-            unit.IncrementCellIndex();
-            LevelUnitsModel.OwnCellByUnit(unit);
-            var newState = new MovingState(unit.CurrentCellPosition, unit.PreviousCellPosition);
+            var newState = new MovingState(unit.NextCellPosition, unit.CurrentCellPosition);
             unit.SetState(newState);
+            LevelUnitsModel.OwnCellByUnit(unit);
 
             if (newState.IsTeleporting)
             {

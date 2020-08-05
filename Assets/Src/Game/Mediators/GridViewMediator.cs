@@ -70,6 +70,10 @@ public class GridViewMediator : EventMediator
 
     private void OnBuildTurretMouseDown(IEvent payload)
     {
+        if (_flyingTurret != null)
+        {
+            Destroy(_flyingTurret);
+        }
         var turretType = (TurretType)payload.data;
         _flyingTurret = Instantiate(turretsConfigProvider.GetConfig(turretType, 0).BuildModePrefab);
     }

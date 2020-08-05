@@ -345,7 +345,7 @@ public class PrefabPainterEditor : EditorWindow
     private void DrawCell(CellDataMin cellDataMin)
     {
         var cellPosition = cellDataMin.CellPosition;
-        var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;        
+        var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;
         var go = _grid.DrawCell(cellPosition, prefab);
 
         go.GetComponent<CellView>().SetDebugText(cellDataMin.CellPosition.x + "," + cellDataMin.CellPosition.y);
