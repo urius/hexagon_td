@@ -31,15 +31,14 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<GridViewProvider>().ToSingleton();
         injectionBinder.Bind<WorldMousePositionProvider>().ToSingleton();
         injectionBinder.Bind<ICellPositionConverter>().ToValue(gameContextView.GridView);
-        injectionBinder.Bind<ProcessUpdatesCommand>().ToSingleton();
 
         //mediators
         mediationBinder.Bind<GridView>().To<GridViewMediator>();
         mediationBinder.Bind<UnitView>().To<UnitViewMediator>();
         mediationBinder.Bind<GameCameraView>().To<CameraViewMediator>();
         mediationBinder.Bind<BuildTurretView>().To<BuildTurretViewMediator>();
-        mediationBinder.Bind<TurretViewWithRotatingHead>().To<TurretViewWithRotationgHeadMediator>();
-        //UI
+        injectionBinder.Bind<GunTurretMediator>().To<GunTurretMediator>();//custom
+        injectionBinder.Bind<LaserTurretMediator>().To<LaserTurretMediator>();//custom
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
         mediationBinder.Bind<BuildTurretButtonView>().To<BuildTurretButtonMediator>();
         //debug ui
@@ -52,18 +51,17 @@ public class GameContext : MVCSContext
             //.To<ProcessUpdatesCommand>()
             .Once();
         commandBinder.Bind(CommandEvents.SECOND_PASSED).To<SecondPassedCommand>().Pooled();
-        commandBinder.Bind(CommandEvents.UPDATE_UNIT_STATE).To<UpdateUnitStateCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.UNIT_SPAWNED).To<UpdateUnitStateCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.UNIT_HALF_STATE_PASSED).To<HalfStatePassedCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED).To<UpdateUnitStateCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.REQUEST_BUILD_TURRET).To<RequestBuildTurretCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_DETECTED_UNIT_IN_ATTACK_ZONE).To<ChooseTurretTargetCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_TARGET_LOCKED).To<TurretLockTargetCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE).To<TurretTargetLeaveCommand>().Pooled();
 
+        //controllers&systems
+        injectionBinder.Bind<ProcessUpdatesSystem>().ToSingleton();
+        injectionBinder.Bind<UnitsControlSystem>().ToSingleton();
+
         //debug
         commandBinder.Bind(MediatorEvents.DEBUG_BUTTON_CLICKED).To<DebugCommand>();
-
     }
 
     protected override void postBindings()

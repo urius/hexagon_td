@@ -8,6 +8,7 @@ public class StartLevelCommand : Command
     {
         levelModel.IsInitialized = true;
 
-        injectionBinder.GetInstance<ProcessUpdatesCommand>().Start();
+        injectionBinder.GetInstance<ProcessUpdatesSystem>().Start();
+        injectionBinder.GetInstance<UnitsControlSystem>().Start();
     }
 }

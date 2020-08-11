@@ -21,7 +21,6 @@ public class GridViewMediator : EventMediator
     {
         dispatcher.AddListener(CommandEvents.START_SPAWN_UNIT, OnStartSpawnUnit);
         dispatcher.AddListener(CommandEvents.UNIT_DESTROYING, OnUnitDestroyStarted);
-        dispatcher.AddListener(CommandEvents.BUILD_TURRET, OnBuildNewTurret);
         dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
         dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, OnBuildTurretMouseUp);
         dispatcher.AddListener(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, OnUnitDestroyAnimationFinished);
@@ -34,7 +33,6 @@ public class GridViewMediator : EventMediator
     {
         dispatcher.RemoveListener(CommandEvents.START_SPAWN_UNIT, OnStartSpawnUnit);
         dispatcher.RemoveListener(CommandEvents.UNIT_DESTROYING, OnUnitDestroyStarted);
-        dispatcher.RemoveListener(CommandEvents.BUILD_TURRET, OnBuildNewTurret);
         dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
         dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, OnBuildTurretMouseUp);
         dispatcher.RemoveListener(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, OnUnitDestroyAnimationFinished);
@@ -57,15 +55,6 @@ public class GridViewMediator : EventMediator
     {
         var unitView = (UnitView)payload.data;
         Destroy(unitView.gameObject);
-    }
-
-    private void OnBuildNewTurret(IEvent payload)
-    {
-        var turretModel = (TurretModel)payload.data;
-        var turretPrefab = turretsConfigProvider.GetConfig(turretModel.TurretType, 0).Prefab;
-        var turretViewGo = Instantiate(turretPrefab, cellPositionConverter.CellVec2ToWorld(turretModel.Position), Quaternion.identity);
-        var turretView = turretViewGo.GetComponent<TurretView>();
-        modelByView.Add(turretView, turretModel);
     }
 
     private void OnBuildTurretMouseDown(IEvent payload)

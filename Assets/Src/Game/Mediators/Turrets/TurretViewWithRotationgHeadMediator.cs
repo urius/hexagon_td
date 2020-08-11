@@ -1,63 +1,79 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using strange.extensions.context.api;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
-public class TurretViewWithRotationgHeadMediator : EventMediator
+public class TurretViewWithRotationgHeadMediator
 {
-    [Inject] public TurretViewWithRotatingHead TurretView { get; set; }
+    [Inject(ContextKeys.CONTEXT_DISPATCHER)]
+    public IEventDispatcher dispatcher { get; set; }
+
     [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
     [Inject] public IUnitModelByViewProvider UnitModelByViews { get; set; }
-    [Inject] public ITurretModelByViewProvider TurretModelByView { get; set; }
     [Inject] public GridViewProvider GridViewProvider { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
     [Inject] public IViewManager ViewManager { get; set; }
+    [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
+    [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
 
-    private float _attackRadius;
-    private TurretModel _turretModel;
-    private UnitView _targetView;
+    protected TurretModel TurretModel;
+    protected TurretViewWithRotatingHead TurretView;
+    protected UnitView TargetView;
+
+    private double _attackRadiusSqr;
     private int _unitIndex;
     private IList<UnitView> _unitViews;
     private bool _targetIsLocked;
     private Vector3 _selfPosition;
 
-    public override void OnRegister()
+    public void Initialize(TurretModel turretModel)
     {
-        base.OnRegister();
+        TurretModel = turretModel;
+        TurretView = CreateView(TurretModel);
+        OnRegister();
+    }
 
-        _turretModel = TurretModelByView.GetModel(TurretView);
+    protected virtual void OnRegister()
+    {
         _unitViews = UnitViewsProvider.UnitViews;
 
         var cellWidth = GridViewProvider.GridView.CellSize.x;
-        _attackRadius = _turretModel.AttackRadiusCells * cellWidth;
+        _attackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * cellWidth, 2);
 
-        _turretModel.NewTargetSet += OnNewTargetSet;
-        _turretModel.Fired += OnFired;
+        TurretModel.NewTargetSet += OnNewTargetSet;
         UpdateProvider.UpdateAction += OnUpdate;
 
         _selfPosition = TurretView.transform.position;
     }
 
-    public override void OnRemove()
+    private TurretViewWithRotatingHead CreateView(TurretModel turretModel)
     {
-        base.OnRemove();
+        var turretPrefab = TurretsConfigProvider.GetConfig(turretModel.TurretType, 0).Prefab;
+        var turretViewGo = GameObject.Instantiate(turretPrefab, CellPositionConverter.CellVec2ToWorld(turretModel.Position), Quaternion.identity);
+        return turretViewGo.GetComponent<TurretViewWithRotatingHead>();
+    }
 
+    /*public void OnRemove()
+    {
         _turretModel.NewTargetSet -= OnNewTargetSet;
         _turretModel.Fired -= OnFired;
         UpdateProvider.UpdateAction -= OnUpdate;
     }
+    */
 
     private void OnNewTargetSet()
     {
-        if (_turretModel.TargetUnit != null)
+        if (TurretModel.TargetUnit != null)
         {
-            _targetView = UnitViewsProvider.GetViewByModel(_turretModel.TargetUnit);
-            TurretView.SetTargetTransform(_targetView.transform);
+            TargetView = UnitViewsProvider.GetViewByModel(TurretModel.TargetUnit);
+            TurretView.SetTargetTransform(TargetView.transform);
         }
         else
         {
-            _targetView = null;
+            TargetView = null;
             TurretView.SetTargetTransform(null);
         }
 
@@ -66,7 +82,7 @@ public class TurretViewWithRotationgHeadMediator : EventMediator
 
     private void OnUpdate()
     {
-        if (_targetView == null)
+        if (TargetView == null)
         {
             ProcessCheckNextUnitInAttackZone();
         }
@@ -75,12 +91,12 @@ public class TurretViewWithRotationgHeadMediator : EventMediator
             if (!_targetIsLocked && TurretView.IsLookOnTarget)
             {
                 _targetIsLocked = true;
-                dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LOCKED, _turretModel);
+                dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LOCKED, TurretModel);
             }
 
-            if (Vector3.Distance(_targetView.transform.position, _selfPosition) > _attackRadius)
+            if (Vector3.SqrMagnitude(TargetView.transform.position - _selfPosition) > _attackRadiusSqr)
             {
-                dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE, _turretModel);
+                dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE, TurretModel);
             }
         }
     }
@@ -94,10 +110,10 @@ public class TurretViewWithRotationgHeadMediator : EventMediator
                 _unitIndex = 0;
             }
 
-            var distanceToUnit = Vector3.Distance(_unitViews[_unitIndex].transform.position, _selfPosition);
-            if (distanceToUnit < _attackRadius)
+            var distanceToUnitSqr = Vector3.SqrMagnitude(_unitViews[_unitIndex].transform.position - _selfPosition);
+            if (distanceToUnitSqr < _attackRadiusSqr)
             {
-                var param = new MediatorEventsParams.TurretUnitInAttackZoneParams(_turretModel, UnitModelByViews.GetModel(_unitViews[_unitIndex]));
+                var param = new MediatorEventsParams.TurretUnitInAttackZoneParams(TurretModel, UnitModelByViews.GetModel(_unitViews[_unitIndex]));
                 dispatcher.Dispatch(MediatorEvents.TURRET_DETECTED_UNIT_IN_ATTACK_ZONE, param);
 
                 _unitIndex = 0;
@@ -105,15 +121,5 @@ public class TurretViewWithRotationgHeadMediator : EventMediator
             }
             _unitIndex++;
         }
-    }
-
-    private void OnFired()
-    {
-        Debug.Log("OnFired");
-
-        var firePoint = TurretView.FirePoints[0].transform;
-        var bulletGo = ViewManager.Instantiate(_turretModel.TurretConfig.BulletPrefab, firePoint.position, firePoint.rotation);
-        var bullet = bulletGo.GetComponent<BulletBase>();
-        bullet.Setup(_targetView, _turretModel.TargetUnit, dispatcher, ViewManager);
     }
 }

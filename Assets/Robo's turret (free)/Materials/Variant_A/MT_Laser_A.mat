@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MT_Laser_A
-  m_Shader: {fileID: 4800000, guid: 0a073cb92d4913b488ad0024891e5c32, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _DESATURATIONAFFECTSEMISSION_ON _EMISSION _FLICKERING_ON _METALLICGLOSSMAP
     _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
@@ -226,10 +226,10 @@ Material:
     - Color_D5189F39: {r: 0.6901961, g: 0.49901485, b: 0.3333333, a: 1}
     - EmberColorTint: {r: 0.9926471, g: 0.6777384, b: 0, a: 1}
     - _ASEOutlineColor: {r: 0.2765416, g: 1, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.8584906, g: 0.59027433, b: 0.23891956, a: 1}
     - _Color0: {r: 0, g: 0.9956001, b: 0.093703546, a: 0}
     - _Color1: {r: 0, g: 1.2627451, b: 1.4980392, a: 0}
-    - _EmissionColor: {r: 0, g: 4.684888, b: 0.2522632, a: 1}
+    - _EmissionColor: {r: 0.48262906, g: 0.56750226, b: 6.0186677, a: 1}
     - _Emissivecolor: {r: 0.08141665, g: 0.5071815, b: 1.9178152, a: 0}
     - _Fresnelcolor: {r: 0, g: 0.9956001, b: 0.093703546, a: 0}
     - _Paintedcolor: {r: 0.9245283, g: 0.5229825, b: 0.17880027, a: 1}

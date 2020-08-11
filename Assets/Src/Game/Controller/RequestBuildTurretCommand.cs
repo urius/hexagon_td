@@ -20,7 +20,17 @@ public class RequestBuildTurretCommand : ParamCommand<MediatorEventsParams.Reque
             var turretModel = new TurretModel(turretConfig, data.GridPosition);
             LevelModel.LevelTurretsModel.AddTurret(turretModel);
 
-            dispatcher.Dispatch(CommandEvents.BUILD_TURRET, turretModel);
+            switch (turretModel.TurretType)
+            {
+                case TurretType.Gun:
+                    injectionBinder.GetInstance<GunTurretMediator>()
+                        .Initialize(turretModel);
+                    break;
+                case TurretType.Laser:
+                    injectionBinder.GetInstance<LaserTurretMediator>()
+                        .Initialize(turretModel);
+                    break;
+            }
         }
     }
 }

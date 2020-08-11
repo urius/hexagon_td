@@ -22,9 +22,11 @@ public class TurretConfig
     public GameObject BuildModePrefab;
     public Sprite IconSprite;
     public int AttackRadiusCells;
+    public int AttackInfluenceDistance = -1;
     public int Damage;
     public int ReloadTimeFrames;
     public GameObject BulletPrefab;
+    public GameObject BulletSparksPrefab;
 }
 
 public enum TurretType

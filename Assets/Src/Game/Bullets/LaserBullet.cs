@@ -10,7 +10,7 @@ public class LaserBullet : BulletBase
     private IEventDispatcher _dispatcher;
     private IViewManager _viewManager;
 
-    private float _lastDistance;
+    private float _lastSqrDistance;
     private float _speed = 40;
 
     public override void Setup(UnitView targetView, UnitModel targetModel, IEventDispatcher dispatcher, IViewManager viewManager)
@@ -20,14 +20,14 @@ public class LaserBullet : BulletBase
         _dispatcher = dispatcher;
         _viewManager = viewManager;
 
-        _lastDistance = Vector3.Distance(_targetPosition, transform.position);
+        _lastSqrDistance = (_targetPosition - transform.position).sqrMagnitude;
     }
 
     private void FixedUpdate()
     {
         var newPosition = transform.position + transform.TransformVector(new Vector3(0, 0, _speed * Time.fixedDeltaTime));
-        var newDistance = Vector3.Distance(_targetPosition, newPosition);
-        if (newDistance > _lastDistance)
+        var newSqrDistance = (_targetPosition - newPosition).sqrMagnitude;
+        if (newSqrDistance > _lastSqrDistance)
         {            
             _dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGET, _targetModel);
 
@@ -35,7 +35,7 @@ public class LaserBullet : BulletBase
         }
         else
         {
-            _lastDistance = newDistance;
+            _lastSqrDistance = newSqrDistance;
             transform.position = newPosition;
         }
     }

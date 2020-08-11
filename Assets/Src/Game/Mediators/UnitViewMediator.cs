@@ -57,8 +57,8 @@ public class UnitViewMediator : EventMediator
         await Task.Delay(400);
 
         unitView.transform.position = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        await Task.Delay(300);
         await RotateUnitAsync(0);
+        await Task.Delay(300);
 
         DispatchHalfStatePassed();
     }

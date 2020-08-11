@@ -675,7 +675,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &532693714
 RectTransform:
@@ -1452,13 +1452,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25178, g: 0.7735849, b: 0.33163685, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.15789461, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: fb774fb394d377c478b8e385cfe01c43, type: 3}
     m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 1
@@ -1552,6 +1552,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139533181}
   m_CullTransparentMesh: 0
+--- !u!1001 &1590011503919179159
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6062443
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9799464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.047091
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073633, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073634, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590011503536073635, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
+        type: 3}
+      propertyPath: m_Name
+      value: Sparks
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3131abb46042640cabaaa78130fccbb3, type: 3}
 --- !u!1001 &2730768260047782430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1694,6 +1773,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2730768261255909689, guid: 2624d572a7fe242a1863a9d33096e39d,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: fb774fb394d377c478b8e385cfe01c43,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2624d572a7fe242a1863a9d33096e39d, type: 3}
 --- !u!1001 &4373820142850114332
