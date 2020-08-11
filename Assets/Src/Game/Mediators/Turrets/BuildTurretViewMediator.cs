@@ -1,4 +1,5 @@
-﻿using strange.extensions.mediation.impl;
+﻿using System;
+using strange.extensions.mediation.impl;
 using UnityEngine;
 
 public class BuildTurretViewMediator : EventMediator
@@ -7,6 +8,7 @@ public class BuildTurretViewMediator : EventMediator
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public ICellPositionConverter cellPositionConverter { get; set; }
     [Inject] public WorldMousePositionProvider WorldMousePositionProvider { get; set; }
+    [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
 
     private Vector3Int _lastCellCoords;
 
@@ -14,7 +16,7 @@ public class BuildTurretViewMediator : EventMediator
     {
         base.OnRegister();
 
-        var cellCoords = cellPositionConverter.WorldToCell(WorldMousePositionProvider.Position);
+        var cellCoords = GetCellCoords();
         BuildTurretView.transform.position = cellPositionConverter.CellToWorld(cellCoords);
         _lastCellCoords = cellCoords;
 
@@ -30,9 +32,15 @@ public class BuildTurretViewMediator : EventMediator
         base.OnRemove();
     }
 
+    private Vector3Int GetCellCoords()
+    {
+        var offset = new Vector3(0, 0, CellSizeProvider.CellSize.y);
+        return cellPositionConverter.WorldToCell(WorldMousePositionProvider.Position + offset);
+    }
+
     private void Update()
     {
-        var cellCoords = cellPositionConverter.WorldToCell(WorldMousePositionProvider.Position);
+        var cellCoords = GetCellCoords();
 
         if (cellCoords != _lastCellCoords)
         {

@@ -13,7 +13,7 @@ public class TurretViewWithRotationgHeadMediator
 
     [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
     [Inject] public IUnitModelByViewProvider UnitModelByViews { get; set; }
-    [Inject] public GridViewProvider GridViewProvider { get; set; }
+    [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
     [Inject] public IViewManager ViewManager { get; set; }
     [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
@@ -40,8 +40,7 @@ public class TurretViewWithRotationgHeadMediator
     {
         _unitViews = UnitViewsProvider.UnitViews;
 
-        var cellWidth = GridViewProvider.GridView.CellSize.x;
-        _attackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * cellWidth, 2);
+        _attackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x, 2);
 
         TurretModel.NewTargetSet += OnNewTargetSet;
         UpdateProvider.UpdateAction += OnUpdate;

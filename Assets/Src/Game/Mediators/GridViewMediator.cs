@@ -14,6 +14,7 @@ public class GridViewMediator : EventMediator
     [Inject] public ModelByViewHolder modelByView { get; set; }
     [Inject] public ICellPositionConverter cellPositionConverter { get; set; }
     [Inject] public GridViewProvider gridViewProvider { get; set; }
+    [Inject] public ICellSizeProvider cellSizeProvider { get; set; }
     [Inject] public TurretConfigProvider turretsConfigProvider { get; set; }
     [Inject] public WorldMousePositionProvider worldMousePositionProvider { get; set; }
 
@@ -74,8 +75,9 @@ public class GridViewMediator : EventMediator
             Destroy(_flyingTurret);
             _flyingTurret = null;
 
+            var offset = new Vector3(0, 0, cellSizeProvider.CellSize.y);
             dispatcher.Dispatch(MediatorEvents.REQUEST_BUILD_TURRET,
-                new MediatorEventsParams.RequestBuildParams((TurretType)payload.data, gridView.WorldToCell(worldMousePositionProvider.Position)));
+                new MediatorEventsParams.RequestBuildParams((TurretType)payload.data, gridView.WorldToCell(worldMousePositionProvider.Position + offset)));
         }
     }
 

@@ -28,7 +28,12 @@ public class GameContext : MVCSContext
             .Bind<ModelByViewHolder>()
             .To<ModelByViewHolder>()
             .ToSingleton();
-        injectionBinder.Bind<GridViewProvider>().ToSingleton();
+        injectionBinder
+            .Bind<IGridViewProvider>()
+            .Bind<ICellSizeProvider>()
+            .Bind<GridViewProvider>()
+            .To<GridViewProvider>()
+            .ToSingleton();
         injectionBinder.Bind<WorldMousePositionProvider>().ToSingleton();
         injectionBinder.Bind<ICellPositionConverter>().ToValue(gameContextView.GridView);
 

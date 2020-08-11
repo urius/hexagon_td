@@ -36,10 +36,11 @@ public class UnitViewMediator : EventMediator
             }
             else
             {
+                await RotateUnitAsync(GetTargetRotation(false));//in case of changing next cell position just before moving
                 await MoveUnitAsync();
                 if (_unitModel.IsNextCellNear && !_unitModel.IsOnLastCell)
                 {
-                    await RotateUnitAsync();
+                    await RotateUnitAsync(GetTargetRotation(true));
                 }
             }
 
@@ -57,18 +58,16 @@ public class UnitViewMediator : EventMediator
         await Task.Delay(400);
 
         unitView.transform.position = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        await RotateUnitAsync(0);
+        await RotateUnitAsync(GetTargetRotation(true), 0);
         await Task.Delay(300);
 
         DispatchHalfStatePassed();
     }
 
-    private Task RotateUnitAsync(float duration = 0.2f)
+    private Task RotateUnitAsync(Quaternion targetRotation, float duration = 0.2f)
     {
         var tsc = new TaskCompletionSource<bool>();
 
-        var lookAtVector = cellPositionConverter.CellVec2ToWorld(_unitModel.NextCellPosition) - cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        var targetRotation = Quaternion.LookRotation(lookAtVector);
         if (Quaternion.Angle(targetRotation, unitView.transform.rotation) > 1)
         {
             var tweener = unitView.transform.DORotate(targetRotation.eulerAngles, duration);
@@ -80,6 +79,14 @@ public class UnitViewMediator : EventMediator
             unitView.transform.rotation = targetRotation;
             return Task.CompletedTask;
         }
+    }
+
+    private Quaternion GetTargetRotation(bool isAfterMove)
+    {
+        var toPos = isAfterMove ? _unitModel.NextCellPosition : _unitModel.CurrentCellPosition;
+        var fromPos = isAfterMove ? _unitModel.CurrentCellPosition : _unitModel.PreviousCellPosition;
+        var lookAtVector = cellPositionConverter.CellVec2ToWorld(toPos) - cellPositionConverter.CellVec2ToWorld(fromPos);
+        return Quaternion.LookRotation(lookAtVector);
     }
 
     private Task MoveUnitAsync()
