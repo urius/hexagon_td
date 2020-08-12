@@ -299,19 +299,19 @@ public class PrefabPainterEditor : EditorWindow
                     {
                         var isFree = _levelConfig.IsCellFree(cellPosition);
                         var isGround = IsGround(cellPosition);
-                        if (isGround)
+                        if (isGround)//&& if brush is not modifier
                         {
                             EraseCell(cellPosition);
                         }
 
-                        if (isFree || isGround)
+                        if (isFree || isGround)//|| (is ground && is modifier)
                         {
                             var cellDataMin = new CellDataMin(cellPosition, _currentBrushCellConfig.CellConfigMin);
                             _levelConfig.AddCell(cellDataMin);
 
                             DrawCell(cellDataMin);
                         }
-                    }
+                    }//else if ground and brush is modifier
                 }
                 else
                 {
@@ -324,7 +324,7 @@ public class PrefabPainterEditor : EditorWindow
                         _levelConfig.AddCell(cellDataMin);
 
                         DrawCell(cellDataMin);
-                    }
+                    }//else if is ground - remove modifiers
                 }
             }
         }
@@ -338,8 +338,7 @@ public class PrefabPainterEditor : EditorWindow
 
     private bool IsGround(Vector2Int cellPosition)
     {
-        var cell = _levelConfig.GetCell(cellPosition);
-        return cell?.CellConfigMin.CellType == CellType.Ground;
+        return _levelConfig.IsGround(cellPosition);
     }
 
     private void DrawCell(CellDataMin cellDataMin)

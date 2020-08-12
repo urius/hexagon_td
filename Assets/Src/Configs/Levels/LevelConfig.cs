@@ -21,9 +21,9 @@ public class LevelConfig : ScriptableObject
         return !_cellConfigs.Any(c => c.CellPosition == cellPosition);
     }
 
-    public CellDataMin GetCell(Vector2Int cellPosition)
+    public bool IsGround(Vector2Int cellPosition)
     {
-        return _cellConfigs.Where(c => c.CellPosition == cellPosition).FirstOrDefault();
+        return _cellConfigs.Any(c => c.CellPosition == cellPosition && c.CellConfigMin.CellType == CellType.Ground);
     }
 
     public bool AddCell(CellDataMin cell)
@@ -66,9 +66,9 @@ public class LevelConfig : ScriptableObject
 
     public void Remove(Vector2Int cellPosition)
     {
-        var removingCellConfig = _cellConfigs.FirstOrDefault(c => c.CellPosition == cellPosition);
+        var removingCellConfig = _cellConfigs.Where(c => c.CellPosition == cellPosition);
         _cellConfigs = _cellConfigs.Where(c => c.CellPosition != cellPosition).ToArray();
-        if (removingCellConfig != null && removingCellConfig.CellConfigMin.CellType == CellType.EnemyBase)
+        if (removingCellConfig.Any(c => c.CellConfigMin.CellType == CellType.EnemyBase))
         {
             UpdateWaveConfigs();
         }

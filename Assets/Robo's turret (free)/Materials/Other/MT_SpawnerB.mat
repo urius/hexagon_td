@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MT_SpawnerB
-  m_Shader: {fileID: 4800000, guid: 0a073cb92d4913b488ad0024891e5c32, type: 3}
-  m_ShaderKeywords: _DESATURATIONAFFECTSEMISSION_ON _EMISSION _FLICKERING_ON _METALLICGLOSSMAP
-    _METALLICSPECGLOSSMAP _NORMALMAP
+  m_Shader: {fileID: 4800000, guid: 6b0ec9d77cc78584cb6fbe792f61c888, type: 3}
+  m_ShaderKeywords: _CONTINUOUSFLICKERING_ON _DESATURATIONAFFECTSEMISSION_ON _EMISSION
+    _FLICKERING_ON _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -77,7 +77,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Flickermask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7bf2cf885c389ff4aaa2749b35a58073, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -101,7 +101,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Paintedmask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b34437b3a84071b448b8a3264164ae12, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -110,6 +110,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tintmask:
+        m_Texture: {fileID: 2800000, guid: c0cb4e77c1a95e64091c6170db0d8480, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -121,6 +125,7 @@ Material:
     - Vector1_E111C4D0: 0
     - _AlphaClip: 0
     - _Blend: 0
+    - _Brightness: 1
     - _BumpScale: 1
     - _Continuousflickering: 1
     - _Cull: 2
@@ -131,6 +136,8 @@ Material:
     - _DstBlend: 0
     - _Flickering: 1
     - _Flickeringintensity: 3.53
+    - _Fresnel: 0
+    - _Fresnelfalloff: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -155,5 +162,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 2.9960785, g: 0.10980392, b: 0, a: 1}
     - _Emissivecolor: {r: 1.4980392, g: 0.16470589, b: 0, a: 0}
+    - _Fresnelcolor: {r: 1, g: 0.0235849, b: 0.0235849, a: 0}
     - _Paintedcolor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Tint: {r: 0.6981132, g: 0.5566645, b: 0.4511392, a: 0}
