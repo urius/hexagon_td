@@ -52,3 +52,23 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 4
       CellSubType: 0
+  - Prefab: {fileID: 7983980603198523870, guid: dd367c6ad08704c96a90050b2b9b266b,
+      type: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 0
+  - Prefab: {fileID: 7983980603198523870, guid: 9d608a335a5054ab586d93833cd53f2d,
+      type: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - Prefab: {fileID: 7983980603198523870, guid: cae7fa48f4e4745b8a12be4d75ef4b0f,
+      type: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 2
+  - Prefab: {fileID: 7983980603198523870, guid: 1692096eb69ba4914bb8f51f16f1a503,
+      type: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 3

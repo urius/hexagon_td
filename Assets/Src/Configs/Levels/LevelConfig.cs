@@ -13,6 +13,9 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private CellDataMin[] _cellConfigs = new CellDataMin[0];
     public IReadOnlyList<CellDataMin> Cells => _cellConfigs;
 
+    [SerializeField] private CellDataMin[] _modifierConfigs = new CellDataMin[0];
+    public IReadOnlyList<CellDataMin> Modifiers => _modifierConfigs;
+
     [SerializeField] private WaveConfig[] _waveConfigs = DefaultWaveConfigs;
     public WaveConfig[] WaveConfigs => _waveConfigs;
 
@@ -24,6 +27,11 @@ public class LevelConfig : ScriptableObject
     public bool IsGround(Vector2Int cellPosition)
     {
         return _cellConfigs.Any(c => c.CellPosition == cellPosition && c.CellConfigMin.CellType == CellType.Ground);
+    }
+
+    public bool HasModifier(Vector2Int cellPosition)
+    {
+        return _cellConfigs.Any(c => c.CellPosition == cellPosition && c.CellConfigMin.CellType == CellType.Modifier);
     }
 
     public bool AddCell(CellDataMin cell)
@@ -39,6 +47,28 @@ public class LevelConfig : ScriptableObject
         }
 
         return false;
+    }
+
+    public bool AddModifier(CellDataMin modifier)
+    {
+        if (IsGround(modifier.CellPosition))
+        {
+            _modifierConfigs = _modifierConfigs
+                .Where(c => c.CellPosition != modifier.CellPosition)
+                .Append(modifier)
+                .ToArray();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void RemoveModifier(Vector2Int cellPosition)
+    {
+        _modifierConfigs = _modifierConfigs
+            .Where(c => c.CellPosition != cellPosition)
+            .ToArray();
     }
 
     private void UpdateWaveConfigs()

@@ -71,6 +71,10 @@ public class PrefabPainterEditor : EditorWindow
         {
             DrawCell(cell);
         }
+        foreach (var modifier in levelConfig.Modifiers)
+        {
+            DrawModifier(modifier);
+        }
 
         _grid.UpdatePLaneSize();
     }
@@ -97,7 +101,11 @@ public class PrefabPainterEditor : EditorWindow
         var cellBrushTypeOld = _cellBrushType;
         var cellBrushSubTypeOld = _cellBrushSubType;
         _cellBrushType = (CellType)EditorGUILayout.EnumPopup("Cell Brush type: ", _cellBrushType);
-        _cellBrushSubType = (CellSubType)EditorGUILayout.EnumPopup("Cell Brush subtype: ", _cellBrushSubType);
+        if (_cellBrushType != cellBrushTypeOld)
+        {
+            _cellBrushSubType = CellSubType.Default;
+        }
+        _cellBrushSubType = (CellSubType)EditorGUILayout.EnumPopup("Cell Brush subtype: ", _cellBrushSubType.ConvertToSpecifiedEnum(_cellBrushType));
         if (_cellBrushType != cellBrushTypeOld || _cellBrushSubType != cellBrushSubTypeOld)
         {
             UpdateBrushConfig();
@@ -293,29 +301,33 @@ public class PrefabPainterEditor : EditorWindow
             if (TryGetMouseHit(currentEvent, out var hit))
             {
                 var cellPosition = GetGridPosition(hit.point);
+                var isGround = IsGround(cellPosition);
                 if (isPaintKeyDown)
                 {
-                    if (_currentBrushCellConfig != null && (_levelConfig.IsCellFree(cellPosition) || IsGround(cellPosition)))
+                    if (_currentBrushCellConfig != null && (_levelConfig.IsCellFree(cellPosition) || isGround))
                     {
                         var isFree = _levelConfig.IsCellFree(cellPosition);
-                        var isGround = IsGround(cellPosition);
-                        if (isGround)//&& if brush is not modifier
+                        var isBrushOfModifierType = _currentBrushCellConfig.CellConfigMin.CellType == CellType.Modifier;
+
+                        var cellDataMin = new CellDataMin(cellPosition, _currentBrushCellConfig.CellConfigMin);
+
+                        if (isBrushOfModifierType && isGround)
+                        {
+                            EraseModifier(cellPosition);
+                            _levelConfig.AddModifier(cellDataMin);
+                            DrawModifier(cellDataMin);
+                        }
+                        else
                         {
                             EraseCell(cellPosition);
-                        }
-
-                        if (isFree || isGround)//|| (is ground && is modifier)
-                        {
-                            var cellDataMin = new CellDataMin(cellPosition, _currentBrushCellConfig.CellConfigMin);
                             _levelConfig.AddCell(cellDataMin);
-
                             DrawCell(cellDataMin);
                         }
-                    }//else if ground and brush is modifier
+                    }
                 }
                 else
                 {
-                    if (!_levelConfig.IsCellFree(cellPosition) && !IsGround(cellPosition))
+                    if (!_levelConfig.IsCellFree(cellPosition) && !isGround)
                     {
                         EraseCell(cellPosition);
 
@@ -324,7 +336,11 @@ public class PrefabPainterEditor : EditorWindow
                         _levelConfig.AddCell(cellDataMin);
 
                         DrawCell(cellDataMin);
-                    }//else if is ground - remove modifiers
+                    }
+                    else if (isGround)
+                    {
+                        EraseModifier(cellPosition);
+                    }
                 }
             }
         }
@@ -334,6 +350,12 @@ public class PrefabPainterEditor : EditorWindow
     {
         _levelConfig.Remove(cellPosition);
         _grid.EraseCell(cellPosition);
+    }
+
+    private void EraseModifier(Vector2Int cellPosition)
+    {
+        _levelConfig.RemoveModifier(cellPosition);
+        _grid.EraseModifier(cellPosition);
     }
 
     private bool IsGround(Vector2Int cellPosition)
@@ -348,6 +370,13 @@ public class PrefabPainterEditor : EditorWindow
         var go = _grid.DrawCell(cellPosition, prefab);
 
         go.GetComponent<CellView>().SetDebugText(cellDataMin.CellPosition.x + "," + cellDataMin.CellPosition.y);
+    }
+
+    private void DrawModifier(CellDataMin cellDataMin)
+    {
+        var cellPosition = cellDataMin.CellPosition;
+        var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;
+        var go = _grid.DrawModifier(cellPosition, prefab);
     }
 
     private CellConfig GetCellFullConfig(CellConfigMin cellConfigMin)

@@ -50,6 +50,31 @@ public enum CellType
     EnemyBase,
     Teleport,
     GoalBase,
+    Modifier,
+}
+
+public static class CellTypeExtensions
+{
+    public static Enum ConvertToSpecifiedEnum(this CellSubType subType, CellType type)
+    {
+        switch (type)
+        {
+            case CellType.Ground:
+                return (GroundType)subType;
+            case CellType.Wall:
+                return (WallType)subType;
+            case CellType.EnemyBase:
+                return (EnemyBaseType)subType;
+            case CellType.Teleport:
+                return (TeleportType)subType;
+            case CellType.GoalBase:
+                return (GoalBaseType)subType;
+            case CellType.Modifier:
+                return (ModifierType)subType;
+            default:
+                return subType;
+        }
+    }
 }
 
 public enum CellSubType
@@ -63,4 +88,40 @@ public enum CellSubType
     Type_6,
     Type_7,
     Type_8,
+}
+
+public enum GroundType
+{
+    Default,
+}
+
+public enum WallType
+{
+    Default,
+}
+
+public enum EnemyBaseType
+{
+    Default,
+}
+
+public enum TeleportType
+{
+    Blue,
+    Green,
+    Red,
+    Yellow,
+}
+
+public enum GoalBaseType
+{
+    Default,
+}
+
+public enum ModifierType
+{
+    SpeedUp,
+    SpeedDown,
+    ExtraMoney,
+    ExtraBigMoney,
 }

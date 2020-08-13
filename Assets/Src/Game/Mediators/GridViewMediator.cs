@@ -120,6 +120,13 @@ public class GridViewMediator : EventMediator
             gridView.DrawCell(cellDataMin.CellPosition, config.Prefab, cellType == CellType.Ground || cellType == CellType.Wall);
         }
 
+        foreach (var cellDataMin in levelModel.Modifiers)
+        {
+            var config = cellConfigProvider.GetConfig(cellDataMin.CellConfigMin.CellType, cellDataMin.CellConfigMin.CellSubType);
+            var cellType = config.CellConfigMin.CellType;
+            gridView.DrawModifier(cellDataMin.CellPosition, config.Prefab);
+        }
+
         gridView.BakeStatic();
     }
 }

@@ -7,6 +7,6 @@ public class BuildTurretView : View
 
     public void SetOkToBuild(bool isokToBuild)
     {
-        _material.color = isokToBuild ? Color.green : Color.red;
+        _material.SetColor("_BaseColor", isokToBuild ? Color.green : Color.red);
     }
 }

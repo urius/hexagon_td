@@ -73,6 +73,7 @@ public class LevelModel
     }
 
     public IReadOnlyList<CellDataMin> Cells => _levelConfig.Cells;
+    public IReadOnlyList<CellDataMin> Modifiers => _levelConfig.Modifiers;
 
     public IReadOnlyList<Vector2Int> GetPath(Vector2Int cellPosition)
     {

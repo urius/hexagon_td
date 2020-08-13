@@ -1214,6 +1214,63 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 3
       CellSubType: 1
+  _modifierConfigs:
+  - CellPosition: {x: 5, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 6}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 0
+  - CellPosition: {x: -2, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -1, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -1, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: 0, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: 3, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 2
+  - CellPosition: {x: 1, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 2
+  - CellPosition: {x: 0, y: 6}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 3
+  - CellPosition: {x: 0, y: 7}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 3
+  - CellPosition: {x: 4, y: -7}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 3
+  - CellPosition: {x: -1, y: 6}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 0
+  - CellPosition: {x: -6, y: -2}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 3
   _waveConfigs:
   - Units: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     WillSpawnFromBaseConfigs:

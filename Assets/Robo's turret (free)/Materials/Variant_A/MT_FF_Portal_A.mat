@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MT_FF_Portal_A
-  m_Shader: {fileID: 4800000, guid: 395837c51a2de5944be2919abb9cbdb7, type: 3}
+  m_Shader: {fileID: 4800000, guid: f2a9865aa97efe54584aa4d26390e983, type: 3}
   m_ShaderKeywords: _ALPHAAFFECTOPACITY_ON _FLOAT0_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3005
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:

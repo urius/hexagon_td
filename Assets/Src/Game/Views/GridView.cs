@@ -21,6 +21,7 @@ public class GridView : EventView, ICellPositionConverter
     private bool _isTransposed;
 
     private Dictionary<Vector2Int, GameObject> _allCreatedCells = new Dictionary<Vector2Int, GameObject>();
+    private Dictionary<Vector2Int, GameObject> _allCreatedModifiers = new Dictionary<Vector2Int, GameObject>();
 
     public void SetTransposed(bool isTransposed)
     {
@@ -39,6 +40,7 @@ public class GridView : EventView, ICellPositionConverter
 
     public void EraseCell(Vector2Int cellPosition)
     {
+        EraseModifier(cellPosition);
         if (_allCreatedCells.ContainsKey(cellPosition))
         {
             DestroyImmediate(_allCreatedCells[cellPosition]);
@@ -46,12 +48,32 @@ public class GridView : EventView, ICellPositionConverter
         }
     }
 
+    public void EraseModifier(Vector2Int cellPosition)
+    {
+        if (_allCreatedModifiers.ContainsKey(cellPosition))
+        {
+            DestroyImmediate(_allCreatedModifiers[cellPosition]);
+            _allCreatedModifiers.Remove(cellPosition);
+        }
+    }
+
     public GameObject DrawCell(Vector2Int cellPosition, GameObject prefab, bool isStatic = false)
     {
+        EraseModifier(cellPosition);
+
         var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
         var cellParent = (isStatic && _staticObjectsParent != null) ? _staticObjectsParent.transform : _grid.transform;
         var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, cellParent);
         _allCreatedCells[cellPosition] = go;
+        return go;
+    }
+
+    public GameObject DrawModifier(Vector2Int cellPosition, GameObject prefab)
+    {
+        var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
+        var cellParent = _allCreatedCells[cellPosition].transform;
+        var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, cellParent);
+        _allCreatedModifiers[cellPosition] = go;
         return go;
     }
 
