@@ -11,11 +11,17 @@ public class PathsManager : ICellsProvider<Vector2Int>
     private readonly LevelTurretsModel _turretsModel;
     private readonly LevelUnitsModel _unitsModel;
     private readonly Dictionary<(Vector2Int, Vector2Int), IReadOnlyList<Vector2Int>> _cachedPaths = new Dictionary<(Vector2Int, Vector2Int), IReadOnlyList<Vector2Int>>();
+    private readonly Dictionary<Vector2Int, ModifierType> _modifiers;
 
-    public PathsManager(LevelConfig levelConfig, LevelTurretsModel turretsModel, LevelUnitsModel unitsModel)
+    public PathsManager(
+        IReadOnlyList<CellDataMin> cells,
+        Dictionary<Vector2Int, ModifierType> modifiers,
+        LevelTurretsModel turretsModel,
+        LevelUnitsModel unitsModel)
     {
-        FillWalkableCells(levelConfig.Cells);
+        FillWalkableCells(cells);
 
+        _modifiers = modifiers;
         _turretsModel = turretsModel;
         _unitsModel = unitsModel;
 
@@ -87,6 +93,17 @@ public class PathsManager : ICellsProvider<Vector2Int>
 
     public int GetCellMoveCost(Vector2Int cell)
     {
+        if (_modifiers.TryGetValue(cell, out var modifier))
+        {
+            if (modifier == ModifierType.SpeedUp)
+            {
+                return 50;
+            }
+            else if (modifier == ModifierType.SpeedDown)
+            {
+                return 200;
+            }
+        }
         return 100;
     }
 

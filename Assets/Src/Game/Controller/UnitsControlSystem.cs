@@ -78,7 +78,7 @@ public class UnitsControlSystem : EventSystemBase
         }
         else if (LevelUnitsModel.IsCellWithoutUnit(unit.NextCellPosition))
         {
-            var newState = new MovingState(unit.NextCellPosition, unit.CurrentCellPosition);
+            var newState = new MovingState(unit.NextCellPosition, unit.CurrentCellPosition, LevelModel.GetSpeedMultiplier(unit.NextCellPosition));
             unit.SetState(newState);
             LevelUnitsModel.OwnCellByUnit(unit);
 

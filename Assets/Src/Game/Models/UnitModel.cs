@@ -127,12 +127,14 @@ public class MovingState : UnitStateBase
 {
     public readonly Vector2Int FromPosition;
     public readonly bool IsTeleporting;
+    public readonly float SpeedMultiplier;
 
-    public MovingState(Vector2Int targetPosition, Vector2Int fromPosition)
+    public MovingState(Vector2Int targetPosition, Vector2Int fromPosition, float speedMultiplier = 1)
         : base(targetPosition)
     {
         FromPosition = fromPosition;
         IsTeleporting = UnitModel.IsCellsNotNear(targetPosition, fromPosition);
+        SpeedMultiplier = speedMultiplier;
     }
 
     public override UnitStateName StateName => UnitStateName.Moving;

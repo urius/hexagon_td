@@ -19,16 +19,19 @@ public class LevelModel
     private readonly LevelConfig _levelConfig;
 
     private readonly Vector2Int[] _teleportCellPositions;
+    private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
 
     public LevelModel(LevelConfig levelConfig)
     {
         _levelConfig = levelConfig;
         WaveModel = new WaveModel(levelConfig.WaveConfigs);
-        PathsManager = new PathsManager(levelConfig, LevelTurretsModel, LevelUnitsModel);
 
         SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
         GoalCell = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).First();
         _teleportCellPositions = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
+        _modifiers = levelConfig.Modifiers.ToDictionary(c => c.CellPosition, c => (ModifierType)c.CellConfigMin.CellSubType);
+
+        PathsManager = new PathsManager(levelConfig.Cells, _modifiers, LevelTurretsModel, LevelUnitsModel);
     }
 
     public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
@@ -39,6 +42,22 @@ public class LevelModel
     public bool IsTeleport(Vector2Int cellPosition)
     {
         return _teleportCellPositions.Any(p => p == cellPosition);
+    }
+
+    public float GetSpeedMultiplier(Vector2Int cell)
+    {
+        if (_modifiers.TryGetValue(cell, out var modifier))
+        {
+            switch (modifier)
+            {
+                case ModifierType.SpeedUp:
+                    return 2;
+                case ModifierType.SpeedDown:
+                    return 0.5f;
+            }
+        }
+
+        return 1;
     }
 
     public bool IsReadyToBuild(Vector2Int cellPosition)

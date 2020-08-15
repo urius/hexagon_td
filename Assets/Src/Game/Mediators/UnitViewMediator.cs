@@ -30,14 +30,15 @@ public class UnitViewMediator : EventMediator
     {
         if (_unitModel.CurrentState.StateName == UnitStateName.Moving)
         {
-            if ((_unitModel.CurrentState as MovingState).IsTeleporting)
+            var movingState = _unitModel.CurrentState as MovingState;
+            if (movingState.IsTeleporting)
             {
                 await TeleportAsync();
             }
             else
             {
                 await RotateUnitAsync(GetTargetRotation(false));//in case of changing next cell position just before moving
-                await MoveUnitAsync();
+                await MoveUnitAsync(movingState.SpeedMultiplier);
                 if (_unitModel.IsNextCellNear && !_unitModel.IsOnLastCell)
                 {
                     await RotateUnitAsync(GetTargetRotation(true));
@@ -89,10 +90,10 @@ public class UnitViewMediator : EventMediator
         return Quaternion.LookRotation(lookAtVector);
     }
 
-    private Task MoveUnitAsync()
+    private Task MoveUnitAsync(float speedMultiplier)
     {
-        const float duration = 0.5f;
-        const float halfDuration = duration * 0.3f;
+        var duration = 0.5f / speedMultiplier;
+        var halfDuration = duration * 0.3f;
         var tsc = new TaskCompletionSource<bool>();
 
         var targetPosition = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
