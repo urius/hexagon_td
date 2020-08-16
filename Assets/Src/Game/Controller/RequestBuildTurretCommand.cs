@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-
-public class RequestBuildTurretCommand : ParamCommand<MediatorEventsParams.RequestBuildParams>
+﻿public class RequestBuildTurretCommand : ParamCommand<MediatorEventsParams.RequestBuildParams>
 {
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public TurretConfigProvider TurretConfigProvider { get; set; }

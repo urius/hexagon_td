@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe4b72c24c1449e4ae1291ab46c3f5e, type: 3}
+  m_Name: UIPrefabsConfig
+  m_EditorClassIdentifier: 
+  TurretActionsPrefab: {fileID: 8090922877214974050, guid: 190db560754104f8680539aa591f2629,
+    type: 3}

@@ -31,10 +31,11 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 9ca1d0cbc720546b6a04cd7b0274e4b8, type: 3}
-    totalSpriteSurfaceArea: 734144
+    totalSpriteSurfaceArea: 789412
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: e0f4bb5070f4c854db6fa14e8e289c0e, type: 3}
   - {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
   - {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
   - {fileID: 21300000, guid: 3864a3a2d34164e8e875d8aa1630ee3b, type: 3}
@@ -46,9 +47,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 62d0dec67b6d44816bbc5f1ae004e311, type: 3}
   - {fileID: 21300000, guid: 4cdedd2847c0a4bde8523eb5579f5ab7, type: 3}
   - {fileID: 21300000, guid: 91199ca8743cd456dbc16d155a241535, type: 3}
+  - {fileID: 21300000, guid: 3572c8f90f551f04c9af9ed33b5b33f5, type: 3}
   - {fileID: 21300000, guid: 077e35bcf4912471083485a8653eca5d, type: 3}
   - {fileID: 21300000, guid: 77a351bd2ce394cf9927377d080bb2ea, type: 3}
+  - {fileID: 21300000, guid: ac342ace89b384f2088bf5275b7e704f, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Btn1_n
   - icon_turret_3_2
   - icon_turret_3_3
   - icon_turret_2_3
@@ -60,7 +64,9 @@ SpriteAtlas:
   - icon_turret_4_1
   - icon_turret_4_3
   - icon_turret_1_3
+  - Icon_Money4
   - bg_Window3
   - icon_turret_1_2
+  - Icon_Arrow1
   m_Tag: UI Atlas
   m_IsVariant: 0

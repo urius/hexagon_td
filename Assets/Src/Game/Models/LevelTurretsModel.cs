@@ -28,6 +28,11 @@ public class LevelTurretsModel
         TurretRemoved(turretModel);
     }
 
+    public bool TryGetTurret(Vector2Int cell, out TurretModel turretModel)
+    {
+        return _turrets.TryGetValue(cell, out turretModel);
+    }
+
     public void Update()
     {
         foreach (var turret in TurretsList)

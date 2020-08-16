@@ -18,9 +18,11 @@ public class GameContext : MVCSContext
         var levelModel = new LevelModel(gameContextView.LevelConfigProvider.LevelConfig);
         injectionBinder.Bind<LevelModel>().ToValue(levelModel);
         injectionBinder.Bind<LevelUnitsModel>().ToValue(levelModel.LevelUnitsModel);
+        injectionBinder.Bind<LevelTurretsModel>().ToValue(levelModel.LevelTurretsModel);
         injectionBinder.Bind<CellConfigProvider>().ToValue(gameContextView.CellConfigProvider);
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
         injectionBinder.Bind<TurretConfigProvider>().ToValue(gameContextView.TurretConfigsProvider);
+        injectionBinder.Bind<UIPrefabsConfig>().ToValue(gameContextView.UIPrefabsConfig);
         injectionBinder
             .Bind<IUnitModelByViewProvider>()
             .Bind<IUnitViewsProvider>()
@@ -34,6 +36,11 @@ public class GameContext : MVCSContext
             .Bind<GridViewProvider>()
             .To<GridViewProvider>()
             .ToSingleton();
+        injectionBinder
+            .Bind<IScreenPanelViewProvider>()
+            .Bind<ScreenPanelViewHolder>()
+            .To<ScreenPanelViewHolder>()
+            .ToSingleton();
         injectionBinder.Bind<WorldMousePositionProvider>().ToSingleton();
         injectionBinder.Bind<ICellPositionConverter>().ToValue(gameContextView.GridView);
 
@@ -44,6 +51,7 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<BuildTurretView>().To<BuildTurretViewMediator>();
         injectionBinder.Bind<GunTurretMediator>().To<GunTurretMediator>();//custom
         injectionBinder.Bind<LaserTurretMediator>().To<LaserTurretMediator>();//custom
+        injectionBinder.Bind<TurretActionsMediator>().To<TurretActionsMediator>();//custom
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
         mediationBinder.Bind<BuildTurretButtonView>().To<BuildTurretButtonMediator>();
         //debug ui
@@ -57,6 +65,7 @@ public class GameContext : MVCSContext
             .Once();
         commandBinder.Bind(CommandEvents.SECOND_PASSED).To<SecondPassedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.REQUEST_BUILD_TURRET).To<RequestBuildTurretCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_GAME_SCREEN_CLICK).To<GameScreenClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_DETECTED_UNIT_IN_ATTACK_ZONE).To<ChooseTurretTargetCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_TARGET_LOCKED).To<TurretLockTargetCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE).To<TurretTargetLeaveCommand>().Pooled();

@@ -22,6 +22,7 @@ public class MediatorEvents
     public static string UI_GAME_SCREEN_MOUSE_UP = "UI_GAME_SCREEN_MOUSE_UP";
     public static string UI_BUILD_TURRET_MOUSE_DOWN = "UI_BUILD_TURRET_MOUSE_DOWN";
     public static string UI_BUILD_TURRET_MOUSE_UP = "UI_BUILD_TURRET_MOUSE_UP";
+    public static string UI_GAME_SCREEN_CLICK = "UI_GAME_SCREEN_CLICK";    
 
     public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";    
 }
