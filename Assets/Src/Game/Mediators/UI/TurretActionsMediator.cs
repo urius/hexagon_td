@@ -56,14 +56,21 @@ public class TurretActionsMediator
     private void OnRegister()
     {
         dispatcher.AddListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_DOWN, OnGameScreenMouseDown);
+        dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
     }
 
     private void OnRemove()
     {
         dispatcher.RemoveListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_DOWN, OnGameScreenMouseDown);
+        dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
     }
 
     private void OnGameScreenMouseDown(IEvent payload)
+    {
+        DestroyView();
+    }
+
+    private void OnBuildTurretMouseDown(IEvent payload)
     {
         DestroyView();
     }
@@ -74,6 +81,8 @@ public class TurretActionsMediator
         {
             GameObject.Destroy(_view.gameObject);
             _view = null;
+
+            dispatcher.Dispatch(MediatorEvents.TURRET_DESELECTED);
         }
 
         OnRemove();

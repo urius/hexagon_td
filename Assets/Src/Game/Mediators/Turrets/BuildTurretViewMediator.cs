@@ -9,8 +9,11 @@ public class BuildTurretViewMediator : EventMediator
     [Inject] public ICellPositionConverter cellPositionConverter { get; set; }
     [Inject] public WorldMousePositionProvider WorldMousePositionProvider { get; set; }
     [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
+    [Inject] public FlyingTurretConfigProvider FlyingTurretConfigProvider { get; set; }
+    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
 
     private Vector3Int _lastCellCoords;
+    private TurretRadiusView _turretRadius;
 
     public override void OnRegister()
     {
@@ -22,6 +25,8 @@ public class BuildTurretViewMediator : EventMediator
 
         LevelModel.LevelUnitsModel.CellOwned += OnCellOwningStatusUpdated;
         LevelModel.LevelUnitsModel.CellReleased += OnCellOwningStatusUpdated;
+
+        CreateRadiusView();
     }
 
     public override void OnRemove()
@@ -29,7 +34,18 @@ public class BuildTurretViewMediator : EventMediator
         LevelModel.LevelUnitsModel.CellOwned -= OnCellOwningStatusUpdated;
         LevelModel.LevelUnitsModel.CellReleased -= OnCellOwningStatusUpdated;
 
+        GameObject.Destroy(_turretRadius.gameObject);
+
         base.OnRemove();
+    }
+
+    private void CreateRadiusView()
+    {
+        var turretRadiusGo = GameObject.Instantiate(UIPrefabsConfig.TurretRadiusPrefab, BuildTurretView.transform);
+        _turretRadius = turretRadiusGo.GetComponent<TurretRadiusView>();
+        _turretRadius.SetSize(2 * FlyingTurretConfigProvider.TurretConfig.AttackRadiusCells * CellSizeProvider.CellSize.x);
+
+        _turretRadius.gameObject.SetActive(false);
     }
 
     private Vector3Int GetCellCoords()
@@ -63,5 +79,7 @@ public class BuildTurretViewMediator : EventMediator
     {
         var isOkToBuild = LevelModel.IsReadyToBuild(new Vector2Int(_lastCellCoords.x, _lastCellCoords.y));
         BuildTurretView.SetOkToBuild(isOkToBuild);
+
+        _turretRadius.gameObject.SetActive(isOkToBuild);
     }
 }

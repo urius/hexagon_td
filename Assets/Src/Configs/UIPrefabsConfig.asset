@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretActionsPrefab: {fileID: 8090922877214974050, guid: 190db560754104f8680539aa591f2629,
     type: 3}
+  TurretRadiusPrefab: {fileID: 3189221853718104474, guid: 8fda4cf5372ff423eb9d0f59180d5723,
+    type: 3}
+  TurretSelectionPrefab: {fileID: 2497826691097653791, guid: d98c876deb0ad4745b6474ee9918457f,
+    type: 3}

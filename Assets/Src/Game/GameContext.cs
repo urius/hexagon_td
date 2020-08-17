@@ -42,6 +42,7 @@ public class GameContext : MVCSContext
             .To<ScreenPanelViewHolder>()
             .ToSingleton();
         injectionBinder.Bind<WorldMousePositionProvider>().ToSingleton();
+        injectionBinder.Bind<FlyingTurretConfigProvider>().ToSingleton();        
         injectionBinder.Bind<ICellPositionConverter>().ToValue(gameContextView.GridView);
 
         //mediators

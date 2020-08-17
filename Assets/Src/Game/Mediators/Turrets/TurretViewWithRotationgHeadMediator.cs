@@ -18,6 +18,7 @@ public class TurretViewWithRotationgHeadMediator
     [Inject] public IViewManager ViewManager { get; set; }
     [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
+    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
 
     protected TurretModel TurretModel;
     protected TurretViewWithRotatingHead TurretView;
@@ -28,6 +29,8 @@ public class TurretViewWithRotationgHeadMediator
     private IList<UnitView> _unitViews;
     private bool _targetIsLocked;
     private Vector3 _selfPosition;
+    private TurretRadiusView _turretRadius;
+    private GameObject _turretSelection;
 
     public void Initialize(TurretModel turretModel)
     {
@@ -44,6 +47,8 @@ public class TurretViewWithRotationgHeadMediator
 
         TurretModel.NewTargetSet += OnNewTargetSet;
         UpdateProvider.UpdateAction += OnUpdate;
+        dispatcher.AddListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
+        dispatcher.AddListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
 
         _selfPosition = TurretView.transform.position;
     }
@@ -60,6 +65,8 @@ public class TurretViewWithRotationgHeadMediator
         _turretModel.NewTargetSet -= OnNewTargetSet;
         _turretModel.Fired -= OnFired;
         UpdateProvider.UpdateAction -= OnUpdate;
+        dispatcher.RemoveListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
+        dispatcher.RemoveListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
     }
     */
 
@@ -77,6 +84,49 @@ public class TurretViewWithRotationgHeadMediator
         }
 
         _targetIsLocked = false;
+    }
+
+    private void OnTurretSelected(IEvent payload)
+    {
+        var turetModel = (TurretModel)payload.data;
+
+        DestroyTurretRadiusView();
+        DestroyTurretSelectionView();
+        if (TurretModel == turetModel)
+        {
+            var turretRadiusGo = GameObject.Instantiate(UIPrefabsConfig.TurretRadiusPrefab);
+            _turretRadius = turretRadiusGo.GetComponent<TurretRadiusView>();
+            _turretRadius.transform.position = _selfPosition;
+            _turretRadius.SetSize(2 * (float)Math.Sqrt(_attackRadiusSqr));
+
+            _turretSelection = GameObject.Instantiate(UIPrefabsConfig.TurretSelectionPrefab);
+            _turretSelection.transform.position = _selfPosition;
+        }
+    }
+
+    private void DestroyTurretRadiusView()
+    {
+        if (_turretRadius != null)
+        {
+            GameObject.Destroy(_turretRadius.gameObject);
+            _turretRadius = null;
+        }
+    }
+
+    private void DestroyTurretSelectionView()
+    {
+        if (_turretSelection != null)
+        {
+            GameObject.Destroy(_turretSelection);
+            _turretSelection = null;
+        }
+    }
+
+
+    private void OnTurretDeselected(IEvent payload)
+    {
+        DestroyTurretRadiusView();
+        DestroyTurretSelectionView();
     }
 
     private void OnUpdate()

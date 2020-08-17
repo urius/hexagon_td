@@ -16,7 +16,8 @@ public class MediatorEvents
     public static string TURRET_TARGET_LOCKED = "TURRET_TARGET_LOCKED";
     public static string TURRET_TARGET_LEAVE_ATTACK_ZONE = "TURRET_TARGET_LEAVE_ATTACK_ZONE";    
     public static string BULLET_HIT_TARGET = "BULLET_HIT_TARGET";
-    public static string BULLET_HIT_TARGET_ON_CELL = "BULLET_HIT_TARGET_ON_CELL";    
+    public static string BULLET_HIT_TARGET_ON_CELL = "BULLET_HIT_TARGET_ON_CELL";
+    public static string TURRET_DESELECTED = "TURRET_DESELECTED";    
 
     public static string UI_GAME_SCREEN_MOUSE_DOWN = "UI_GAME_SCREEN_MOUSE_DOWN";
     public static string UI_GAME_SCREEN_MOUSE_UP = "UI_GAME_SCREEN_MOUSE_UP";

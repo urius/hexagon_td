@@ -18,6 +18,8 @@ public class GameScreenClickedCommand : ParamCommand<Vector2Int>
         {
             injectionBinder.GetInstance<TurretActionsMediator>()
                 .Initialize(turretModel);
+
+            dispatcher.Dispatch(CommandEvents.TURRET_SELECTED, turretModel);
         }
     }
 }

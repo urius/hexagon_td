@@ -32,23 +32,27 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: fd177b1262698410f94cca68824160ba, type: 3}
     - {fileID: 102900000, guid: b90e40059e668426bb0c3c00a7ef263a, type: 3}
-    totalSpriteSurfaceArea: 28672
+    totalSpriteSurfaceArea: 98304
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: c935da60d081b403fbf2d48a202e5818, type: 3}
   - {fileID: 21300000, guid: 3d71fcf4244cf4f7ebed77467899bdfa, type: 3}
   - {fileID: 21300000, guid: 6b405f55a2ec8470a8522dab1e747a19, type: 3}
   - {fileID: 21300000, guid: 279380175830949b58b042cae6ba04ed, type: 3}
   - {fileID: 21300000, guid: 2c958257411044101813ad521ad225ba, type: 3}
   - {fileID: 21300000, guid: 419c845b71d1a49be8e287412c3f5fdd, type: 3}
+  - {fileID: 21300000, guid: 592f5f1dde8bc47aa993b7e61a0cad25, type: 3}
   - {fileID: 21300000, guid: 2d4a8aad1fa4b4488b937b055af3238b, type: 3}
   - {fileID: 21300000, guid: aa2f8d9e42b6c4d4f90890c157e7f5f3, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Round over turret
   - Modifier-money-x2
   - Hex-2
   - Red laser
   - Green long laser
   - Modifier-speed-up
+  - Turret selection
   - Modifier-speed-down
   - Modifier-money
   m_Tag: Game 2d Atlas
