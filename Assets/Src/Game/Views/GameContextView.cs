@@ -18,6 +18,7 @@ public class GameContextView : ContextView, IUpdateProvider
     public TurretConfigProvider TurretConfigsProvider;
     public UIPrefabsConfig UIPrefabsConfig;
     public GridView GridView;
+    public LocalizationProvider LocalizationProvider;
 
     private void Awake()
     {

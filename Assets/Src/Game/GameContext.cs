@@ -23,6 +23,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
         injectionBinder.Bind<TurretConfigProvider>().ToValue(gameContextView.TurretConfigsProvider);
         injectionBinder.Bind<UIPrefabsConfig>().ToValue(gameContextView.UIPrefabsConfig);
+        injectionBinder.Bind<LocalizationProvider>().ToValue(gameContextView.LocalizationProvider);
         injectionBinder
             .Bind<IUnitModelByViewProvider>()
             .Bind<IUnitViewsProvider>()

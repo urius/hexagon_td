@@ -25,6 +25,7 @@ public class TurretConfig
     public int AttackInfluenceDistance = -1;
     public int Damage;
     public int ReloadTimeFrames;
+    public int Price;
     public GameObject BulletPrefab;
     public GameObject BulletSparksPrefab;
 }

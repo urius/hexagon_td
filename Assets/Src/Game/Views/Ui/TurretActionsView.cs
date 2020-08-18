@@ -11,7 +11,9 @@ public class TurretActionsView : MonoBehaviour
     [SerializeField] private Button _sellButton;
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Text _sellButtonText;
+    [SerializeField] private Text _sellPriceText;
     [SerializeField] private Text _upgradeButtonText;
+    [SerializeField] private Text _upgradePriceText;
     [SerializeField] private Animation _animation;
     [SerializeField] private RectTransform _leftBound;
     [SerializeField] private RectTransform _rightBound;
@@ -19,6 +21,30 @@ public class TurretActionsView : MonoBehaviour
     public Animation Animation => _animation;
     public RectTransform LeftBound => _leftBound;
     public RectTransform RightBound => _rightBound;
+
+    public void SetTurretInfoTexts(string turretName, string turretLevel)
+    {
+        _turretText.text = turretName + "\n" + turretLevel;
+    }
+
+    public void SetSellTexts(string sellTxt, string sellPriceTxt)
+    {
+        _sellButtonText.text = sellTxt;
+        _sellPriceText.text = sellPriceTxt;
+    }
+
+    public void SetUpgradeButtonEnabled(bool isEnabled)
+    {
+        _upgradeButton.interactable = isEnabled;
+        _upgradePriceText.gameObject.SetActive(isEnabled);
+        _upgradePriceText.gameObject.SetActive(isEnabled);
+    }
+
+    public void SetUpgradeTexts(string upgradeTxt, string upgradePriceTxt)
+    {
+        _upgradeButtonText.text = upgradeTxt;
+        _upgradePriceText.text = upgradePriceTxt;
+    }
 
     private void OnEnable()
     {

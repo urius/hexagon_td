@@ -22,6 +22,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 1
     ReloadTimeFrames: 8
+    Price: 100
     BulletPrefab: {fileID: 2342135959751401273, guid: 0abe4ab8ca0fe486fbb686cb07d46359,
       type: 3}
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
@@ -35,6 +36,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 200
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 0
@@ -46,6 +48,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 400
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 1
@@ -57,6 +60,7 @@ MonoBehaviour:
     AttackInfluenceDistance: 30
     Damage: 2
     ReloadTimeFrames: 10
+    Price: 300
     BulletPrefab: {fileID: 2342135959751401273, guid: 4d8df476cffa44e0f88b3105ae074f9e,
       type: 3}
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
@@ -70,6 +74,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 500
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 1
@@ -81,6 +86,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 1000
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 2
@@ -92,6 +98,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 4
     ReloadTimeFrames: 120
+    Price: 600
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 2
@@ -103,6 +110,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 800
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 2
@@ -114,6 +122,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 1500
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 3
@@ -127,6 +136,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 400
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 3
@@ -139,6 +149,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 500
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 3
@@ -151,5 +162,6 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 0
     ReloadTimeFrames: 0
+    Price: 800
     BulletPrefab: {fileID: 0}
     BulletSparksPrefab: {fileID: 0}

@@ -11,8 +11,9 @@ public class TurretActionsMediator
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public IScreenPanelViewProvider ScreenPanelViewProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public LocalizationProvider Loc { get; set; }
+    [Inject] public TurretConfigProvider TurretConfigProvider { get; set; }
 
-    private TurretModel _turretModel;
     private TurretActionsView _view;
 
     public TurretActionsMediator()
@@ -22,7 +23,6 @@ public class TurretActionsMediator
 
     public void Initialize(TurretModel turretModel)
     {
-        _turretModel = turretModel;
         var camera = Camera.main;
 
         var screenPoint = camera.WorldToScreenPoint(CellPositionConverter.CellVec2ToWorld(turretModel.Position));
@@ -50,7 +50,43 @@ public class TurretActionsMediator
             _view.Animation.Play("show_default");
         }
 
+        SetupTexts(turretModel.TurretConfig);
+
         OnRegister();
+    }
+
+    private void SetupTexts(TurretConfig turretConfig)
+    {
+        var turretNameId = string.Empty;
+        switch (turretConfig.TurretType)
+        {
+            case TurretType.Gun:
+                turretNameId = "gun";
+                break;
+            case TurretType.Laser:
+                turretNameId = "laser";
+                break;
+            case TurretType.Rocket:
+                turretNameId = "rocket";
+                break;
+            case TurretType.SlowField:
+                turretNameId = "slow";
+                break;
+        }
+        var turretName = Loc.GetLocalization(LocalizationGroupId.TurretName, turretNameId);
+        var levelStr = Loc.GetLocalization(LocalizationGroupId.TurretActions, "level");
+        _view.SetTurretInfoTexts(turretName, $"{levelStr} {turretConfig.TurretLevelIndex + 1}");
+
+        var sellStr = Loc.GetLocalization(LocalizationGroupId.TurretActions, "sell");
+        _view.SetSellTexts(sellStr, $"+{(int)(turretConfig.Price * 0.5)}$");
+
+        var nextLevelConfig = TurretConfigProvider.GetConfig(turretConfig.TurretType, turretConfig.TurretLevelIndex + 1);
+        _view.SetUpgradeButtonEnabled(nextLevelConfig != null);
+        if (nextLevelConfig != null)
+        {
+            var upgradeTxt = Loc.GetLocalization(LocalizationGroupId.TurretActions, "upgrade");
+            _view.SetUpgradeTexts(upgradeTxt, $"{nextLevelConfig.Price}$");
+        }
     }
 
     private void OnRegister()
