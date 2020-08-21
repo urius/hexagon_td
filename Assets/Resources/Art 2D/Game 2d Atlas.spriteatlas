@@ -32,26 +32,38 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: fd177b1262698410f94cca68824160ba, type: 3}
     - {fileID: 102900000, guid: b90e40059e668426bb0c3c00a7ef263a, type: 3}
-    totalSpriteSurfaceArea: 98304
+    totalSpriteSurfaceArea: 122880
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: c935da60d081b403fbf2d48a202e5818, type: 3}
+  - {fileID: 21300000, guid: e8c99901171d8481f9b1ec027f226e9c, type: 3}
+  - {fileID: 21300000, guid: 6fe60e93610884dfdb14e91e156569ef, type: 3}
+  - {fileID: 21300000, guid: acabb2c34a9fa49ce943610f31d7a0af, type: 3}
+  - {fileID: 21300000, guid: e33f3bc49ef774e7bb50edc97c292b52, type: 3}
   - {fileID: 21300000, guid: 3d71fcf4244cf4f7ebed77467899bdfa, type: 3}
   - {fileID: 21300000, guid: 6b405f55a2ec8470a8522dab1e747a19, type: 3}
-  - {fileID: 21300000, guid: 279380175830949b58b042cae6ba04ed, type: 3}
-  - {fileID: 21300000, guid: 2c958257411044101813ad521ad225ba, type: 3}
+  - {fileID: 21300000, guid: cd8cc6b588123416cba7fd7bd2871735, type: 3}
+  - {fileID: 21300000, guid: 406e2a47ea3cd4a2b95646c1398ab7b7, type: 3}
+  - {fileID: 21300000, guid: fe5425faa41a54879aed88d02988ccd3, type: 3}
   - {fileID: 21300000, guid: 419c845b71d1a49be8e287412c3f5fdd, type: 3}
+  - {fileID: 21300000, guid: 00a921fb36d0843299ebaecff88240a5, type: 3}
   - {fileID: 21300000, guid: 592f5f1dde8bc47aa993b7e61a0cad25, type: 3}
   - {fileID: 21300000, guid: 2d4a8aad1fa4b4488b937b055af3238b, type: 3}
   - {fileID: 21300000, guid: aa2f8d9e42b6c4d4f90890c157e7f5f3, type: 3}
   m_PackedSpriteNamesToIndex:
   - Round over turret
+  - Green laser
+  - Pink long laser
+  - Long laser
+  - laser
   - Modifier-money-x2
   - Hex-2
-  - Red laser
   - Green long laser
+  - Red laser
+  - Blue long laser
   - Modifier-speed-up
+  - Blue laser
   - Turret selection
   - Modifier-speed-down
   - Modifier-money

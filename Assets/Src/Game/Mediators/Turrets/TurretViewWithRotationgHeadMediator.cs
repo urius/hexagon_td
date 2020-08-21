@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
-using strange.extensions.mediation.impl;
 using UnityEngine;
 
 public class TurretViewWithRotationgHeadMediator
@@ -32,6 +30,8 @@ public class TurretViewWithRotationgHeadMediator
     private TurretRadiusView _turretRadius;
     private GameObject _turretSelection;
 
+    protected TurretConfig TurretConfig => TurretModel.TurretConfig;
+
     public void Initialize(TurretModel turretModel)
     {
         TurretModel = turretModel;
@@ -43,9 +43,10 @@ public class TurretViewWithRotationgHeadMediator
     {
         _unitViews = UnitViewsProvider.UnitViews;
 
-        _attackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x, 2);
+        RefreshAttackRadius();
 
         TurretModel.NewTargetSet += OnNewTargetSet;
+        TurretModel.Upgraded += OnTurretUpgraded;
         UpdateProvider.UpdateAction += OnUpdate;
         dispatcher.AddListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
         dispatcher.AddListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
@@ -53,9 +54,28 @@ public class TurretViewWithRotationgHeadMediator
         _selfPosition = TurretView.transform.position;
     }
 
+    protected virtual void OnTurretUpgraded()
+    {
+        TargetView = null;
+        _targetIsLocked = false;
+        RefreshAttackRadius();
+        var turretRotationBuf = TurretView.TurretRotation;
+
+        GameObject.DestroyImmediate(TurretView.gameObject);
+        TurretView = CreateView(TurretModel);
+        TurretView.TurretRotation = turretRotationBuf;
+
+        GameObject.Instantiate(UIPrefabsConfig.UpgradePSPrefab, TurretView.transform.position, Quaternion.identity);
+    }
+
+    private void RefreshAttackRadius()
+    {
+        _attackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x, 2);
+    }
+
     private TurretViewWithRotatingHead CreateView(TurretModel turretModel)
     {
-        var turretPrefab = TurretsConfigProvider.GetConfig(turretModel.TurretType, 0).Prefab;
+        var turretPrefab = TurretsConfigProvider.GetConfig(turretModel.TurretType, turretModel.TurretConfig.TurretLevelIndex).Prefab;
         var turretViewGo = GameObject.Instantiate(turretPrefab, CellPositionConverter.CellVec2ToWorld(turretModel.Position), Quaternion.identity);
         return turretViewGo.GetComponent<TurretViewWithRotatingHead>();
     }
@@ -64,7 +84,8 @@ public class TurretViewWithRotationgHeadMediator
     {
         _turretModel.NewTargetSet -= OnNewTargetSet;
         _turretModel.Fired -= OnFired;
-        UpdateProvider.UpdateAction -= OnUpdate;
+        UpdateProvider.UpdateAction -= OnUpdate;    
+        TurretModel.Upgraded -= OnTurretUpgraded;
         dispatcher.RemoveListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
         dispatcher.RemoveListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
     }

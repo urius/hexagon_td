@@ -18,3 +18,5 @@ MonoBehaviour:
     type: 3}
   TurretSelectionPrefab: {fileID: 2497826691097653791, guid: d98c876deb0ad4745b6474ee9918457f,
     type: 3}
+  UpgradePSPrefab: {fileID: 122493116638437580, guid: d7681dc86563e4087bf4769f03d75e6c,
+    type: 3}

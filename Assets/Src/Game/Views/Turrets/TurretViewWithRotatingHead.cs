@@ -9,6 +9,7 @@ public class TurretViewWithRotatingHead : TurretView
     private Transform _targetTransform;
 
     public bool IsLookOnTarget { get; private set; }
+    public Quaternion TurretRotation { get => _head.rotation; set { _head.transform.rotation = value; } }
 
     protected override void Awake()
     {

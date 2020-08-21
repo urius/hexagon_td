@@ -5,22 +5,20 @@ public class TurretModel
 {
     public event Action NewTargetSet = delegate { };
     public event Action Fired = delegate { };
+    public event Action Upgraded = delegate { };
 
-    public readonly TurretType TurretType;
     public readonly Vector2Int Position;
-    public readonly int AttackRadiusCells;
-    public readonly int Damage;
-    public readonly int ReloadTimeFrames;
-    public readonly TurretConfig TurretConfig;
+
+    public TurretType TurretType;
+    public int AttackRadiusCells;
+    public int Damage;
+    public int ReloadTimeFrames;
+    public TurretConfig TurretConfig;
 
     public TurretModel(TurretConfig turretConfig, Vector2Int position)
     {
-        TurretConfig = turretConfig;
+        SetupConfig(turretConfig);
 
-        TurretType = turretConfig.TurretType;
-        AttackRadiusCells = turretConfig.AttackRadiusCells;
-        Damage = turretConfig.Damage;
-        ReloadTimeFrames = turretConfig.ReloadTimeFrames;
         ReloadFramesLeft = 0;
 
         Position = position;
@@ -48,6 +46,22 @@ public class TurretModel
             TargetUnit.StateUpdated += OnTargetUnitStateUpdated;
         }
         NewTargetSet();
+    }
+
+    public void Upgrade(TurretConfig turretConfig)
+    {
+        SetupConfig(turretConfig);
+        Upgraded();
+    }
+
+    private void SetupConfig(TurretConfig turretConfig)
+    {
+        TurretConfig = turretConfig;
+
+        TurretType = turretConfig.TurretType;
+        AttackRadiusCells = turretConfig.AttackRadiusCells;
+        Damage = turretConfig.Damage;
+        ReloadTimeFrames = turretConfig.ReloadTimeFrames;
     }
 
     private void OnTargetUnitStateUpdated()

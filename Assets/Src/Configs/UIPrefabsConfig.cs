@@ -8,4 +8,5 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject TurretActionsPrefab;
     public GameObject TurretRadiusPrefab;
     public GameObject TurretSelectionPrefab;
+    public GameObject UpgradePSPrefab;
 }

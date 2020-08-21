@@ -15,14 +15,16 @@ public class TurretActionsMediator
     [Inject] public TurretConfigProvider TurretConfigProvider { get; set; }
 
     private TurretActionsView _view;
+    private TurretModel _turretModel;
 
     public TurretActionsMediator()
     {
     }
 
-
     public void Initialize(TurretModel turretModel)
     {
+        _turretModel = turretModel;
+
         var camera = Camera.main;
 
         var screenPoint = camera.WorldToScreenPoint(CellPositionConverter.CellVec2ToWorld(turretModel.Position));
@@ -52,7 +54,7 @@ public class TurretActionsMediator
 
         SetupTexts(turretModel.TurretConfig);
 
-        OnRegister();
+        Activate();
     }
 
     private void SetupTexts(TurretConfig turretConfig)
@@ -89,16 +91,32 @@ public class TurretActionsMediator
         }
     }
 
-    private void OnRegister()
+    private void Activate()
     {
         dispatcher.AddListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_DOWN, OnGameScreenMouseDown);
         dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
+        _view.SellClicked += OnSellClicked;
+        _view.UpgradeClicked += OnUpgradeClicked;
     }
 
-    private void OnRemove()
+    private void Deactivate()
     {
         dispatcher.RemoveListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_DOWN, OnGameScreenMouseDown);
         dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
+        _view.SellClicked -= OnSellClicked;
+        _view.UpgradeClicked -= OnUpgradeClicked;
+    }
+
+    private void OnSellClicked()
+    {
+        dispatcher.Dispatch(MediatorEvents.TURRET_SELL_CLICKED, _turretModel);
+        DestroyView();
+    }
+
+    private void OnUpgradeClicked()
+    {
+        dispatcher.Dispatch(MediatorEvents.TURRET_UPGRADE_CLICKED, _turretModel);
+        DestroyView(); //TODO: upgrate on the fly, without destroying
     }
 
     private void OnGameScreenMouseDown(IEvent payload)
@@ -113,6 +131,8 @@ public class TurretActionsMediator
 
     private void DestroyView()
     {
+        Deactivate();
+
         if (_view != null)
         {
             GameObject.Destroy(_view.gameObject);
@@ -120,7 +140,5 @@ public class TurretActionsMediator
 
             dispatcher.Dispatch(MediatorEvents.TURRET_DESELECTED);
         }
-
-        OnRemove();
     }
 }
