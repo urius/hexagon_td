@@ -27,6 +27,7 @@ public class TurretConfig
     public int ReloadTimeFrames;
     public int Price;
     public GameObject BulletPrefab;
+    public int BulletSpeed = -1;
     public GameObject BulletSparksPrefab;
 }
 

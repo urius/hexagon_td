@@ -210,7 +210,7 @@ MonoBehaviour:
   - {fileID: 1146566684643597574}
   _particles: {fileID: 0}
   _rotationSpeedDegrees: 15
-  _head: {fileID: 516542522}
+  _head: {fileID: 37054693}
 --- !u!1 &1424434320419117341
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424434320419117341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.197, y: 0.37899986, z: 1.48}
+  m_LocalPosition: {x: -0.223, y: 0.37899986, z: 0.976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 37054693}
@@ -265,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7922052670077086532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.217, y: 0.379, z: 1.48}
+  m_LocalPosition: {x: 0.234, y: 0.379, z: 0.976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 37054693}

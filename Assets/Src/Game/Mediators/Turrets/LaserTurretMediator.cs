@@ -8,9 +8,9 @@ public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
     private Transform _firePoint;
     private int EndFireFramesLeft;
 
-    protected override void OnRegister()
+    protected override void Activate()
     {
-        base.OnRegister();
+        base.Activate();
 
         UpdateFirePoint();
 
@@ -37,7 +37,6 @@ public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
     protected override void OnTurretUpgraded()
     {
         StopFire();
-        TurretView.SetTargetTransform(null);
 
         base.OnTurretUpgraded();
 
