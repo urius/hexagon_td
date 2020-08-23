@@ -50,6 +50,15 @@ public class GunTurretMediator : TurretViewWithRotationgHeadMediator
     {
         dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGET, targetModel);
 
+        if (TargetView != null)
+        {
+            //sparks
+            ViewManager.Instantiate(
+                TurretModel.TurretConfig.BulletSparksPrefab,
+                bulletGo.transform.position,
+                Quaternion.LookRotation(bulletGo.transform.position - TargetView.transform.position));
+        }
+
         ViewManager.Destroy(bulletGo);
     }
 }

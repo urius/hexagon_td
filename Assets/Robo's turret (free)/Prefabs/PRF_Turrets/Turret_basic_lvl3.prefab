@@ -209,7 +209,7 @@ MonoBehaviour:
   - {fileID: 7295454462010036213}
   - {fileID: 1146566684643597574}
   _particles: {fileID: 0}
-  _rotationSpeedDegrees: 15
+  _rotationSpeedDegrees: 10
   _head: {fileID: 37054693}
 --- !u!1 &1424434320419117341
 GameObject:

@@ -6,6 +6,7 @@ public class TurretModel
     public event Action NewTargetSet = delegate { };
     public event Action Fired = delegate { };
     public event Action Upgraded = delegate { };
+    public event Action Destroyed = delegate { };
 
     public readonly Vector2Int Position;
 
@@ -14,6 +15,8 @@ public class TurretModel
     public int Damage;
     public int ReloadTimeFrames;
     public TurretConfig TurretConfig;
+
+    public bool IsDestroyed = false;
 
     public TurretModel(TurretConfig turretConfig, Vector2Int position)
     {
@@ -87,7 +90,16 @@ public class TurretModel
 
     public void Fire()
     {
+        if (IsDestroyed) return;
         ReloadFramesLeft = ReloadTimeFrames;
         Fired();
+    }
+
+    public void Destroy()
+    {
+        IsDestroyed = true;
+        SetTarget(null);
+
+        Destroyed();
     }
 }

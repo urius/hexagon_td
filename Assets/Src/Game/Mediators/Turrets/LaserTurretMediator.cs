@@ -17,6 +17,23 @@ public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
         TurretModel.Fired += OnFired;
     }
 
+    protected override void Deactivate()
+    {
+        StopFire();
+        TurretModel.Fired -= OnFired;
+
+        base.Deactivate();
+    }
+
+    protected override void OnTurretUpgraded()
+    {
+        StopFire();
+
+        base.OnTurretUpgraded();
+
+        UpdateFirePoint();
+    }
+
     private void OnFired()
     {
         if (_bulletTransform == null)
@@ -32,15 +49,6 @@ public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
         EndFireFramesLeft = EndFireFrames;
 
         CheckCollisions();
-    }
-
-    protected override void OnTurretUpgraded()
-    {
-        StopFire();
-
-        base.OnTurretUpgraded();
-
-        UpdateFirePoint();
     }
 
     private void UpdateFirePoint()

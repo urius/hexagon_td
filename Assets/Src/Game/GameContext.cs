@@ -70,6 +70,7 @@ public class GameContext : MVCSContext
         commandBinder.Bind(MediatorEvents.TURRET_DETECTED_UNIT_IN_ATTACK_ZONE).To<ChooseTurretTargetCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_TARGET_LOCKED).To<TurretLockTargetCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE).To<TurretTargetLeaveCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.TURRET_SELL_CLICKED).To<TurretSellClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.TURRET_UPGRADE_CLICKED).To<TurretUpgradeClickedCommand>().Pooled();
 
         //controllers&systems

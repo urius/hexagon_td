@@ -25,7 +25,8 @@ MonoBehaviour:
     Price: 100
     BulletPrefab: {fileID: 2342135959751401273, guid: 4986b40ba9a9f4cbcb9d6e058103d71e,
       type: 3}
-    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
+    BulletSpeed: 35
+    BulletSparksPrefab: {fileID: 1590011503536073636, guid: e81f1b5a1c9ea4306903c11912c05d64,
       type: 3}
   - TurretType: 0
     TurretLevelIndex: 1
@@ -37,9 +38,10 @@ MonoBehaviour:
     Damage: 15
     ReloadTimeFrames: 10
     Price: 200
-    BulletPrefab: {fileID: 2342135959751401273, guid: 0abe4ab8ca0fe486fbb686cb07d46359,
+    BulletPrefab: {fileID: 2342135959751401273, guid: 1d72155b67db14a2cb7b80c3421b7594,
       type: 3}
-    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
+    BulletSpeed: 40
+    BulletSparksPrefab: {fileID: 1590011503536073636, guid: e81f1b5a1c9ea4306903c11912c05d64,
       type: 3}
   - TurretType: 0
     TurretLevelIndex: 2
@@ -48,12 +50,13 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 91199ca8743cd456dbc16d155a241535, type: 3}
     AttackRadiusCells: 4
     AttackInfluenceDistance: -1
-    Damage: 25
-    ReloadTimeFrames: 8
+    Damage: 15
+    ReloadTimeFrames: 4
     Price: 400
-    BulletPrefab: {fileID: 2342135959751401273, guid: 1d72155b67db14a2cb7b80c3421b7594,
+    BulletPrefab: {fileID: 2342135959751401273, guid: 0abe4ab8ca0fe486fbb686cb07d46359,
       type: 3}
-    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
+    BulletSpeed: 50
+    BulletSparksPrefab: {fileID: 1590011503536073636, guid: e81f1b5a1c9ea4306903c11912c05d64,
       type: 3}
   - TurretType: 1
     TurretLevelIndex: 0
@@ -67,6 +70,7 @@ MonoBehaviour:
     Price: 300
     BulletPrefab: {fileID: 2342135959751401273, guid: 4d8df476cffa44e0f88b3105ae074f9e,
       type: 3}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
       type: 3}
   - TurretType: 1
@@ -81,6 +85,7 @@ MonoBehaviour:
     Price: 500
     BulletPrefab: {fileID: 2342135959751401273, guid: 0253c79555ee04e94b12db7d11b6d921,
       type: 3}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
       type: 3}
   - TurretType: 1
@@ -95,6 +100,7 @@ MonoBehaviour:
     Price: 1000
     BulletPrefab: {fileID: 2342135959751401273, guid: 8ff30107a1b5545939ef0bc66a3a4e13,
       type: 3}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
       type: 3}
   - TurretType: 2
@@ -108,6 +114,7 @@ MonoBehaviour:
     ReloadTimeFrames: 120
     Price: 600
     BulletPrefab: {fileID: 0}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
       type: 3}
   - TurretType: 2
@@ -121,6 +128,7 @@ MonoBehaviour:
     ReloadTimeFrames: 0
     Price: 800
     BulletPrefab: {fileID: 0}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 2
     TurretLevelIndex: 2
@@ -133,6 +141,7 @@ MonoBehaviour:
     ReloadTimeFrames: 0
     Price: 1500
     BulletPrefab: {fileID: 0}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 3
     TurretLevelIndex: 0
@@ -147,6 +156,7 @@ MonoBehaviour:
     ReloadTimeFrames: 0
     Price: 400
     BulletPrefab: {fileID: 0}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 3
     TurretLevelIndex: 1
@@ -160,6 +170,7 @@ MonoBehaviour:
     ReloadTimeFrames: 0
     Price: 500
     BulletPrefab: {fileID: 0}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
   - TurretType: 3
     TurretLevelIndex: 2
@@ -173,4 +184,5 @@ MonoBehaviour:
     ReloadTimeFrames: 0
     Price: 800
     BulletPrefab: {fileID: 0}
+    BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}

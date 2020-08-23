@@ -29,14 +29,12 @@ public class BuildTurretViewMediator : EventMediator
         CreateRadiusView();
     }
 
-    public override void OnRemove()
+    public void OnDestroy()
     {
         LevelModel.LevelUnitsModel.CellOwned -= OnCellOwningStatusUpdated;
         LevelModel.LevelUnitsModel.CellReleased -= OnCellOwningStatusUpdated;
 
-        GameObject.Destroy(_turretRadius.gameObject);
-
-        base.OnRemove();
+        //GameObject.Destroy(_turretRadius.gameObject);
     }
 
     private void CreateRadiusView()

@@ -1,57 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using strange.extensions.context.api;
-using strange.extensions.dispatcher.eventdispatcher.api;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretViewWithRotationgHeadMediator
+public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
 {
-    [Inject(ContextKeys.CONTEXT_DISPATCHER)]
-    public IEventDispatcher dispatcher { get; set; }
-
-    [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
-    [Inject] public IUnitModelByViewProvider UnitModelByViews { get; set; }
-    [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
-    [Inject] public IUpdateProvider UpdateProvider { get; set; }
-    [Inject] public IViewManager ViewManager { get; set; }
-    [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
-    [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
-
-    protected TurretModel TurretModel;
     protected TurretViewWithRotatingHead TurretView;
     protected UnitView TargetView;
 
-    private double _attackRadiusSqr;
     private int _unitIndex;
-    private IList<UnitView> _unitViews;
     private bool _targetIsLocked;
-    private Vector3 _selfPosition;
-    private TurretRadiusView _turretRadius;
-    private GameObject _turretSelection;
+    private IList<UnitView> _unitViews;
 
     protected TurretConfig TurretConfig => TurretModel.TurretConfig;
 
-    public void Initialize(TurretModel turretModel)
-    {
-        TurretModel = turretModel;
-        TurretView = CreateView(TurretModel);
-        Activate();
-    }
-
-    protected virtual void Activate()
+    protected override void Activate()
     {
         _unitViews = UnitViewsProvider.UnitViews;
 
-        RefreshAttackRadius();
+        base.Activate();
 
         TurretModel.NewTargetSet += OnNewTargetSet;
-        TurretModel.Upgraded += OnTurretUpgraded;
         UpdateProvider.UpdateAction += OnUpdate;
-        dispatcher.AddListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
-        dispatcher.AddListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
+    }
 
-        _selfPosition = TurretView.transform.position;
+    protected override void Deactivate()
+    {
+        base.Deactivate();
+
+        TurretModel.NewTargetSet -= OnNewTargetSet;
+        UpdateProvider.UpdateAction -= OnUpdate;
     }
 
     protected virtual void OnUpdate()
@@ -68,47 +44,30 @@ public class TurretViewWithRotationgHeadMediator
                 dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LOCKED, TurretModel);
             }
 
-            if (Vector3.SqrMagnitude(TargetView.transform.position - _selfPosition) > _attackRadiusSqr)
+            if (Vector3.SqrMagnitude(TargetView.transform.position - SelfPosition) > AttackRadiusSqr)
             {
                 dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE, TurretModel);
             }
         }
     }
 
-    protected virtual void OnTurretUpgraded()
+    override protected void OnTurretUpgraded()
     {
-        _targetIsLocked = false;
-        RefreshAttackRadius();
         var turretRotationBuf = TurretView.TurretRotation;
+        _targetIsLocked = false;
 
-        GameObject.DestroyImmediate(TurretView.gameObject);
-        TurretView = CreateView(TurretModel);
+        base.OnTurretUpgraded();
 
         TurretView.TurretRotation = turretRotationBuf;
-        TurretView.SetTargetTransform(TargetView?.transform);
-
-        GameObject.Instantiate(UIPrefabsConfig.UpgradePSPrefab, TurretView.transform.position, Quaternion.identity);
     }
 
-    protected virtual void Deactivate()
-    {
-        TurretModel.NewTargetSet -= OnNewTargetSet;
-        UpdateProvider.UpdateAction -= OnUpdate;
-        TurretModel.Upgraded -= OnTurretUpgraded;
-        dispatcher.RemoveListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
-        dispatcher.RemoveListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
-    }
-
-    private void RefreshAttackRadius()
-    {
-        _attackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x, 2);
-    }
-
-    private TurretViewWithRotatingHead CreateView(TurretModel turretModel)
+    protected override GameObject CreateView(TurretModel turretModel)
     {
         var turretPrefab = TurretsConfigProvider.GetConfig(turretModel.TurretType, turretModel.TurretConfig.TurretLevelIndex).Prefab;
         var turretViewGo = GameObject.Instantiate(turretPrefab, CellPositionConverter.CellVec2ToWorld(turretModel.Position), Quaternion.identity);
-        return turretViewGo.GetComponent<TurretViewWithRotatingHead>();
+        TurretView = turretViewGo.GetComponent<TurretViewWithRotatingHead>();
+        TurretView.SetTargetTransform(TargetView?.transform);
+        return turretViewGo;
     }
 
     private void OnNewTargetSet()
@@ -127,49 +86,6 @@ public class TurretViewWithRotationgHeadMediator
         _targetIsLocked = false;
     }
 
-    private void OnTurretSelected(IEvent payload)
-    {
-        var turetModel = (TurretModel)payload.data;
-
-        DestroyTurretRadiusView();
-        DestroyTurretSelectionView();
-        if (TurretModel == turetModel)
-        {
-            var turretRadiusGo = GameObject.Instantiate(UIPrefabsConfig.TurretRadiusPrefab);
-            _turretRadius = turretRadiusGo.GetComponent<TurretRadiusView>();
-            _turretRadius.transform.position = _selfPosition;
-            _turretRadius.SetSize(2 * (float)Math.Sqrt(_attackRadiusSqr));
-
-            _turretSelection = GameObject.Instantiate(UIPrefabsConfig.TurretSelectionPrefab);
-            _turretSelection.transform.position = _selfPosition;
-        }
-    }
-
-    private void DestroyTurretRadiusView()
-    {
-        if (_turretRadius != null)
-        {
-            GameObject.Destroy(_turretRadius.gameObject);
-            _turretRadius = null;
-        }
-    }
-
-    private void DestroyTurretSelectionView()
-    {
-        if (_turretSelection != null)
-        {
-            GameObject.Destroy(_turretSelection);
-            _turretSelection = null;
-        }
-    }
-
-
-    private void OnTurretDeselected(IEvent payload)
-    {
-        DestroyTurretRadiusView();
-        DestroyTurretSelectionView();
-    }
-
     private void ProcessCheckNextUnitInAttackZone()
     {
         if (_unitViews.Count > 0)
@@ -179,8 +95,8 @@ public class TurretViewWithRotationgHeadMediator
                 _unitIndex = 0;
             }
 
-            var distanceToUnitSqr = Vector3.SqrMagnitude(_unitViews[_unitIndex].transform.position - _selfPosition);
-            if (distanceToUnitSqr < _attackRadiusSqr)
+            var distanceToUnitSqr = Vector3.SqrMagnitude(_unitViews[_unitIndex].transform.position - SelfPosition);
+            if (distanceToUnitSqr < AttackRadiusSqr)
             {
                 var param = new MediatorEventsParams.TurretUnitInAttackZoneParams(TurretModel, UnitModelByViews.GetModel(_unitViews[_unitIndex]));
                 dispatcher.Dispatch(MediatorEvents.TURRET_DETECTED_UNIT_IN_ATTACK_ZONE, param);
