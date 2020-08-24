@@ -62,7 +62,6 @@ public class GameContext : MVCSContext
         commandBinder.Bind(MediatorEvents.DRAW_GRID_COMPLETE)
             .InSequence()
             .To<StartLevelCommand>()
-            //.To<ProcessUpdatesCommand>()
             .Once();
         commandBinder.Bind(CommandEvents.SECOND_PASSED).To<SecondPassedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.REQUEST_BUILD_TURRET).To<RequestBuildTurretCommand>().Pooled();
@@ -76,6 +75,7 @@ public class GameContext : MVCSContext
         //controllers&systems
         injectionBinder.Bind<ProcessUpdatesSystem>().ToSingleton();
         injectionBinder.Bind<UnitsControlSystem>().ToSingleton();
+        injectionBinder.Bind<BulletsHitSystem>().ToSingleton();        
 
         //debug
         commandBinder.Bind(MediatorEvents.DEBUG_BUTTON_CLICKED).To<DebugCommand>();

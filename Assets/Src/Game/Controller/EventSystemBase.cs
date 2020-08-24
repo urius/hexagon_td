@@ -10,4 +10,6 @@ public abstract class EventSystemBase
     public EventSystemBase()
     {
     }
+
+    public abstract void Start();
 }

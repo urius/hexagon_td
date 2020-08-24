@@ -14,7 +14,7 @@ public class UnitsControlSystem : EventSystemBase
     {
     }
 
-    public void Start()
+    public override void Start()
     {
         UpdateProvider.UpdateAction += OnUpdate;
         dispatcher.AddListener(MediatorEvents.UNIT_SPAWNED, OnUnitSpawnAnimationEnded);
@@ -72,9 +72,7 @@ public class UnitsControlSystem : EventSystemBase
     {
         if (unit.IsOnLastCell)
         {
-            unit.SetState(new DestroingState(unit.CurrentCellPosition));
-            LevelUnitsModel.RemoveUnit(unit);
-            dispatcher.Dispatch(CommandEvents.UNIT_DESTROYING, unit);
+            LevelUnitsModel.DestroyUnit(unit);
         }
         else if (LevelUnitsModel.IsCellWithoutUnit(unit.NextCellPosition))
         {

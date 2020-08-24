@@ -10,6 +10,7 @@ public class GridViewMediator : EventMediator
 
     [Inject] public GridView gridView { get; set; }
     [Inject] public LevelModel levelModel { get; set; }
+    [Inject] public LevelUnitsModel unitsModel { get; set; }
     [Inject] public CellConfigProvider cellConfigProvider { get; set; }
     [Inject] public ModelByViewHolder modelByView { get; set; }
     [Inject] public ICellPositionConverter cellPositionConverter { get; set; }
@@ -22,10 +23,10 @@ public class GridViewMediator : EventMediator
     public override void OnRegister()
     {
         dispatcher.AddListener(CommandEvents.START_SPAWN_UNIT, OnStartSpawnUnit);
-        dispatcher.AddListener(CommandEvents.UNIT_DESTROYING, OnUnitDestroyStarted);
         dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
         dispatcher.AddListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, OnBuildTurretMouseUp);
         dispatcher.AddListener(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, OnUnitDestroyAnimationFinished);
+        unitsModel.UnitRemoved += OnUnitRemoved;
         levelModel.Teleporting += OnTeleporting;
 
         gridViewProvider.SetGridView(gridView);
@@ -34,10 +35,10 @@ public class GridViewMediator : EventMediator
     public override void OnRemove()
     {
         dispatcher.RemoveListener(CommandEvents.START_SPAWN_UNIT, OnStartSpawnUnit);
-        dispatcher.RemoveListener(CommandEvents.UNIT_DESTROYING, OnUnitDestroyStarted);
         dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, OnBuildTurretMouseDown);
         dispatcher.RemoveListener(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, OnBuildTurretMouseUp);
         dispatcher.RemoveListener(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, OnUnitDestroyAnimationFinished);
+        unitsModel.UnitRemoved -= OnUnitRemoved;
         levelModel.Teleporting -= OnTeleporting;
     }
 
@@ -47,9 +48,8 @@ public class GridViewMediator : EventMediator
         gridView.GetTeleportCellView(to).PlayTeleportInAnimation();
     }
 
-    private void OnUnitDestroyStarted(IEvent payload)
+    private void OnUnitRemoved(UnitModel unitModel)
     {
-        var unitModel = (UnitModel)payload.data;
         modelByView.Remove(unitModel);
     }
 
@@ -102,9 +102,12 @@ public class GridViewMediator : EventMediator
         await baseCellView.PlaySpawnAnimationAsync();
         baseCellView.PLatformBottomPointReached -= PLatformBottomPointReached;
 
-        unitGo.transform.SetParent(gridView.transform, true);
+        if (unitGo != null)
+        {
+            unitGo.transform.SetParent(gridView.transform, true);
 
-        dispatcher.Dispatch(MediatorEvents.UNIT_SPAWNED, unitModel);
+            dispatcher.Dispatch(MediatorEvents.UNIT_SPAWNED, unitModel);
+        }
     }
 
     private void Start()

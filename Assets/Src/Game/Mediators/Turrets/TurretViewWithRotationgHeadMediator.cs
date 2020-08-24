@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
@@ -66,16 +67,22 @@ public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
         var turretPrefab = TurretsConfigProvider.GetConfig(turretModel.TurretType, turretModel.TurretConfig.TurretLevelIndex).Prefab;
         var turretViewGo = GameObject.Instantiate(turretPrefab, CellPositionConverter.CellVec2ToWorld(turretModel.Position), Quaternion.identity);
         TurretView = turretViewGo.GetComponent<TurretViewWithRotatingHead>();
-        TurretView.SetTargetTransform(TargetView?.transform);
+        TurretView.SetTargetTransform(GetTransformForTargeting(TargetView));
         return turretViewGo;
     }
+
+    protected virtual Transform GetTransformForTargeting([CanBeNull] UnitView unitView)
+    {
+        return unitView?.transform;
+    }
+
 
     private void OnNewTargetSet()
     {
         if (TurretModel.TargetUnit != null)
         {
             TargetView = UnitViewsProvider.GetViewByModel(TurretModel.TargetUnit);
-            TurretView.SetTargetTransform(TargetView.transform);
+            TurretView.SetTargetTransform(GetTransformForTargeting(TargetView));
         }
         else
         {

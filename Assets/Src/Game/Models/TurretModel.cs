@@ -69,7 +69,7 @@ public class TurretModel
 
     private void OnTargetUnitStateUpdated()
     {
-        if (TargetUnit.CurrentState.StateName == UnitStateName.Destroing)
+        if (TargetUnit.CurrentState.StateName == UnitStateName.Destroying)
         {
             SetTarget(null);
         }

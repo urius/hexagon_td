@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
 {
@@ -59,13 +60,21 @@ public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
     private void CheckCollisions()
     {
         var raycatHits = Physics.RaycastAll(_bulletTransform.position, _bulletTransform.forward, TurretConfig.AttackInfluenceDistance);
-        foreach (var hit in raycatHits)
+        var hitList = new List<UnitModel>(raycatHits.Length);
+        for (var i = 0; i < raycatHits.Length; i++)
         {
-            var hitTransformPosition = hit.collider.transform.position;
-            ShowSparks(hit.point, hit.point - hitTransformPosition);
-            var cellHitPosition = CellPositionConverter.WorldToCell(hitTransformPosition);
+            var hit = raycatHits[i];
+            var hitUnit = hit.transform.GetComponent<UnitView>();
+            if (hitUnit != null)
+            {
+                ShowSparks(hit.point, hit.point - hit.transform.position);
+                hitList.Add(UnitModelByViews.GetModel(hitUnit));
+            }
+        }
 
-            dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGET_ON_CELL, cellHitPosition);
+        if (hitList.Count > 0)
+        {
+            dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGETS, new MediatorEventsParams.BulletHitTargetsParams(TurretModel.Damage, hitList));
         }
     }
 

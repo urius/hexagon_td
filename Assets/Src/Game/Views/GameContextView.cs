@@ -22,7 +22,7 @@ public class GameContextView : ContextView, IUpdateProvider
 
     private void Awake()
     {
-        Application.targetFrameRate = 50;
+        Application.targetFrameRate = 30;
 
         DOTween.Init(true, false, LogBehaviour.ErrorsOnly).SetCapacity(50, 0);
         DOTween.defaultEaseType = Ease.Linear;

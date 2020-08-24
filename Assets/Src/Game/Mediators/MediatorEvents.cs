@@ -14,20 +14,19 @@ public class MediatorEvents
     public static string UNIT_DESTROY_ANIMATION_FINISHED = "UNIT_DESTROY_ANIMATION_FINISHED";
     public static string TURRET_DETECTED_UNIT_IN_ATTACK_ZONE = "TURRET_NOTIFY_UNIT_IN_ATTACK_ZONE";
     public static string TURRET_TARGET_LOCKED = "TURRET_TARGET_LOCKED";
-    public static string TURRET_TARGET_LEAVE_ATTACK_ZONE = "TURRET_TARGET_LEAVE_ATTACK_ZONE";    
-    public static string BULLET_HIT_TARGET = "BULLET_HIT_TARGET";
-    public static string BULLET_HIT_TARGET_ON_CELL = "BULLET_HIT_TARGET_ON_CELL";
+    public static string TURRET_TARGET_LEAVE_ATTACK_ZONE = "TURRET_TARGET_LEAVE_ATTACK_ZONE";
+    public static string BULLET_HIT_TARGETS = "BULLET_HIT_TARGETS";
     public static string TURRET_DESELECTED = "TURRET_DESELECTED";
-    public static string TURRET_SELL_CLICKED = "TURRET_SELL_CLICKED";    
+    public static string TURRET_SELL_CLICKED = "TURRET_SELL_CLICKED";
     public static string TURRET_UPGRADE_CLICKED = "TURRET_UPGRADE_CLICKED";
 
     public static string UI_GAME_SCREEN_MOUSE_DOWN = "UI_GAME_SCREEN_MOUSE_DOWN";
     public static string UI_GAME_SCREEN_MOUSE_UP = "UI_GAME_SCREEN_MOUSE_UP";
     public static string UI_BUILD_TURRET_MOUSE_DOWN = "UI_BUILD_TURRET_MOUSE_DOWN";
     public static string UI_BUILD_TURRET_MOUSE_UP = "UI_BUILD_TURRET_MOUSE_UP";
-    public static string UI_GAME_SCREEN_CLICK = "UI_GAME_SCREEN_CLICK";    
+    public static string UI_GAME_SCREEN_CLICK = "UI_GAME_SCREEN_CLICK";
 
-    public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";    
+    public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";
 }
 
 public static class MediatorEventsParams
@@ -53,6 +52,23 @@ public static class MediatorEventsParams
         {
             TurretModel = turretModel;
             UnitModel = unitModel;
+        }
+    }
+
+    public class BulletHitTargetsParams
+    {
+        public readonly int BulletDamage;
+        public readonly IEnumerable<UnitModel> UnitModels;
+
+        public BulletHitTargetsParams(int bulletDamage, IEnumerable<UnitModel> unitModels)
+        {
+            BulletDamage = bulletDamage;
+            UnitModels = unitModels;
+        }
+
+        public BulletHitTargetsParams(int bulletDamage, UnitModel unitModel)
+            : this(bulletDamage, new[] { unitModel })
+        {
         }
     }
 }

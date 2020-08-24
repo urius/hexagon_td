@@ -17,7 +17,7 @@ public class ProcessUpdatesSystem : EventSystemBase
     {
     }
 
-    public void Start()
+    public override void Start()
     {
         UpdateProvider.UpdateAction += OnUpdate;
     }

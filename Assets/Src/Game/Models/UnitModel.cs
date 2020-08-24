@@ -19,10 +19,16 @@ public class UnitModel
         PreviousCellPosition = CurrentCellPosition = _path[0];
         NextCellPosition = _path[1];
 
+        HP = config.HP;
+        Speed = config.Speed;
+
         CurrentState = new SpawningState(CurrentCellPosition);
     }
 
     public GameObject Prefab => _config.Prefab;
+    public int HP { get; private set; }
+    public float Speed { get; private set; }
+
     public Vector2Int PreviousCellPosition { get; private set; }
     public Vector2Int CurrentCellPosition { get; private set; }
     public Vector2Int NextCellPosition { get; private set; }
@@ -34,6 +40,7 @@ public class UnitModel
     public bool IsOnLastCell => _currentPathCellIndex >= _path.Count - 1;
     public bool IsOnPreLastCell => _currentPathCellIndex == _path.Count - 2;
     public bool IsNextCellNear => !IsCellsNotNear(NextCellPosition, CurrentCellPosition);
+    public bool IsDestroying => CurrentState.StateName == UnitStateName.Destroying;
 
     public void SetState(UnitStateBase state)
     {
@@ -42,6 +49,7 @@ public class UnitModel
         if (state.StateName == UnitStateName.Moving)
         {
             _currentPathCellIndex++;
+            Speed = (state as MovingState).SpeedMultiplier * _config.Speed;
             PreviousCellPosition = CurrentCellPosition;
             CurrentCellPosition = NextCellPosition;
             NextCellPosition = _path[ClampCellIndex(_currentPathCellIndex + 1)];
@@ -83,6 +91,17 @@ public class UnitModel
         _path = newPath;
         _currentPathCellIndex = 0;
         NextCellPosition = _path[1];
+    }
+
+    public int ApplyDamage(int bulletDamage)
+    {
+        HP = Math.Max(HP - bulletDamage, 0);
+        return HP;
+    }
+
+    public void SetDestroingState()
+    {
+        SetState(new DestroingState(CurrentCellPosition));
     }
 
     private int ClampCellIndex(int index)
@@ -147,7 +166,7 @@ public class DestroingState : UnitStateBase
     {
     }
 
-    public override UnitStateName StateName => UnitStateName.Destroing;
+    public override UnitStateName StateName => UnitStateName.Destroying;
 }
 
 public class WaitingState : UnitStateBase
@@ -168,7 +187,7 @@ public enum UnitStateName
     Spawning,
     Moving,
     WaitingForCell,
-    Destroing,
+    Destroying,
 }
 
 #endregion

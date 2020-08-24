@@ -10,5 +10,6 @@ public class StartLevelCommand : Command
 
         injectionBinder.GetInstance<ProcessUpdatesSystem>().Start();
         injectionBinder.GetInstance<UnitsControlSystem>().Start();
+        injectionBinder.GetInstance<BulletsHitSystem>().Start();
     }
 }

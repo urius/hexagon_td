@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class GunTurretMediator : TurretViewWithRotationgHeadMediator
@@ -12,16 +13,16 @@ public class GunTurretMediator : TurretViewWithRotationgHeadMediator
         TurretModel.Fired += OnFired;
     }
 
-    protected override void OnUpdate()
-    {
-        base.OnUpdate();
-    }
-
     protected override void Deactivate()
     {
         TurretModel.Fired -= OnFired;
 
         base.Deactivate();
+    }
+
+    protected override Transform GetTransformForTargeting([CanBeNull] UnitView unitView)
+    {
+        return unitView?.AdvanceShootTransform;
     }
 
     private void OnFired()
@@ -34,7 +35,8 @@ public class GunTurretMediator : TurretViewWithRotationgHeadMediator
         var duration = (shootTargetPosition - firePoint.position).magnitude / TurretModel.TurretConfig.BulletSpeed;
         var moveTween = bulletGo.transform.DOMove(shootTargetPosition, duration);
 
-        moveTween.OnComplete(() => OnBulletHitsTarget(bulletGo, TurretModel.TargetUnit));
+        var eventParams = new MediatorEventsParams.BulletHitTargetsParams(TurretModel.Damage, TurretModel.TargetUnit);
+        moveTween.OnComplete(() => OnBulletHitsTarget(bulletGo, eventParams));
     }
 
     private Transform GetFirePoint()
@@ -46,10 +48,8 @@ public class GunTurretMediator : TurretViewWithRotationgHeadMediator
         return TurretView.FirePoints[_currentFirePointIndex++].transform;
     }
 
-    private void OnBulletHitsTarget(GameObject bulletGo, UnitModel targetModel)
+    private void OnBulletHitsTarget(GameObject bulletGo, MediatorEventsParams.BulletHitTargetsParams param)
     {
-        dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGET, targetModel);
-
         if (TargetView != null)
         {
             //sparks
@@ -57,6 +57,8 @@ public class GunTurretMediator : TurretViewWithRotationgHeadMediator
                 TurretModel.TurretConfig.BulletSparksPrefab,
                 bulletGo.transform.position,
                 Quaternion.LookRotation(bulletGo.transform.position - TargetView.transform.position));
+
+            dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGETS, param);
         }
 
         ViewManager.Destroy(bulletGo);
