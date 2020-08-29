@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GunTurretMediator : TurretViewWithRotationgHeadMediator
 {
-    private int _currentFirePointIndex = 0;
-
     protected override void Activate()
     {
         base.Activate();
@@ -39,24 +37,11 @@ public class GunTurretMediator : TurretViewWithRotationgHeadMediator
         moveTween.OnComplete(() => OnBulletHitsTarget(bulletGo, eventParams));
     }
 
-    private Transform GetFirePoint()
-    {
-        if (_currentFirePointIndex >= TurretView.FirePoints.Length)
-        {
-            _currentFirePointIndex = 0;
-        }
-        return TurretView.FirePoints[_currentFirePointIndex++].transform;
-    }
-
     private void OnBulletHitsTarget(GameObject bulletGo, MediatorEventsParams.BulletHitTargetsParams param)
     {
         if (TargetView != null)
         {
-            //sparks
-            ViewManager.Instantiate(
-                TurretModel.TurretConfig.BulletSparksPrefab,
-                bulletGo.transform.position,
-                Quaternion.LookRotation(bulletGo.transform.position - TargetView.transform.position));
+            ShowSparks(bulletGo.transform.position, bulletGo.transform.position - TargetView.transform.position);
 
             dispatcher.Dispatch(MediatorEvents.BULLET_HIT_TARGETS, param);
         }

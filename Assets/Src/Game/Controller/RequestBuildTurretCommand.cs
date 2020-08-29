@@ -25,6 +25,10 @@
                     injectionBinder.GetInstance<LaserTurretMediator>()
                         .Initialize(turretModel);
                     break;
+                case TurretType.Rocket:
+                    injectionBinder.GetInstance<RocketTurretMediator>()
+                        .Initialize(turretModel);
+                    break;
             }
         }
     }

@@ -16,3 +16,5 @@ MonoBehaviour:
   - UnitType: 0
     Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
       type: 3}
+    HP: 100
+    Speed: 5

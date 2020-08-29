@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
 {
+    [Inject] public IViewManager ViewManager { get; set; }
+
     protected TurretViewWithRotatingHead TurretView;
     protected UnitView TargetView;
+    protected bool TargetIsLocked;
 
     private int _unitIndex;
-    private bool _targetIsLocked;
     private IList<UnitView> _unitViews;
 
     protected TurretConfig TurretConfig => TurretModel.TurretConfig;
+    private int _currentFirePointIndex = 0;
 
     protected override void Activate()
     {
@@ -39,9 +42,9 @@ public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
         }
         else
         {
-            if (!_targetIsLocked && TurretView.IsLookOnTarget)
+            if (!TargetIsLocked && TurretView.IsLookOnTarget)
             {
-                _targetIsLocked = true;
+                TargetIsLocked = true;
                 dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LOCKED, TurretModel);
             }
 
@@ -52,10 +55,19 @@ public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
         }
     }
 
+    protected Transform GetFirePoint()
+    {
+        if (_currentFirePointIndex >= TurretView.FirePoints.Length)
+        {
+            _currentFirePointIndex = 0;
+        }
+        return TurretView.FirePoints[_currentFirePointIndex++].transform;
+    }
+
     override protected void OnTurretUpgraded()
     {
         var turretRotationBuf = TurretView.TurretRotation;
-        _targetIsLocked = false;
+        TargetIsLocked = false;
 
         base.OnTurretUpgraded();
 
@@ -76,6 +88,10 @@ public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
         return unitView?.transform;
     }
 
+    protected virtual void ShowSparks(Vector3 point, Vector3 direction)
+    {
+        ViewManager.Instantiate(TurretConfig.BulletSparksPrefab, point, Quaternion.LookRotation(direction));        
+    }
 
     private void OnNewTargetSet()
     {
@@ -90,7 +106,7 @@ public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
             TurretView.SetTargetTransform(null);
         }
 
-        _targetIsLocked = false;
+        TargetIsLocked = false;
     }
 
     private void ProcessCheckNextUnitInAttackZone()

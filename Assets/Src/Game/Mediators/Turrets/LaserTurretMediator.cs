@@ -78,11 +78,6 @@ public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
         }
     }
 
-    private void ShowSparks(Vector3 point, Vector3 direction)
-    {
-        ViewManager.Instantiate(TurretConfig.BulletSparksPrefab, point, Quaternion.LookRotation(direction));
-    }
-
     private void OnUpdateFiring()
     {
         _bulletTransform.position = _firePoint.position;

@@ -12,7 +12,6 @@ public abstract class TurretMediatorBase
     [Inject] public IUnitModelByViewProvider UnitModelByViews { get; set; }
     [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
-    [Inject] public IViewManager ViewManager { get; set; }
     [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }

@@ -14,6 +14,11 @@ public class ModelByViewHolder : IUnitModelByViewProvider, IUnitViewsProvider
         return _unitModelByView[unitView];
     }
 
+    public bool TryGetModel(UnitView unitView, out UnitModel unitModel)
+    {
+        return _unitModelByView.TryGetValue(unitView, out unitModel);
+    }
+
     public void Remove(UnitModel unitModel)
     {
         var view = GetViewByModel(unitModel);
@@ -36,6 +41,7 @@ public class ModelByViewHolder : IUnitModelByViewProvider, IUnitViewsProvider
 public interface IUnitModelByViewProvider
 {
     UnitModel GetModel(UnitView unitView);
+    bool TryGetModel(UnitView unitView, out UnitModel unitModel);
 }
 
 public interface IUnitViewsProvider

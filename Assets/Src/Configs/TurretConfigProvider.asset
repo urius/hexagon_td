@@ -110,39 +110,44 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
     AttackRadiusCells: 4
     AttackInfluenceDistance: -1
-    Damage: 4
-    ReloadTimeFrames: 120
+    Damage: 10
+    ReloadTimeFrames: 50
     Price: 600
-    BulletPrefab: {fileID: 0}
-    BulletSpeed: -1
-    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 3131abb46042640cabaaa78130fccbb3,
+    BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
+      type: 3}
+    BulletSpeed: 50
+    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 61d7d166caf6f4130ab21d9f631a47d8,
       type: 3}
   - TurretType: 2
     TurretLevelIndex: 1
     Prefab: {fileID: 953633823, guid: 2a3d0544514f6394a91bba6f70777707, type: 3}
     BuildModePrefab: {fileID: 0}
     IconSprite: {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
-    AttackRadiusCells: 0
+    AttackRadiusCells: 5
     AttackInfluenceDistance: -1
-    Damage: 0
-    ReloadTimeFrames: 0
+    Damage: 10
+    ReloadTimeFrames: 35
     Price: 800
-    BulletPrefab: {fileID: 0}
-    BulletSpeed: -1
-    BulletSparksPrefab: {fileID: 0}
+    BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
+      type: 3}
+    BulletSpeed: 30
+    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 61d7d166caf6f4130ab21d9f631a47d8,
+      type: 3}
   - TurretType: 2
     TurretLevelIndex: 2
     Prefab: {fileID: 364968948, guid: 79168e49fb83af74ab331da3a5b479a2, type: 3}
     BuildModePrefab: {fileID: 0}
     IconSprite: {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
-    AttackRadiusCells: 0
+    AttackRadiusCells: 6
     AttackInfluenceDistance: -1
-    Damage: 0
-    ReloadTimeFrames: 0
+    Damage: 10
+    ReloadTimeFrames: 15
     Price: 1500
-    BulletPrefab: {fileID: 0}
-    BulletSpeed: -1
-    BulletSparksPrefab: {fileID: 0}
+    BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
+      type: 3}
+    BulletSpeed: 30
+    BulletSparksPrefab: {fileID: 1590011503536073636, guid: 61d7d166caf6f4130ab21d9f631a47d8,
+      type: 3}
   - TurretType: 3
     TurretLevelIndex: 0
     Prefab: {fileID: 3603398599403053873, guid: ebfe1a980b75c4196b0a28e50592cefd,

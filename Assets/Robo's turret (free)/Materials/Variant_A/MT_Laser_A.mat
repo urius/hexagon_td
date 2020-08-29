@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MT_Laser_A
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP
+  m_ShaderKeywords: _EMISSION _ENVIRONMENTREFLECTIONS_OFF _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -193,7 +193,7 @@ Material:
     - _Desaturationaffectsemission: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _Flickering: 1
     - _Flickeringintensity: 14.55
     - _Flickerspeed: 100

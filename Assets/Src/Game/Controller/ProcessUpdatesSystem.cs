@@ -1,10 +1,4 @@
-﻿using System;
-using strange.extensions.command.impl;
-using strange.extensions.context.api;
-using strange.extensions.dispatcher.eventdispatcher.api;
-using UnityEngine;
-
-public class ProcessUpdatesSystem : EventSystemBase
+﻿public class ProcessUpdatesSystem : EventSystemBase
 {
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
