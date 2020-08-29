@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e11d6ffd63dcd46fc98e6fa6930fafce, type: 2}
+  - {fileID: 2100000, guid: 31eb1974d56c54371b5bf99ba0424a2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,9 +88,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3603398599403053876}
+  - component: {fileID: -3113774481077523488}
   - component: {fileID: 3603398599403053875}
   - component: {fileID: 3603398599403053874}
-  - component: {fileID: -3113774481077523488}
   m_Layer: 0
   m_Name: Turret_slow_lvl1_Build
   m_TagString: Untagged
@@ -113,6 +113,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3113774481077523488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603398599403053873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1061489588bcb4414befadd60e745da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: 31eb1974d56c54371b5bf99ba0424a2b, type: 2}
 --- !u!33 &3603398599403053875
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -139,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e11d6ffd63dcd46fc98e6fa6930fafce, type: 2}
+  - {fileID: 2100000, guid: 31eb1974d56c54371b5bf99ba0424a2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -160,16 +173,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-3113774481077523488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3603398599403053873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1061489588bcb4414befadd60e745da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _material: {fileID: 2100000, guid: e11d6ffd63dcd46fc98e6fa6930fafce, type: 2}

@@ -128,7 +128,7 @@ MonoBehaviour:
     Damage: 10
     ReloadTimeFrames: 35
     Price: 800
-    BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
+    BulletPrefab: {fileID: 2338914357172053134, guid: 1a0d6411c1bd640cb853981c43d930d8,
       type: 3}
     BulletSpeed: 30
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 61d7d166caf6f4130ab21d9f631a47d8,
@@ -143,7 +143,7 @@ MonoBehaviour:
     Damage: 10
     ReloadTimeFrames: 15
     Price: 1500
-    BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
+    BulletPrefab: {fileID: 2338914357172053134, guid: fa07e6d5afeb249faabe592823d03392,
       type: 3}
     BulletSpeed: 30
     BulletSparksPrefab: {fileID: 1590011503536073636, guid: 61d7d166caf6f4130ab21d9f631a47d8,

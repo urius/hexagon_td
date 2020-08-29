@@ -64,7 +64,7 @@ public class RocketTurretMediator : TurretViewWithRotationgHeadMediator
             ViewManager.Destroy(rocketFlyData.View.gameObject);
             return false;
         }
-        else if (rocketFlyData.FlySecondsLeft > 0 && rocketFlyData.Transform.position.y > 0)
+        else if (!rocketFlyData.IsDestroyed && rocketFlyData.FlySecondsLeft > 0 && rocketFlyData.Transform.position.y > 0)
         {
             if (!rocketFlyData.IsFlyingStraight && rocketFlyData.TargetView != null)
             {
@@ -117,7 +117,7 @@ public class RocketFlyData
     public readonly UnitView TargetView;
     public readonly Transform TargetTransform;
     public readonly int Speed;
-    public readonly int RotationSpeed = 20;
+    public readonly int RotationSpeed = 25;
 
     public float FlySecondsLeft;
     public float FlyStraightSecondsLeft;

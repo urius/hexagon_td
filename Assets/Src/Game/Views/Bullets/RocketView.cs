@@ -5,6 +5,7 @@ public class RocketView : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private GameObject _rocketGo;
 
+    [HideInInspector]
     public float ParticleSystemLifetime;
 
     public void Show()
