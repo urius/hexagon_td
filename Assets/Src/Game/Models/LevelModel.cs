@@ -98,6 +98,11 @@ public class LevelModel
     {
         return PathsManager.GetPath(cellPosition, GoalCell.CellPosition);
     }
+
+    public IEnumerable<IReadOnlyList<Vector2Int>> GetPaths()
+    {
+        return SpawnCells.Select(c => GetPath(c.CellPosition)).ToArray();
+    }
 }
 
 public class WaveModel

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PathsManager : ICellsProvider<Vector2Int>
 {
+    public event Action PathsUpdated = delegate { };
+
     private readonly Dictionary<Vector2Int, CellType> _walkableCellsByCoord = new Dictionary<Vector2Int, CellType>();
     private readonly Dictionary<Vector2Int, CellSubType> _teleportCells = new Dictionary<Vector2Int, CellSubType>();
     private readonly Dictionary<Vector2Int, bool> _tempUnwalkableCells = new Dictionary<Vector2Int, bool>();
@@ -171,6 +173,8 @@ public class PathsManager : ICellsProvider<Vector2Int>
                 unit.SubstitutePath(Pathfinder.FindPath(this, currentCell, finishCell));
             }
         }
+
+        PathsUpdated();
     }
 
     private void OnTurretAdded(TurretModel turret)
@@ -180,6 +184,8 @@ public class PathsManager : ICellsProvider<Vector2Int>
         foreach (var pathEdgePoints in patchsToRefresh)
         {
             _cachedPaths.Remove(pathEdgePoints);
+
+            PathsUpdated();
         }
 
         //Update pathes for units affected by new turret
