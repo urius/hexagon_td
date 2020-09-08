@@ -7,15 +7,25 @@ public class TurretView : View
     [SerializeField] private ParticleSystem _particles;
 
     public Transform[] FirePoints => _firePoints;
+    public ParticleSystem Particles => _particles;
 
-    public void Fire(int firePointIndex = 0)
+    private bool _isFiring = false;
+
+    public void StartFire()
     {
-        if (_particles == null)
+        if (!_isFiring)
         {
-            return;
+            _isFiring = true;
+            _particles?.Play();
         }
-        _particles.transform.position = _firePoints[firePointIndex].transform.position;
-        _particles.transform.rotation = _firePoints[firePointIndex].transform.rotation;
-        _particles.Play();
+    }
+
+    public void StopFire()
+    {
+        if (_isFiring)
+        {
+            _isFiring = false;
+            _particles?.Stop();
+        }
     }
 }

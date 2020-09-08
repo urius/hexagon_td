@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class TurretViewWithRotationgHeadMediator : TurretMediatorBase
+public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 {
     [Inject] public IViewManager ViewManager { get; set; }
 

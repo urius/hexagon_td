@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class GunTurretMediator : TurretViewWithRotationgHeadMediator
+public class GunTurretMediator : TurretViewWithRotatingHeadMediator
 {
     protected override void Activate()
     {

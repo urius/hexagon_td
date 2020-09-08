@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketTurretMediator : TurretViewWithRotationgHeadMediator
+public class RocketTurretMediator : TurretViewWithRotatingHeadMediator
 {
     private readonly List<RocketFlyData> _rockets = new List<RocketFlyData>();
 

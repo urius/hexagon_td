@@ -53,6 +53,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<GunTurretMediator>().To<GunTurretMediator>();//custom
         injectionBinder.Bind<RocketTurretMediator>().To<RocketTurretMediator>();//custom
         injectionBinder.Bind<LaserTurretMediator>().To<LaserTurretMediator>();//custom
+        injectionBinder.Bind<SlowFieldTurretMediator>().To<SlowFieldTurretMediator>();//custom
         injectionBinder.Bind<TurretActionsMediator>().To<TurretActionsMediator>();//custom
         injectionBinder.Bind<ShowPathsMediator>().To<ShowPathsMediator>();//custom
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();

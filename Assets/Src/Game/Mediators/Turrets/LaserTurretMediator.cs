@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserTurretMediator : TurretViewWithRotationgHeadMediator
+public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
 {
     const int EndFireFrames = 10;
 

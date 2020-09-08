@@ -29,6 +29,10 @@
                     injectionBinder.GetInstance<RocketTurretMediator>()
                         .Initialize(turretModel);
                     break;
+                case TurretType.SlowField:
+                    injectionBinder.GetInstance<SlowFieldTurretMediator>()
+                        .Initialize(turretModel);
+                    break;
             }
         }
     }
