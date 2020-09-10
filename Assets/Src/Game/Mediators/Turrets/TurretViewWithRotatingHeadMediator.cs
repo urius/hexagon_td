@@ -5,6 +5,8 @@ using UnityEngine;
 public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 {
     [Inject] public IViewManager ViewManager { get; set; }
+    [Inject] public IUpdateProvider UpdateProvider { get; set; }
+    [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
 
     protected TurretViewWithRotatingHead TurretView;
     protected UnitView TargetView;

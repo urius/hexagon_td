@@ -8,10 +8,8 @@ public abstract class TurretMediatorBase
     [Inject(ContextKeys.CONTEXT_DISPATCHER)]
     public IEventDispatcher dispatcher { get; set; }
 
-    [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
     [Inject] public IUnitModelByViewProvider UnitModelByViews { get; set; }
     [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
-    [Inject] public IUpdateProvider UpdateProvider { get; set; }
     [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
@@ -63,15 +61,15 @@ public abstract class TurretMediatorBase
 
     protected virtual void OnTurretUpgraded()
     {
-        RefreshAttackRadius();
-
         DestroyView();
         TurretViewGo = CreateView(TurretModel);
+
+        RefreshAttackRadius();
 
         GameObject.Instantiate(UIPrefabsConfig.UpgradePSPrefab, TurretViewGo.transform.position, Quaternion.identity);
     }
 
-    private void RefreshAttackRadius()
+    protected virtual void RefreshAttackRadius()
     {
         AttackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x, 2);
     }

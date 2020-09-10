@@ -15,6 +15,7 @@ public class MediatorEvents
     public static string TURRET_DETECTED_UNIT_IN_ATTACK_ZONE = "TURRET_NOTIFY_UNIT_IN_ATTACK_ZONE";
     public static string TURRET_TARGET_LOCKED = "TURRET_TARGET_LOCKED";
     public static string TURRET_TARGET_LEAVE_ATTACK_ZONE = "TURRET_TARGET_LEAVE_ATTACK_ZONE";
+    public static string TURRET_UNIT_LEAVE_ATTACK_ZONE = "TURRET_UNIT_LEAVE_ATTACK_ZONE";
     public static string BULLET_HIT_TARGETS = "BULLET_HIT_TARGETS";
     public static string TURRET_DESELECTED = "TURRET_DESELECTED";
     public static string TURRET_SELL_CLICKED = "TURRET_SELL_CLICKED";
@@ -49,6 +50,18 @@ public static class MediatorEventsParams
         public readonly UnitModel UnitModel;
 
         public TurretUnitInAttackZoneParams(TurretModel turretModel, UnitModel unitModel)
+        {
+            TurretModel = turretModel;
+            UnitModel = unitModel;
+        }
+    }
+
+    public class TurretUnitLeaveAttackZoneParams  //same as TurretUnitInAttackZoneParams
+    {
+        public readonly TurretModel TurretModel;
+        public readonly UnitModel UnitModel;
+
+        public TurretUnitLeaveAttackZoneParams(TurretModel turretModel, UnitModel unitModel)
         {
             TurretModel = turretModel;
             UnitModel = unitModel;

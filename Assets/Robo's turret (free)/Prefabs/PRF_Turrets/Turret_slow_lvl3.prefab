@@ -167,9 +167,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8395432880648847227}
-  - component: {fileID: 8421651960597043993}
   - component: {fileID: 8395432880648847228}
   - component: {fileID: 8395432880648847229}
+  - component: {fileID: 973096183585517590}
   - component: {fileID: 2357978701809207080}
   m_Layer: 0
   m_Name: Turret_slow_lvl3
@@ -194,20 +194,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8421651960597043993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395432880648847230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05524130718a347ed87fdf15214e71cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _firePoints: []
-  _particles: {fileID: 2898624841111004258}
 --- !u!33 &8395432880648847228
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -255,6 +241,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &973096183585517590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8395432880648847230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac2de0715169415db9c34d5e6b1cc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firePoints: []
+  _particles: {fileID: 2898624841111004258}
+  _particlesColor: {r: 0.83060485, g: 0.24705878, b: 0.99215686, a: 1}
 --- !u!111 &2357978701809207080
 Animation:
   m_ObjectHideFlags: 0
