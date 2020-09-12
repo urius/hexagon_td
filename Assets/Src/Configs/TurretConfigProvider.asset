@@ -21,6 +21,7 @@ MonoBehaviour:
     AttackRadiusCells: 2
     AttackInfluenceDistance: -1
     Damage: 10
+    SpeedMultiplier: 1
     ReloadTimeFrames: 12
     Price: 100
     BulletPrefab: {fileID: 2342135959751401273, guid: 4986b40ba9a9f4cbcb9d6e058103d71e,
@@ -36,6 +37,7 @@ MonoBehaviour:
     AttackRadiusCells: 3
     AttackInfluenceDistance: -1
     Damage: 15
+    SpeedMultiplier: 1
     ReloadTimeFrames: 10
     Price: 200
     BulletPrefab: {fileID: 2342135959751401273, guid: 1d72155b67db14a2cb7b80c3421b7594,
@@ -51,6 +53,7 @@ MonoBehaviour:
     AttackRadiusCells: 4
     AttackInfluenceDistance: -1
     Damage: 15
+    SpeedMultiplier: 1
     ReloadTimeFrames: 4
     Price: 400
     BulletPrefab: {fileID: 2342135959751401273, guid: 0abe4ab8ca0fe486fbb686cb07d46359,
@@ -66,6 +69,7 @@ MonoBehaviour:
     AttackRadiusCells: 4
     AttackInfluenceDistance: 30
     Damage: 2
+    SpeedMultiplier: 1
     ReloadTimeFrames: 10
     Price: 300
     BulletPrefab: {fileID: 2342135959751401273, guid: 4d8df476cffa44e0f88b3105ae074f9e,
@@ -81,6 +85,7 @@ MonoBehaviour:
     AttackRadiusCells: 5
     AttackInfluenceDistance: 35
     Damage: 4
+    SpeedMultiplier: 1
     ReloadTimeFrames: 8
     Price: 500
     BulletPrefab: {fileID: 2342135959751401273, guid: 0253c79555ee04e94b12db7d11b6d921,
@@ -96,6 +101,7 @@ MonoBehaviour:
     AttackRadiusCells: 6
     AttackInfluenceDistance: 40
     Damage: 8
+    SpeedMultiplier: 1
     ReloadTimeFrames: 6
     Price: 1000
     BulletPrefab: {fileID: 2342135959751401273, guid: 8ff30107a1b5545939ef0bc66a3a4e13,
@@ -111,6 +117,7 @@ MonoBehaviour:
     AttackRadiusCells: 4
     AttackInfluenceDistance: -1
     Damage: 10
+    SpeedMultiplier: 1
     ReloadTimeFrames: 50
     Price: 600
     BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
@@ -126,6 +133,7 @@ MonoBehaviour:
     AttackRadiusCells: 5
     AttackInfluenceDistance: -1
     Damage: 10
+    SpeedMultiplier: 1
     ReloadTimeFrames: 35
     Price: 800
     BulletPrefab: {fileID: 2338914357172053134, guid: 1a0d6411c1bd640cb853981c43d930d8,
@@ -141,6 +149,7 @@ MonoBehaviour:
     AttackRadiusCells: 6
     AttackInfluenceDistance: -1
     Damage: 10
+    SpeedMultiplier: 1
     ReloadTimeFrames: 15
     Price: 1500
     BulletPrefab: {fileID: 2338914357172053134, guid: fa07e6d5afeb249faabe592823d03392,
@@ -158,6 +167,7 @@ MonoBehaviour:
     AttackRadiusCells: 2
     AttackInfluenceDistance: -1
     Damage: 0
+    SpeedMultiplier: 0.6
     ReloadTimeFrames: 0
     Price: 400
     BulletPrefab: {fileID: 0}
@@ -172,6 +182,7 @@ MonoBehaviour:
     AttackRadiusCells: 3
     AttackInfluenceDistance: -1
     Damage: 0
+    SpeedMultiplier: 0.5
     ReloadTimeFrames: 0
     Price: 500
     BulletPrefab: {fileID: 0}
@@ -186,6 +197,7 @@ MonoBehaviour:
     AttackRadiusCells: 4
     AttackInfluenceDistance: -1
     Damage: 0
+    SpeedMultiplier: 0.4
     ReloadTimeFrames: 0
     Price: 800
     BulletPrefab: {fileID: 0}

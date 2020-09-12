@@ -52,7 +52,8 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 
             if (Vector3.SqrMagnitude(TargetView.transform.position - SelfPosition) > AttackRadiusSqr)
             {
-                dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE, TurretModel);
+                var param = new MediatorEventsParams.TurretUnitLeaveAttackZoneParams(TurretModel, TurretModel.TargetUnit);
+                dispatcher.Dispatch(MediatorEvents.TURRET_UNIT_LEAVE_ATTACK_ZONE, param);
             }
         }
     }

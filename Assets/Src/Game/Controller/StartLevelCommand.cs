@@ -11,6 +11,7 @@ public class StartLevelCommand : Command
         injectionBinder.GetInstance<ProcessUpdatesSystem>().Start();
         injectionBinder.GetInstance<UnitsControlSystem>().Start();
         injectionBinder.GetInstance<BulletsHitSystem>().Start();
+        injectionBinder.GetInstance<TurretsControlSystem>().Start();
 
         injectionBinder.GetInstance<ShowPathsMediator>();
     }

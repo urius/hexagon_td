@@ -69,16 +69,12 @@ public class GameContext : MVCSContext
         commandBinder.Bind(CommandEvents.SECOND_PASSED).To<SecondPassedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.REQUEST_BUILD_TURRET).To<RequestBuildTurretCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_GAME_SCREEN_CLICK).To<GameScreenClickedCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.TURRET_DETECTED_UNIT_IN_ATTACK_ZONE).To<ChooseTurretTargetCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.TURRET_TARGET_LOCKED).To<TurretLockTargetCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.TURRET_TARGET_LEAVE_ATTACK_ZONE).To<TurretTargetLeaveCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.TURRET_SELL_CLICKED).To<TurretSellClickedCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.TURRET_UPGRADE_CLICKED).To<TurretUpgradeClickedCommand>().Pooled();
 
         //controllers&systems
         injectionBinder.Bind<ProcessUpdatesSystem>().ToSingleton();
         injectionBinder.Bind<UnitsControlSystem>().ToSingleton();
-        injectionBinder.Bind<BulletsHitSystem>().ToSingleton();        
+        injectionBinder.Bind<BulletsHitSystem>().ToSingleton();      
+        injectionBinder.Bind<TurretsControlSystem>().ToSingleton();
 
         //debug
         commandBinder.Bind(MediatorEvents.DEBUG_BUTTON_CLICKED).To<DebugCommand>();

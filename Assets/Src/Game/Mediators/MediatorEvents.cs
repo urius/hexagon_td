@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MediatorEvents
@@ -14,7 +13,6 @@ public class MediatorEvents
     public static string UNIT_DESTROY_ANIMATION_FINISHED = "UNIT_DESTROY_ANIMATION_FINISHED";
     public static string TURRET_DETECTED_UNIT_IN_ATTACK_ZONE = "TURRET_NOTIFY_UNIT_IN_ATTACK_ZONE";
     public static string TURRET_TARGET_LOCKED = "TURRET_TARGET_LOCKED";
-    public static string TURRET_TARGET_LEAVE_ATTACK_ZONE = "TURRET_TARGET_LEAVE_ATTACK_ZONE";
     public static string TURRET_UNIT_LEAVE_ATTACK_ZONE = "TURRET_UNIT_LEAVE_ATTACK_ZONE";
     public static string BULLET_HIT_TARGETS = "BULLET_HIT_TARGETS";
     public static string TURRET_DESELECTED = "TURRET_DESELECTED";

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UnitModel
@@ -8,8 +9,10 @@ public class UnitModel
 
     private int _currentPathCellIndex = 0;
     private IReadOnlyList<Vector2Int> _path;
+    private float _turretsSpeedMultiplier = 1;
 
     private readonly UnitConfig _config;
+    private readonly LinkedList<TurretModel> _slowDownAffectors = new LinkedList<TurretModel>();
 
     public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config)
     {
@@ -36,6 +39,7 @@ public class UnitModel
     public UnitStateBase PreviousState { get; private set; }
     public UnitStateName PreviousStateName => PreviousState.StateName;
     public UnitStateBase CurrentState { get; private set; }
+
     public UnitStateName CurrentStateName => CurrentState.StateName;
     public bool IsOnLastCell => _currentPathCellIndex >= _path.Count - 1;
     public bool IsOnPreLastCell => _currentPathCellIndex == _path.Count - 2;
@@ -49,7 +53,7 @@ public class UnitModel
         if (state.StateName == UnitStateName.Moving)
         {
             _currentPathCellIndex++;
-            Speed = (state as MovingState).SpeedMultiplier * _config.Speed;
+            Speed = (state as MovingState).SpeedMultiplier * _turretsSpeedMultiplier * _config.Speed;
             PreviousCellPosition = CurrentCellPosition;
             CurrentCellPosition = NextCellPosition;
             NextCellPosition = _path[ClampCellIndex(_currentPathCellIndex + 1)];
@@ -102,6 +106,46 @@ public class UnitModel
     public void SetDestroingState()
     {
         SetState(new DestroingState(CurrentCellPosition));
+
+        while (_slowDownAffectors.Count > 0)
+        {
+            RemoveSlowTurretAffect(_slowDownAffectors.First.Value);
+        }
+    }
+
+    public void AffectBySlowTurret(TurretModel turretModel)
+    {
+        turretModel.Upgraded += OnTurretUpgraded;
+
+        _slowDownAffectors.AddLast(turretModel);
+
+        RecalculateTurretsSlowDownModifier();
+    }
+
+    public void RemoveSlowTurretAffect(TurretModel turretModel)
+    {
+        turretModel.Upgraded -= OnTurretUpgraded;
+
+        _slowDownAffectors.Remove(turretModel);
+
+        RecalculateTurretsSlowDownModifier();
+    }
+
+    private void OnTurretUpgraded()
+    {
+        RecalculateTurretsSlowDownModifier();
+    }
+
+    private void RecalculateTurretsSlowDownModifier()
+    {
+        if (_slowDownAffectors.Any())
+        {
+            _turretsSpeedMultiplier = _slowDownAffectors.Min(t => t.SpeedMultiplier);
+        }
+        else
+        {
+            _turretsSpeedMultiplier = 1;
+        }
     }
 
     private int ClampCellIndex(int index)

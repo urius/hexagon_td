@@ -13,6 +13,7 @@ public class TurretModel
     public TurretType TurretType;
     public int AttackRadiusCells;
     public int Damage;
+    public float SpeedMultiplier;
     public int ReloadTimeFrames;
     public TurretConfig TurretConfig;
 
@@ -64,6 +65,7 @@ public class TurretModel
         TurretType = turretConfig.TurretType;
         AttackRadiusCells = turretConfig.AttackRadiusCells;
         Damage = turretConfig.Damage;
+        SpeedMultiplier = turretConfig.SpeedMultiplier;
         ReloadTimeFrames = turretConfig.ReloadTimeFrames;
     }
 

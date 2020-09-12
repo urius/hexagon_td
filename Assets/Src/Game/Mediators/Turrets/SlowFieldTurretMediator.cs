@@ -76,16 +76,16 @@ public class SlowFieldTurretMediator : TurretMediatorBase
             {
                 _unitsInZone.Remove(unitModel);
 
-                var param = new MediatorEventsParams.TurretUnitInAttackZoneParams(TurretModel, unitModel);
+                var param = new MediatorEventsParams.TurretUnitLeaveAttackZoneParams(TurretModel, unitModel);
                 dispatcher.Dispatch(MediatorEvents.TURRET_UNIT_LEAVE_ATTACK_ZONE, param);
-
-                if (_unitsInZone.Count == 0)
-                {
-                    _turretView.StopFire();
-                }
 
                 break;
             }
+        }
+
+        if (_unitsInZone.Count == 0)
+        {
+            _turretView.StopFire();
         }
     }
 
