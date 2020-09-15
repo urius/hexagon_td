@@ -88,6 +88,13 @@ public enum CellSubType
     Type_6,
     Type_7,
     Type_8,
+    Type_9,
+    Type_10,
+    Type_11,
+    Type_12,
+    Type_13,
+    Type_14,
+    Type_15,
 }
 
 public enum GroundType
@@ -124,4 +131,13 @@ public enum ModifierType
     SpeedDown,
     ExtraMoney,
     ExtraBigMoney,
+    Mine,
+    Repair,
+    NoBuild,
+    Direction_45,
+    Direction_90,
+    Direction_135,
+    Direction_225,
+    Direction_270,
+    Direction_315,
 }
