@@ -1323,6 +1323,34 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 10
+  - CellPosition: {x: 3, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 2, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 3, y: -2}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 3, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 0, y: -7}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 1, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 2, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
   _waveConfigs:
   - Units: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     WillSpawnFromBaseConfigs: []

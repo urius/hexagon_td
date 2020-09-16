@@ -62,7 +62,10 @@ public class LevelModel
 
     public bool IsReadyToBuild(Vector2Int cellPosition)
     {
-        if (IsGround(cellPosition) && !LevelTurretsModel.HaveTurret(cellPosition) && LevelUnitsModel.IsCellWithoutUnit(cellPosition))
+        if (IsGround(cellPosition)
+            && !HasNoBuildModifier(cellPosition)
+            && !LevelTurretsModel.HaveTurret(cellPosition)
+            && LevelUnitsModel.IsCellWithoutUnit(cellPosition))
         {
             if (PathsManager.ContainsInCachedPaths(cellPosition))
             {
@@ -89,6 +92,11 @@ public class LevelModel
     {
         var cell = _levelConfig.Cells.FirstOrDefault(c => c.CellPosition == cellPosition);
         return cell != null && cell.CellConfigMin.CellType == CellType.Ground;
+    }
+
+    private bool HasNoBuildModifier(Vector2Int cellPosition)
+    {
+        return _modifiers.TryGetValue(cellPosition, out var modifier) && modifier == ModifierType.NoBuild;
     }
 
     public IReadOnlyList<CellDataMin> Cells => _levelConfig.Cells;
