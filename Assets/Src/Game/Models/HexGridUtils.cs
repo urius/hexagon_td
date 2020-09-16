@@ -8,21 +8,21 @@ public class HexGridUtils
        {
         new Vector2Int[]
         {
-            new Vector2Int(1 ,0),
-            new Vector2Int(-1 ,0),
             new Vector2Int(0 ,1),
+            new Vector2Int(1 ,0),
             new Vector2Int(0 ,-1),
-            new Vector2Int(-1, 1),
             new Vector2Int(-1, -1),
+            new Vector2Int(-1 ,0),
+            new Vector2Int(-1, 1),
         },
         new Vector2Int[]
         {
+            new Vector2Int(1, 1),
             new Vector2Int(1 ,0),
+            new Vector2Int(1, -1),
+            new Vector2Int(0 ,-1),
             new Vector2Int(-1 ,0),
             new Vector2Int(0 ,1),
-            new Vector2Int(0 ,-1),
-            new Vector2Int(1, 1),
-            new Vector2Int(1, -1),
         }
        };
 
@@ -33,4 +33,19 @@ public class HexGridUtils
             yield return cellPosition + deltaCoord;
         }
     }
+
+    public static Vector2Int GetNearCellPosition(Vector2Int cellPosition, HexDirection direction)
+    {
+        return cellPosition + _deltaCoords[Math.Abs(cellPosition.y % 2)][(int)direction];
+    }
+}
+
+public enum HexDirection
+{
+    Degree30 = 0,
+    Degree90 = 1,
+    Degree150 = 2,
+    Degree210 = 3,
+    Degree270 = 4,
+    Degree330 = 5,
 }

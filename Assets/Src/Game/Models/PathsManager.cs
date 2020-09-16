@@ -114,6 +114,25 @@ public class PathsManager : ICellsProvider<Vector2Int>
         var currentCellType = _walkableCellsByCoord[cellPosition];
         var result = new List<Vector2Int>();
 
+        if (_modifiers.TryGetValue(cellPosition, out var modifier))
+        {
+            switch (modifier)
+            {
+                case ModifierType.Direction_30:
+                    return GetNearCell(cellPosition, HexDirection.Degree30);
+                case ModifierType.Direction_90:
+                    return GetNearCell(cellPosition, HexDirection.Degree90);
+                case ModifierType.Direction_150:
+                    return GetNearCell(cellPosition, HexDirection.Degree150);
+                case ModifierType.Direction_210:
+                    return GetNearCell(cellPosition, HexDirection.Degree210);
+                case ModifierType.Direction_270:
+                    return GetNearCell(cellPosition, HexDirection.Degree270);
+                case ModifierType.Direction_330:
+                    return GetNearCell(cellPosition, HexDirection.Degree330);
+            }
+        }
+
         var nearCells = HexGridUtils.GetPositionsNearCell(cellPosition)
             .Where(IsOkToWalk);
 
@@ -132,6 +151,13 @@ public class PathsManager : ICellsProvider<Vector2Int>
         result.AddRange(nearCells);
 
         return result;
+    }
+
+    private IEnumerable<Vector2Int> GetNearCell(Vector2Int cellPosition, HexDirection direction)
+    {
+        return IsOkToWalk(cellPosition)
+            ? (new Vector2Int[] { HexGridUtils.GetNearCellPosition(cellPosition, direction) })
+            : Enumerable.Empty<Vector2Int>();
     }
 
     private bool IsOkToWalk(Vector2Int cell)

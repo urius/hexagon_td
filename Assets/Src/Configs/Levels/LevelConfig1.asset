@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ea1f398fba2428e9ad0669899d7e62, type: 3}
   m_Name: LevelConfig1
   m_EditorClassIdentifier: 
-  IsTransposed: 1
+  IsTransposed: 0
   _cellConfigs:
   - CellPosition: {x: -7, y: 9}
     CellConfigMin:
@@ -1271,10 +1271,58 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 3
+  - CellPosition: {x: 1, y: 2}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 7
+  - CellPosition: {x: -5, y: -2}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 7
+  - CellPosition: {x: -4, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 9
+  - CellPosition: {x: -3, y: -2}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 10
+  - CellPosition: {x: -4, y: -3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 10
+  - CellPosition: {x: -4, y: -4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 9
+  - CellPosition: {x: -4, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 10
+  - CellPosition: {x: -4, y: -6}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 11
+  - CellPosition: {x: -5, y: -6}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 12
+  - CellPosition: {x: -5, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 7
+  - CellPosition: {x: -4, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 8
+  - CellPosition: {x: -3, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 9
+  - CellPosition: {x: -3, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 10
   _waveConfigs:
   - Units: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-    WillSpawnFromBaseConfigs:
-    - BaseCellPosition: {x: 4, y: -6}
-      WillSpawnFrom: 1
-    - BaseCellPosition: {x: -6, y: -1}
-      WillSpawnFrom: 1
+    WillSpawnFromBaseConfigs: []

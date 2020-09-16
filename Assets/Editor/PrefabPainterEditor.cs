@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -8,6 +6,8 @@ using UnityEngine;
 public class PrefabPainterEditor : EditorWindow
 {
     private static string _windowTitle = "Prefab Painter";
+    private static string _sceneNameToRestore;
+
     private bool _isDrawing;
     private GridView _grid;
     private ConfigsHolder _configsProvider;
@@ -27,6 +27,7 @@ public class PrefabPainterEditor : EditorWindow
     [MenuItem("Tools/Cells Prefab Painter")]
     private static void InitWindow()
     {
+        _sceneNameToRestore = EditorSceneManager.GetActiveScene().path;
         EditorSceneManager.OpenScene("Assets/Scenes/EditLevelScene.unity");
 
         var window = GetWindow<PrefabPainterEditor>();
@@ -82,6 +83,9 @@ public class PrefabPainterEditor : EditorWindow
     private void OnDisable()
     {
         DestroyAllCells();
+
+        EditorSceneManager.OpenScene(_sceneNameToRestore);
+
         SceneView.duringSceneGui -= DuringSceneGui;
     }
 
