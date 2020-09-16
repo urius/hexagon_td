@@ -65,4 +65,12 @@ public class LevelUnitsModel
     {
         return !_cellOwners.TryGetValue(cellPosition, out var _);
     }
+
+    public void ApplyDamageToUnit(UnitModel unit, int damage)
+    {
+        if (unit.HP > 0 && unit.ApplyDamage(damage) <= 0)
+        {
+            DestroyUnit(unit);
+        }
+    }
 }

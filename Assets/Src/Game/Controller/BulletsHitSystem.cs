@@ -19,10 +19,7 @@ public class BulletsHitSystem : EventSystemBase
         var param = payload.data as MediatorEventsParams.BulletHitTargetsParams;
         foreach (var unit in param.UnitModels)
         {
-            if (unit.HP > 0 && unit.ApplyDamage(param.BulletDamage) <= 0)
-            {
-                LevelUnitsModel.DestroyUnit(unit);
-            }
+            LevelUnitsModel.ApplyDamageToUnit(unit, param.BulletDamage);
         }
     }
 }

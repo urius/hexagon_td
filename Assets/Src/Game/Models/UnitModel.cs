@@ -6,6 +6,7 @@ using UnityEngine;
 public class UnitModel
 {
     public event Action StateUpdated = delegate { };
+    public event Action HpChanged = delegate { };
 
     private int _currentPathCellIndex = 0;
     private IReadOnlyList<Vector2Int> _path;
@@ -100,7 +101,14 @@ public class UnitModel
     public int ApplyDamage(int bulletDamage)
     {
         HP = Math.Max(HP - bulletDamage, 0);
+        HpChanged();
         return HP;
+    }
+
+    public void Repair(int hpAmount)
+    {
+        HP = Math.Min(HP + hpAmount, _config.HP);
+        HpChanged();
     }
 
     public void SetDestroingState()

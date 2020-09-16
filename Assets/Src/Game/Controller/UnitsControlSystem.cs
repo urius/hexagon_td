@@ -85,7 +85,7 @@ public class UnitsControlSystem : EventSystemBase
                 LevelModel.DispatchTeleporting(unit.PreviousCellPosition, unit.CurrentCellPosition);
             }
         }
-        else
+        else if (unit.CurrentStateName != UnitStateName.WaitingForCell)
         {
             LevelUnitsModel.OwnCellByUnit(unit);
             unit.SetState(new WaitingState(unit.CurrentCellPosition, unit.NextCellPosition));
@@ -99,7 +99,28 @@ public class UnitsControlSystem : EventSystemBase
 
     private void OnUnitMoveToCellFinished(IEvent payload)
     {
+        AffectCellModifier(payload.data as UnitModel);
         UpdateUnitState(payload.data as UnitModel);
+    }
+
+    private void AffectCellModifier(UnitModel unit)
+    {
+        if (LevelModel.TryGetModifier(unit.CurrentCellPosition, out var modifier))
+        {
+            switch (modifier)
+            {
+                case ModifierType.Repair:
+                    unit.Repair(5);// take value from level config
+                    break;
+                case ModifierType.Mine:
+                    LevelUnitsModel.ApplyDamageToUnit(unit, 5); // take value from level config
+                    break;
+                case ModifierType.ExtraMoney:
+                    break;
+                case ModifierType.ExtraBigMoney:
+                    break;
+            }
+        }
     }
 
     private void OnUnitRequestFreeCell(IEvent payload)

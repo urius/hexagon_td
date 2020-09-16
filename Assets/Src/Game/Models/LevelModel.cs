@@ -60,6 +60,11 @@ public class LevelModel
         return 1;
     }
 
+    public bool TryGetModifier(Vector2Int cell, out ModifierType modifier)
+    {
+        return _modifiers.TryGetValue(cell, out modifier);
+    }
+
     public bool IsReadyToBuild(Vector2Int cellPosition)
     {
         if (IsGround(cellPosition)
