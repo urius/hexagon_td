@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelModel
 {
     public event Action<Vector2Int, Vector2Int> Teleporting = delegate { };
+    public event Action MoneyAmountUpdated = delegate { };
 
     public bool IsInitialized = false;
 
@@ -16,10 +17,17 @@ public class LevelModel
     public readonly LevelUnitsModel LevelUnitsModel = new LevelUnitsModel();
     public readonly PathsManager PathsManager;
 
+    public readonly int ModifierRepairValue;
+    public readonly int ModifierMineDamage;
+    public readonly int ModifierMoneyAmount;
+    public readonly int ModifierBigMoneyAmount;
+
     private readonly LevelConfig _levelConfig;
 
     private readonly Vector2Int[] _teleportCellPositions;
     private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
+
+    private int _money;
 
     public LevelModel(LevelConfig levelConfig)
     {
@@ -32,7 +40,15 @@ public class LevelModel
         _modifiers = levelConfig.Modifiers.ToDictionary(c => c.CellPosition, c => (ModifierType)c.CellConfigMin.CellSubType);
 
         PathsManager = new PathsManager(levelConfig.Cells, _modifiers, LevelTurretsModel, LevelUnitsModel);
+
+        _money = _levelConfig.StartMoneyAmount;
+        ModifierRepairValue = _levelConfig.ModifierRepairValue;
+        ModifierMineDamage = _levelConfig.ModifierMineDamage;
+        ModifierMoneyAmount = _levelConfig.ModifierMoneyAmount;
+        ModifierBigMoneyAmount = _levelConfig.ModifierBigMoneyAmount;
     }
+
+    public int Money => _money;
 
     public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
     {
@@ -115,6 +131,23 @@ public class LevelModel
     public IEnumerable<IReadOnlyList<Vector2Int>> GetPaths()
     {
         return SpawnCells.Select(c => GetPath(c.CellPosition)).ToArray();
+    }
+
+    public bool TryAddMoney(int amount)
+    {
+        if (_money - amount < 0)
+        {
+            return false;
+        }
+        _money += amount;
+        MoneyAmountUpdated();
+
+        return true;
+    }
+
+    public bool TrySubstractMoney(int amount)
+    {
+        return TryAddMoney(-amount);
     }
 }
 

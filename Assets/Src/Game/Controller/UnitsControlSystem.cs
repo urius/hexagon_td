@@ -110,14 +110,16 @@ public class UnitsControlSystem : EventSystemBase
             switch (modifier)
             {
                 case ModifierType.Repair:
-                    unit.Repair(5);// take value from level config
+                    unit.Repair(LevelModel.ModifierRepairValue);
                     break;
                 case ModifierType.Mine:
-                    LevelUnitsModel.ApplyDamageToUnit(unit, 5); // take value from level config
+                    LevelUnitsModel.ApplyDamageToUnit(unit, LevelModel.ModifierMineDamage);
                     break;
                 case ModifierType.ExtraMoney:
+                    LevelModel.TryAddMoney(LevelModel.ModifierMoneyAmount);
                     break;
                 case ModifierType.ExtraBigMoney:
+                    LevelModel.TryAddMoney(LevelModel.ModifierBigMoneyAmount);
                     break;
             }
         }

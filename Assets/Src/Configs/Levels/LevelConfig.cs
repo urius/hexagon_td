@@ -10,6 +10,12 @@ public class LevelConfig : ScriptableObject
 
     [SerializeField] public bool IsTransposed;
 
+    [SerializeField] public int StartMoneyAmount = 1000;
+    [SerializeField] public int ModifierRepairValue = 5;
+    [SerializeField] public int ModifierMineDamage = 5;
+    [SerializeField] public int ModifierMoneyAmount = 10;
+    [SerializeField] public int ModifierBigMoneyAmount = 30;
+
     [SerializeField] private CellDataMin[] _cellConfigs = new CellDataMin[0];
     public IReadOnlyList<CellDataMin> Cells => _cellConfigs;
 
