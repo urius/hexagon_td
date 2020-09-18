@@ -31,13 +31,22 @@ public class UnitViewMediator : EventMediator
         _unitModel = modelByView.GetModel(unitView);
 
         _unitModel.StateUpdated += OnStateUpdated;
+        _unitModel.EarnMoneyAnimationTriggered += OnEarnMoneyTriggered;
         updateProvider.UpdateAction += OnUpdate;
     }
+
     public void OnDestroy()
     {
         StopTweeners();
         _unitModel.StateUpdated -= OnStateUpdated;
+        _unitModel.EarnMoneyAnimationTriggered -= OnEarnMoneyTriggered;
         updateProvider.UpdateAction -= OnUpdate;
+    }
+
+    private void OnEarnMoneyTriggered(int moneyAmount)
+    {
+        dispatcher.Dispatch(MediatorEvents.UNIT_EARN_MONEY_ANIMATION,
+            new MediatorEventsParams.UnitTriggerEarnMoneyAnimationParams(unitView.transform.position, moneyAmount));
     }
 
     private void OnUpdate()
@@ -128,6 +137,7 @@ public class UnitViewMediator : EventMediator
                     if (_unitModel.IsNextCellNear && !_unitModel.IsOnLastCell)
                     {
                         _targetRotation = GetTargetRotation(true);
+                        DispatchPreRotationStep();
                         if (ProcessRotationStep())
                         {
                             _stateStep = -1;
@@ -262,5 +272,10 @@ public class UnitViewMediator : EventMediator
     private void DispatchHalfStatePassed()
     {
         dispatcher.Dispatch(MediatorEvents.UNIT_HALF_STATE_PASSED, _unitModel);
+    }
+
+    private void DispatchPreRotationStep()
+    {
+        dispatcher.Dispatch(MediatorEvents.UNIT_BEFORE_ROTATION, _unitModel);
     }
 }

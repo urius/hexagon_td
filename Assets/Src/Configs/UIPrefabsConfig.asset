@@ -22,3 +22,5 @@ MonoBehaviour:
     type: 3}
   PathLinePrefab: {fileID: 6421234071440195023, guid: ac84d033a926645baa38849fc82b7629,
     type: 3}
+  FlyingTextPrefab: {fileID: 1308853209302066814, guid: af407b20651ca4f52930d9402edb2b5f,
+    type: 3}

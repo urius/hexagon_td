@@ -7,6 +7,7 @@ public class UnitModel
 {
     public event Action StateUpdated = delegate { };
     public event Action HpChanged = delegate { };
+    public event Action<int> EarnMoneyAnimationTriggered = delegate { };
 
     private int _currentPathCellIndex = 0;
     private IReadOnlyList<Vector2Int> _path;
@@ -137,6 +138,11 @@ public class UnitModel
         _slowDownAffectors.Remove(turretModel);
 
         RecalculateTurretsSlowDownModifier();
+    }
+
+    public void ShowEarnedMoney(int moneyAmount)
+    {
+        EarnMoneyAnimationTriggered(moneyAmount);
     }
 
     private void OnTurretUpgraded()

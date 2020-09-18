@@ -1,4 +1,5 @@
 ﻿using System;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class GameScreenPanelMediator : EventMediator
     [Inject] public ScreenPanelViewHolder ScreenPanelViewHolder { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public WorldMousePositionProvider WorldMousePositionProvider { get; set; }
+    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
 
     private Vector3 _screenMouseDownPos;
     private float _clickSensitivityPixelsSqr;
@@ -21,6 +23,7 @@ public class GameScreenPanelMediator : EventMediator
 
         ScreenPanelView.PointerDown += OnGameScreenPointerDown;
         ScreenPanelView.PointerUp += OnGameScreenPointerUp;
+        dispatcher.AddListener(MediatorEvents.UNIT_EARN_MONEY_ANIMATION, OnEarnMoneyAnimationRequest);
     }
 
     public override void OnRemove()
@@ -29,6 +32,7 @@ public class GameScreenPanelMediator : EventMediator
 
         ScreenPanelView.PointerDown -= OnGameScreenPointerDown;
         ScreenPanelView.PointerUp -= OnGameScreenPointerUp;
+        dispatcher.RemoveListener(MediatorEvents.UNIT_EARN_MONEY_ANIMATION, OnEarnMoneyAnimationRequest);
     }
 
     private void OnGameScreenPointerDown()
@@ -49,5 +53,19 @@ public class GameScreenPanelMediator : EventMediator
 
             dispatcher.Dispatch(MediatorEvents.UI_GAME_SCREEN_CLICK, cellMousePosition);
         }
+    }
+
+    private void OnEarnMoneyAnimationRequest(IEvent payload)
+    {
+        var data = payload.data as MediatorEventsParams.UnitTriggerEarnMoneyAnimationParams;
+        var flyingTextGo = Instantiate(UIPrefabsConfig.FlyingTextPrefab, ScreenPanelView.transform);
+        var flyingText = flyingTextGo.GetComponent<FlyingTextView>();
+
+        flyingText.SetText($"+{data.MoneyAmount}$");
+        flyingText.SetColor(Color.green);
+        var rectTransform = flyingTextGo.GetComponent<RectTransform>();
+        var viewportPoint = Camera.main.WorldToViewportPoint(data.WorldPosition);
+        rectTransform.anchorMin = viewportPoint;
+        rectTransform.anchorMax = viewportPoint;
     }
 }

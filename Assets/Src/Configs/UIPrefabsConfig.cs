@@ -10,4 +10,5 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject TurretSelectionPrefab;
     public GameObject UpgradePSPrefab;
     public GameObject PathLinePrefab;
+    public GameObject FlyingTextPrefab;
 }

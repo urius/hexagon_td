@@ -20,6 +20,7 @@ public class UnitsControlSystem : EventSystemBase
         dispatcher.AddListener(MediatorEvents.UNIT_SPAWNED, OnUnitSpawnAnimationEnded);
         dispatcher.AddListener(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED, OnUnitMoveToCellFinished);
         dispatcher.AddListener(MediatorEvents.UNIT_HALF_STATE_PASSED, OnUnitRequestFreeCell);
+        dispatcher.AddListener(MediatorEvents.UNIT_BEFORE_ROTATION, OnUnitBeforeRotation);
     }
 
     private void OnUpdate()
@@ -99,8 +100,12 @@ public class UnitsControlSystem : EventSystemBase
 
     private void OnUnitMoveToCellFinished(IEvent payload)
     {
-        AffectCellModifier(payload.data as UnitModel);
         UpdateUnitState(payload.data as UnitModel);
+    }
+
+    private void OnUnitBeforeRotation(IEvent payload)
+    {
+        AffectCellModifier(payload.data as UnitModel);
     }
 
     private void AffectCellModifier(UnitModel unit)
@@ -116,13 +121,19 @@ public class UnitsControlSystem : EventSystemBase
                     LevelUnitsModel.ApplyDamageToUnit(unit, LevelModel.ModifierMineDamage);
                     break;
                 case ModifierType.ExtraMoney:
-                    LevelModel.TryAddMoney(LevelModel.ModifierMoneyAmount);
+                    ProcessExtraMoneyModifier(unit, LevelModel.ModifierMoneyAmount);
                     break;
                 case ModifierType.ExtraBigMoney:
-                    LevelModel.TryAddMoney(LevelModel.ModifierBigMoneyAmount);
+                    ProcessExtraMoneyModifier(unit, LevelModel.ModifierBigMoneyAmount);
                     break;
             }
         }
+    }
+
+    private void ProcessExtraMoneyModifier(UnitModel unit, int moneyAmount)
+    {
+        unit.ShowEarnedMoney(moneyAmount);
+        LevelModel.TryAddMoney(moneyAmount);
     }
 
     private void OnUnitRequestFreeCell(IEvent payload)
