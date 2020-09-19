@@ -7,6 +7,7 @@ public class TurretModel
     public event Action Fired = delegate { };
     public event Action Upgraded = delegate { };
     public event Action Destroyed = delegate { };
+    public event Action<int> SellAnimationTriggered = delegate { };
 
     public readonly Vector2Int Position;
 
@@ -95,6 +96,11 @@ public class TurretModel
         if (IsDestroyed) return;
         ReloadFramesLeft = ReloadTimeFrames;
         Fired();
+    }
+
+    internal void TriggerSellAnimation(int sellPrice)
+    {
+        SellAnimationTriggered(sellPrice);
     }
 
     public void Destroy()

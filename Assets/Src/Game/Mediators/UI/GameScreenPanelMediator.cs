@@ -23,7 +23,7 @@ public class GameScreenPanelMediator : EventMediator
 
         ScreenPanelView.PointerDown += OnGameScreenPointerDown;
         ScreenPanelView.PointerUp += OnGameScreenPointerUp;
-        dispatcher.AddListener(MediatorEvents.UNIT_EARN_MONEY_ANIMATION, OnEarnMoneyAnimationRequest);
+        dispatcher.AddListener(MediatorEvents.EARN_MONEY_ANIMATION, OnEarnMoneyAnimationRequest);
     }
 
     public override void OnRemove()
@@ -32,7 +32,7 @@ public class GameScreenPanelMediator : EventMediator
 
         ScreenPanelView.PointerDown -= OnGameScreenPointerDown;
         ScreenPanelView.PointerUp -= OnGameScreenPointerUp;
-        dispatcher.RemoveListener(MediatorEvents.UNIT_EARN_MONEY_ANIMATION, OnEarnMoneyAnimationRequest);
+        dispatcher.RemoveListener(MediatorEvents.EARN_MONEY_ANIMATION, OnEarnMoneyAnimationRequest);
     }
 
     private void OnGameScreenPointerDown()
@@ -57,7 +57,7 @@ public class GameScreenPanelMediator : EventMediator
 
     private void OnEarnMoneyAnimationRequest(IEvent payload)
     {
-        var data = payload.data as MediatorEventsParams.UnitTriggerEarnMoneyAnimationParams;
+        var data = payload.data as MediatorEventsParams.EarnMoneyAnimationParams;
         var flyingTextGo = Instantiate(UIPrefabsConfig.FlyingTextPrefab, ScreenPanelView.transform);
         var flyingText = flyingTextGo.GetComponent<FlyingTextView>();
 

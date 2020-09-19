@@ -45,8 +45,8 @@ public class UnitViewMediator : EventMediator
 
     private void OnEarnMoneyTriggered(int moneyAmount)
     {
-        dispatcher.Dispatch(MediatorEvents.UNIT_EARN_MONEY_ANIMATION,
-            new MediatorEventsParams.UnitTriggerEarnMoneyAnimationParams(unitView.transform.position, moneyAmount));
+        dispatcher.Dispatch(MediatorEvents.EARN_MONEY_ANIMATION,
+            new MediatorEventsParams.EarnMoneyAnimationParams(unitView.transform.position, moneyAmount));
     }
 
     private void OnUpdate()

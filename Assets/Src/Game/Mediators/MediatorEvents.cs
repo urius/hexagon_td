@@ -10,7 +10,7 @@ public class MediatorEvents
     public static string UNIT_MOVE_TO_NEXT_CELL_FINISHED = "UNIT_MOVE_TO_NEXT_CELL_FINISHED";
     public static string UNIT_HALF_STATE_PASSED = "UNIT_HALF_STATE_PASSED"; 
     public static string UNIT_BEFORE_ROTATION = "UNIT_BEFORE_ROTATION";
-    public static string UNIT_EARN_MONEY_ANIMATION = "UNIT_EARN_MONEY_ANIMATION";
+    public static string EARN_MONEY_ANIMATION = "UNIT_EARN_MONEY_ANIMATION";
     public static string REQUEST_BUILD_TURRET = "REQUEST_BUILD_TURRET";
     public static string UNIT_DESTROY_ANIMATION_FINISHED = "UNIT_DESTROY_ANIMATION_FINISHED";
     public static string TURRET_DETECTED_UNIT_IN_ATTACK_ZONE = "TURRET_NOTIFY_UNIT_IN_ATTACK_ZONE";
@@ -85,12 +85,12 @@ public static class MediatorEventsParams
         }
     }
 
-    public class UnitTriggerEarnMoneyAnimationParams
+    public class EarnMoneyAnimationParams
     {
         public readonly Vector3 WorldPosition;
         public readonly int MoneyAmount;
 
-        public UnitTriggerEarnMoneyAnimationParams(Vector3 wordPosition, int moneyAmount)
+        public EarnMoneyAnimationParams(Vector3 wordPosition, int moneyAmount)
         {
             WorldPosition = wordPosition;
             MoneyAmount = moneyAmount;

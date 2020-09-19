@@ -7,6 +7,7 @@ public class LevelModel
 {
     public event Action<Vector2Int, Vector2Int> Teleporting = delegate { };
     public event Action MoneyAmountUpdated = delegate { };
+    public event Action InsufficientMoneyTriggered = delegate { };
 
     public bool IsInitialized = false;
 
@@ -135,7 +136,7 @@ public class LevelModel
 
     public bool TryAddMoney(int amount)
     {
-        if (_money - amount < 0)
+        if (_money + amount < 0)
         {
             return false;
         }
@@ -148,6 +149,11 @@ public class LevelModel
     public bool TrySubstractMoney(int amount)
     {
         return TryAddMoney(-amount);
+    }
+
+    public void TriggerInsufficientMoney()
+    {
+        InsufficientMoneyTriggered();
     }
 }
 

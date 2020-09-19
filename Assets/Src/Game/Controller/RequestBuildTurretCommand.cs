@@ -12,6 +12,12 @@
         if (LevelModel.IsReadyToBuild(data.GridPosition))
         {
             var turretConfig = TurretConfigProvider.GetConfig(data.TurretType, 0);
+            if (!LevelModel.TrySubstractMoney(turretConfig.Price))
+            {
+                LevelModel.TriggerInsufficientMoney();
+                return;
+            }
+
             var turretModel = new TurretModel(turretConfig, data.GridPosition);
             LevelModel.LevelTurretsModel.AddTurret(turretModel);
 

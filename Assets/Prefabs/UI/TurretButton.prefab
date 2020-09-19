@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 2730768260105418432}
   _costTextField: {fileID: 2730768261255909689}
-  _disabledTextColor: {r: 0.58431375, g: 0.5058824, b: 0.36078432, a: 0.8235294}
+  _disabledTextColor: {r: 0.7647059, g: 1, b: 0, a: 0.4392157}
   _eventTrigger: {fileID: 7886352286900732434}
   _turretTypeId: 0
 --- !u!114 &2730768260105418433
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.37254903, g: 0.7647059, b: 0.3882353, a: 1}
+  m_Color: {r: 0.7647059, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

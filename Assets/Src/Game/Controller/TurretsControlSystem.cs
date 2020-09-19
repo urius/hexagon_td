@@ -5,6 +5,7 @@ public class TurretsControlSystem : EventSystemBase
     [Inject] public TurretConfigProvider TurretConfigProvider { get; set; }
     [Inject] public LevelTurretsModel LevelTurretsModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     public override void Start()
     {
@@ -50,21 +51,30 @@ public class TurretsControlSystem : EventSystemBase
         var upgradedTurretConfig = TurretConfigProvider.GetConfig(turret.TurretType, turret.TurretConfig.TurretLevelIndex + 1);
         if (upgradedTurretConfig != null)
         {
-            turret.Upgrade(upgradedTurretConfig);
+            if (LevelModel.TrySubstractMoney(upgradedTurretConfig.Price - turret.TurretConfig.Price))
+            {
+                turret.Upgrade(upgradedTurretConfig);
+            } else
+            {
+                LevelModel.TriggerInsufficientMoney();
+            }
         }
     }
 
     private void OnTurretSellClicked(IEvent payload)
     {
         var turret = payload.data as TurretModel;
-
-        turret.Destroy();
-        LevelTurretsModel.RemoveTurret(turret);
-        foreach (var unitModel in LevelUnitsModel.Units)
+        var sellPrice = (int)(turret.TurretConfig.Price * 0.5);
+        if (LevelModel.TryAddMoney(sellPrice))
         {
-            unitModel.RemoveSlowTurretAffect(turret);
-        }
+            turret.TriggerSellAnimation(sellPrice);
 
-        //TODO: add money
+            turret.Destroy();
+            LevelTurretsModel.RemoveTurret(turret);
+            foreach (var unitModel in LevelUnitsModel.Units)
+            {
+                unitModel.RemoveSlowTurretAffect(turret);
+            }
+        }
     }
 }

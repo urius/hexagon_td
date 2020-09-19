@@ -26,6 +26,11 @@ public class BuildTurretButtonView : View
         _costTextField.color = isEnabled ? _textFieldDefaultColor : _disabledTextColor;
     }
 
+    public void SetCost(int price)
+    {
+        _costTextField.text = $"{price}$";
+    }
+
     public void OnButtonPointerDown()
     {
         Debug.Log("OnButtonPointerDown");

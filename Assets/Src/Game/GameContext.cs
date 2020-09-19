@@ -58,6 +58,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<ShowPathsMediator>().To<ShowPathsMediator>();//custom
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
         mediationBinder.Bind<BuildTurretButtonView>().To<BuildTurretButtonMediator>();
+        mediationBinder.Bind<MoneyTextView>().To<MoneyTextViewMediator>();
         //debug ui
         mediationBinder.Bind<DebugPanelView>().To<DebugPanelMediator>();
 

@@ -37,6 +37,7 @@ public abstract class TurretMediatorBase
 
         TurretModel.Upgraded += OnTurretUpgraded;
         TurretModel.Destroyed += OnTurretDestroyed;
+        TurretModel.SellAnimationTriggered += OnTriggerSellAnimation;
         dispatcher.AddListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
         dispatcher.AddListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
 
@@ -47,6 +48,7 @@ public abstract class TurretMediatorBase
     {
         TurretModel.Upgraded -= OnTurretUpgraded;
         TurretModel.Destroyed -= OnTurretDestroyed;
+        TurretModel.SellAnimationTriggered -= OnTriggerSellAnimation;
         dispatcher.RemoveListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
         dispatcher.RemoveListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
     }
@@ -89,6 +91,12 @@ public abstract class TurretMediatorBase
             _turretSelection = GameObject.Instantiate(UIPrefabsConfig.TurretSelectionPrefab);
             _turretSelection.transform.position = SelfPosition;
         }
+    }
+
+    private void OnTriggerSellAnimation(int sellPrice)
+    {
+        dispatcher.Dispatch(MediatorEvents.EARN_MONEY_ANIMATION,
+            new MediatorEventsParams.EarnMoneyAnimationParams(TurretViewGo.transform.position, sellPrice));
     }
 
     private void DestroyTurretSelectedGUIView()
