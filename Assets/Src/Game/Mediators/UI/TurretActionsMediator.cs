@@ -87,7 +87,7 @@ public class TurretActionsMediator
         if (nextLevelConfig != null)
         {
             var upgradeTxt = Loc.GetLocalization(LocalizationGroupId.TurretActions, "upgrade");
-            _view.SetUpgradeTexts(upgradeTxt, $"{nextLevelConfig.Price}$");
+            _view.SetUpgradeTexts(upgradeTxt, $"{nextLevelConfig.Price - turretConfig.Price}$");
         }
     }
 

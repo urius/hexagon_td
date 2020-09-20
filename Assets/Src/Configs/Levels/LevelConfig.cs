@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Configs/Level", fileName = "LevelConfig")]
 public class LevelConfig : ScriptableObject
 {
-    private static WaveConfig[] DefaultWaveConfigs = new WaveConfig[] { new WaveConfig() };
-
     [SerializeField] public bool IsTransposed;
 
     [SerializeField] public int StartMoneyAmount = 1000;
@@ -22,7 +20,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private CellDataMin[] _modifierConfigs = new CellDataMin[0];
     public IReadOnlyList<CellDataMin> Modifiers => _modifierConfigs;
 
-    [SerializeField] private WaveConfig[] _waveConfigs = DefaultWaveConfigs;
+    [SerializeField] private WaveConfig[] _waveConfigs;
     public WaveConfig[] WaveConfigs => _waveConfigs;
 
     public bool IsCellFree(Vector2Int cellPosition)
@@ -96,7 +94,7 @@ public class LevelConfig : ScriptableObject
     public void Reset()
     {
         _cellConfigs = new CellDataMin[0];
-        _waveConfigs = DefaultWaveConfigs;
+        _waveConfigs = new WaveConfig[0];
         UpdateWaveConfigs();
     }
 
@@ -109,24 +107,5 @@ public class LevelConfig : ScriptableObject
             UpdateWaveConfigs();
         }
     }
-}
-
-[Serializable]
-public class WaveConfig
-{
-    public UnitTypeMin[] Units;
-    public WillSpawnFromBaseConfig[] WillSpawnFromBaseConfigs = new WillSpawnFromBaseConfig[0];
-}
-
-[Serializable]
-public class WillSpawnFromBaseConfig
-{
-    public WillSpawnFromBaseConfig(Vector2Int baseCellPosition)
-    {
-        BaseCellPosition = baseCellPosition;
-    }
-
-    public Vector2Int BaseCellPosition;
-    public bool WillSpawnFrom = true;
 }
 
