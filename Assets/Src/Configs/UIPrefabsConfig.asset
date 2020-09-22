@@ -24,3 +24,5 @@ MonoBehaviour:
     type: 3}
   FlyingTextPrefab: {fileID: 1308853209302066814, guid: af407b20651ca4f52930d9402edb2b5f,
     type: 3}
+  ExplosionGoalPrefab: {fileID: 1590011503536073636, guid: 9117aaa36c5a34eaba9c73d2ff4d8ade,
+    type: 3}

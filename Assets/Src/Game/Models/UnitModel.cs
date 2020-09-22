@@ -31,6 +31,7 @@ public class UnitModel
     }
 
     public GameObject Prefab => _config.Prefab;
+    public GameObject ExplosionPrefab => _config.ExplosionPrefab;
     public int HP { get; private set; }
     public float Speed { get; private set; }
 

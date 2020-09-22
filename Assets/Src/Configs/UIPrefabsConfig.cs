@@ -11,4 +11,5 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject UpgradePSPrefab;
     public GameObject PathLinePrefab;
     public GameObject FlyingTextPrefab;
+    public GameObject ExplosionGoalPrefab;
 }

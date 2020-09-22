@@ -11,6 +11,8 @@ public class UnitViewMediator : EventMediator
     [Inject] public UnitView unitView { get; set; }
     [Inject] public IUnitModelByViewProvider modelByView { get; set; }
     [Inject] public IUpdateProvider updateProvider { get; set; }
+    [Inject] public UIPrefabsConfig UiPrefabsConfig { get; set; }
+    [Inject] public IViewManager ViewManager { get; set; }
 
     private UnitModel _unitModel;
     private List<object> _tweeners = new List<object>(3);
@@ -73,6 +75,14 @@ public class UnitViewMediator : EventMediator
         }
         else if (_unitModel.IsDestroying)
         {
+            if(_unitModel.HP > 0)
+            {
+                Instantiate(UiPrefabsConfig.ExplosionGoalPrefab, unitView.transform.position, unitView.transform.rotation);
+            } else
+            {
+                ViewManager.Instantiate(_unitModel.ExplosionPrefab, unitView.transform.position, unitView.transform.rotation);
+            }
+            
             dispatcher.Dispatch(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, unitView);
         }
     }

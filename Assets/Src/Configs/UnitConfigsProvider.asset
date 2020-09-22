@@ -16,5 +16,7 @@ MonoBehaviour:
   - UnitType: 0
     Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
       type: 3}
+    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
+      type: 3}
     HP: 50
     Speed: 4

@@ -20,6 +20,7 @@ public class UnitConfig
 {
     public UnitTypeMin UnitType;
     public GameObject Prefab;
+    public GameObject ExplosionPrefab;
     public int HP = 1;
     public int Speed = 5;
 }
