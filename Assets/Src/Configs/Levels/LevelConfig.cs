@@ -13,6 +13,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public int ModifierMineDamage = 5;
     [SerializeField] public int ModifierMoneyAmount = 10;
     [SerializeField] public int ModifierBigMoneyAmount = 30;
+    [SerializeField] public int DefaulGoalCapacity = 10;
 
     [SerializeField] private CellDataMin[] _cellConfigs = new CellDataMin[0];
     public IReadOnlyList<CellDataMin> Cells => _cellConfigs;

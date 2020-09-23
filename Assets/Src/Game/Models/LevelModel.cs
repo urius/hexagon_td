@@ -8,8 +8,11 @@ public class LevelModel
     public event Action<Vector2Int, Vector2Int> Teleporting = delegate { };
     public event Action MoneyAmountUpdated = delegate { };
     public event Action InsufficientMoneyTriggered = delegate { };
+    public event Action GoalCountUpdated = delegate { };
+    public event Action LevelFinished = delegate { };
 
     public bool IsInitialized = false;
+    public bool IsFinished = false;
 
     public readonly IEnumerable<CellDataMin> SpawnCells;
     public readonly CellDataMin GoalCell;
@@ -28,7 +31,6 @@ public class LevelModel
     private readonly Vector2Int[] _teleportCellPositions;
     private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
 
-    private int _money;
 
     public LevelModel(LevelConfig levelConfig)
     {
@@ -42,14 +44,18 @@ public class LevelModel
 
         PathsManager = new PathsManager(levelConfig.Cells, _modifiers, LevelTurretsModel, LevelUnitsModel);
 
-        _money = _levelConfig.StartMoneyAmount;
+        Money = _levelConfig.StartMoneyAmount;
         ModifierRepairValue = _levelConfig.ModifierRepairValue;
         ModifierMineDamage = _levelConfig.ModifierMineDamage;
         ModifierMoneyAmount = _levelConfig.ModifierMoneyAmount;
         ModifierBigMoneyAmount = _levelConfig.ModifierBigMoneyAmount;
+
+        GoalCount = _levelConfig.DefaulGoalCapacity;
     }
 
-    public int Money => _money;
+    public int Money { get; private set; }
+    public int GoalCount { get; private set; }
+    public int MaxGoalCapacity => _levelConfig.DefaulGoalCapacity;
 
     public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
     {
@@ -136,11 +142,11 @@ public class LevelModel
 
     public bool TryAddMoney(int amount)
     {
-        if (_money + amount < 0)
+        if (Money + amount < 0)
         {
             return false;
         }
-        _money += amount;
+        Money += amount;
         MoneyAmountUpdated();
 
         return true;
@@ -154,6 +160,22 @@ public class LevelModel
     public void TriggerInsufficientMoney()
     {
         InsufficientMoneyTriggered();
+    }
+
+    public void SubstractGoalCapacity()
+    {
+        if (GoalCount <= 0)
+        {
+            return;
+        }
+        GoalCount--;
+        GoalCountUpdated();
+
+        if (GoalCount == 0)
+        {
+            IsFinished = true;
+            LevelFinished();
+        }
     }
 }
 

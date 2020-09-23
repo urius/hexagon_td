@@ -87,6 +87,11 @@ public class GridView : EventView, ICellPositionConverter
         return _allCreatedCells[cellPosition].GetComponent<TeleportCellView>();
     }
 
+    public GoalBaseView GetGoalBaseCellView(Vector2Int cellPosition)
+    {
+        return _allCreatedCells[cellPosition].GetComponent<GoalBaseView>();
+    }
+
     public void DestroyAllCells()
     {
         foreach (var cellGo in _allCreatedCells.Values)

@@ -73,6 +73,7 @@ public class UnitsControlSystem : EventSystemBase
     {
         if (unit.IsOnLastCell)
         {
+            LevelModel.SubstractGoalCapacity();
             LevelUnitsModel.DestroyUnit(unit);
         }
         else if (LevelUnitsModel.IsCellWithoutUnit(unit.NextCellPosition))

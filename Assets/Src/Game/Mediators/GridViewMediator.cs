@@ -28,6 +28,7 @@ public class GridViewMediator : EventMediator
         dispatcher.AddListener(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, OnUnitDestroyAnimationFinished);
         unitsModel.UnitRemoved += OnUnitRemoved;
         levelModel.Teleporting += OnTeleporting;
+        levelModel.GoalCountUpdated += OnGoalCountUpdated;
 
         gridViewProvider.SetGridView(gridView);
     }
@@ -40,12 +41,34 @@ public class GridViewMediator : EventMediator
         dispatcher.RemoveListener(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, OnUnitDestroyAnimationFinished);
         unitsModel.UnitRemoved -= OnUnitRemoved;
         levelModel.Teleporting -= OnTeleporting;
+        levelModel.GoalCountUpdated -= OnGoalCountUpdated;
     }
 
     private void OnTeleporting(Vector2Int from, Vector2Int to)
     {
         gridView.GetTeleportCellView(from).PlayTeleportOutAnimation();
         gridView.GetTeleportCellView(to).PlayTeleportInAnimation();
+    }
+
+    private void UpdateGoalCount()
+    {
+        var goalBaseView = gridView.GetGoalBaseCellView(levelModel.GoalCell.CellPosition);
+        goalBaseView.SetGoalNum(levelModel.GoalCount);
+
+        var percent = (float)levelModel.GoalCount / levelModel.MaxGoalCapacity;
+        if (percent <= 0.4)
+        {
+            goalBaseView.SetColorMode(GoalBaseColor.CriticalDamage);
+        }
+        else if (percent <= 0.7)
+        {
+            goalBaseView.SetColorMode(GoalBaseColor.LiteDamage);
+        }
+    }
+
+    private void OnGoalCountUpdated()
+    {
+        UpdateGoalCount();
     }
 
     private void OnUnitRemoved(UnitModel unitModel)
@@ -113,6 +136,8 @@ public class GridViewMediator : EventMediator
     private void Start()
     {
         DrawGrid();
+
+        UpdateGoalCount();
 
         dispatcher.Dispatch(MediatorEvents.DRAW_GRID_COMPLETE);
     }
