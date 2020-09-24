@@ -45,6 +45,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b3ed97a3e7a1a4c3aad18084c6a850ee, type: 3}
   - {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
   - {fileID: 21300000, guid: 7aac2a256a54a46a99cb6e0da60443f8, type: 3}
+  - {fileID: 21300000, guid: fe1d078694e1447d99bb23ec4470ab57, type: 3}
   - {fileID: 21300000, guid: ff8b09a69483b46dfb055036e61f363c, type: 3}
   - {fileID: 21300000, guid: 62d0dec67b6d44816bbc5f1ae004e311, type: 3}
   - {fileID: 21300000, guid: 4cdedd2847c0a4bde8523eb5579f5ab7, type: 3}
@@ -63,6 +64,7 @@ SpriteAtlas:
   - icon_turret_4_2
   - icon_turret_3_1
   - icon_turret_1_1
+  - Btn_LOGIN_n
   - Icon_Jump1
   - icon_turret_4_1
   - icon_turret_4_3

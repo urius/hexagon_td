@@ -26,3 +26,5 @@ MonoBehaviour:
     type: 3}
   ExplosionGoalPrefab: {fileID: 1590011503536073636, guid: 9117aaa36c5a34eaba9c73d2ff4d8ade,
     type: 3}
+  HpBarPrefab: {fileID: 7571221945825122137, guid: 5860a8b8bad8f4c308c71333ddd36624,
+    type: 3}

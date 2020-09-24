@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using DG.Tweening;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -15,7 +12,6 @@ public class UnitViewMediator : EventMediator
     [Inject] public IViewManager ViewManager { get; set; }
 
     private UnitModel _unitModel;
-    private List<object> _tweeners = new List<object>(3);
 
     private bool IsDestroying => _unitModel.IsDestroying;
 
@@ -27,6 +23,7 @@ public class UnitViewMediator : EventMediator
     private int _stepDurationFrames;
     private int _stepPartDurationFrames;
     private int _stepFramesPassed;
+    private HpBar _hpBar;
 
     public override void OnRegister()
     {
@@ -34,15 +31,26 @@ public class UnitViewMediator : EventMediator
 
         _unitModel.StateUpdated += OnStateUpdated;
         _unitModel.EarnMoneyAnimationTriggered += OnEarnMoneyTriggered;
+        _unitModel.HpChanged += OnHpChanged;
         updateProvider.UpdateAction += OnUpdate;
+
+        _hpBar = Instantiate(UiPrefabsConfig.HpBarPrefab, unitView.transform).GetComponent<HpBar>();
+        _hpBar.gameObject.SetActive(false);
     }
 
     public void OnDestroy()
     {
-        StopTweeners();
         _unitModel.StateUpdated -= OnStateUpdated;
         _unitModel.EarnMoneyAnimationTriggered -= OnEarnMoneyTriggered;
+        _unitModel.HpChanged -= OnHpChanged;
         updateProvider.UpdateAction -= OnUpdate;
+    }
+
+    private void OnHpChanged()
+    {
+        _hpBar.gameObject.SetActive(true);
+
+        _hpBar.SetHpPercent((float)_unitModel.HP / _unitModel.MaxHP);
     }
 
     private void OnEarnMoneyTriggered(int moneyAmount)
@@ -54,6 +62,7 @@ public class UnitViewMediator : EventMediator
     private void OnUpdate()
     {
         _updateDelegate?.Invoke();
+        _hpBar.transform.rotation = Quaternion.identity;
     }
 
     private void OnStateUpdated()
@@ -75,14 +84,15 @@ public class UnitViewMediator : EventMediator
         }
         else if (_unitModel.IsDestroying)
         {
-            if(_unitModel.HP > 0)
+            if (_unitModel.HP > 0)
             {
                 Instantiate(UiPrefabsConfig.ExplosionGoalPrefab, unitView.transform.position, unitView.transform.rotation);
-            } else
+            }
+            else
             {
                 ViewManager.Instantiate(_unitModel.ExplosionPrefab, unitView.transform.position, unitView.transform.rotation);
             }
-            
+
             dispatcher.Dispatch(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, unitView);
         }
     }
@@ -175,7 +185,7 @@ public class UnitViewMediator : EventMediator
     {
         _startPosition = transform.position;
         _targetPosition = targetPosition;
-        _stepDurationFrames = (int) (60 / _unitModel.Speed);
+        _stepDurationFrames = (int)(60 / _unitModel.Speed);
         _stepPartDurationFrames = (int)(_stepDurationFrames * 0.3f);
         _stepFramesPassed = 0;
     }
@@ -206,72 +216,12 @@ public class UnitViewMediator : EventMediator
         return false;
     }
 
-    private void StopTweeners()
-    {
-        _tweeners.ForEach(s =>
-        {
-            DOTween.Pause(s);
-            DOTween.Kill(s);
-        });
-        _tweeners.Clear();
-    }
-
-    private async Task TeleportAsync()
-    {
-        await Task.Delay(400);
-
-        if (IsDestroying) return;
-        unitView.transform.position = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        await RotateUnitAsync(GetTargetRotation(true), 0);
-
-        if (IsDestroying) return;
-        await Task.Delay(300);
-
-        if (IsDestroying) return;
-        DispatchHalfStatePassed();
-    }
-
-    private Task RotateUnitAsync(Quaternion targetRotation, float duration = 0.2f)
-    {
-        var tsc = new TaskCompletionSource<bool>();
-
-        if (Quaternion.Angle(targetRotation, unitView.transform.rotation) > 1)
-        {
-            var tweener = unitView.transform.DORotate(targetRotation.eulerAngles, duration);
-            tweener.OnComplete(() => tsc.TrySetResult(true));
-            _tweeners.Add(tweener.id);
-            return tsc.Task;
-        }
-        else
-        {
-            unitView.transform.rotation = targetRotation;
-            return Task.CompletedTask;
-        }
-    }
-
     private Quaternion GetTargetRotation(bool isAfterMove)
     {
         var toPos = isAfterMove ? _unitModel.NextCellPosition : _unitModel.CurrentCellPosition;
         var fromPos = isAfterMove ? _unitModel.CurrentCellPosition : _unitModel.PreviousCellPosition;
         var lookAtVector = cellPositionConverter.CellVec2ToWorld(toPos) - cellPositionConverter.CellVec2ToWorld(fromPos);
         return Quaternion.LookRotation(lookAtVector);
-    }
-
-    private Task MoveUnitAsync(float speedMultiplier)
-    {
-        var duration = 0.5f / speedMultiplier;
-        var halfDuration = duration * 0.3f;
-        var tsc = new TaskCompletionSource<bool>();
-
-        var targetPosition = cellPositionConverter.CellVec2ToWorld(_unitModel.CurrentCellPosition);
-        var tweener = unitView.transform.DOMove(targetPosition, duration);
-        tweener.OnComplete(() => tsc.TrySetResult(true));
-        _tweeners.Add(tweener.id);
-
-        var delayedCall = DOVirtual.DelayedCall(halfDuration, DispatchHalfStatePassed);
-        _tweeners.Add(delayedCall.id);
-
-        return tsc.Task;
     }
 
     private void DispatchMoveFinished()

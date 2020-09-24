@@ -15,6 +15,7 @@ public class UnitModel
 
     private readonly UnitConfig _config;
     private readonly LinkedList<TurretModel> _slowDownAffectors = new LinkedList<TurretModel>();
+    public readonly int MaxHP;
 
     public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config)
     {
@@ -24,7 +25,8 @@ public class UnitModel
         PreviousCellPosition = CurrentCellPosition = _path[0];
         NextCellPosition = _path[1];
 
-        HP = config.HP;
+        MaxHP = config.HP;
+        HP = MaxHP;
         Speed = config.Speed;
 
         CurrentState = new SpawningState(CurrentCellPosition);
@@ -38,7 +40,6 @@ public class UnitModel
     public Vector2Int PreviousCellPosition { get; private set; }
     public Vector2Int CurrentCellPosition { get; private set; }
     public Vector2Int NextCellPosition { get; private set; }
-
     public UnitStateBase PreviousState { get; private set; }
     public UnitStateName PreviousStateName => PreviousState.StateName;
     public UnitStateBase CurrentState { get; private set; }

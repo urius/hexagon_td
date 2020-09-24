@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/UIPrefabsConfig", fileName = "UIPrefabsConfig")]
 public class UIPrefabsConfig : ScriptableObject
@@ -12,4 +10,5 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject PathLinePrefab;
     public GameObject FlyingTextPrefab;
     public GameObject ExplosionGoalPrefab;
+    public GameObject HpBarPrefab;
 }

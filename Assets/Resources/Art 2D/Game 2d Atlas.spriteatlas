@@ -32,12 +32,13 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: fd177b1262698410f94cca68824160ba, type: 3}
     - {fileID: 102900000, guid: b90e40059e668426bb0c3c00a7ef263a, type: 3}
-    totalSpriteSurfaceArea: 275376
+    totalSpriteSurfaceArea: 244352
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: c935da60d081b403fbf2d48a202e5818, type: 3}
   - {fileID: 21300000, guid: e8c99901171d8481f9b1ec027f226e9c, type: 3}
+  - {fileID: 21300000, guid: 5e329083df5a344e1a2b4869131e2e75, type: 3}
   - {fileID: 21300000, guid: 6fe60e93610884dfdb14e91e156569ef, type: 3}
   - {fileID: 21300000, guid: 72f4e1c3a12484d7c8bc4db03c08cebc, type: 3}
   - {fileID: 21300000, guid: acabb2c34a9fa49ce943610f31d7a0af, type: 3}
@@ -48,7 +49,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6b405f55a2ec8470a8522dab1e747a19, type: 3}
   - {fileID: 21300000, guid: cd8cc6b588123416cba7fd7bd2871735, type: 3}
   - {fileID: 21300000, guid: 710ca0c5f799a4ef18187e36c5f01f5e, type: 3}
-  - {fileID: 21300000, guid: fe1d078694e1447d99bb23ec4470ab57, type: 3}
   - {fileID: 21300000, guid: 406e2a47ea3cd4a2b95646c1398ab7b7, type: 3}
   - {fileID: 21300000, guid: f7a58f09f8f1b40e48b7b88e7ffaec9e, type: 3}
   - {fileID: 21300000, guid: 6d870ae9782654cc5b128bcffd6eb714, type: 3}
@@ -61,12 +61,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5eab216ca50294758b72425dd13ce482, type: 3}
   - {fileID: 21300000, guid: d18470bc7b1bb42cd9d405c8115ddd71, type: 3}
   - {fileID: 21300000, guid: 592f5f1dde8bc47aa993b7e61a0cad25, type: 3}
+  - {fileID: 21300000, guid: 5022b16d520404e18bfcf07b6e8dd6f9, type: 3}
   - {fileID: 21300000, guid: 2d4a8aad1fa4b4488b937b055af3238b, type: 3}
   - {fileID: 21300000, guid: aa2f8d9e42b6c4d4f90890c157e7f5f3, type: 3}
   - {fileID: 21300000, guid: a5bd7ade82e344718bc30064c64e0490, type: 3}
   m_PackedSpriteNamesToIndex:
   - Round over turret
   - Green laser
+  - hp bar
   - Pink long laser
   - direction_135
   - Long laser
@@ -77,7 +79,6 @@ SpriteAtlas:
   - Hex-2
   - Green long laser
   - direction_225
-  - Btn_LOGIN_n
   - Red laser
   - Path line
   - SlowWave
@@ -90,6 +91,7 @@ SpriteAtlas:
   - fx_explosion
   - direction_270
   - Turret selection
+  - hp bar inner
   - Modifier-speed-down
   - Modifier-money
   - direction_90
