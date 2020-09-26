@@ -75,18 +75,18 @@ public class TurretActionsMediator
                 turretNameId = "slow";
                 break;
         }
-        var turretName = Loc.GetLocalization(LocalizationGroupId.TurretName, turretNameId);
-        var levelStr = Loc.GetLocalization(LocalizationGroupId.TurretActions, "level");
+        var turretName = Loc.Get(LocalizationGroupId.TurretName, turretNameId);
+        var levelStr = Loc.Get(LocalizationGroupId.TurretActions, "level");
         _view.SetTurretInfoTexts(turretName, $"{levelStr} {turretConfig.TurretLevelIndex + 1}");
 
-        var sellStr = Loc.GetLocalization(LocalizationGroupId.TurretActions, "sell");
+        var sellStr = Loc.Get(LocalizationGroupId.TurretActions, "sell");
         _view.SetSellTexts(sellStr, $"+{(int)(turretConfig.Price * 0.5)}$");
 
         var nextLevelConfig = TurretConfigProvider.GetConfig(turretConfig.TurretType, turretConfig.TurretLevelIndex + 1);
         _view.SetUpgradeButtonEnabled(nextLevelConfig != null);
         if (nextLevelConfig != null)
         {
-            var upgradeTxt = Loc.GetLocalization(LocalizationGroupId.TurretActions, "upgrade");
+            var upgradeTxt = Loc.Get(LocalizationGroupId.TurretActions, "upgrade");
             _view.SetUpgradeTexts(upgradeTxt, $"{nextLevelConfig.Price - turretConfig.Price}$");
         }
     }

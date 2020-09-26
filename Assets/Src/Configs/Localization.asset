@@ -31,3 +31,19 @@ MonoBehaviour:
       En: Upgrade
     - LocalizationItemId: level
       En: Level
+  - LocalizationGroupId: 2
+    LocalizationItems:
+    - LocalizationItemId: wave
+      En: WAVE
+    - LocalizationItemId: start_wave
+      En: START WAVE
+  - LocalizationGroupId: 3
+    LocalizationItems:
+    - LocalizationItemId: before_first_wave
+      En: Prepare for first wave
+    - LocalizationItemId: wave_started
+      En: Wave started!
+    - LocalizationItemId: wave_finished
+      En: Wave finished!\nPrepare for next wave
+    - LocalizationItemId: all_waves_finished
+      En: All waves finished!

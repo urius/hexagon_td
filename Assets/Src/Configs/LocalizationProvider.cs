@@ -10,7 +10,7 @@ public class LocalizationProvider : ScriptableObject
 
     private string _languageId = "en";
 
-    public string GetLocalization(LocalizationGroupId groupId, string itemId)
+    public string Get(LocalizationGroupId groupId, string itemId)
     {
         var group = _localizationGroups.FirstOrDefault(g => g.LocalizationGroupId == groupId);
         if (group != null)
@@ -36,6 +36,8 @@ public enum LocalizationGroupId
 {
     TurretName,
     TurretActions,
+    BottomPanel,
+    GeneralInfoPanel,
 }
 
 [Serializable]

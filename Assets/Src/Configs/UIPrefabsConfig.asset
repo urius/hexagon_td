@@ -28,3 +28,5 @@ MonoBehaviour:
     type: 3}
   HpBarPrefab: {fileID: 7571221945825122137, guid: 5860a8b8bad8f4c308c71333ddd36624,
     type: 3}
+  GeneralInfoPanelPrefab: {fileID: 3154937408131652060, guid: 1c2ce52ebf426447b8e18a2fd6b681cd,
+    type: 3}

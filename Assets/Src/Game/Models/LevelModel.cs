@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class LevelModel
@@ -11,7 +12,6 @@ public class LevelModel
     public event Action GoalCountUpdated = delegate { };
     public event Action LevelFinished = delegate { };
 
-    public bool IsInitialized = false;
     public bool IsFinished = false;
 
     public readonly IEnumerable<CellDataMin> SpawnCells;
@@ -30,7 +30,7 @@ public class LevelModel
 
     private readonly Vector2Int[] _teleportCellPositions;
     private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
-
+    private readonly TaskCompletionSource<bool> _levelStartedTsc = new TaskCompletionSource<bool>();
 
     public LevelModel(LevelConfig levelConfig)
     {
@@ -56,6 +56,7 @@ public class LevelModel
     public int Money { get; private set; }
     public int GoalCount { get; private set; }
     public int MaxGoalCapacity => _levelConfig.DefaulGoalCapacity;
+    public Task StartLevelTask => _levelStartedTsc.Task;
 
     public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
     {
@@ -116,6 +117,11 @@ public class LevelModel
         LevelTurretsModel.Update();
     }
 
+    public void SetLevelStarted()
+    {
+        _levelStartedTsc.TrySetResult(true);
+    }
+
     private bool IsGround(Vector2Int cellPosition)
     {
         var cell = _levelConfig.Cells.FirstOrDefault(c => c.CellPosition == cellPosition);
@@ -174,6 +180,7 @@ public class LevelModel
         if (GoalCount == 0)
         {
             IsFinished = true;
+            WaveModel.TerminateWave();
             LevelFinished();
         }
     }
@@ -181,6 +188,8 @@ public class LevelModel
 
 public class WaveModel
 {
+    public event Action WaveStateChanged = delegate { };
+
     private readonly WaveConfig[] _waveConfigs;
 
     public WaveModel(WaveConfig[] waveConfigs)
@@ -190,7 +199,9 @@ public class WaveModel
 
     public int WaveIndex { get; private set; }
     public int UnitIndex { get; private set; }
+    public WaveState WaveState { get; private set; } = WaveState.BeforeFirstWave;
     public bool IsCurrentWaveEmpty => UnitIndex >= CurrentWave.Units.Length;
+    public int TotalWavesCount => _waveConfigs.Length;
 
     private WaveConfig CurrentWave => _waveConfigs[WaveIndex];
 
@@ -205,5 +216,40 @@ public class WaveModel
     {
         WaveIndex = 0;
         UnitIndex = 0;
+
+        StartWave();
     }
+
+    public void AdvanceWave()
+    {
+        WaveIndex++;
+        UnitIndex = 0;
+    }
+
+    public void StartWave()
+    {
+        WaveState = WaveState.InWave;
+        WaveStateChanged();
+    }
+
+    public void TerminateWave()
+    {
+        WaveState = WaveState.Terminated;
+        WaveStateChanged();
+    }
+
+    public void EndWave()
+    {
+        WaveState = (WaveIndex < TotalWavesCount - 1) ? WaveState.BetweenWaves : WaveState.AfterLastWave;
+        WaveStateChanged();
+    }
+}
+
+public enum WaveState
+{
+    BeforeFirstWave,
+    InWave,
+    BetweenWaves,
+    AfterLastWave,
+    Terminated,
 }

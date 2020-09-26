@@ -14,6 +14,7 @@ public class LevelUnitsModel
 
     public IEnumerable<UnitModel> WaitingUnits => _unitModels.Where(m => m.CurrentState.StateName == UnitStateName.WaitingForCell);
     public IEnumerable<UnitModel> Units => _unitModels;
+    public int UnitsCount => _unitModels.Count;
 
     public UnitModel GetUnitOnCell(Vector2Int cellPosition)
     {

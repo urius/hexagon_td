@@ -7,6 +7,7 @@ public class UnitsControlSystem : EventSystemBase
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public UnitConfigsProvider UnitConfigsProvider { get; set; }
+    [Inject] public WaveModel WaveModel { get; set; }
 
     private int _framesCount = 0;
 
@@ -38,20 +39,22 @@ public class UnitsControlSystem : EventSystemBase
                 }
             }
 
-            Spawn();
+            if (WaveModel.WaveState == WaveState.InWave)
+            {
+                Spawn();
+            }
         }
     }
 
     private void Spawn()
     {
-        var waveModel = LevelModel.WaveModel;
         foreach (var spawnCell in LevelModel.SpawnCells)
         {
-            if (!waveModel.IsCurrentWaveEmpty)
+            if (!WaveModel.IsCurrentWaveEmpty)
             {
                 if (LevelUnitsModel.IsCellWithoutUnit(spawnCell.CellPosition))
                 {
-                    var unitType = waveModel.GetUnitAndIncrement();
+                    var unitType = WaveModel.GetUnitAndIncrement();
                     var unitConfig = UnitConfigsProvider.GetConfigByType(unitType);
 
                     //injectionBinder.Unbind<UnitModel>();

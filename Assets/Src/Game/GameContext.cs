@@ -17,6 +17,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<IViewManager>().To<ViewsManager>().ToSingleton();
         var levelModel = new LevelModel(gameContextView.LevelConfigProvider.LevelConfig);
         injectionBinder.Bind<LevelModel>().ToValue(levelModel);
+        injectionBinder.Bind<WaveModel>().ToValue(levelModel.WaveModel);
         injectionBinder.Bind<LevelUnitsModel>().ToValue(levelModel.LevelUnitsModel);
         injectionBinder.Bind<LevelTurretsModel>().ToValue(levelModel.LevelTurretsModel);
         injectionBinder.Bind<CellConfigProvider>().ToValue(gameContextView.CellConfigProvider);
@@ -56,8 +57,11 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<SlowFieldTurretMediator>().To<SlowFieldTurretMediator>();//custom
         injectionBinder.Bind<TurretActionsMediator>().To<TurretActionsMediator>();//custom
         injectionBinder.Bind<ShowPathsMediator>().To<ShowPathsMediator>();//custom
+        mediationBinder.Bind<UICanvasView>().To<UiCanvasViewMediator>();
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
         mediationBinder.Bind<BuildTurretButtonView>().To<BuildTurretButtonMediator>();
+        mediationBinder.Bind<StartWaveButtonView>().To<StartWaveButtonViewMediator>();
+        mediationBinder.Bind<WaveTextView>().To<WaveTextViewMediator>();
         mediationBinder.Bind<MoneyTextView>().To<MoneyTextViewMediator>();
         //debug ui
         mediationBinder.Bind<DebugPanelView>().To<DebugPanelMediator>();
@@ -67,7 +71,6 @@ public class GameContext : MVCSContext
             .InSequence()
             .To<StartLevelCommand>()
             .Once();
-        commandBinder.Bind(CommandEvents.SECOND_PASSED).To<SecondPassedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.REQUEST_BUILD_TURRET).To<RequestBuildTurretCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_GAME_SCREEN_CLICK).To<GameScreenClickedCommand>().Pooled();
 
@@ -76,6 +79,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<UnitsControlSystem>().ToSingleton();
         injectionBinder.Bind<BulletsHitSystem>().ToSingleton();      
         injectionBinder.Bind<TurretsControlSystem>().ToSingleton();
+        injectionBinder.Bind<WavesControlSystem>().ToSingleton();        
 
         //debug
         commandBinder.Bind(MediatorEvents.DEBUG_BUTTON_CLICKED).To<DebugCommand>();

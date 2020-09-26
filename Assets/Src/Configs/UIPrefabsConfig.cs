@@ -11,4 +11,5 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject FlyingTextPrefab;
     public GameObject ExplosionGoalPrefab;
     public GameObject HpBarPrefab;
+    public GameObject GeneralInfoPanelPrefab;
 }

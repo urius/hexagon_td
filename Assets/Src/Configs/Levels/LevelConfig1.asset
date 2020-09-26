@@ -18,6 +18,7 @@ MonoBehaviour:
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
   ModifierBigMoneyAmount: 30
+  DefaulGoalCapacity: 10
   _cellConfigs:
   - CellPosition: {x: -7, y: 9}
     CellConfigMin:
@@ -1357,4 +1358,6 @@ MonoBehaviour:
       CellType: 5
       CellSubType: 6
   _waveConfigs:
-  - {fileID: 11400000, guid: bfa1a2fb3fb7e4bfd94bda4eabb58d3d, type: 2}
+  - {fileID: 11400000, guid: e96469097035e4caeb757927bcb7b630, type: 2}
+  - {fileID: 11400000, guid: e96469097035e4caeb757927bcb7b630, type: 2}
+  - {fileID: 11400000, guid: e96469097035e4caeb757927bcb7b630, type: 2}

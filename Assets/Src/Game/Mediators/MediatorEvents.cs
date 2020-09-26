@@ -19,13 +19,14 @@ public class MediatorEvents
     public static string BULLET_HIT_TARGETS = "BULLET_HIT_TARGETS";
     public static string TURRET_DESELECTED = "TURRET_DESELECTED";
     public static string TURRET_SELL_CLICKED = "TURRET_SELL_CLICKED";
-    public static string TURRET_UPGRADE_CLICKED = "TURRET_UPGRADE_CLICKED";
+    public static string TURRET_UPGRADE_CLICKED = "TURRET_UPGRADE_CLICKED"; 
 
     public static string UI_GAME_SCREEN_MOUSE_DOWN = "UI_GAME_SCREEN_MOUSE_DOWN";
     public static string UI_GAME_SCREEN_MOUSE_UP = "UI_GAME_SCREEN_MOUSE_UP";
     public static string UI_BUILD_TURRET_MOUSE_DOWN = "UI_BUILD_TURRET_MOUSE_DOWN";
     public static string UI_BUILD_TURRET_MOUSE_UP = "UI_BUILD_TURRET_MOUSE_UP";
     public static string UI_GAME_SCREEN_CLICK = "UI_GAME_SCREEN_CLICK";
+    public static string UI_START_WAVE_CLICKED = "UI_START_WAVE_CLICKED";
 
     public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";
 }
