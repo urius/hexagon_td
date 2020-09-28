@@ -44,6 +44,8 @@ MonoBehaviour:
     - LocalizationItemId: wave_started
       En: Wave started!
     - LocalizationItemId: wave_finished
-      En: Wave finished!\nPrepare for next wave
+      En: Wave finished!
     - LocalizationItemId: all_waves_finished
       En: All waves finished!
+    - LocalizationItemId: defeat
+      En: Defeated!

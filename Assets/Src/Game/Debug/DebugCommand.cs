@@ -5,6 +5,6 @@ public class DebugCommand : ParamCommand<int>
 
     public override void Execute(int data)
     {
-        LevelModel.WaveModel.Reset();
+        LevelModel.ResetLevel();
     }
 }

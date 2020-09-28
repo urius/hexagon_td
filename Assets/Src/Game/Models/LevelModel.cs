@@ -12,7 +12,8 @@ public class LevelModel
     public event Action GoalCountUpdated = delegate { };
     public event Action LevelFinished = delegate { };
 
-    public bool IsFinished = false;
+    public bool IsWon = false;
+    public bool IsDefeated = false;
 
     public readonly IEnumerable<CellDataMin> SpawnCells;
     public readonly CellDataMin GoalCell;
@@ -57,6 +58,7 @@ public class LevelModel
     public int GoalCount { get; private set; }
     public int MaxGoalCapacity => _levelConfig.DefaulGoalCapacity;
     public Task StartLevelTask => _levelStartedTsc.Task;
+    public bool IsLevelFinished => IsWon || IsDefeated;
 
     public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
     {
@@ -179,10 +181,26 @@ public class LevelModel
 
         if (GoalCount == 0)
         {
-            IsFinished = true;
             WaveModel.TerminateWave();
-            LevelFinished();
+            FinishLevel(false);
         }
+    }
+
+    public void ResetLevel()
+    {
+        GoalCount = _levelConfig.DefaulGoalCapacity;
+        IsWon = IsDefeated = false;
+        GoalCountUpdated();
+
+        WaveModel.Reset();
+    }
+
+    public void FinishLevel(bool isWin)
+    {
+        IsWon = isWin;
+        IsDefeated = !isWin;
+
+        LevelFinished();
     }
 }
 

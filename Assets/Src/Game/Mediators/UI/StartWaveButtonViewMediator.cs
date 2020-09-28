@@ -43,7 +43,7 @@ public class StartWaveButtonViewMediator : EventMediator
         {
             StartWaveButtonView.SetActiveAnimated(false);
         }
-        else if (WaveModel.WaveState != WaveState.AfterLastWave)
+        else if (WaveModel.WaveState != WaveState.AfterLastWave && WaveModel.WaveState != WaveState.Terminated)
         {
             StartWaveButtonView.SetActiveAnimated(true);
         }

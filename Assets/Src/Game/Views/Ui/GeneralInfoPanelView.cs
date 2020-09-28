@@ -32,6 +32,11 @@ public class GeneralInfoPanelView : View
         return Task.CompletedTask;
     }
 
+    public void SetTextColor(Color color)
+    {
+        _text.color = color;
+    }
+
     public Task HideAsync()
     {
         if (_animation.Play("GeneralInfoPanel_hide"))

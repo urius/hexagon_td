@@ -8,6 +8,7 @@ public class WavesControlSystem : EventSystemBase
 {
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     public override void Start()
     {
@@ -34,6 +35,10 @@ public class WavesControlSystem : EventSystemBase
             if (WaveModel.IsCurrentWaveEmpty && LevelUnitsModel.UnitsCount == 0)
             {
                 WaveModel.EndWave();
+                if (WaveModel.WaveState == WaveState.AfterLastWave)
+                {
+                    LevelModel.FinishLevel(true);
+                }
             }
         }
     }

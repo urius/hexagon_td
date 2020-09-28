@@ -22,7 +22,7 @@ public class WaveTextViewMediator : EventMediator
 
     private void UpdateView()
     {
-        if (WaveModel.WaveState == WaveState.InWave)
+        if (WaveModel.WaveState == WaveState.InWave || WaveModel.WaveState == WaveState.Terminated)
         {
             WaveTextView.SetActive(true);
             WaveTextView.SetText(
