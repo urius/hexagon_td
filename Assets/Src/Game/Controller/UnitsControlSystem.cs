@@ -78,6 +78,7 @@ public class UnitsControlSystem : EventSystemBase
         {
             LevelModel.SubstractGoalCapacity();
             LevelUnitsModel.DestroyUnit(unit);
+            dispatcher.Dispatch(CommandEvents.UI_REQUEST_SHAKE_CAMERA);
         }
         else if (LevelUnitsModel.IsCellWithoutUnit(unit.NextCellPosition))
         {

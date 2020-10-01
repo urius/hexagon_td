@@ -26,6 +26,7 @@ public class CameraViewMediator : EventMediator
         dispatcher.AddListener(MediatorEvents.DRAW_GRID_COMPLETE, OnDrawGridCompleted);
         dispatcher.AddListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_DOWN, OnGameScreenMouseDown);
         dispatcher.AddListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_UP, OnGameScreenMouseUp);
+        dispatcher.AddListener(CommandEvents.UI_REQUEST_SHAKE_CAMERA, OnRequestShakeCamera);
     }
 
     public override void OnRemove()
@@ -35,11 +36,17 @@ public class CameraViewMediator : EventMediator
         dispatcher.RemoveListener(MediatorEvents.DRAW_GRID_COMPLETE, OnDrawGridCompleted);
         dispatcher.RemoveListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_DOWN, OnGameScreenMouseDown);
         dispatcher.RemoveListener(MediatorEvents.UI_GAME_SCREEN_MOUSE_UP, OnGameScreenMouseUp);
+        dispatcher.RemoveListener(CommandEvents.UI_REQUEST_SHAKE_CAMERA, OnRequestShakeCamera);
     }
 
     private void Start()
     {
         _zeroPlane = new Plane(Vector3.up, Vector3.zero);
+    }
+
+    private void OnRequestShakeCamera(IEvent payload)
+    {
+        CameraView.ShakeCamera();
     }
 
     private void Update()
