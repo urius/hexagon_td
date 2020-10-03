@@ -1,7 +1,5 @@
 ﻿using System;
-using DG.Tweening;
 using strange.extensions.context.impl;
-using UnityEngine;
 
 public interface IUpdateProvider
 {
@@ -22,10 +20,7 @@ public class GameContextView : ContextView, IUpdateProvider
 
     private void Awake()
     {
-        Application.targetFrameRate = 30;
-
-        DOTween.Init(true, false, LogBehaviour.ErrorsOnly).SetCapacity(50, 0);
-        DOTween.defaultEaseType = Ease.Linear;
+        GameSettingsSetupHelper.Setup();
 
         context = new GameContext(this);
         context.Launch();

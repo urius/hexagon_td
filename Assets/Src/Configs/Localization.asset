@@ -49,3 +49,11 @@ MonoBehaviour:
       En: All waves finished!
     - LocalizationItemId: defeat
       En: Defeated!
+  - LocalizationGroupId: 4
+    LocalizationItems:
+    - LocalizationItemId: main_menu_play
+      En: Play
+    - LocalizationItemId: main_menu_settings
+      En: Settings
+    - LocalizationItemId: main_menu_how_to_play
+      En: How to play

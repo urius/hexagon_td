@@ -38,6 +38,7 @@ public enum LocalizationGroupId
     TurretActions,
     BottomPanel,
     GeneralInfoPanel,
+    StartScreen,
 }
 
 [Serializable]

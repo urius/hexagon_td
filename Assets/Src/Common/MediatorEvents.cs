@@ -28,6 +28,9 @@ public class MediatorEvents
     public static string UI_GAME_SCREEN_CLICK = "UI_GAME_SCREEN_CLICK";
     public static string UI_START_WAVE_CLICKED = "UI_START_WAVE_CLICKED";
 
+    public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
+    
+
     public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";
 }
 
