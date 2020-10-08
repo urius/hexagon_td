@@ -6,6 +6,8 @@ using UnityEngine;
 public class StartScreenContextView : ContextView
 {
     [SerializeField] public LocalizationProvider LocalizationProvider;
+    [SerializeField] public LevelsCollectionProvider LevelsCollectionProvider;
+    [SerializeField] public UIPrefabsConfig UIPrefabsConfig;
 
     private void Awake()
     {

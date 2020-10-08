@@ -15,10 +15,14 @@ public class StartScreenContext : MVCSContext
 
         var mainMenuContextView = ((GameObject)contextView).GetComponent<StartScreenContextView>();
 
+        injectionBinder.Bind<LevelsCollectionProvider>().ToValue(mainMenuContextView.LevelsCollectionProvider);
+
         //cross context
         injectionBinder.Bind<LocalizationProvider>().ToValue(mainMenuContextView.LocalizationProvider).CrossContext();
+        injectionBinder.Bind<UIPrefabsConfig>().ToValue(mainMenuContextView.UIPrefabsConfig).CrossContext();
 
         //mediators
         mediationBinder.Bind<MainMenuView>().To<MainMenuViewMediator>();
+        mediationBinder.Bind<LevelsScrollView>().To<LevelsScrollViewMediator>();
     }
 }
