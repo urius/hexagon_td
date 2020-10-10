@@ -11,10 +11,12 @@ public class LevelsScrollViewMediator : EventMediator
     [Inject] public LevelsScrollView SelectLevelScrollView { get; set; }
     [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
 
     private LevelsScrollViewItem[] _itemViews;
     private RectTransform[] _containers;
     private float _itemContainerWidth;
+    private GameObject _selection;
 
     public override void OnRegister()
     {
@@ -32,14 +34,20 @@ public class LevelsScrollViewMediator : EventMediator
         SelectLevelScrollView.ScrollLeftClicked -= OnLeftClick;
     }
 
-    public void Start()
+    public async void Start()
     {
+        await PlayerGlobalModelHolder.ModelInnitializedTask;
+
         _itemContainerWidth = ((RectTransform)UIPrefabsConfig.SelectLevelItemContainerPrefab.transform).rect.width;
 
         CreateItems(LevelsCollectionProvider.Levels.Length);
+        SetupItems(PlayerGlobalModelHolder.PlayerGlobalModel);
+        SubscribeOnItemsClick();
+
+        SelectLevelByIndex(0);
     }
 
-    public void CreateItems(int count)
+    private void CreateItems(int count)
     {
         _itemViews = new LevelsScrollViewItem[count];
 
@@ -61,6 +69,49 @@ public class LevelsScrollViewMediator : EventMediator
         }
 
         _itemViews = Enumerable.Range(0, count).Select(CreateItem).ToArray();
+    }
+
+    private void SetupItems(PlayerGlobalModel playerGlobalModel)
+    {
+        for (var i = 0; i < _itemViews.Length; i++)
+        {
+            var itemView = _itemViews[i];
+            var levelProgress = playerGlobalModel.LevelsProgress[i];
+            itemView.SetLevelNum(i + 1);
+            itemView.SetLocked(!levelProgress.isUnlocked);
+            itemView.SetPassedMode(levelProgress.isPassed);
+            if (levelProgress.isPassed)
+            {
+                itemView.SetupStars(levelProgress.StarsAmount);
+            }
+        }
+    }
+
+    private void SubscribeOnItemsClick()
+    {
+        for (var i = 0; i < _itemViews.Length; i++)
+        {
+            var bufferIndex = i;
+            _itemViews[i].OnClick += () => OnLevelClick(bufferIndex);
+        }
+    }
+
+    private void OnLevelClick(int levelIndex)
+    {
+        SelectLevelByIndex(levelIndex);
+    }
+
+    private void SelectLevelByIndex(int levelIndex)
+    {
+        if (_selection != null)
+        {
+            Destroy(_selection);
+            _selection = null;
+        }
+
+        _selection = Instantiate(UIPrefabsConfig.SelectLevelItemSelectionPrefab, _itemViews[levelIndex].transform);
+        var isLocked = !PlayerGlobalModelHolder.PlayerGlobalModel.GetProgressByLevel(levelIndex).isUnlocked;
+        _selection.GetComponent<LevelsScrollItemSelectionView>().SetLockedState(isLocked);
     }
 
     private void OnRightClick()

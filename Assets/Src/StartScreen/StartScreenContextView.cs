@@ -8,6 +8,7 @@ public class StartScreenContextView : ContextView
     [SerializeField] public LocalizationProvider LocalizationProvider;
     [SerializeField] public LevelsCollectionProvider LevelsCollectionProvider;
     [SerializeField] public UIPrefabsConfig UIPrefabsConfig;
+    [SerializeField] public DeafultPlayerGlobalModelProvider DeafultPlayerGlobalModelProvider;    
 
     private void Awake()
     {
