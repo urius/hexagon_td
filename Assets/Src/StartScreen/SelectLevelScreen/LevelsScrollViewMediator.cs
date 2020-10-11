@@ -15,6 +15,7 @@ public class LevelsScrollViewMediator : EventMediator
 
     private LevelsScrollViewItem[] _itemViews;
     private RectTransform[] _containers;
+    private RectTransform _contentTransform;
     private float _itemContainerWidth;
     private GameObject _selection;
 
@@ -24,6 +25,7 @@ public class LevelsScrollViewMediator : EventMediator
 
         SelectLevelScrollView.ScrollRightClicked += OnRightClick;
         SelectLevelScrollView.ScrollLeftClicked += OnLeftClick;
+        SelectLevelScrollView.DragEnded += OnDragEnded;
     }
 
     public override void OnRemove()
@@ -32,19 +34,40 @@ public class LevelsScrollViewMediator : EventMediator
 
         SelectLevelScrollView.ScrollRightClicked -= OnRightClick;
         SelectLevelScrollView.ScrollLeftClicked -= OnLeftClick;
+        SelectLevelScrollView.DragEnded -= OnDragEnded;
     }
 
     public async void Start()
     {
         await PlayerGlobalModelHolder.ModelInnitializedTask;
 
+        _contentTransform = SelectLevelScrollView.ContentTransform;
         _itemContainerWidth = ((RectTransform)UIPrefabsConfig.SelectLevelItemContainerPrefab.transform).rect.width;
 
         CreateItems(LevelsCollectionProvider.Levels.Length);
         SetupItems(PlayerGlobalModelHolder.PlayerGlobalModel);
         SubscribeOnItemsClick();
 
-        SelectLevelByIndex(0);
+        SelectLevelByIndex(GetFirstUncompletedLevelIndex());
+    }
+
+    private int GetFirstUncompletedLevelIndex()
+    {
+        var result = 0;
+        for (var i = 0; i < PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress.Length; i++)
+        {
+            var levelProgress = PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress[i];
+            if (levelProgress.isUnlocked)
+            {
+                result = i;
+                if (!levelProgress.isPassed)
+                {
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 
     private void CreateItems(int count)
@@ -56,7 +79,7 @@ public class LevelsScrollViewMediator : EventMediator
         RectTransform CreateContainer(int index)
         {
             var containerIndex = index / ItemsContainerCapacity;
-            return Instantiate(UIPrefabsConfig.SelectLevelItemContainerPrefab, SelectLevelScrollView.ContentTransform).GetComponent<RectTransform>();
+            return Instantiate(UIPrefabsConfig.SelectLevelItemContainerPrefab, _contentTransform).GetComponent<RectTransform>();
         }
 
         _containers = Enumerable.Range(0, containersNum).Select(CreateContainer).ToArray();
@@ -112,47 +135,62 @@ public class LevelsScrollViewMediator : EventMediator
         _selection = Instantiate(UIPrefabsConfig.SelectLevelItemSelectionPrefab, _itemViews[levelIndex].transform);
         var isLocked = !PlayerGlobalModelHolder.PlayerGlobalModel.GetProgressByLevel(levelIndex).isUnlocked;
         _selection.GetComponent<LevelsScrollItemSelectionView>().SetLockedState(isLocked);
+
+        dispatcher.Dispatch(MediatorEvents.UI_SS_SELECT_LEVEL_CLICKED, levelIndex);
     }
 
     private void OnRightClick()
     {
-        TweenFactory.RemoveTweenKey(ScrollTweenId, TweenStopBehavior.DoNotModify);
-
-        var newPosition = SelectLevelScrollView.ContentTransform.anchoredPosition.x - _itemContainerWidth - 1;
-
-        var bound = _itemContainerWidth - SelectLevelScrollView.ContentTransform.rect.width;
-        if (newPosition < bound)
-        {
-            newPosition = bound;
-        }
+        var newPosition = _contentTransform.anchoredPosition.x - _itemContainerWidth * 1.5f;
+        newPosition = CorrectPosition(newPosition);
 
         ScrollTo(newPosition);
     }
 
     private void OnLeftClick()
     {
-        TweenFactory.RemoveTweenKey(ScrollTweenId, TweenStopBehavior.DoNotModify);
-
-        var newPosition = SelectLevelScrollView.ContentTransform.anchoredPosition.x + _itemContainerWidth + 1;
-
-        var bound = 0;
-        if (newPosition > bound)
-        {
-            newPosition = bound;
-        }
+        var newPosition = _contentTransform.anchoredPosition.x + _itemContainerWidth * 0.5f;
+        newPosition = CorrectPosition(newPosition);
 
         ScrollTo(newPosition);
     }
 
+    private void OnDragEnded()
+    {
+        var correctedPosition = CorrectPosition(_contentTransform.anchoredPosition.x - _itemContainerWidth * 0.5f);
+
+        ScrollTo(correctedPosition);
+    }
+
+    private float CorrectPosition(float newPosition)
+    {
+        var boundRight = _itemContainerWidth - _contentTransform.rect.width;
+        if (newPosition < boundRight)
+        {
+            return boundRight;
+        }
+
+        var boundLeft = 0;
+        if (newPosition > boundLeft)
+        {
+            return boundLeft;
+        }
+
+        return ((int)(newPosition / _itemContainerWidth)) * _itemContainerWidth;
+    }
+
     private void ScrollTo(float newPosition)
     {
-        SelectLevelScrollView.ContentTransform.gameObject.Tween(ScrollTweenId,
-            SelectLevelScrollView.ContentTransform.anchoredPosition,
-            new Vector2(newPosition, SelectLevelScrollView.ContentTransform.anchoredPosition.y), 0.5f, TweenScaleFunctions.CubicEaseOut, OnScrollTween);
+        TweenFactory.RemoveTweenKey(ScrollTweenId, TweenStopBehavior.DoNotModify);
+        SelectLevelScrollView.StopMovement();
+
+        _contentTransform.gameObject.Tween(ScrollTweenId,
+            _contentTransform.anchoredPosition,
+            new Vector2(newPosition, _contentTransform.anchoredPosition.y), 0.5f, TweenScaleFunctions.CubicEaseOut, OnScrollTween);
     }
 
     private void OnScrollTween(ITween<Vector2> tween)
     {
-        SelectLevelScrollView.ContentTransform.anchoredPosition = tween.CurrentValue;
+        _contentTransform.anchoredPosition = tween.CurrentValue;
     }
 }

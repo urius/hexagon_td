@@ -29,7 +29,8 @@ public class MediatorEvents
     public static string UI_START_WAVE_CLICKED = "UI_START_WAVE_CLICKED";
 
     public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
-    
+    public static string UI_SS_SELECT_LEVEL_CLICKED = "UI_SS_SELECT_LEVEL_CLICKED";
+
 
     public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";
 }

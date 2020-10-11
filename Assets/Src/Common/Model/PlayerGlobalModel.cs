@@ -26,9 +26,32 @@ public class PlayerGlobalModel
     {
         LevelsProgress = original.LevelsProgress;
         AdjustLevelsAmount(levelsAmount);
+
+        UpdateUnlockState();
+    }
+    public LevelProgressDataMin[] LevelsProgress;
+
+    public void UpdateUnlockState()
+    {
+        var lastPassedLevelIndex = -1;
+        for (var i = 0; i < LevelsProgress.Length; i++)
+        {
+            if (LevelsProgress[i].isPassed)
+            {
+                lastPassedLevelIndex = i;
+            }
+
+            if (lastPassedLevelIndex >= 0 && (i - lastPassedLevelIndex) <= 2)
+            {
+                LevelsProgress[i].isUnlocked = true;
+            }
+        }
     }
 
-    public LevelProgressDataMin[] LevelsProgress;
+    public LevelProgressDataMin GetProgressByLevel(int levelIndex)
+    {
+        return LevelsProgress[levelIndex];
+    }
 
     private void AdjustLevelsAmount(int levelsAmount)
     {
@@ -38,11 +61,6 @@ public class PlayerGlobalModel
             list.AddRange(new LevelProgressDataMin[levelsAmount - LevelsProgress.Length]);
             LevelsProgress = list.ToArray();
         }
-    }
-
-    public LevelProgressDataMin GetProgressByLevel(int levelIndex)
-    {
-        return LevelsProgress[levelIndex];
     }
 }
 
