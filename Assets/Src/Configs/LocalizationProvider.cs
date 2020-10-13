@@ -21,7 +21,7 @@ public class LocalizationProvider : ScriptableObject
                 switch (_languageId)
                 {
                     case "en":
-                        return item.En;
+                        return ProcessSpecialSymbols(item.En);
                     default:
                         return "unsupported lang: " + _languageId;
                 }
@@ -29,6 +29,11 @@ public class LocalizationProvider : ScriptableObject
         }
 
         return groupId + ":" + itemId;
+    }
+
+    private string ProcessSpecialSymbols(string original)
+    {
+        return original.Replace("^", "\n");
     }
 }
 
