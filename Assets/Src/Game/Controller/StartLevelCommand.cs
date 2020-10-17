@@ -12,8 +12,6 @@ public class StartLevelCommand : Command
         injectionBinder.GetInstance<TurretsControlSystem>().Start();
         injectionBinder.GetInstance<WavesControlSystem>().Start();
 
-        injectionBinder.GetInstance<ShowPathsMediator>();
-
         LevelModel.SetLevelStarted();
     }
 }

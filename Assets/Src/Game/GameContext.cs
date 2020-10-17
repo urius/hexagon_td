@@ -63,7 +63,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<LaserTurretMediator>().To<LaserTurretMediator>();//custom
         injectionBinder.Bind<SlowFieldTurretMediator>().To<SlowFieldTurretMediator>();//custom
         injectionBinder.Bind<TurretActionsMediator>().To<TurretActionsMediator>();//custom
-        injectionBinder.Bind<ShowPathsMediator>().To<ShowPathsMediator>();//custom
+        mediationBinder.Bind<ShowPathsView>().To<ShowPathsMediator>();
         mediationBinder.Bind<UICanvasView>().To<UiCanvasViewMediator>();
         mediationBinder.Bind<GameScreenPanelView>().To<GameScreenPanelMediator>();
         mediationBinder.Bind<BuildTurretButtonView>().To<BuildTurretButtonMediator>();
