@@ -16,6 +16,7 @@ public class GridViewMediator : EventMediator
     [Inject] public ICellPositionConverter cellPositionConverter { get; set; }
     [Inject] public GridViewProvider gridViewProvider { get; set; }
     [Inject] public ICellSizeProvider cellSizeProvider { get; set; }
+    [Inject] public IRootTransformProvider rootTransformProvider { get; set; }
     [Inject] public TurretConfigProvider turretsConfigProvider { get; set; }
     [Inject] public WorldMousePositionProvider worldMousePositionProvider { get; set; }
     [Inject] public FlyingTurretConfigProvider FlyingTurretConfigProvider { get; set; }
@@ -91,7 +92,7 @@ public class GridViewMediator : EventMediator
         var turretType = (TurretType)payload.data;
         var turretConfig = turretsConfigProvider.GetConfig(turretType, 0);
         FlyingTurretConfigProvider.SetConfig(turretConfig);
-        _flyingTurret = Instantiate(turretConfig.BuildModePrefab);
+        _flyingTurret = Instantiate(turretConfig.BuildModePrefab, rootTransformProvider.transform);
     }
 
     private void OnBuildTurretMouseUp(IEvent payload)

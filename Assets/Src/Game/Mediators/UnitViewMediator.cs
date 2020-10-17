@@ -27,11 +27,6 @@ public class UnitViewMediator : EventMediator
 
     public override void OnRegister()
     {
-        _unitModel = modelByView.GetModel(unitView);
-
-        _unitModel.StateUpdated += OnStateUpdated;
-        _unitModel.EarnMoneyAnimationTriggered += OnEarnMoneyTriggered;
-        _unitModel.HpChanged += OnHpChanged;
         updateProvider.UpdateAction += OnUpdate;
 
         _hpBar = Instantiate(UiPrefabsConfig.HpBarPrefab, unitView.transform).GetComponent<HpBar>();
@@ -44,6 +39,15 @@ public class UnitViewMediator : EventMediator
         _unitModel.EarnMoneyAnimationTriggered -= OnEarnMoneyTriggered;
         _unitModel.HpChanged -= OnHpChanged;
         updateProvider.UpdateAction -= OnUpdate;
+    }
+
+    private void Start()
+    {
+        _unitModel = modelByView.GetModel(unitView);
+
+        _unitModel.StateUpdated += OnStateUpdated;
+        _unitModel.EarnMoneyAnimationTriggered += OnEarnMoneyTriggered;
+        _unitModel.HpChanged += OnHpChanged;
     }
 
     private void OnHpChanged()

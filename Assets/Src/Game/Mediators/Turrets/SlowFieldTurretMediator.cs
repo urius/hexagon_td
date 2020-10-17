@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlowFieldTurretMediator : TurretMediatorBase
 {
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
+    [Inject] public IRootTransformProvider RootTransformProvider { get; set; }
     [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
 
@@ -34,7 +35,8 @@ public class SlowFieldTurretMediator : TurretMediatorBase
     protected override GameObject CreateView(TurretModel turretModel)
     {
         var turretPrefab = TurretsConfigProvider.GetConfig(turretModel.TurretType, turretModel.TurretConfig.TurretLevelIndex).Prefab;
-        var turretViewGo = GameObject.Instantiate(turretPrefab, CellPositionConverter.CellVec2ToWorld(turretModel.Position), Quaternion.identity);
+        var turretViewGo = GameObject.Instantiate(turretPrefab, RootTransformProvider.transform);
+        turretViewGo.transform.position = CellPositionConverter.CellVec2ToWorld(turretModel.Position);
         _turretView = turretViewGo.GetComponent<SlowFieldTurretView>();
         return turretViewGo;
     }

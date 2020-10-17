@@ -15,12 +15,19 @@ public class SelectLevelScreenViewMediator : EventMediator
     {
         base.OnRegister();
 
-        dispatcher.AddListener(MediatorEvents.UI_SS_SELECT_LEVEL_CLICKED, OnLevelClicked);
+        dispatcher.AddListener(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, OnLevelClicked);
+        SelectLevelScreenView.StartClicked += OnStartClicked;
     }
 
     private void OnDestroy()
     {
-        dispatcher.RemoveListener(MediatorEvents.UI_SS_SELECT_LEVEL_CLICKED, OnLevelClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, OnLevelClicked);
+        SelectLevelScreenView.StartClicked -= OnStartClicked;
+    }
+
+    private void OnStartClicked()
+    {
+        dispatcher.Dispatch(MediatorEvents.UI_SL_START_LEVEL_CLICKED);
     }
 
     private void OnLevelClicked(IEvent payload)

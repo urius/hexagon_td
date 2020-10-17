@@ -1,12 +1,18 @@
 ﻿using System;
 using strange.extensions.context.impl;
+using UnityEngine;
 
 public interface IUpdateProvider
 {
     event Action UpdateAction;
 }
 
-public class GameContextView : ContextView, IUpdateProvider
+public interface IRootTransformProvider
+{
+    Transform transform { get; }
+}
+
+public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvider
 {
     public event Action UpdateAction = delegate { };
 

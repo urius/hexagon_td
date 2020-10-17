@@ -136,7 +136,7 @@ public class LevelsScrollViewMediator : EventMediator
         var isLocked = !PlayerGlobalModelHolder.PlayerGlobalModel.GetProgressByLevel(levelIndex).isUnlocked;
         _selection.GetComponent<LevelsScrollItemSelectionView>().SetLockedState(isLocked);
 
-        dispatcher.Dispatch(MediatorEvents.UI_SS_SELECT_LEVEL_CLICKED, levelIndex);
+        dispatcher.Dispatch(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, levelIndex);
     }
 
     private void OnRightClick()

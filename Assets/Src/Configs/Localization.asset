@@ -60,4 +60,4 @@ MonoBehaviour:
     - LocalizationItemId: levels_menu_start
       En: Start
     - LocalizationItemId: levels_menu_level_locked
-      En: Level {0} is locked. Complete previous levels to unlock
+      En: Level {0} is locked.^Complete previous levels to unlock

@@ -8,12 +8,14 @@ public class ShowPathsMediator
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
+    [Inject] public IRootTransformProvider RootTransformProvider { get; set; }
 
     private readonly Vector3 _offset = Vector3.up;
 
     private GameObject _pathLinePrefab;
     private Material _lineMaterial;
     private Vector2 _lineTextureOffset;
+    private GameObject _parentPrefab;
     private GameObject _parent;
 
     [PostConstruct]
@@ -21,6 +23,8 @@ public class ShowPathsMediator
     {
         _pathLinePrefab = UIPrefabsConfig.PathLinePrefab;
         _lineMaterial = _pathLinePrefab.GetComponent<LineRenderer>().sharedMaterial;
+
+        _parentPrefab = new GameObject("[Display path container]");
 
         ShowPaths();
     }
@@ -30,14 +34,12 @@ public class ShowPathsMediator
         HidePaths();
 
         _lineTextureOffset = Vector2.zero;
-
-        _parent = new GameObject("[Display path container]");
+        _parent = GameObject.Instantiate(_parentPrefab, RootTransformProvider.transform);
         var paths = LevelModel.GetPaths();
         foreach (var path in paths)
         {
             ShowPath(path);
         }
-
 
         UpdateProvider.UpdateAction += OnUpdate;
         LevelModel.PathsManager.PathsUpdated += OnPathsUpdated;
