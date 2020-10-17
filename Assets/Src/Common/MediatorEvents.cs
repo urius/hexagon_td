@@ -32,6 +32,10 @@ public class MediatorEvents
     public static string UI_SL_SELECT_LEVEL_CLICKED = "UI_SL_SELECT_LEVEL_CLICKED";
     public static string UI_SL_START_LEVEL_CLICKED = "UI_SL_START_LEVEL_CLICKED";
 
+    public static string UI_TS_SHOW_ANIM_ENDED = "UI_TS_SHOW_ANIM_ENDED";
+    public static string UI_TS_LOAD_GAME_PROGRESS_UPDATED = "UI_TS_LOAD_GAME_PROGRESS_UPDATED";
+    public static string UI_TS_REQUEST_HIDE_ANIM = "UI_TS_REQUEST_HIDE_ANIM";
+    public static string UI_TS_HIDE_ANIM_ENDED = "UI_TS_HIDE_ANIM_ENDED";
 
     public static string DEBUG_BUTTON_CLICKED = "DEBUG_BUTTON_CLICKED";
 }

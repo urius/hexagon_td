@@ -44,6 +44,7 @@ public enum LocalizationGroupId
     BottomPanel,
     GeneralInfoPanel,
     StartScreen,
+    TransitionScreen,
 }
 
 [Serializable]

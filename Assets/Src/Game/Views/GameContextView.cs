@@ -29,6 +29,7 @@ public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvi
         GameSettingsSetupHelper.Setup();
 
         context = new GameContext(this);
+        Context.firstContext = context;
         context.Launch();
     }
 

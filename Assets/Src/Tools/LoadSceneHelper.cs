@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneHelper : MonoBehaviour
 {
-    public static Task<Scene> LoadSceneAdditiveAsync(string sceneName)
+    public static Task<Scene> LoadSceneAdditiveAsync(string sceneName, out AsyncOperation asyncOperation)
     {
         var _tsc = new TaskCompletionSource<Scene>();
-
+        asyncOperation = null;
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
             if (scene.name == sceneName)
@@ -20,9 +20,14 @@ public class LoadSceneHelper : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
         return _tsc.Task;
+    }
+
+    public static Task<Scene> LoadSceneAdditiveAsync(string sceneName)
+    {
+        return LoadSceneAdditiveAsync(sceneName, out var _);
     }
 
     public static Task UnloadSceneAsync(string sceneName)

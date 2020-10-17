@@ -61,3 +61,7 @@ MonoBehaviour:
       En: Start
     - LocalizationItemId: levels_menu_level_locked
       En: Level {0} is locked.^Complete previous levels to unlock
+  - LocalizationGroupId: 5
+    LocalizationItems:
+    - LocalizationItemId: loading
+      En: LOADING
