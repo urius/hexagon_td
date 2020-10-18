@@ -1,34 +1,80 @@
 fileFormatVersion: 2
 guid: 3fbbdb655312bf9489d8a9adb87f38ab
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: lazer_lvl1_barrel
-    100004: lazer_lvl1_base
-    100006: lazer_lvl1_main
-    100008: lazer_lvl1_mid
-    400000: //RootNode
-    400002: lazer_lvl1_barrel
-    400004: lazer_lvl1_base
-    400006: lazer_lvl1_main
-    400008: lazer_lvl1_mid
-    2100000: pasted__laser
-    2300000: lazer_lvl1_barrel
-    2300002: lazer_lvl1_base
-    2300004: lazer_lvl1_main
-    2300006: lazer_lvl1_mid
-    3300000: lazer_lvl1_barrel
-    3300002: lazer_lvl1_base
-    3300004: lazer_lvl1_main
-    3300006: lazer_lvl1_mid
-    4300000: lazer_lvl1_base
-    4300002: lazer_lvl1_mid
-    4300004: lazer_lvl1_barrel
-    4300006: lazer_lvl1_main
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: lazer_lvl1_barrel
+  - first:
+      1: 100004
+    second: lazer_lvl1_base
+  - first:
+      1: 100006
+    second: lazer_lvl1_main
+  - first:
+      1: 100008
+    second: lazer_lvl1_mid
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: lazer_lvl1_barrel
+  - first:
+      4: 400004
+    second: lazer_lvl1_base
+  - first:
+      4: 400006
+    second: lazer_lvl1_main
+  - first:
+      4: 400008
+    second: lazer_lvl1_mid
+  - first:
+      21: 2100000
+    second: pasted__laser
+  - first:
+      23: 2300000
+    second: lazer_lvl1_barrel
+  - first:
+      23: 2300002
+    second: lazer_lvl1_base
+  - first:
+      23: 2300004
+    second: lazer_lvl1_main
+  - first:
+      23: 2300006
+    second: lazer_lvl1_mid
+  - first:
+      33: 3300000
+    second: lazer_lvl1_barrel
+  - first:
+      33: 3300002
+    second: lazer_lvl1_base
+  - first:
+      33: 3300004
+    second: lazer_lvl1_main
+  - first:
+      33: 3300006
+    second: lazer_lvl1_mid
+  - first:
+      43: 4300000
+    second: lazer_lvl1_base
+  - first:
+      43: 4300002
+    second: lazer_lvl1_mid
+  - first:
+      43: 4300004
+    second: lazer_lvl1_barrel
+  - first:
+      43: 4300006
+    second: lazer_lvl1_main
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -54,44 +100,46 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
-    useSRGBMaterialColor: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    useSRGBMaterialColor: 0
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
+    blendShapeNormalImportMode: 2
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -101,13 +149,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

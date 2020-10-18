@@ -1,44 +1,110 @@
 fileFormatVersion: 2
 guid: 1119ebeef9a5ea441bd151ec0a0c4fc9
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: l3_barrel
-    100002: l3_base
-    100004: l3_connector
-    100006: l3_main
-    100008: l3_mid
-    100010: l3_side
-    100012: //RootNode
-    400000: l3_barrel
-    400002: l3_base
-    400004: l3_connector
-    400006: l3_main
-    400008: l3_mid
-    400010: l3_side
-    400012: //RootNode
-    2100000: pasted__laser
-    2300000: l3_barrel
-    2300002: l3_base
-    2300004: l3_connector
-    2300006: l3_main
-    2300008: l3_mid
-    2300010: l3_side
-    3300000: l3_barrel
-    3300002: l3_base
-    3300004: l3_connector
-    3300006: l3_main
-    3300008: l3_mid
-    3300010: l3_side
-    4300000: l3_base
-    4300002: l3_mid
-    4300004: l3_connector
-    4300006: l3_barrel
-    4300008: l3_side
-    4300010: l3_main
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: l3_barrel
+  - first:
+      1: 100002
+    second: l3_base
+  - first:
+      1: 100004
+    second: l3_connector
+  - first:
+      1: 100006
+    second: l3_main
+  - first:
+      1: 100008
+    second: l3_mid
+  - first:
+      1: 100010
+    second: l3_side
+  - first:
+      1: 100012
+    second: //RootNode
+  - first:
+      4: 400000
+    second: l3_barrel
+  - first:
+      4: 400002
+    second: l3_base
+  - first:
+      4: 400004
+    second: l3_connector
+  - first:
+      4: 400006
+    second: l3_main
+  - first:
+      4: 400008
+    second: l3_mid
+  - first:
+      4: 400010
+    second: l3_side
+  - first:
+      4: 400012
+    second: //RootNode
+  - first:
+      21: 2100000
+    second: pasted__laser
+  - first:
+      23: 2300000
+    second: l3_barrel
+  - first:
+      23: 2300002
+    second: l3_base
+  - first:
+      23: 2300004
+    second: l3_connector
+  - first:
+      23: 2300006
+    second: l3_main
+  - first:
+      23: 2300008
+    second: l3_mid
+  - first:
+      23: 2300010
+    second: l3_side
+  - first:
+      33: 3300000
+    second: l3_barrel
+  - first:
+      33: 3300002
+    second: l3_base
+  - first:
+      33: 3300004
+    second: l3_connector
+  - first:
+      33: 3300006
+    second: l3_main
+  - first:
+      33: 3300008
+    second: l3_mid
+  - first:
+      33: 3300010
+    second: l3_side
+  - first:
+      43: 4300000
+    second: l3_base
+  - first:
+      43: 4300002
+    second: l3_mid
+  - first:
+      43: 4300004
+    second: l3_connector
+  - first:
+      43: 4300006
+    second: l3_barrel
+  - first:
+      43: 4300008
+    second: l3_side
+  - first:
+      43: 4300010
+    second: l3_main
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -64,44 +130,46 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
-    useSRGBMaterialColor: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    useSRGBMaterialColor: 0
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
+    blendShapeNormalImportMode: 2
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -111,13 +179,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
