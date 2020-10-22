@@ -60,6 +60,20 @@ public class LevelModel
     public Task StartLevelTask => _levelStartedTsc.Task;
     public bool IsLevelFinished => IsWon || IsDefeated;
 
+    public int GetAccuracyRate()
+    {
+        var percent = (float)GoalCount / MaxGoalCapacity;
+        if (percent <= 0.3)
+        {
+            return 1;
+        }
+        else if (percent < 1)
+        {
+            return 2;
+        }
+        return 3;
+    }
+
     public void DispatchTeleporting(Vector2Int previousCellPosition, Vector2Int currentCellPosition)
     {
         Teleporting(previousCellPosition, currentCellPosition);

@@ -30,6 +30,8 @@ MonoBehaviour:
     type: 3}
   GeneralInfoPanelPrefab: {fileID: 3154937408131652060, guid: 1c2ce52ebf426447b8e18a2fd6b681cd,
     type: 3}
+  WinPopupPrefab: {fileID: 628941601317464405, guid: 5d15194f080344349b0ba922f149a8aa,
+    type: 3}
   SelectLevelItemContainerPrefab: {fileID: 1336286762095731735, guid: ef48418959c304dd08881fd2e56b609d,
     type: 3}
   SelectLevelItemPrefab: {fileID: 6941933405437199060, guid: 1d6aa44b50cbb4d8ab8b945fe246e4e9,

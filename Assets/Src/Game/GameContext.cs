@@ -13,12 +13,26 @@ public class GameContext : MVCSContext
         base.mapBindings();
 
         var gameContextView = ((GameObject)contextView).GetComponent<GameContextView>();
+        LevelModel levelModel = null;
+        if (injectionBinder.GetBinding<LocalizationProvider>() == null)
+        {
+            injectionBinder.Bind<LocalizationProvider>().ToValue(gameContextView.LocalizationProvider).CrossContext();
+        }
+        if (injectionBinder.GetBinding<LevelsCollectionProvider>() == null)
+        {
+            injectionBinder.Bind<LevelsCollectionProvider>().ToValue(gameContextView.LevelsCollectionProvider).CrossContext();
+        }
+        if (injectionBinder.GetBinding<LevelConfigProvider>() == null)
+        {
+            injectionBinder.Bind<LevelConfigProvider>().ToValue(gameContextView.LevelConfigProvider).CrossContext();
+            levelModel = new LevelModel(gameContextView.LevelConfigProvider.LevelConfig);
+        }
+
         injectionBinder
             .Bind<IUpdateProvider>()
             .Bind<IRootTransformProvider>()
             .ToValue(gameContextView);
         injectionBinder.Bind<IViewManager>().To<ViewsManager>().ToSingleton();
-        var levelModel = new LevelModel(gameContextView.LevelConfigProvider.LevelConfig);
         injectionBinder.Bind<LevelModel>().ToValue(levelModel);
         injectionBinder.Bind<WaveModel>().ToValue(levelModel.WaveModel);
         injectionBinder.Bind<LevelUnitsModel>().ToValue(levelModel.LevelUnitsModel);
@@ -27,10 +41,6 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
         injectionBinder.Bind<TurretConfigProvider>().ToValue(gameContextView.TurretConfigsProvider);
         injectionBinder.Bind<UIPrefabsConfig>().ToValue(gameContextView.UIPrefabsConfig);
-        if (injectionBinder.GetBinding<LocalizationProvider>() == null)
-        {
-            injectionBinder.Bind<LocalizationProvider>().ToValue(gameContextView.LocalizationProvider).CrossContext();
-        }
 
         injectionBinder
             .Bind<IUnitModelByViewProvider>()
@@ -71,6 +81,7 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<WaveTextView>().To<WaveTextViewMediator>();
         mediationBinder.Bind<MoneyTextView>().To<MoneyTextViewMediator>();
         mediationBinder.Bind<ButtonView>().To<ButtonViewMediator>();
+        mediationBinder.Bind<WinPopup>().To<WinPopupMediator>();
         //debug ui
         mediationBinder.Bind<DebugPanelView>().To<DebugPanelMediator>();
 

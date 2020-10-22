@@ -16,7 +16,8 @@ public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvi
 {
     public event Action UpdateAction = delegate { };
 
-    public LevelConfigProvider LevelConfigProvider;
+    public LevelConfigProvider LevelConfigProvider;//for debug
+    public LevelsCollectionProvider LevelsCollectionProvider;//for debug
     public CellConfigProvider CellConfigProvider;
     public UnitConfigsProvider UnitConfigsProvider;
     public TurretConfigProvider TurretConfigsProvider;

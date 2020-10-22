@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using strange.extensions.mediation.impl;
 using UnityEngine;
 
-public class PopupBase : MonoBehaviour
+public class PopupBase : View
 {
     [SerializeField] private Animation _animation;
 
     private TaskCompletionSource<bool> _showTsc = new TaskCompletionSource<bool>();
 
-    protected Task ShowTask => _showTsc.Task;
+    public Task ShowTask => _showTsc.Task;
 
     public void EventOnShowAnimationFinished()
     {

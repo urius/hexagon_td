@@ -6,17 +6,35 @@ using UnityEngine.UI;
 
 public class WinPopup : PopupBase
 {
+    public event Action MainMenuButtonClicked = delegate { };
+    public event Action NextLevelButtonClicked = delegate { };
+
     [SerializeField] private Button _nextLevelBtn;
     [SerializeField] private Button _mainMenuBtn;
     [SerializeField] private Text _titleTxt;
     [SerializeField] private Text _infoTxt;
-    [SerializeField] private Image _star1Image;
-    [SerializeField] private Image _star2Image;
-    [SerializeField] private Image _star3Image;
+    [SerializeField] private Animation[] _starsAnimations;
     [SerializeField] private Color _filledStarColor;
 
-    private void Awake()
+    public void SetTitle(string title)
     {
+        _titleTxt.text = title;
+    }
+
+    public void SetInfo(string text)
+    {
+        _infoTxt.text = text;
+    }
+
+    public void AnimateStar(int starIndex)
+    {
+        _starsAnimations[starIndex].Play("Star earn");
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
         _mainMenuBtn.onClick.AddListener(OnMainMenuBtnClick);
         _nextLevelBtn.onClick.AddListener(OnNextLevelBtnClick);
     }
@@ -24,10 +42,12 @@ public class WinPopup : PopupBase
     private void OnMainMenuBtnClick()
     {
         Hide();
+        MainMenuButtonClicked();
     }
 
     private void OnNextLevelBtnClick()
     {
         Hide();
+        NextLevelButtonClicked();
     }
 }

@@ -34,24 +34,32 @@ public class UiCanvasViewMediator : EventMediator
         _infoPanelCts.Dispose();
     }
 
-    private void UpdateGeneralInfo()
+    private async void UpdateGeneralInfo()
     {
+        string text;
         switch (WaveModel.WaveState)
         {
             case WaveState.BeforeFirstWave:
-                ShowGeneralInfo("before_first_wave", 200);
+                text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "before_first_wave");
+                await ShowGeneralInfo(text, 200);
                 break;
             case WaveState.InWave:
-                ShowGeneralInfo("wave_started");
+                text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_started"), WaveModel.WaveIndex + 1);
+                await ShowGeneralInfo(text);
                 break;
             case WaveState.BetweenWaves:
-                ShowGeneralInfo("wave_finished", 800);
+                text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_finished"), WaveModel.WaveIndex + 1);
+                await ShowGeneralInfo(text, 800);
                 break;
             case WaveState.AfterLastWave:
-                ShowGeneralInfo("all_waves_finished", 800);
+                text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "all_waves_finished");
+                await ShowGeneralInfo(text, 800, showTimeMs: 1500);
+                ShowWinPopup();
                 break;
             case WaveState.Terminated:
-                ShowGeneralInfo("defeat", 1000, Color.red);
+                text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "defeat");
+                await ShowGeneralInfo(text, 1000, Color.red);
+                //show defeat popup
                 break;
         }
     }
@@ -61,7 +69,7 @@ public class UiCanvasViewMediator : EventMediator
         UpdateGeneralInfo();
     }
 
-    private async void ShowGeneralInfo(string infoKey, int delayMs = 0, Color? textColor = null)
+    private async Task ShowGeneralInfo(string infoStr, int delayMs = 0, Color? textColor = null, int showTimeMs = 1000)
     {
         if (!_infoPanelCts.IsCancellationRequested)
         {
@@ -71,8 +79,7 @@ public class UiCanvasViewMediator : EventMediator
         _infoPanelCts = new CancellationTokenSource();
         var stopToken = _infoPanelCts.Token;
 
-        if (delayMs > 0 && !stopToken.IsCancellationRequested) await Task.Delay(delayMs, stopToken).ContinueWith(_ => { });
-        var infoStr = Loc.Get(LocalizationGroupId.GeneralInfoPanel, infoKey);
+        await DelayAsync(delayMs, stopToken);
         var infoPanelGo = Instantiate(UIPrefabsConfig.GeneralInfoPanelPrefab, UICanvasView.transform);
         var infoPanel = infoPanelGo.GetComponent<GeneralInfoPanelView>();
 
@@ -82,9 +89,19 @@ public class UiCanvasViewMediator : EventMediator
         }
         await infoPanel.ShowAsync();
         if (!stopToken.IsCancellationRequested) await infoPanel.SetTextAsync(infoStr, stopToken);
-        await Task.Delay(1000, stopToken).ContinueWith(_ => { });
+        await Task.Delay(showTimeMs, stopToken).ContinueWith(_ => { });
         await infoPanel.HideAsync();
 
         Destroy(infoPanelGo);
+    }
+
+    private void ShowWinPopup()
+    {
+        var winPopupGo = Instantiate(UIPrefabsConfig.WinPopupPrefab, UICanvasView.transform);
+    }
+
+    private async Task DelayAsync(int delayMs, CancellationToken stopToken)
+    {
+        if (delayMs > 0 && !stopToken.IsCancellationRequested) await Task.Delay(delayMs, stopToken).ContinueWith(_ => { });
     }
 }

@@ -56,14 +56,18 @@ public class GridViewMediator : EventMediator
         var goalBaseView = gridView.GetGoalBaseCellView(levelModel.GoalCell.CellPosition);
         goalBaseView.SetGoalNum(levelModel.GoalCount);
 
-        var percent = (float)levelModel.GoalCount / levelModel.MaxGoalCapacity;
-        if (percent <= 0.4)
+        var accuracyRate = levelModel.GetAccuracyRate();
+        if (accuracyRate <= 1)
         {
             goalBaseView.SetColorMode(GoalBaseColor.CriticalDamage);
         }
-        else if (percent <= 0.7)
+        else if (accuracyRate <= 2)
         {
             goalBaseView.SetColorMode(GoalBaseColor.LiteDamage);
+        }
+        else
+        {
+            goalBaseView.SetColorMode(GoalBaseColor.Default);
         }
     }
 

@@ -45,6 +45,7 @@ public enum LocalizationGroupId
     GeneralInfoPanel,
     StartScreen,
     TransitionScreen,
+    WinPopup,
 }
 
 [Serializable]

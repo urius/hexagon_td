@@ -42,11 +42,11 @@ MonoBehaviour:
     - LocalizationItemId: before_first_wave
       En: Prepare for first wave
     - LocalizationItemId: wave_started
-      En: Wave started!
+      En: Wave {0} started!
     - LocalizationItemId: wave_finished
-      En: Wave finished!
+      En: Wave {0} finished!
     - LocalizationItemId: all_waves_finished
-      En: All waves finished!
+      En: VICTORY!
     - LocalizationItemId: defeat
       En: Defeated!
   - LocalizationGroupId: 4
@@ -65,3 +65,13 @@ MonoBehaviour:
     LocalizationItems:
     - LocalizationItemId: loading
       En: LOADING
+  - LocalizationGroupId: 6
+    LocalizationItems:
+    - LocalizationItemId: title
+      En: Level {0} completed!
+    - LocalizationItemId: info
+      En: Congratulations!^You completed the level
+    - LocalizationItemId: home
+      En: Menu
+    - LocalizationItemId: next_level
+      En: Next level
