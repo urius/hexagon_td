@@ -46,6 +46,7 @@ public enum LocalizationGroupId
     StartScreen,
     TransitionScreen,
     WinPopup,
+    LosePopup,
 }
 
 [Serializable]

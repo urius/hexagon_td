@@ -82,6 +82,7 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<MoneyTextView>().To<MoneyTextViewMediator>();
         mediationBinder.Bind<ButtonView>().To<ButtonViewMediator>();
         mediationBinder.Bind<WinPopup>().To<WinPopupMediator>();
+        mediationBinder.Bind<LosePopup>().To<LosePopupMediator>();
         //debug ui
         mediationBinder.Bind<DebugPanelView>().To<DebugPanelMediator>();
 

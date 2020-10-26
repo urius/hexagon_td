@@ -14,6 +14,7 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject HpBarPrefab;
     public GameObject GeneralInfoPanelPrefab;
     public GameObject WinPopupPrefab;
+    public GameObject LosePopupPrefab;
 
     //main screen
     public GameObject SelectLevelItemContainerPrefab;

@@ -23,7 +23,7 @@ public class UiCanvasViewMediator : EventMediator
         await LevelModel.StartLevelTask;
 
         WaveModel.WaveStateChanged += OnWaveStateChanged;
-        UpdateGeneralInfo();
+        OnWaveStateChanged();
     }
 
     private void OnDestroy()
@@ -34,7 +34,7 @@ public class UiCanvasViewMediator : EventMediator
         _infoPanelCts.Dispose();
     }
 
-    private async void UpdateGeneralInfo()
+    private async void OnWaveStateChanged()
     {
         string text;
         switch (WaveModel.WaveState)
@@ -54,19 +54,14 @@ public class UiCanvasViewMediator : EventMediator
             case WaveState.AfterLastWave:
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "all_waves_finished");
                 await ShowGeneralInfo(text, 800, showTimeMs: 1500);
-                ShowWinPopup();
+                ShowPopup(UIPrefabsConfig.WinPopupPrefab);
                 break;
             case WaveState.Terminated:
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "defeat");
-                await ShowGeneralInfo(text, 1000, Color.red);
-                //show defeat popup
+                ShowPopup(UIPrefabsConfig.LosePopupPrefab);
+                var genInfoTask = ShowGeneralInfo(text, textColor: Color.red, showTimeMs: 1500);
                 break;
         }
-    }
-
-    private void OnWaveStateChanged()
-    {
-        UpdateGeneralInfo();
     }
 
     private async Task ShowGeneralInfo(string infoStr, int delayMs = 0, Color? textColor = null, int showTimeMs = 1000)
@@ -95,9 +90,9 @@ public class UiCanvasViewMediator : EventMediator
         Destroy(infoPanelGo);
     }
 
-    private void ShowWinPopup()
+    private void ShowPopup(GameObject popupPrefab)
     {
-        var winPopupGo = Instantiate(UIPrefabsConfig.WinPopupPrefab, UICanvasView.transform);
+        Instantiate(popupPrefab, UICanvasView.transform);
     }
 
     private async Task DelayAsync(int delayMs, CancellationToken stopToken)

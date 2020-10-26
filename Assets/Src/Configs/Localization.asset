@@ -75,3 +75,13 @@ MonoBehaviour:
       En: Menu
     - LocalizationItemId: next_level
       En: Next level
+  - LocalizationGroupId: 7
+    LocalizationItems:
+    - LocalizationItemId: title
+      En: Defeated
+    - LocalizationItemId: info
+      En: Critical amount of units have reached the goal base
+    - LocalizationItemId: home
+      En: Main menu
+    - LocalizationItemId: restart_level
+      En: Restart
