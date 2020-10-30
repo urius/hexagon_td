@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 3383557952410710910}
-  _nextLevelBtn: {fileID: 1229524706145977343}
+  _restartLevelBtn: {fileID: 1229524706145977343}
   _mainMenuBtn: {fileID: 1229524705626476166}
   _titleTxt: {fileID: 1229524705378260843}
   _infoTxt: {fileID: 1229524706820948131}

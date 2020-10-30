@@ -93,6 +93,10 @@ public class GameContext : MVCSContext
             .Once();
         commandBinder.Bind(MediatorEvents.REQUEST_BUILD_TURRET).To<RequestBuildTurretCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_GAME_SCREEN_CLICK).To<GameScreenClickedCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_WIN_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_LOSE_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_WIN_POPUP_NEXT_LEVEL_CLICKED).To<NextLevelClickedCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_LOSE_POPUP_RESTART_LEVEL_CLICKED).To<RestartClickedCommand>().Pooled();
 
         //controllers&systems
         injectionBinder.Bind<ProcessUpdatesSystem>().ToSingleton();

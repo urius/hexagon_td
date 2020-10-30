@@ -27,6 +27,11 @@ public class MediatorEvents
     public static string UI_BUILD_TURRET_MOUSE_UP = "UI_BUILD_TURRET_MOUSE_UP";
     public static string UI_GAME_SCREEN_CLICK = "UI_GAME_SCREEN_CLICK";
     public static string UI_START_WAVE_CLICKED = "UI_START_WAVE_CLICKED";
+    public static string UI_WIN_POPUP_MAIN_MENU_CLICKED = "UI_WIN_POPUP_MAIN_MENU_CLICKED";
+    public static string UI_LOSE_POPUP_MAIN_MENU_CLICKED = "UI_LOSE_POPUP_MAIN_MENU_CLICKED";    
+    public static string UI_WIN_POPUP_NEXT_LEVEL_CLICKED = "UI_WIN_POPUP_NEXT_LEVEL_CLICKED";
+    public static string UI_LOSE_POPUP_RESTART_LEVEL_CLICKED = "UI_LOSE_POPUP_RESTART_LEVEL_CLICKED";
+
 
     public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
     public static string UI_SL_SELECT_LEVEL_CLICKED = "UI_SL_SELECT_LEVEL_CLICKED";

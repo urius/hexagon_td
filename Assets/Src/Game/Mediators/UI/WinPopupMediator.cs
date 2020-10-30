@@ -24,11 +24,27 @@ public class WinPopupMediator : EventMediator
         WinPopup.SetInfo(Loc.Get(LocalizationGroupId.WinPopup, "info"));
 
         AnimateStarsAsync(LevelModel.GetAccuracyRate());
+
+        WinPopup.MainMenuButtonClicked += OnMainClicked;
+        WinPopup.NextLevelButtonClicked += OnNextLvlClicked;
+    }
+
+    private void OnMainClicked()
+    {
+        dispatcher.Dispatch(MediatorEvents.UI_WIN_POPUP_MAIN_MENU_CLICKED);
+    }
+
+    private void OnNextLvlClicked()
+    {
+        dispatcher.Dispatch(MediatorEvents.UI_WIN_POPUP_NEXT_LEVEL_CLICKED);
     }
 
     private void OnDestroy()
     {
         _starsAnimCts.Cancel();
+
+        WinPopup.MainMenuButtonClicked -= OnMainClicked;
+        WinPopup.NextLevelButtonClicked -= OnNextLvlClicked;
     }
 
     private async void AnimateStarsAsync(int starsAmount)

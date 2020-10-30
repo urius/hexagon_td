@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class LosePopup : PopupBase
 {
     public event Action MainMenuButtonClicked = delegate { };
-    public event Action NextLevelButtonClicked = delegate { };
+    public event Action RestartButtonClicked = delegate { };
 
-    [SerializeField] private Button _nextLevelBtn;
+    [SerializeField] private Button _restartLevelBtn;
     [SerializeField] private Button _mainMenuBtn;
     [SerializeField] private Text _titleTxt;
     [SerializeField] private Text _infoTxt;
@@ -29,7 +29,7 @@ public class LosePopup : PopupBase
         base.Awake();
 
         _mainMenuBtn.onClick.AddListener(OnMainMenuBtnClick);
-        _nextLevelBtn.onClick.AddListener(OnNextLevelBtnClick);
+        _restartLevelBtn.onClick.AddListener(OnRestartBtnClick);
     }
 
     private void OnMainMenuBtnClick()
@@ -38,9 +38,9 @@ public class LosePopup : PopupBase
         MainMenuButtonClicked();
     }
 
-    private void OnNextLevelBtnClick()
+    private void OnRestartBtnClick()
     {
         Hide();
-        NextLevelButtonClicked();
+        RestartButtonClicked();
     }
 }

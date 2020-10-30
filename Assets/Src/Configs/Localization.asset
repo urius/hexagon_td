@@ -48,7 +48,7 @@ MonoBehaviour:
     - LocalizationItemId: all_waves_finished
       En: VICTORY!
     - LocalizationItemId: defeat
-      En: Defeated!
+      En: Defeat
   - LocalizationGroupId: 4
     LocalizationItems:
     - LocalizationItemId: main_menu_play
