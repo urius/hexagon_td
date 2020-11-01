@@ -13,20 +13,10 @@ public class GameContext : MVCSContext
         base.mapBindings();
 
         var gameContextView = ((GameObject)contextView).GetComponent<GameContextView>();
-        LevelModel levelModel = null;
-        if (injectionBinder.GetBinding<LocalizationProvider>() == null)
-        {
-            injectionBinder.Bind<LocalizationProvider>().ToValue(gameContextView.LocalizationProvider).CrossContext();
-        }
-        if (injectionBinder.GetBinding<LevelsCollectionProvider>() == null)
-        {
-            injectionBinder.Bind<LevelsCollectionProvider>().ToValue(gameContextView.LevelsCollectionProvider).CrossContext();
-        }
-        if (injectionBinder.GetBinding<LevelConfigProvider>() == null)
-        {
-            injectionBinder.Bind<LevelConfigProvider>().ToValue(gameContextView.LevelConfigProvider).CrossContext();
-            levelModel = new LevelModel(gameContextView.LevelConfigProvider.LevelConfig);
-        }
+
+        new GlobalBindingsHelper(injectionBinder).Bind(gameContextView.GlobalObjectsHolder);
+
+        var levelModel = new LevelModel(gameContextView.GlobalObjectsHolder.LevelConfigProvider.LevelConfig);
 
         injectionBinder
             .Bind<IUpdateProvider>()
@@ -40,7 +30,6 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<CellConfigProvider>().ToValue(gameContextView.CellConfigProvider);
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
         injectionBinder.Bind<TurretConfigProvider>().ToValue(gameContextView.TurretConfigsProvider);
-        injectionBinder.Bind<UIPrefabsConfig>().ToValue(gameContextView.UIPrefabsConfig);
 
         injectionBinder
             .Bind<IUnitModelByViewProvider>()

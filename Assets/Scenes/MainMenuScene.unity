@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -587,11 +587,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fad24ae18c74ab59229e30b35ac28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
-    type: 2}
-  LevelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
-    type: 2}
-  UIPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
+  GlobalObjectsHolder:
+    LocalizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
+      type: 2}
+    LevelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
+      type: 2}
+    UIPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
+    PlayerGlobalModelHolder: {fileID: 11400000, guid: 0b7d068b3556a4b15bd2341b3676fac9,
+      type: 2}
+    LevelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
+      type: 2}
   DeafultPlayerGlobalModelProvider: {fileID: 11400000, guid: 53946e3232602437b98d2d299ac8e5ba,
     type: 2}
 --- !u!1 &1014108570
@@ -676,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1014664577
 Light:
   m_ObjectHideFlags: 0
@@ -940,8 +945,8 @@ Camera:
   m_GameObject: {fileID: 1245305556}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

@@ -9,6 +9,9 @@ public class WavesControlSystem : EventSystemBase
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
+    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
+    [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
 
     public override void Start()
     {
@@ -38,8 +41,17 @@ public class WavesControlSystem : EventSystemBase
                 if (WaveModel.WaveState == WaveState.AfterLastWave)
                 {
                     LevelModel.FinishLevel(true);
+
+                    UpdatePlayerData();
                 }
             }
         }
+    }
+
+    private void UpdatePlayerData()
+    {
+        var levelIndex = LevelsCollectionProvider.GetLevelIndexByConfig(LevelConfigProvider.LevelConfig);
+        var stars = LevelModel.GetAccuracyRate();
+        PlayerGlobalModelHolder.PlayerGlobalModel.SetLevelPassed(levelIndex, stars);
     }
 }

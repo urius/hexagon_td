@@ -85,3 +85,7 @@ MonoBehaviour:
       En: Main menu
     - LocalizationItemId: restart_level
       En: Restart
+  - LocalizationGroupId: 8
+    LocalizationItems:
+    - LocalizationItemId: loading
+      En: LOADING...

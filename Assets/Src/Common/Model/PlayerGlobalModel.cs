@@ -5,16 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerGlobalModelHolder
+[CreateAssetMenu(fileName = "PlayerGlobalModelHolder", menuName = "Common/Model/PlayerGlobalModelHolder")]
+public class PlayerGlobalModelHolder : ScriptableObject
 {
-    private TaskCompletionSource<bool> _modelInnitializedTsc = new TaskCompletionSource<bool>();
+    [SerializeField]
+    private PlayerGlobalModel _playerGlobalModel;
+    public PlayerGlobalModel PlayerGlobalModel => _playerGlobalModel;
 
-    public PlayerGlobalModel PlayerGlobalModel { get; private set; }
+    private TaskCompletionSource<bool> _modelInnitializedTsc = new TaskCompletionSource<bool>();
     public Task ModelInnitializedTask => _modelInnitializedTsc.Task;
 
     public void SetModel(PlayerGlobalModel model)
     {
-        PlayerGlobalModel = model;
+        _playerGlobalModel = model;
         _modelInnitializedTsc.TrySetResult(true);
     }
 }
@@ -22,10 +25,19 @@ public class PlayerGlobalModelHolder
 [Serializable]
 public class PlayerGlobalModel
 {
-    public PlayerGlobalModel(PlayerGlobalModel original, int levelsAmount = -1)
+    public static bool TryLoad(out PlayerGlobalModel playerGlobalModel)
+    {
+        return SaveLoadHelper.TryLoadSerialized("pgm", out playerGlobalModel);
+    }
+
+    public void Save()
+    {
+        SaveLoadHelper.SaveSerialized(this, "pgm");
+    }
+
+    public PlayerGlobalModel(PlayerGlobalModel original)
     {
         LevelsProgress = original.LevelsProgress;
-        AdjustLevelsAmount(levelsAmount);
 
         UpdateUnlockState();
     }
@@ -53,7 +65,14 @@ public class PlayerGlobalModel
         return LevelsProgress[levelIndex];
     }
 
-    private void AdjustLevelsAmount(int levelsAmount)
+    public void SetLevelPassed(int levelIndex, int starsAmount)
+    {
+        LevelsProgress[levelIndex].isUnlocked = true;
+        LevelsProgress[levelIndex].isPassed = true;
+        LevelsProgress[levelIndex].StarsAmount = starsAmount;
+    }
+
+    public void AdjustLevelsAmount(int levelsAmount)
     {
         if (levelsAmount > 0 && LevelsProgress.Length < levelsAmount)
         {

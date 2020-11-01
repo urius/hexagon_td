@@ -16,14 +16,11 @@ public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvi
 {
     public event Action UpdateAction = delegate { };
 
-    public LevelConfigProvider LevelConfigProvider;//for debug
-    public LevelsCollectionProvider LevelsCollectionProvider;//for debug
+    public GlobalObjectsHolder GlobalObjectsHolder;
     public CellConfigProvider CellConfigProvider;
     public UnitConfigsProvider UnitConfigsProvider;
     public TurretConfigProvider TurretConfigsProvider;
-    public UIPrefabsConfig UIPrefabsConfig;
     public GridView GridView;
-    public LocalizationProvider LocalizationProvider;
 
     private void Awake()
     {

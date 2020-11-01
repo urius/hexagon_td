@@ -387,7 +387,7 @@ MonoBehaviour:
   _firePoints:
   - {fileID: 4375657059501474802}
   _particles: {fileID: 0}
-  _rotationSpeedDegrees: 4
+  _rotationSpeedDegrees: 8
   _head: {fileID: 1323111324}
 --- !u!1 &2936018966837869281
 GameObject:

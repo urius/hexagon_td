@@ -1,14 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using strange.extensions.context.impl;
 using UnityEngine;
 
 public class StartScreenContextView : ContextView
 {
-    [SerializeField] public LocalizationProvider LocalizationProvider;
-    [SerializeField] public LevelsCollectionProvider LevelsCollectionProvider;
-    [SerializeField] public UIPrefabsConfig UIPrefabsConfig;
-    [SerializeField] public DeafultPlayerGlobalModelProvider DeafultPlayerGlobalModelProvider;    
+    public GlobalObjectsHolder GlobalObjectsHolder;
+    public DeafultPlayerGlobalModelProvider DeafultPlayerGlobalModelProvider;    
 
     private void Awake()
     {

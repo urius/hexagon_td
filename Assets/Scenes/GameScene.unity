@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1600,7 +1600,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1738,19 +1738,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb1f6afe4a9744acfadd20a3bf136bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
-    type: 2}
-  LevelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
-    type: 2}
+  GlobalObjectsHolder:
+    LocalizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
+      type: 2}
+    LevelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
+      type: 2}
+    UIPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
+    PlayerGlobalModelHolder: {fileID: 11400000, guid: 0b7d068b3556a4b15bd2341b3676fac9,
+      type: 2}
+    LevelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
+      type: 2}
   CellConfigProvider: {fileID: 11400000, guid: c4b1198b8874144ac8c1f6d1dd25550c, type: 2}
   UnitConfigsProvider: {fileID: 11400000, guid: c8c8733d9b43e4594b9178143a4dd4b5,
     type: 2}
   TurretConfigsProvider: {fileID: 11400000, guid: 2ab157ab7588940ddb1bf87b784d88be,
     type: 2}
-  UIPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
   GridView: {fileID: 69795387}
-  LocalizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
-    type: 2}
 --- !u!4 &1920064364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4373820143657704381, guid: 6a48d5d3250744488b99c1cca2df91a3,

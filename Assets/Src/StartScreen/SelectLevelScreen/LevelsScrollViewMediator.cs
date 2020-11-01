@@ -39,8 +39,6 @@ public class LevelsScrollViewMediator : EventMediator
 
     public async void Start()
     {
-        await PlayerGlobalModelHolder.ModelInnitializedTask;
-
         _contentTransform = SelectLevelScrollView.ContentTransform;
         _itemContainerWidth = ((RectTransform)UIPrefabsConfig.SelectLevelItemContainerPrefab.transform).rect.width;
 

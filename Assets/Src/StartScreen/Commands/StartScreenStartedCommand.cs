@@ -11,16 +11,14 @@ public class StartScreenStartedCommand : EventCommand
 
     public override void Execute()
     {
-        if (PlayerGlobalModelHolder.PlayerGlobalModel == null) 
-        {
-            //first time screen opening in game session
+        //first time screen opening in game session
 
-            //TODO: load or initialize player model
-            var playerModel = new PlayerGlobalModel(
-                DeafultPlayerGlobalModelProvider.PlayerGlobalModel,
-                LevelsCollectionProvider.Levels.Length);
-
-            PlayerGlobalModelHolder.SetModel(playerModel);
-        }
+        //TODO: move to bootstrapper
+        //TODO: load or initialize player model
+        /*var playerModel = new PlayerGlobalModel(
+            DeafultPlayerGlobalModelProvider.PlayerGlobalModel,
+            LevelsCollectionProvider.Levels.Length);
+        */
+        //PlayerGlobalModelHolder.SetModel(playerModel);
     }
 }

@@ -16,13 +16,9 @@ public class StartScreenContext : MVCSContext
 
         var mainMenuContextView = ((GameObject)contextView).GetComponent<StartScreenContextView>();
 
-        injectionBinder.Bind<LevelsCollectionProvider>().ToValue(mainMenuContextView.LevelsCollectionProvider);
         injectionBinder.Bind<DeafultPlayerGlobalModelProvider>().ToValue(mainMenuContextView.DeafultPlayerGlobalModelProvider);
 
-        //cross context
-        injectionBinder.Bind<LocalizationProvider>().ToValue(mainMenuContextView.LocalizationProvider).CrossContext();
-        injectionBinder.Bind<UIPrefabsConfig>().ToValue(mainMenuContextView.UIPrefabsConfig).CrossContext();
-        injectionBinder.Bind<PlayerGlobalModelHolder>().ToSingleton().CrossContext();
+        new GlobalBindingsHelper(injectionBinder).Bind(mainMenuContextView.GlobalObjectsHolder); 
 
         //mediators
         mediationBinder.Bind<MainMenuView>().To<MainMenuViewMediator>();

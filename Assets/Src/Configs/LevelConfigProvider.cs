@@ -8,4 +8,9 @@ public class LevelConfigProvider : ScriptableObject
     [SerializeField]
     private LevelConfig _levelConfig;
     public LevelConfig LevelConfig => _levelConfig;
+
+    public void SetCurrentLevelConfig(LevelConfig config)
+    {
+        _levelConfig = config;
+    }
 }
