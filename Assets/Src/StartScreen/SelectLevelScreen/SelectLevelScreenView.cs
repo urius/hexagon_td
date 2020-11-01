@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public class SelectLevelScreenView : View
 {
+    public event Action HomeClicked = delegate { };
     public event Action StartClicked = delegate { };
 
+    [SerializeField] private Button _homeButton;
     [SerializeField] private Button _startButton;
     [SerializeField] private Text _lockedText;
 
@@ -16,7 +18,21 @@ public class SelectLevelScreenView : View
     {
         base.Awake();
 
+        _homeButton.onClick.AddListener(OnHomeClick);
         _startButton.onClick.AddListener(OnStartClick);
+    }
+
+    protected override void OnDestroy()
+    {        
+        _homeButton.onClick.AddListener(OnHomeClick);
+        _startButton.onClick.AddListener(OnStartClick);
+
+        base.OnDestroy();
+    }
+
+    private void OnHomeClick()
+    {
+        HomeClicked();
     }
 
     private void OnStartClick()
