@@ -17,6 +17,8 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject LosePopupPrefab;
 
     //main screen
+    public GameObject MainMenuScreenPrefab;
+    public GameObject SelectLevelScreenPrefab;
     public GameObject SelectLevelItemContainerPrefab;
     public GameObject SelectLevelItemPrefab;
     public GameObject SelectLevelItemSelectionPrefab;

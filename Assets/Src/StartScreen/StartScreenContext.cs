@@ -21,6 +21,7 @@ public class StartScreenContext : MVCSContext
         new GlobalBindingsHelper(injectionBinder).Bind(mainMenuContextView.GlobalObjectsHolder); 
 
         //mediators
+        mediationBinder.Bind<MenuSceneCanvasView>().To<MenuSceneCanvasViewMediator>();
         mediationBinder.Bind<MainMenuView>().To<MainMenuViewMediator>();
         mediationBinder.Bind<SelectLevelScreenView>().To<SelectLevelScreenViewMediator>();
         mediationBinder.Bind<LevelsScrollView>().To<LevelsScrollViewMediator>();

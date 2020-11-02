@@ -24,6 +24,7 @@ public class MainMenuViewMediator : EventMediator
 
     private void OnPlayClicked()
     {
+        MainMenuView.HideAnimated();
         dispatcher.Dispatch(MediatorEvents.UI_SS_PLAY_CLICKED);
     }
 }

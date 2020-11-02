@@ -5,7 +5,7 @@ using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuView : View
+public class MainMenuView : ScreenView
 {
     public event Action PlayButtonClicked = delegate { };
     public event Action SettingsButtonClicked = delegate { };

@@ -9,6 +9,8 @@ public class ButtonView : View
 
     [SerializeField] private Text _text;
 
+    private Button _button;
+
     public void SetText(string text)
     {
         _text.text = text;
@@ -17,5 +19,20 @@ public class ButtonView : View
     public void EventOnClick()
     {
         OnClick();
+    }
+
+    override protected void Awake()
+    {
+        base.Awake();
+
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(EventOnClick);
+    }
+
+    override protected void OnDestroy()
+    {
+        _button.onClick.RemoveListener(EventOnClick);
+
+        base.OnDestroy();
     }
 }

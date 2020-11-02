@@ -5,7 +5,7 @@ using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectLevelScreenView : View
+public class SelectLevelScreenView : ScreenView
 {
     public event Action HomeClicked = delegate { };
     public event Action StartClicked = delegate { };
