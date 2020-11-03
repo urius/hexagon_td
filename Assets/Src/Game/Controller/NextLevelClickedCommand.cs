@@ -16,7 +16,7 @@ public class NextLevelClickedCommand : EventCommand
 
         //Advance level index or go to main if it is last level
         var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);        
-        await transitionHelper.SwitchAsync(SceneNames.MainMenu, SceneNames.Game);
+        await transitionHelper.SwitchAsync(SceneNames.Game, SceneNames.Game);
 
         Release();
     }

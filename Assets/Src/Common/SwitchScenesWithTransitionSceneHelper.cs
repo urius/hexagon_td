@@ -55,8 +55,7 @@ public class SwitchScenesWithTransitionSceneHelper
             globalDispatcher.Dispatch(MediatorEvents.UI_TS_LOAD_GAME_PROGRESS_UPDATED, loadGameOperation.progress);
             await Task.Delay(100);
         }
-        AddOverlayCameraToAllCameras();
-        _transitionBaseCamera.GetUniversalAdditionalCameraData().cameraStack.Remove(_transitionOverlayCamera);
+        //AddOverlayCameraToAllCameras();
 
         globalDispatcher.AddListener(MediatorEvents.UI_TS_HIDE_ANIM_ENDED, OnHideTransitionEnded);
         globalDispatcher.Dispatch(MediatorEvents.UI_TS_REQUEST_HIDE_ANIM);
@@ -80,6 +79,7 @@ public class SwitchScenesWithTransitionSceneHelper
     {
         globalDispatcher.RemoveListener(MediatorEvents.UI_TS_HIDE_ANIM_ENDED, OnHideTransitionEnded);
 
+        _transitionBaseCamera.GetUniversalAdditionalCameraData().cameraStack.Remove(_transitionOverlayCamera);
         await LoadSceneHelper.UnloadSceneAsync(TransitionSceneName);
 
         _isSwitching = false;
