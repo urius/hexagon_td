@@ -109,14 +109,14 @@ public class CameraViewMediator : EventMediator
         var gridView = GridViewProvider.GridView;
         var allCells = gridView.GetComponentsInChildren<CellView>();
         var cellSize = gridView.CellSize;
-        var offsetVertical = gridView.IsTransposed ? 0 : cellSize.y * 0.5f;
+        var offsetVertical = gridView.IsTransposed ? 0 : cellSize.y * 0.2f;
         var offsetHorizontal = gridView.IsTransposed ? cellSize.x * 0.5f : 0;
         var minZ = allCells.Min(c => c.transform.position.z);// - offsetVertical;
         var maxZ = allCells.Max(c => c.transform.position.z) + offsetVertical;
         var minX = allCells.Min(c => c.transform.position.x) - offsetHorizontal;
         var maxX = allCells.Max(c => c.transform.position.x) + offsetHorizontal;
 
-        var (size, bounds) = CalculateCameraSettings(transform, minX, maxX, minZ, maxZ, 0.2f);
+        var (size, bounds) = CalculateCameraSettings(transform, minX, maxX, minZ, maxZ, 0.22f);
         CameraView.Camera.orthographicSize = size;
         CameraView.CameraPosition = bounds.center;
         _cameraBounds = bounds;
