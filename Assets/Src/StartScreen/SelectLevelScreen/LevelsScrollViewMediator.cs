@@ -37,7 +37,7 @@ public class LevelsScrollViewMediator : EventMediator
         SelectLevelScrollView.DragEnded -= OnDragEnded;
     }
 
-    public async void Start()
+    public void Start()
     {
         _contentTransform = SelectLevelScrollView.ContentTransform;
         _itemContainerWidth = ((RectTransform)UIPrefabsConfig.SelectLevelItemContainerPrefab.transform).rect.width;

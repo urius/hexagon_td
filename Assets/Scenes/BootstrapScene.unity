@@ -233,6 +233,8 @@ MonoBehaviour:
     type: 2}
   _levelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
     type: 2}
+  _levelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
+    type: 2}
   _localizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
     type: 2}
   _loadingText: {fileID: 113723794}

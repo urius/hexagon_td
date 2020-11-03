@@ -10,6 +10,7 @@ public class InitScript : MonoBehaviour
     [SerializeField] private PlayerGlobalModelHolder _playerGlobalModelHolder;
     [SerializeField] private DeafultPlayerGlobalModelProvider _deafultPlayerGlobalModelProvider;
     [SerializeField] private LevelsCollectionProvider _levelsCollectionProvider;
+    [SerializeField] private LevelConfigProvider _levelConfigProvider;
     [SerializeField] private LocalizationProvider _localizationProvider;
     [SerializeField] private Text _loadingText;
 
@@ -22,6 +23,8 @@ public class InitScript : MonoBehaviour
 
     private async void LoadOrCreateData()
     {
+        _levelConfigProvider.SetCurrentLevelConfig(null);
+
         if (!PlayerGlobalModel.TryLoad(out var playerGlobalModel))
         {
             playerGlobalModel = new PlayerGlobalModel(_deafultPlayerGlobalModelProvider.PlayerGlobalModel);

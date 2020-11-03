@@ -30,5 +30,6 @@ public class StartScreenContext : MVCSContext
         //commands
         commandBinder.Bind(ContextEvent.START).To<StartScreenStartedCommand>();
         commandBinder.Bind(MediatorEvents.UI_SL_START_LEVEL_CLICKED).To<StartLevelClickedCommand>();
+        commandBinder.Bind(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED).To<SelectLevelClickedCommand>();
     }
 }

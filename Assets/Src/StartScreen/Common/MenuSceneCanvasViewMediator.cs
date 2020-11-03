@@ -8,6 +8,7 @@ using UnityEngine;
 public class MenuSceneCanvasViewMediator : EventMediator
 {
     [Inject] public MenuSceneCanvasView MenuSceneCanvasView { get; set; }
+    [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
 
     private GameObject _currentActiveScreenPrefab;
@@ -20,8 +21,20 @@ public class MenuSceneCanvasViewMediator : EventMediator
         dispatcher.AddListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
     }
 
+    private void Start()
+    {
+        if (LevelConfigProvider.LevelConfig == null)
+        {
+            ShowScreen(UIPrefabsConfig.MainMenuScreenPrefab);
+        }
+        else
+        {
+            ShowScreen(UIPrefabsConfig.SelectLevelScreenPrefab);
+        }
+    }
+
     private void OnDestroy()
-    {        
+    {
         dispatcher.RemoveListener(MediatorEvents.UI_SL_HOME_CLICKED, OnHomeClicked);
         dispatcher.RemoveListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
     }
@@ -38,7 +51,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
 
     private void ShowScreen(GameObject screenPrefab)
     {
-        if(_currentActiveScreenPrefab != screenPrefab)
+        if (_currentActiveScreenPrefab != screenPrefab)
         {
             _currentActiveScreenPrefab = screenPrefab;
             Instantiate(screenPrefab, MenuSceneCanvasView.RootTransform);

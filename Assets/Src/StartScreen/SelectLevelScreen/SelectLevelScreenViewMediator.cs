@@ -44,6 +44,8 @@ public class SelectLevelScreenViewMediator : EventMediator
 
         var levelProgress = PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress[levelIndex];
 
+        dispatcher.Dispatch(MediatorEvents.UI_SL_LEVEL_SELECTED, levelIndex);
+
         if (levelProgress.isUnlocked)
         {
             SelectLevelScreenView.ShowStartButton();
