@@ -28,7 +28,7 @@ public class PrefabPainterEditor : EditorWindow
     private static void InitWindow()
     {
         _sceneNameToRestore = EditorSceneManager.GetActiveScene().path;
-        EditorSceneManager.OpenScene("Assets/Scenes/EditLevelScene.unity");
+        EditorSceneManager.OpenScene("Assets/Scenes/Helper scenes/EditLevelScene.unity");
 
         var window = GetWindow<PrefabPainterEditor>();
         window.titleContent = new GUIContent(_windowTitle);
