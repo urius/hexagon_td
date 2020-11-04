@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,20 +19,48 @@ public class InitScript : MonoBehaviour
     {
         _loadingText.text = _localizationProvider.Get(LocalizationGroupId.BootstrapScreen, "loading");
 
-        LoadOrCreateData();
-    }
-
-    private async void LoadOrCreateData()
-    {
         _levelConfigProvider.SetCurrentLevelConfig(null);
 
+        //AskPermissions();
+        LoadOrCreateData();
+        LoadScene();
+    }
+
+    private void LoadOrCreateData()
+    {
+        _loadingText.text = "load data";
+
+        Debug.Log("PlayerGlobalModel load started");
         if (!PlayerGlobalModel.TryLoad(out var playerGlobalModel))
         {
+           // _loadingText.text = "create new model";
+            Debug.Log("_deafultPlayerGlobalModelProvider is null:" + (_deafultPlayerGlobalModelProvider == null));
             playerGlobalModel = new PlayerGlobalModel(_deafultPlayerGlobalModelProvider.PlayerGlobalModel);
         }
+
+        //_loadingText.text = "AdjustLevelsAmount";
+
+        Debug.Log("_levelsCollectionProvider is null:" + (_levelsCollectionProvider == null));
+        Debug.Log("_levelsCollectionProvider.Levels is null:" + (_levelsCollectionProvider.Levels == null));
         playerGlobalModel.AdjustLevelsAmount(_levelsCollectionProvider.Levels.Length);
 
+        Debug.Log("_playerGlobalModelHolder is null:" + (_playerGlobalModelHolder == null));
         _playerGlobalModelHolder.SetModel(playerGlobalModel);
+    }
+
+    private void AskPermissions()
+    {
+#if UNITY_ANDROID
+        while (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+        }
+#endif
+    }
+
+    private async void LoadScene()
+    {
+        _loadingText.text = "load scene";
 
         await LoadSceneHelper.LoadSceneAdditiveAsync(SceneNames.MainMenu);
         SceneManager.UnloadSceneAsync(SceneNames.Bootstrap, UnloadSceneOptions.None);
