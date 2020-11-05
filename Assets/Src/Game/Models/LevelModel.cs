@@ -149,6 +149,7 @@ public class LevelModel
         return _modifiers.TryGetValue(cellPosition, out var modifier) && modifier == ModifierType.NoBuild;
     }
 
+    public bool IsTransposed => _levelConfig.IsTransposed;
     public IReadOnlyList<CellDataMin> Cells => _levelConfig.Cells;
     public IReadOnlyList<CellDataMin> Modifiers => _levelConfig.Modifiers;
 

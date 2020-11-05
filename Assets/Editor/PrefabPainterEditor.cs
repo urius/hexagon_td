@@ -156,6 +156,7 @@ public class PrefabPainterEditor : EditorWindow
     {
         _levelConfig.IsTransposed = _isTransposed;
         _grid.SetTransposed(_levelConfig.IsTransposed);
+        DrawLevel(_levelConfig);
     }
 
     private void LoadLevel()
@@ -369,9 +370,10 @@ public class PrefabPainterEditor : EditorWindow
 
     private void DrawCell(CellDataMin cellDataMin)
     {
+        var cellConfigMin = cellDataMin.CellConfigMin;
         var cellPosition = cellDataMin.CellPosition;
-        var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;
-        var go = _grid.DrawCell(cellPosition, prefab);
+        var prefab = GetCellFullConfig(cellConfigMin).Prefab;
+        var go = _grid.DrawCell(cellPosition, prefab, CellInfoHelper.IsRotatableCell(cellConfigMin.CellType, cellConfigMin.CellSubType));
 
         go.GetComponent<CellView>().SetDebugText(cellDataMin.CellPosition.x + "," + cellDataMin.CellPosition.y);
     }
@@ -380,7 +382,8 @@ public class PrefabPainterEditor : EditorWindow
     {
         var cellPosition = cellDataMin.CellPosition;
         var prefab = GetCellFullConfig(cellDataMin.CellConfigMin).Prefab;
-        var go = _grid.DrawModifier(cellPosition, prefab);
+        var go = _grid.DrawModifier(cellPosition, prefab,
+            CellInfoHelper.IsRotatableCell(cellDataMin.CellConfigMin.CellType, cellDataMin.CellConfigMin.CellSubType));
     }
 
     private CellConfig GetCellFullConfig(CellConfigMin cellConfigMin)

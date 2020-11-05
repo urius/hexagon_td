@@ -57,22 +57,30 @@ public class GridView : EventView, ICellPositionConverter
         }
     }
 
-    public GameObject DrawCell(Vector2Int cellPosition, GameObject prefab, bool isStatic = false)
+    public GameObject DrawCell(Vector2Int cellPosition, GameObject prefab, bool rotatable, bool isStatic = false)
     {
         EraseModifier(cellPosition);
 
         var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
         var cellParent = (isStatic && _staticObjectsParent != null) ? _staticObjectsParent.transform : _grid.transform;
         var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, cellParent);
+        if (rotatable && _isTransposed)
+        {
+            go.transform.Rotate(Vector3.up, 90);
+        }
         _allCreatedCells[cellPosition] = go;
         return go;
     }
 
-    public GameObject DrawModifier(Vector2Int cellPosition, GameObject prefab)
+    public GameObject DrawModifier(Vector2Int cellPosition, GameObject prefab, bool rotatable)
     {
         var worldCellPosition = _grid.CellToWorld(CellVec2ToVec3(cellPosition));
         var cellParent = _allCreatedCells[cellPosition].transform;
         var go = Instantiate(prefab, worldCellPosition, _grid.transform.rotation, cellParent);
+        if (rotatable && _isTransposed)
+        {
+            go.transform.Rotate(Vector3.up, 90);
+        }
         _allCreatedModifiers[cellPosition] = go;
         return go;
     }

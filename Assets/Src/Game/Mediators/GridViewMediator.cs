@@ -149,18 +149,27 @@ public class GridViewMediator : EventMediator
 
     private void DrawGrid()
     {
+        if (levelModel.IsTransposed)
+        {
+            gridView.SetTransposed(levelModel.IsTransposed);
+        }
+
         foreach (var cellDataMin in levelModel.Cells)
         {
             var config = cellConfigProvider.GetConfig(cellDataMin.CellConfigMin.CellType, cellDataMin.CellConfigMin.CellSubType);
             var cellType = config.CellConfigMin.CellType;
-            gridView.DrawCell(cellDataMin.CellPosition, config.Prefab, cellType == CellType.Ground || cellType == CellType.Wall);
-        }
+            gridView.DrawCell(cellDataMin.CellPosition, config.Prefab,
+                CellInfoHelper.IsRotatableCell(cellType, config.CellConfigMin.CellSubType),
+                cellType == CellType.Ground || cellType == CellType.Wall);
+        }        
 
         foreach (var cellDataMin in levelModel.Modifiers)
         {
-            var config = cellConfigProvider.GetConfig(cellDataMin.CellConfigMin.CellType, cellDataMin.CellConfigMin.CellSubType);
-            var cellType = config.CellConfigMin.CellType;
-            gridView.DrawModifier(cellDataMin.CellPosition, config.Prefab);
+            var cellType = cellDataMin.CellConfigMin.CellType;
+            var cellSubType = cellDataMin.CellConfigMin.CellSubType;
+            var config = cellConfigProvider.GetConfig(cellType, cellSubType);
+            var canBeRotated = CellInfoHelper.IsRotatableCell(cellType, cellSubType);
+            gridView.DrawModifier(cellDataMin.CellPosition, config.Prefab, canBeRotated);
         }
 
         gridView.BakeStatic();

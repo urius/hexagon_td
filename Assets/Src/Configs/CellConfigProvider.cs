@@ -77,6 +77,26 @@ public static class CellTypeExtensions
     }
 }
 
+public static class CellInfoHelper
+{
+    public static bool IsRotatableCell(CellType cellType, CellSubType cellSubType)
+    {
+        return (cellType == CellType.Modifier && !IsDirectionModifier(cellType, cellSubType)) || cellType == CellType.GoalBase;
+    }
+
+    private static bool IsDirectionModifier(CellType cellType, CellSubType cellSubType)
+    {
+        var cellSubTypeInt = (int)cellSubType;
+        return cellType == CellType.Modifier
+            && (cellSubTypeInt == (int)ModifierType.Direction_30
+                || cellSubTypeInt == (int)ModifierType.Direction_90
+                || cellSubTypeInt == (int)ModifierType.Direction_150
+                || cellSubTypeInt == (int)ModifierType.Direction_210
+                || cellSubTypeInt == (int)ModifierType.Direction_270
+                || cellSubTypeInt == (int)ModifierType.Direction_330);
+    }
+}
+
 public enum CellSubType
 {
     Default,

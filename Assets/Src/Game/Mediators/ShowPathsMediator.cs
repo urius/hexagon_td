@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DigitalRuby.Tween;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -32,16 +33,21 @@ public class ShowPathsMediator : EventMediator
         _lineMaterial = _pathLinePrefab.GetComponent<LineRenderer>().sharedMaterial;
 
         WaveModel.WaveStateChanged += OnWaveStateChanged;
-
-        ShowPaths();
+        dispatcher.AddListener(MediatorEvents.DRAW_GRID_COMPLETE, OnDrawGridComplete);
     }
 
     private void OnDestroy()
     {
         WaveModel.WaveStateChanged -= OnWaveStateChanged;
+        dispatcher.RemoveListener(MediatorEvents.DRAW_GRID_COMPLETE, OnDrawGridComplete);
 
         UpdateProvider.UpdateAction -= OnUpdate;
         LevelModel.PathsManager.PathsUpdated -= OnPathsUpdated;
+    }
+
+    private void OnDrawGridComplete(IEvent payload)
+    {
+        ShowPaths();
     }
 
     private void OnWaveStateChanged()
