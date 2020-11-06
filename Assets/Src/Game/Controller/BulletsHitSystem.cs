@@ -4,6 +4,7 @@ using UnityEngine;
 public class BulletsHitSystem : EventSystemBase
 {
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     public BulletsHitSystem()
     {
@@ -20,6 +21,12 @@ public class BulletsHitSystem : EventSystemBase
         foreach (var unit in param.UnitModels)
         {
             LevelUnitsModel.ApplyDamageToUnit(unit, param.BulletDamage);
+            if (unit.HP <= 0)
+            {
+                var moneyAmount = LevelModel.DestroyUnitReward;
+                unit.ShowEarnedMoney(moneyAmount);
+                LevelModel.TryAddMoney(moneyAmount);
+            }
         }
     }
 }

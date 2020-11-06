@@ -57,6 +57,7 @@ public class LevelModel
     public int Money { get; private set; }
     public int GoalCount { get; private set; }
     public int MaxGoalCapacity => _levelConfig.DefaulGoalCapacity;
+    public int DestroyUnitReward => _levelConfig.DestroyUnitReward;
     public Task StartLevelTask => _levelStartedTsc.Task;
     public bool IsLevelFinished => IsWon || IsDefeated;
 
