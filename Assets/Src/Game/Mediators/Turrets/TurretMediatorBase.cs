@@ -73,7 +73,8 @@ public abstract class TurretMediatorBase
 
     protected virtual void RefreshAttackRadius()
     {
-        AttackRadiusSqr = Math.Pow(TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x, 2);
+        var attackRadius = TurretModel.AttackRadiusCells * CellSizeProvider.CellSize.x;
+        AttackRadiusSqr = Math.Pow(attackRadius, 2);
     }
 
     private void OnTurretSelected(IEvent payload)

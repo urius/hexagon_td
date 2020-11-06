@@ -12,7 +12,7 @@ public class TurretModel
     public readonly Vector2Int Position;
 
     public TurretType TurretType;
-    public int AttackRadiusCells;
+    public float AttackRadiusCells;
     public int Damage;
     public float SpeedMultiplier;
     public int ReloadTimeFrames;

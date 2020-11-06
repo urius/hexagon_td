@@ -21,7 +21,7 @@ public class TurretConfig
     public GameObject Prefab;
     public GameObject BuildModePrefab;
     public Sprite IconSprite;
-    public int AttackRadiusCells;
+    public float AttackRadiusCells;
     public int AttackInfluenceDistance = -1;
     public int Damage;
     public float SpeedMultiplier = 1;
