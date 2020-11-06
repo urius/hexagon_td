@@ -155,9 +155,11 @@ public class PathsManager : ICellsProvider<Vector2Int>
 
     private IEnumerable<Vector2Int> GetNearCell(Vector2Int cellPosition, HexDirection direction)
     {
-        return IsOkToWalk(cellPosition)
-            ? (new Vector2Int[] { HexGridUtils.GetNearCellPosition(cellPosition, direction) })
-            : Enumerable.Empty<Vector2Int>();
+        var result = HexGridUtils.GetNearCellPosition(cellPosition, direction);
+        if (IsOkToWalk(result))
+        {
+            yield return result;
+        }
     }
 
     private bool IsOkToWalk(Vector2Int cell)
