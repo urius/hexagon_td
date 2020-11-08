@@ -68,10 +68,10 @@ public class RocketTurretMediator : TurretViewWithRotatingHeadMediator
         {
             if (!rocketFlyData.IsFlyingStraight && rocketFlyData.TargetView != null)
             {
-                var targetRotation = Quaternion.LookRotation(rocketFlyData.TargetTransform.transform.position - rocketFlyData.Transform.position);
+                var targetRotation = Quaternion.LookRotation(rocketFlyData.TargetTransform.position - rocketFlyData.Transform.position);
                 rocketFlyData.Transform.rotation = Quaternion.RotateTowards(rocketFlyData.Transform.rotation, targetRotation, rocketFlyData.RotationSpeed);
 
-                if ((rocketFlyData.Transform.position - rocketFlyData.TargetTransform.position).sqrMagnitude < 1)
+                if ((rocketFlyData.Transform.position - rocketFlyData.TargetTransform.position).sqrMagnitude < 5)
                 {
                     rocketFlyData.IsDestroyed = true;
                     rocketFlyData.View.Hide();
