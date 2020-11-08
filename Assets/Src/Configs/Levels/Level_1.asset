@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   IsTransposed: 1
-  StartMoneyAmount: 1000
+  StartMoneyAmount: 500
   ModifierRepairValue: 5
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
   ModifierBigMoneyAmount: 30
   DefaulGoalCapacity: 10
+  DestroyUnitReward: 10
   _cellConfigs:
   - CellPosition: {x: -7, y: 6}
     CellConfigMin:

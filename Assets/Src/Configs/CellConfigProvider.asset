@@ -13,16 +13,26 @@ MonoBehaviour:
   m_Name: CellConfigProvider
   m_EditorClassIdentifier: 
   _cellConfigs:
-  - Prefab: {fileID: 5346769349531122457, guid: f9a074a7aa18740ba869a495ada6d71d,
+  - Prefab: {fileID: 5346769349531122457, guid: 515e33b352a134790857be4dbd048404,
       type: 3}
     CellConfigMin:
       CellType: 1
       CellSubType: 0
+  - Prefab: {fileID: 5346769349531122457, guid: 334ddecc3ef334fe5a527042a6b91534,
+      type: 3}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 1
   - Prefab: {fileID: 3027810109025745163, guid: 9e01e347b2a5f4179a639188c1edf165,
       type: 3}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - Prefab: {fileID: 3027810109025745163, guid: 6f8d1502358fd4c65af4b7be3cfc51b6,
+      type: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 1
   - Prefab: {fileID: 8494308666707691040, guid: 6ff2c7a1cdf6d479e9288059e112d13c,
       type: 3}
     CellConfigMin:

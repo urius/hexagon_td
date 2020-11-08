@@ -120,11 +120,13 @@ public enum CellSubType
 public enum GroundType
 {
     Default,
+    Red,
 }
 
 public enum WallType
 {
     Default,
+    Red,
 }
 
 public enum EnemyBaseType
