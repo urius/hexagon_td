@@ -1,91 +1,251 @@
 fileFormatVersion: 2
 guid: b1fc3409ea614f44c8be3d7727d76926
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: virus_01
-    100002: virus_02
-    100004: virus_03
-    100006: virus_04
-    100008: virus_05
-    100010: virus_06
-    100012: virus_07
-    100014: virus_08
-    100016: virus_09
-    100018: virus_10
-    100020: //RootNode
-    400000: virus_01
-    400002: virus_02
-    400004: virus_03
-    400006: virus_04
-    400008: virus_05
-    400010: virus_06
-    400012: virus_07
-    400014: virus_08
-    400016: virus_09
-    400018: virus_10
-    400020: //RootNode
-    2100000: virus05_tips
-    2100002: virus05_base
-    2100004: virus05_stem
-    2100006: virus08_tips
-    2100008: virus08_base
-    2100010: virus08_stem
-    2100012: virus10_tips
-    2100014: virus10_base
-    2100016: virus10_stem
-    2100018: virus03_tips
-    2100020: virus03_base
-    2100022: virus03_stem
-    2100024: virus09_stem
-    2100026: virus09_base
-    2100028: virus07_tips
-    2100030: virus07_base
-    2100032: virus07_stem
-    2100034: virus02_stem
-    2100036: virus02_base
-    2100038: virus01_tips
-    2100040: virus01_base
-    2100042: virus01_stem
-    2100044: virus06_tips
-    2100046: virus06_base
-    2100048: virus06_stem
-    2100050: virus04_tips
-    2100052: virus04_base
-    2100054: virus04_stem
-    2300000: virus_01
-    2300002: virus_02
-    2300004: virus_03
-    2300006: virus_04
-    2300008: virus_05
-    2300010: virus_06
-    2300012: virus_07
-    2300014: virus_08
-    2300016: virus_09
-    2300018: virus_10
-    3300000: virus_01
-    3300002: virus_02
-    3300004: virus_03
-    3300006: virus_04
-    3300008: virus_05
-    3300010: virus_06
-    3300012: virus_07
-    3300014: virus_08
-    3300016: virus_09
-    3300018: virus_10
-    4300000: virus_05
-    4300002: virus_08
-    4300004: virus_10
-    4300006: virus_03
-    4300008: virus_09
-    4300010: virus_07
-    4300012: virus_02
-    4300014: virus_01
-    4300016: virus_06
-    4300018: virus_04
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: virus_01
+  - first:
+      1: 100002
+    second: virus_02
+  - first:
+      1: 100004
+    second: virus_03
+  - first:
+      1: 100006
+    second: virus_04
+  - first:
+      1: 100008
+    second: virus_05
+  - first:
+      1: 100010
+    second: virus_06
+  - first:
+      1: 100012
+    second: virus_07
+  - first:
+      1: 100014
+    second: virus_08
+  - first:
+      1: 100016
+    second: virus_09
+  - first:
+      1: 100018
+    second: virus_10
+  - first:
+      1: 100020
+    second: //RootNode
+  - first:
+      4: 400000
+    second: virus_01
+  - first:
+      4: 400002
+    second: virus_02
+  - first:
+      4: 400004
+    second: virus_03
+  - first:
+      4: 400006
+    second: virus_04
+  - first:
+      4: 400008
+    second: virus_05
+  - first:
+      4: 400010
+    second: virus_06
+  - first:
+      4: 400012
+    second: virus_07
+  - first:
+      4: 400014
+    second: virus_08
+  - first:
+      4: 400016
+    second: virus_09
+  - first:
+      4: 400018
+    second: virus_10
+  - first:
+      4: 400020
+    second: //RootNode
+  - first:
+      21: 2100000
+    second: virus05_tips
+  - first:
+      21: 2100002
+    second: virus05_base
+  - first:
+      21: 2100004
+    second: virus05_stem
+  - first:
+      21: 2100006
+    second: virus08_tips
+  - first:
+      21: 2100008
+    second: virus08_base
+  - first:
+      21: 2100010
+    second: virus08_stem
+  - first:
+      21: 2100012
+    second: virus10_tips
+  - first:
+      21: 2100014
+    second: virus10_base
+  - first:
+      21: 2100016
+    second: virus10_stem
+  - first:
+      21: 2100018
+    second: virus03_tips
+  - first:
+      21: 2100020
+    second: virus03_base
+  - first:
+      21: 2100022
+    second: virus03_stem
+  - first:
+      21: 2100024
+    second: virus09_stem
+  - first:
+      21: 2100026
+    second: virus09_base
+  - first:
+      21: 2100028
+    second: virus07_tips
+  - first:
+      21: 2100030
+    second: virus07_base
+  - first:
+      21: 2100032
+    second: virus07_stem
+  - first:
+      21: 2100034
+    second: virus02_stem
+  - first:
+      21: 2100036
+    second: virus02_base
+  - first:
+      21: 2100038
+    second: virus01_tips
+  - first:
+      21: 2100040
+    second: virus01_base
+  - first:
+      21: 2100042
+    second: virus01_stem
+  - first:
+      21: 2100044
+    second: virus06_tips
+  - first:
+      21: 2100046
+    second: virus06_base
+  - first:
+      21: 2100048
+    second: virus06_stem
+  - first:
+      21: 2100050
+    second: virus04_tips
+  - first:
+      21: 2100052
+    second: virus04_base
+  - first:
+      21: 2100054
+    second: virus04_stem
+  - first:
+      23: 2300000
+    second: virus_01
+  - first:
+      23: 2300002
+    second: virus_02
+  - first:
+      23: 2300004
+    second: virus_03
+  - first:
+      23: 2300006
+    second: virus_04
+  - first:
+      23: 2300008
+    second: virus_05
+  - first:
+      23: 2300010
+    second: virus_06
+  - first:
+      23: 2300012
+    second: virus_07
+  - first:
+      23: 2300014
+    second: virus_08
+  - first:
+      23: 2300016
+    second: virus_09
+  - first:
+      23: 2300018
+    second: virus_10
+  - first:
+      33: 3300000
+    second: virus_01
+  - first:
+      33: 3300002
+    second: virus_02
+  - first:
+      33: 3300004
+    second: virus_03
+  - first:
+      33: 3300006
+    second: virus_04
+  - first:
+      33: 3300008
+    second: virus_05
+  - first:
+      33: 3300010
+    second: virus_06
+  - first:
+      33: 3300012
+    second: virus_07
+  - first:
+      33: 3300014
+    second: virus_08
+  - first:
+      33: 3300016
+    second: virus_09
+  - first:
+      33: 3300018
+    second: virus_10
+  - first:
+      43: 4300000
+    second: virus_05
+  - first:
+      43: 4300002
+    second: virus_08
+  - first:
+      43: 4300004
+    second: virus_10
+  - first:
+      43: 4300006
+    second: virus_03
+  - first:
+      43: 4300008
+    second: virus_09
+  - first:
+      43: 4300010
+    second: virus_07
+  - first:
+      43: 4300012
+    second: virus_02
+  - first:
+      43: 4300014
+    second: virus_01
+  - first:
+      43: 4300016
+    second: virus_06
+  - first:
+      43: 4300018
+    second: virus_04
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -111,23 +271,28 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
-    meshCompression: 0
+    globalScale: 4
+    meshCompression: 3
     addColliders: 0
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -139,10 +304,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -152,14 +320,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 4
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

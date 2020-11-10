@@ -74,6 +74,11 @@ public class UnitViewMediator : EventMediator
         _stateStep = 0;
         _updateDelegate = null;
 
+        if (_unitModel.PreviousStateName == UnitStateName.Spawning)
+        {
+            updateProvider.UpdateAction += unitView.UpdateDelegate;
+        }
+
         if (_unitModel.CurrentState.StateName == UnitStateName.Moving)
         {
             var movingState = _unitModel.CurrentState as MovingState;
@@ -97,6 +102,7 @@ public class UnitViewMediator : EventMediator
                 ViewManager.Instantiate(_unitModel.ExplosionPrefab, unitView.transform.position, unitView.transform.rotation);
             }
 
+            updateProvider.UpdateAction -= unitView.UpdateDelegate;
             dispatcher.Dispatch(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, unitView);
         }
     }
@@ -210,7 +216,7 @@ public class UnitViewMediator : EventMediator
     private bool ProcessRotationStep()
     {
         var rotationBuf = transform.rotation;
-        var newRotation = Quaternion.RotateTowards(rotationBuf, _targetRotation, _unitModel.Speed);
+        var newRotation = Quaternion.RotateTowards(rotationBuf, _targetRotation, 30);
         transform.rotation = newRotation;
         if (Quaternion.Angle(rotationBuf, newRotation) < 1)
         {

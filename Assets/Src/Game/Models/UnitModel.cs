@@ -9,13 +9,14 @@ public class UnitModel
     public event Action HpChanged = delegate { };
     public event Action<int> EarnMoneyAnimationTriggered = delegate { };
 
+    public readonly int MaxHP;
+
     private int _currentPathCellIndex = 0;
     private IReadOnlyList<Vector2Int> _path;
     private float _turretsSpeedMultiplier = 1;
 
     private readonly UnitConfig _config;
     private readonly LinkedList<TurretModel> _slowDownAffectors = new LinkedList<TurretModel>();
-    public readonly int MaxHP;
 
     public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config)
     {

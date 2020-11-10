@@ -19,4 +19,4 @@ MonoBehaviour:
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 50
-    Speed: 4
+    Speed: 2
