@@ -43,6 +43,9 @@ public class WavesControlSystem : EventSystemBase
                     LevelModel.FinishLevel(true);
 
                     UpdatePlayerData();
+                } else
+                {
+                    LevelModel.TryAddMoney(LevelModel.WaveCompletionReward);
                 }
             }
         }

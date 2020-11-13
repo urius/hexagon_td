@@ -26,6 +26,7 @@ public class LevelModel
     public readonly int ModifierMineDamage;
     public readonly int ModifierMoneyAmount;
     public readonly int ModifierBigMoneyAmount;
+    public readonly int WaveCompletionReward;
 
     private readonly LevelConfig _levelConfig;
 
@@ -50,6 +51,7 @@ public class LevelModel
         ModifierMineDamage = _levelConfig.ModifierMineDamage;
         ModifierMoneyAmount = _levelConfig.ModifierMoneyAmount;
         ModifierBigMoneyAmount = _levelConfig.ModifierBigMoneyAmount;
+        WaveCompletionReward = _levelConfig.WaveCompletedReward;
 
         GoalCount = _levelConfig.DefaulGoalCapacity;
     }

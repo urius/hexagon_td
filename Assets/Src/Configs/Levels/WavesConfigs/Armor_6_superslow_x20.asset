@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6fcdb42624ff40e192ce948d27b461d, type: 3}
-  m_Name: TEST_Wave_1_easy_tanks
+  m_Name: Armor_6_superslow_x20
   m_EditorClassIdentifier: 
-  Units: 00000000
+  Units: 0f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f000000
   WillSpawnFromBaseConfigs: []

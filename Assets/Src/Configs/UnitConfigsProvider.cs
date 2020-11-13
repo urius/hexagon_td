@@ -22,7 +22,7 @@ public class UnitConfig
     public GameObject Prefab;
     public GameObject ExplosionPrefab;
     public int HP = 1;
-    public int Speed = 5;
+    public float Speed = 3;
 }
 
 public enum UnitTypeMin

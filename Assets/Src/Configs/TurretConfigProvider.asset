@@ -20,7 +20,7 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 7aac2a256a54a46a99cb6e0da60443f8, type: 3}
     AttackRadiusCells: 2
     AttackInfluenceDistance: -1
-    Damage: 10
+    Damage: 2
     SpeedMultiplier: 1
     ReloadTimeFrames: 12
     Price: 200
@@ -36,7 +36,7 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 77a351bd2ce394cf9927377d080bb2ea, type: 3}
     AttackRadiusCells: 2.5
     AttackInfluenceDistance: -1
-    Damage: 15
+    Damage: 3
     SpeedMultiplier: 1
     ReloadTimeFrames: 10
     Price: 400
@@ -52,7 +52,7 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 91199ca8743cd456dbc16d155a241535, type: 3}
     AttackRadiusCells: 3
     AttackInfluenceDistance: -1
-    Damage: 15
+    Damage: 3
     SpeedMultiplier: 1
     ReloadTimeFrames: 4
     Price: 800
@@ -68,10 +68,10 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 2d405ba2b24734c459c457075a1e5cdf, type: 3}
     AttackRadiusCells: 4
     AttackInfluenceDistance: 30
-    Damage: 5
+    Damage: 2
     SpeedMultiplier: 1
-    ReloadTimeFrames: 10
-    Price: 300
+    ReloadTimeFrames: 11
+    Price: 250
     BulletPrefab: {fileID: 2342135959751401273, guid: 4d8df476cffa44e0f88b3105ae074f9e,
       type: 3}
     BulletSpeed: -1
@@ -84,7 +84,7 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: f84565e29f13240de983c1f1be6f0dfc, type: 3}
     AttackRadiusCells: 5
     AttackInfluenceDistance: 35
-    Damage: 8
+    Damage: 4
     SpeedMultiplier: 1
     ReloadTimeFrames: 10
     Price: 500
@@ -98,12 +98,12 @@ MonoBehaviour:
     Prefab: {fileID: 1732579405, guid: 0f0d6b6326c66e54bad67ed85dccb9b9, type: 3}
     BuildModePrefab: {fileID: 0}
     IconSprite: {fileID: 21300000, guid: 3864a3a2d34164e8e875d8aa1630ee3b, type: 3}
-    AttackRadiusCells: 6
+    AttackRadiusCells: 5.5
     AttackInfluenceDistance: 40
-    Damage: 12
+    Damage: 8
     SpeedMultiplier: 1
-    ReloadTimeFrames: 9
-    Price: 800
+    ReloadTimeFrames: 10
+    Price: 1000
     BulletPrefab: {fileID: 2342135959751401273, guid: 8ff30107a1b5545939ef0bc66a3a4e13,
       type: 3}
     BulletSpeed: -1
@@ -114,12 +114,12 @@ MonoBehaviour:
     Prefab: {fileID: 921247165, guid: ee45cea8f0aef334c8e29c013992713f, type: 3}
     BuildModePrefab: {fileID: 921247165, guid: 1cefb10b5615947d2963444fcf0910a7, type: 3}
     IconSprite: {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
-    AttackRadiusCells: 4
+    AttackRadiusCells: 3
     AttackInfluenceDistance: -1
-    Damage: 40
+    Damage: 20
     SpeedMultiplier: 1
     ReloadTimeFrames: 50
-    Price: 450
+    Price: 400
     BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
       type: 3}
     BulletSpeed: 50
@@ -130,12 +130,12 @@ MonoBehaviour:
     Prefab: {fileID: 953633823, guid: 2a3d0544514f6394a91bba6f70777707, type: 3}
     BuildModePrefab: {fileID: 0}
     IconSprite: {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
-    AttackRadiusCells: 5
+    AttackRadiusCells: 4
     AttackInfluenceDistance: -1
-    Damage: 45
+    Damage: 30
     SpeedMultiplier: 1
     ReloadTimeFrames: 35
-    Price: 900
+    Price: 800
     BulletPrefab: {fileID: 2338914357172053134, guid: 1a0d6411c1bd640cb853981c43d930d8,
       type: 3}
     BulletSpeed: 30
@@ -146,9 +146,9 @@ MonoBehaviour:
     Prefab: {fileID: 364968948, guid: 79168e49fb83af74ab331da3a5b479a2, type: 3}
     BuildModePrefab: {fileID: 0}
     IconSprite: {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
-    AttackRadiusCells: 6
+    AttackRadiusCells: 5
     AttackInfluenceDistance: -1
-    Damage: 50
+    Damage: 35
     SpeedMultiplier: 1
     ReloadTimeFrames: 15
     Price: 1500
@@ -169,7 +169,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.6
     ReloadTimeFrames: 0
-    Price: 200
+    Price: 150
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.5
     ReloadTimeFrames: 0
-    Price: 450
+    Price: 300
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.4
     ReloadTimeFrames: 0
-    Price: 750
+    Price: 500
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
