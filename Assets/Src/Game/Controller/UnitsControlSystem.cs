@@ -21,7 +21,6 @@ public class UnitsControlSystem : EventSystemBase
         dispatcher.AddListener(MediatorEvents.UNIT_SPAWNED, OnUnitSpawnAnimationEnded);
         dispatcher.AddListener(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED, OnUnitMoveToCellFinished);
         dispatcher.AddListener(MediatorEvents.UNIT_HALF_STATE_PASSED, OnUnitRequestFreeCell);
-        dispatcher.AddListener(MediatorEvents.UNIT_BEFORE_ROTATION, OnUnitBeforeRotation);
     }
 
     private void OnUpdate()
@@ -91,7 +90,7 @@ public class UnitsControlSystem : EventSystemBase
                 LevelModel.DispatchTeleporting(unit.PreviousCellPosition, unit.CurrentCellPosition);
             }
         }
-        else if (unit.CurrentStateName != UnitStateName.WaitingForCell)
+        else if (unit.CurrentStateName != UnitStateName.WaitingForCell && !unit.IsDestroying)
         {
             LevelUnitsModel.OwnCellByUnit(unit);
             unit.SetState(new WaitingState(unit.CurrentCellPosition, unit.NextCellPosition));
@@ -105,12 +104,12 @@ public class UnitsControlSystem : EventSystemBase
 
     private void OnUnitMoveToCellFinished(IEvent payload)
     {
-        UpdateUnitState(payload.data as UnitModel);
-    }
-
-    private void OnUnitBeforeRotation(IEvent payload)
-    {
-        AffectCellModifier(payload.data as UnitModel);
+        var unitModel = payload.data as UnitModel;
+        AffectCellModifier(unitModel);
+        if (!unitModel.IsDestroying)
+        {
+            UpdateUnitState(unitModel);
+        }
     }
 
     private void AffectCellModifier(UnitModel unit)

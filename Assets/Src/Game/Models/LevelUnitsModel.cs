@@ -24,6 +24,10 @@ public class LevelUnitsModel
 
     public void OwnCellByUnit(UnitModel unitModel)
     {
+        if (unitModel.IsDestroying)
+        {
+            Debug.LogWarning("UnitModel is destroying but trying to OwnCell");
+        }
         _cellOwners[unitModel.CurrentCellPosition] = unitModel;
 
         CellOwned(unitModel.CurrentCellPosition);
@@ -49,14 +53,8 @@ public class LevelUnitsModel
 
         unitModel.SetDestroingState();
 
-        FreeCell(unitModel.CurrentCellPosition);
+        FreeAllCellsFromUnit(unitModel);
 
-        if (unitModel.PreviousCellPosition != unitModel.CurrentCellPosition
-            && _cellOwners.TryGetValue(unitModel.PreviousCellPosition, out var unitOnCell)
-            && unitOnCell == unitModel)
-        {
-            FreeCell(unitModel.PreviousCellPosition);
-        }
         _unitModels.Remove(unitModel);
 
         UnitRemoved(unitModel);
@@ -72,6 +70,23 @@ public class LevelUnitsModel
         if (unit.HP > 0 && unit.ApplyDamage(damage) <= 0)
         {
             DestroyUnit(unit);
+        }
+    }
+
+    private void FreeAllCellsFromUnit(UnitModel unitModel)
+    {
+        var keysToRemove = new List<Vector2Int>(_unitModels.Count);
+        foreach (var kvp in _cellOwners)
+        {
+            if (kvp.Value == unitModel)
+            {
+                keysToRemove.Add(kvp.Key);
+            }
+        }
+
+        foreach (var key in keysToRemove)
+        {
+            FreeCell(key);
         }
     }
 }
