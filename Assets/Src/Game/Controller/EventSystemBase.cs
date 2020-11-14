@@ -12,4 +12,6 @@ public abstract class EventSystemBase
     }
 
     public abstract void Start();
+
+    //TODO: implement Stop
 }

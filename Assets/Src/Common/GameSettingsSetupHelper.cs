@@ -7,6 +7,8 @@ public class GameSettingsSetupHelper
     {
         Application.targetFrameRate = fps;
 
+        Time.timeScale = 1;
+
         DOTween.Init(true, false, LogBehaviour.ErrorsOnly).SetCapacity(50, 0);
         DOTween.defaultEaseType = Ease.Linear;
     }

@@ -30,6 +30,7 @@ public class MediatorEvents
     public static string UI_LOSE_POPUP_MAIN_MENU_CLICKED = "UI_LOSE_POPUP_MAIN_MENU_CLICKED";    
     public static string UI_WIN_POPUP_NEXT_LEVEL_CLICKED = "UI_WIN_POPUP_NEXT_LEVEL_CLICKED";
     public static string UI_LOSE_POPUP_RESTART_LEVEL_CLICKED = "UI_LOSE_POPUP_RESTART_LEVEL_CLICKED";
+    public static string TIME_SCALE_CHANGE_CLICKED = "TIME_SCALE_CHANGE_CLICKED";
 
     public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
 

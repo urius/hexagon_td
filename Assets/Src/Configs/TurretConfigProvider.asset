@@ -169,7 +169,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.6
     ReloadTimeFrames: 0
-    Price: 80
+    Price: 120
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.5
     ReloadTimeFrames: 0
-    Price: 150
+    Price: 200
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.4
     ReloadTimeFrames: 0
-    Price: 250
+    Price: 300
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}

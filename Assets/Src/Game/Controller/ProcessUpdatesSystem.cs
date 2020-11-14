@@ -1,4 +1,7 @@
-﻿public class ProcessUpdatesSystem : EventSystemBase
+﻿using System;
+using UnityEngine;
+
+public class ProcessUpdatesSystem : EventSystemBase
 {
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
@@ -13,7 +16,16 @@
 
     public override void Start()
     {
+        LevelModel.LevelFinished += OnLevelFinished;
+
         UpdateProvider.UpdateAction += OnUpdate;
+    }
+
+    private void OnLevelFinished()
+    {
+        Time.timeScale = 1;
+
+        UpdateProvider.UpdateAction -= OnUpdate;
     }
 
     private void OnUpdate()

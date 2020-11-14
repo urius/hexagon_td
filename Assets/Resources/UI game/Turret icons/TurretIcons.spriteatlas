@@ -37,6 +37,7 @@ SpriteAtlas:
     type: 2}
   m_PackedSprites:
   - {fileID: 21300000, guid: e0f4bb5070f4c854db6fa14e8e289c0e, type: 3}
+  - {fileID: 21300000, guid: 0b56c590c21db4168bdad8f0985d8106, type: 3}
   - {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
   - {fileID: 21300000, guid: f79b88828bef24771b521a5c24d86327, type: 3}
   - {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
@@ -60,6 +61,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d4b1ea3fa9c1744be9bfcd4526b0fb20, type: 3}
   m_PackedSpriteNamesToIndex:
   - Btn1_n
+  - Btn_button03_n
   - icon_turret_3_2
   - Btn_button01_yellow
   - icon_turret_3_3

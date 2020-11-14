@@ -145,81 +145,81 @@ MonoBehaviour:
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 600
-    Speed: 1
+    Speed: 0.8
   - UnitType: 19
     Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 600
-    Speed: 2
+    Speed: 1.5
   - UnitType: 20
     Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 600
-    Speed: 3
+    Speed: 2
   - UnitType: 21
     Prefab: {fileID: 1754644785219521630, guid: f1bb9677e4629482f9503378d0bf8043,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 1000
-    Speed: 1
+    Speed: 0.7
   - UnitType: 22
     Prefab: {fileID: 1754644785219521630, guid: f1bb9677e4629482f9503378d0bf8043,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 1000
-    Speed: 2
+    Speed: 1.5
   - UnitType: 23
     Prefab: {fileID: 1754644785219521630, guid: f1bb9677e4629482f9503378d0bf8043,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
     HP: 1000
-    Speed: 3
+    Speed: 2
   - UnitType: 24
     Prefab: {fileID: 1754644785219521630, guid: 307c86ab0a10c4a278ca641ad609a0db,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1350
+    HP: 1500
     Speed: 0.5
   - UnitType: 25
     Prefab: {fileID: 1754644785219521630, guid: 307c86ab0a10c4a278ca641ad609a0db,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1350
+    HP: 1500
     Speed: 1
   - UnitType: 26
     Prefab: {fileID: 1754644785219521630, guid: 307c86ab0a10c4a278ca641ad609a0db,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1350
+    HP: 1500
     Speed: 2
   - UnitType: 27
     Prefab: {fileID: 1754644785219521630, guid: 7debe80560fa84ccca94bced41f16fa9,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1800
+    HP: 2000
     Speed: 0.5
   - UnitType: 28
     Prefab: {fileID: 1754644785219521630, guid: 7debe80560fa84ccca94bced41f16fa9,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1800
+    HP: 2000
     Speed: 1
   - UnitType: 29
     Prefab: {fileID: 1754644785219521630, guid: 7debe80560fa84ccca94bced41f16fa9,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1800
+    HP: 2000
     Speed: 2
