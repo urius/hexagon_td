@@ -23,7 +23,7 @@ MonoBehaviour:
     Damage: 2
     SpeedMultiplier: 1
     ReloadTimeFrames: 12
-    Price: 200
+    Price: 100
     BulletPrefab: {fileID: 2342135959751401273, guid: 4986b40ba9a9f4cbcb9d6e058103d71e,
       type: 3}
     BulletSpeed: 35
@@ -36,10 +36,10 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 77a351bd2ce394cf9927377d080bb2ea, type: 3}
     AttackRadiusCells: 2.5
     AttackInfluenceDistance: -1
-    Damage: 3
+    Damage: 4
     SpeedMultiplier: 1
     ReloadTimeFrames: 10
-    Price: 400
+    Price: 200
     BulletPrefab: {fileID: 2342135959751401273, guid: 1d72155b67db14a2cb7b80c3421b7594,
       type: 3}
     BulletSpeed: 40
@@ -52,10 +52,10 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 91199ca8743cd456dbc16d155a241535, type: 3}
     AttackRadiusCells: 3
     AttackInfluenceDistance: -1
-    Damage: 3
+    Damage: 4
     SpeedMultiplier: 1
     ReloadTimeFrames: 4
-    Price: 800
+    Price: 400
     BulletPrefab: {fileID: 2342135959751401273, guid: 0abe4ab8ca0fe486fbb686cb07d46359,
       type: 3}
     BulletSpeed: 50
@@ -71,7 +71,7 @@ MonoBehaviour:
     Damage: 2
     SpeedMultiplier: 1
     ReloadTimeFrames: 11
-    Price: 250
+    Price: 150
     BulletPrefab: {fileID: 2342135959751401273, guid: 4d8df476cffa44e0f88b3105ae074f9e,
       type: 3}
     BulletSpeed: -1
@@ -87,7 +87,7 @@ MonoBehaviour:
     Damage: 4
     SpeedMultiplier: 1
     ReloadTimeFrames: 10
-    Price: 500
+    Price: 300
     BulletPrefab: {fileID: 2342135959751401273, guid: 0253c79555ee04e94b12db7d11b6d921,
       type: 3}
     BulletSpeed: -1
@@ -103,7 +103,7 @@ MonoBehaviour:
     Damage: 8
     SpeedMultiplier: 1
     ReloadTimeFrames: 10
-    Price: 1000
+    Price: 500
     BulletPrefab: {fileID: 2342135959751401273, guid: 8ff30107a1b5545939ef0bc66a3a4e13,
       type: 3}
     BulletSpeed: -1
@@ -119,7 +119,7 @@ MonoBehaviour:
     Damage: 20
     SpeedMultiplier: 1
     ReloadTimeFrames: 50
-    Price: 400
+    Price: 200
     BulletPrefab: {fileID: 2338914357172053134, guid: 41567cf28112e4b68860d89ff98cde14,
       type: 3}
     BulletSpeed: 50
@@ -135,7 +135,7 @@ MonoBehaviour:
     Damage: 30
     SpeedMultiplier: 1
     ReloadTimeFrames: 35
-    Price: 800
+    Price: 400
     BulletPrefab: {fileID: 2338914357172053134, guid: 1a0d6411c1bd640cb853981c43d930d8,
       type: 3}
     BulletSpeed: 30
@@ -151,7 +151,7 @@ MonoBehaviour:
     Damage: 35
     SpeedMultiplier: 1
     ReloadTimeFrames: 15
-    Price: 1500
+    Price: 700
     BulletPrefab: {fileID: 2338914357172053134, guid: fa07e6d5afeb249faabe592823d03392,
       type: 3}
     BulletSpeed: 30
@@ -169,7 +169,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.6
     ReloadTimeFrames: 0
-    Price: 150
+    Price: 80
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.5
     ReloadTimeFrames: 0
-    Price: 300
+    Price: 150
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}
@@ -199,7 +199,7 @@ MonoBehaviour:
     Damage: 0
     SpeedMultiplier: 0.4
     ReloadTimeFrames: 0
-    Price: 500
+    Price: 250
     BulletPrefab: {fileID: 0}
     BulletSpeed: -1
     BulletSparksPrefab: {fileID: 0}

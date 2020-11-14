@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   IsTransposed: 1
-  StartMoneyAmount: 500
+  StartMoneyAmount: 300
+  WaveCompletedReward: 100
   ModifierRepairValue: 5
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
@@ -851,5 +852,13 @@ MonoBehaviour:
       CellType: 5
       CellSubType: 2
   _waveConfigs:
-  - {fileID: 11400000, guid: bfa1a2fb3fb7e4bfd94bda4eabb58d3d, type: 2}
-  - {fileID: 11400000, guid: 00df205b46e404494bd6a2d74e860ceb, type: 2}
+  - {fileID: 11400000, guid: 6aa2767fa37d14b619bfddb157aadaa9, type: 2}
+  - {fileID: 11400000, guid: 651e2b4cc16c148548881496b784fa0a, type: 2}
+  - {fileID: 11400000, guid: 266cf0421eee148998fb43bda0599ddd, type: 2}
+  - {fileID: 11400000, guid: da6b84eea7e6043c084d040bd9dfcf51, type: 2}
+  - {fileID: 11400000, guid: 8722e85235ed94d269c45d74e0411eaf, type: 2}
+  - {fileID: 11400000, guid: c117f89b603844c5992f0219ec10d7fe, type: 2}
+  - {fileID: 11400000, guid: 5ddfd29a812f449ec8253bbc4bb22115, type: 2}
+  - {fileID: 11400000, guid: e9b164144dcdf4f579e11b2542940807, type: 2}
+  - {fileID: 11400000, guid: 2bd9348201de64d019b7b6b5d7fb0529, type: 2}
+  - {fileID: 11400000, guid: 424c30662e57f41c396e044337f8131b, type: 2}

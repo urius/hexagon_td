@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   IsTransposed: 1
-  StartMoneyAmount: 500
+  StartMoneyAmount: 300
   WaveCompletedReward: 100
   ModifierRepairValue: 5
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
   ModifierBigMoneyAmount: 30
   DefaulGoalCapacity: 10
-  DestroyUnitReward: 15
+  DestroyUnitReward: 10
   _cellConfigs:
   - CellPosition: {x: -8, y: 6}
     CellConfigMin:
@@ -907,6 +907,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8722e85235ed94d269c45d74e0411eaf, type: 2}
   - {fileID: 11400000, guid: ca0dbe5d77c83459493f5e8a54a00b88, type: 2}
   - {fileID: 11400000, guid: c117f89b603844c5992f0219ec10d7fe, type: 2}
-  - {fileID: 11400000, guid: c117f89b603844c5992f0219ec10d7fe, type: 2}
+  - {fileID: 11400000, guid: fd0d8b9fe10c9417aafc0974d1e7ffb6, type: 2}
   - {fileID: 11400000, guid: 5ddfd29a812f449ec8253bbc4bb22115, type: 2}
   - {fileID: 11400000, guid: 2a4910057b73f4f7c9a283ed3464df22, type: 2}
