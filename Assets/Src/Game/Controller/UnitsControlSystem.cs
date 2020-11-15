@@ -1,5 +1,6 @@
 ﻿using System;
 using strange.extensions.dispatcher.eventdispatcher.api;
+using UnityEngine;
 
 public class UnitsControlSystem : EventSystemBase
 {
@@ -47,11 +48,15 @@ public class UnitsControlSystem : EventSystemBase
 
     private void Spawn()
     {
-        foreach (var spawnCell in LevelModel.SpawnCells)
+        var haveActiveCells = false;
+
+        for (var i = 0; i < LevelModel.SpawnCells.Count; i++)
         {
-            if (!WaveModel.IsCurrentWaveEmpty)
+            var spawnCell = LevelModel.SpawnCells[i];
+            if (WaveModel.IsBaseAllowedToSpawn(i))
             {
-                if (LevelUnitsModel.IsCellWithoutUnit(spawnCell.CellPosition))
+                haveActiveCells = true;
+                if (!WaveModel.IsCurrentWaveEmpty && LevelUnitsModel.IsCellWithoutUnit(spawnCell.CellPosition))
                 {
                     var unitType = WaveModel.GetUnitAndIncrement();
                     var unitConfig = UnitConfigsProvider.GetConfigByType(unitType);
@@ -68,6 +73,11 @@ public class UnitsControlSystem : EventSystemBase
                     dispatcher.Dispatch(CommandEvents.START_SPAWN_UNIT, unitModel);
                 }
             }
+        }
+
+        if (!haveActiveCells)
+        {
+            Debug.LogError($"Wave {WaveModel.WaveIndex + 1} have no bases allowed to spawn");
         }
     }
 

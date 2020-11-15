@@ -15,7 +15,7 @@ public class LevelModel
     public bool IsWon = false;
     public bool IsDefeated = false;
 
-    public readonly IEnumerable<CellDataMin> SpawnCells;
+    public readonly IReadOnlyList<CellDataMin> SpawnCells;
     public readonly CellDataMin GoalCell;
     public readonly WaveModel WaveModel;
     public readonly LevelTurretsModel LevelTurretsModel = new LevelTurretsModel();
@@ -37,9 +37,9 @@ public class LevelModel
     public LevelModel(LevelConfig levelConfig)
     {
         _levelConfig = levelConfig;
-        WaveModel = new WaveModel(levelConfig.WaveConfigs);
+        WaveModel = new WaveModel(levelConfig.WavesSettings);
 
-        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
+        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToList();
         GoalCell = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).First();
         _teleportCellPositions = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
         _modifiers = levelConfig.Modifiers.ToDictionary(c => c.CellPosition, c => (ModifierType)c.CellConfigMin.CellSubType);
@@ -226,31 +226,39 @@ public class WaveModel
 {
     public event Action WaveStateChanged = delegate { };
 
-    private readonly WaveConfig[] _waveConfigs;
+    private readonly WaveSetting[] _wavesSettings;
 
-    public WaveModel(WaveConfig[] waveConfigs)
+    private UnitTypeMin[] _currentWaveUnitsFlattened;
+
+    public WaveModel(WaveSetting[] wavesSettings)
     {
-        _waveConfigs = waveConfigs;
+        _wavesSettings = wavesSettings;
+        UpdateInnerData();
     }
 
     public int WaveIndex { get; private set; }
     public int UnitIndex { get; private set; }
     public WaveState WaveState { get; private set; } = WaveState.BeforeFirstWave;
-    public bool IsCurrentWaveEmpty => UnitIndex >= CurrentWave.Units.Length;
-    public int TotalWavesCount => _waveConfigs.Length;
-
-    private WaveConfig CurrentWave => _waveConfigs[WaveIndex];
+    public bool IsCurrentWaveEmpty => UnitIndex >= _currentWaveUnitsFlattened.Length;
+    public int TotalWavesCount => _wavesSettings.Length;
 
     public UnitTypeMin GetUnitAndIncrement()
     {
-        var result = CurrentWave.Units[UnitIndex];
+        var result = _currentWaveUnitsFlattened[UnitIndex];
         UnitIndex++;
         return result;
+    }
+
+    public bool IsBaseAllowedToSpawn(int baseIndex)
+    {
+        return !_wavesSettings[WaveIndex].DisabledBaseIndices.Contains(baseIndex);
     }
 
     public void Reset()
     {
         WaveIndex = 0;
+        UpdateInnerData();
+
         UnitIndex = 0;
 
         StartWave();
@@ -259,6 +267,8 @@ public class WaveModel
     public void AdvanceWave()
     {
         WaveIndex++;
+        UpdateInnerData();
+
         UnitIndex = 0;
     }
 
@@ -278,6 +288,17 @@ public class WaveModel
     {
         WaveState = (WaveIndex < TotalWavesCount - 1) ? WaveState.BetweenWaves : WaveState.AfterLastWave;
         WaveStateChanged();
+    }
+
+    private void UpdateInnerData()
+    {
+        var tempUnits = new List<UnitTypeMin>();
+
+        foreach (var wavePart in _wavesSettings[WaveIndex].WaveParts)
+        {
+            tempUnits.AddRange(Enumerable.Range(0, wavePart.Amount).Select(i => wavePart.UnitType));
+        }
+        _currentWaveUnitsFlattened = tempUnits.ToArray();
     }
 }
 
