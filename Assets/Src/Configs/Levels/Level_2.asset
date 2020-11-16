@@ -899,14 +899,44 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 1
-  _waveConfigs:
-  - {fileID: 11400000, guid: f803650a198d940598054d018f95dc8a, type: 2}
-  - {fileID: 11400000, guid: b0ad9a67d41e442bcb806973fad0697e, type: 2}
-  - {fileID: 11400000, guid: 266cf0421eee148998fb43bda0599ddd, type: 2}
-  - {fileID: 11400000, guid: da6b84eea7e6043c084d040bd9dfcf51, type: 2}
-  - {fileID: 11400000, guid: 8722e85235ed94d269c45d74e0411eaf, type: 2}
-  - {fileID: 11400000, guid: ca0dbe5d77c83459493f5e8a54a00b88, type: 2}
-  - {fileID: 11400000, guid: c117f89b603844c5992f0219ec10d7fe, type: 2}
-  - {fileID: 11400000, guid: fd0d8b9fe10c9417aafc0974d1e7ffb6, type: 2}
-  - {fileID: 11400000, guid: 5ddfd29a812f449ec8253bbc4bb22115, type: 2}
-  - {fileID: 11400000, guid: 2a4910057b73f4f7c9a283ed3464df22, type: 2}
+  _wavesSettings:
+  - WaveParts:
+    - UnitType: 1
+      Amount: 25
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 4
+      Amount: 20
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 7
+      Amount: 25
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 9
+      Amount: 25
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 12
+      Amount: 20
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 15
+      Amount: 20
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 14
+      Amount: 25
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 19
+      Amount: 20
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 22
+      Amount: 25
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 25
+      Amount: 25
+    DisabledBaseIndices: 
