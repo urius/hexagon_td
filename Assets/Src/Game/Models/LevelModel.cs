@@ -16,7 +16,7 @@ public class LevelModel
     public bool IsDefeated = false;
 
     public readonly IReadOnlyList<CellDataMin> SpawnCells;
-    public readonly CellDataMin GoalCell;
+    public readonly IReadOnlyList<CellDataMin> GoalCells;
     public readonly WaveModel WaveModel;
     public readonly LevelTurretsModel LevelTurretsModel = new LevelTurretsModel();
     public readonly LevelUnitsModel LevelUnitsModel = new LevelUnitsModel();
@@ -39,8 +39,8 @@ public class LevelModel
         _levelConfig = levelConfig;
         WaveModel = new WaveModel(levelConfig.WavesSettings);
 
-        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToList();
-        GoalCell = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).First();
+        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
+        GoalCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).ToArray();
         _teleportCellPositions = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
         _modifiers = levelConfig.Modifiers.ToDictionary(c => c.CellPosition, c => (ModifierType)c.CellConfigMin.CellSubType);
 
@@ -119,9 +119,12 @@ public class LevelModel
             {
                 foreach (var spawnCell in SpawnCells)
                 {
-                    if (!PathsManager.IsPathExists(spawnCell.CellPosition, GoalCell.CellPosition, cellPosition))
+                    foreach (var goalCell in GoalCells)
                     {
-                        return false;
+                        if (!PathsManager.IsPathExists(spawnCell.CellPosition, goalCell.CellPosition, cellPosition))
+                        {
+                            return false;
+                        }
                     }
                 }
             }
@@ -158,7 +161,21 @@ public class LevelModel
 
     public IReadOnlyList<Vector2Int> GetPath(Vector2Int cellPosition)
     {
-        return PathsManager.GetPath(cellPosition, GoalCell.CellPosition);
+        var result = PathsManager.GetPath(cellPosition, GoalCells[0].CellPosition);
+
+        if (GoalCells.Count > 1)
+        {
+            for (var i = 1; i < GoalCells.Count; i++)
+            {
+                var tempPath = PathsManager.GetPath(cellPosition, GoalCells[i].CellPosition);
+                if (tempPath.Count > 0 && (tempPath.Count < result.Count || result.Count <= 0))
+                {
+                    result = tempPath;
+                }
+            }
+        }
+
+        return result;
     }
 
     public IEnumerable<IReadOnlyList<Vector2Int>> GetPaths()

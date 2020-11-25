@@ -22,7 +22,7 @@ public class TimeScaleButtonMediator : EventMediator
 
     private void OnChangeTimeScaleClicked()
     {
-        dispatcher.Dispatch(MediatorEvents.TIME_SCALE_CHANGE_CLICKED);
+        dispatcher.Dispatch(MediatorEvents.UI_TIME_SCALE_CHANGE_CLICKED);
 
         View.ShowSpeedMultiplier((int)Time.timeScale);
     }

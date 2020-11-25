@@ -14,7 +14,7 @@ public class GameContext : MVCSContext
 
         var gameContextView = ((GameObject)contextView).GetComponent<GameContextView>();
 
-        new GlobalBindingsHelper(injectionBinder).Bind(gameContextView.GlobalObjectsHolder);
+        new GlobalBindingsHelper(injectionBinder, mediationBinder).Bind(gameContextView.GlobalObjectsHolder);
 
         var levelModel = new LevelModel(gameContextView.GlobalObjectsHolder.LevelConfigProvider.LevelConfig);
 
@@ -72,6 +72,8 @@ public class GameContext : MVCSContext
         mediationBinder.Bind<ButtonView>().To<ButtonViewMediator>();
         mediationBinder.Bind<WinPopup>().To<WinPopupMediator>();
         mediationBinder.Bind<LosePopup>().To<LosePopupMediator>();
+        mediationBinder.Bind<SettingsPopup>().To<SettingsPopupMediator>();
+        mediationBinder.Bind<SettingsButtonView>().To<SettingsButtonMediator>();
         mediationBinder.Bind<TimeScaleButtonView>().To<TimeScaleButtonMediator>();
         //debug ui
         mediationBinder.Bind<DebugPanelView>().To<DebugPanelMediator>();
@@ -85,9 +87,10 @@ public class GameContext : MVCSContext
         commandBinder.Bind(MediatorEvents.UI_GAME_SCREEN_CLICK).To<GameScreenClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_WIN_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_LOSE_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_SETTINGS_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();        
         commandBinder.Bind(MediatorEvents.UI_WIN_POPUP_NEXT_LEVEL_CLICKED).To<NextLevelClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_LOSE_POPUP_RESTART_LEVEL_CLICKED).To<RestartClickedCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.TIME_SCALE_CHANGE_CLICKED).To<TimeScaleChangeCommand>().Pooled();
+        commandBinder.Bind(MediatorEvents.UI_TIME_SCALE_CHANGE_CLICKED).To<TimeScaleChangeCommand>().Pooled();
 
         //controllers&systems
         injectionBinder.Bind<ProcessUpdatesSystem>().ToSingleton();
@@ -95,6 +98,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<BulletsHitSystem>().ToSingleton();
         injectionBinder.Bind<TurretsControlSystem>().ToSingleton();
         injectionBinder.Bind<WavesControlSystem>().ToSingleton();
+        injectionBinder.Bind<PlayerDataUpdateSystem>().ToSingleton();        
 
         //debug
         commandBinder.Bind(MediatorEvents.DEBUG_BUTTON_CLICKED).To<DebugCommand>();

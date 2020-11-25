@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -23,12 +24,15 @@ public class UiCanvasViewMediator : EventMediator
         await LevelModel.StartLevelTask;
 
         WaveModel.WaveStateChanged += OnWaveStateChanged;
+        dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnSettingsClicked);
+
         OnWaveStateChanged();
     }
 
     private void OnDestroy()
     {
         WaveModel.WaveStateChanged -= OnWaveStateChanged;
+        dispatcher.RemoveListener(MediatorEvents.UI_SETTINGS_CLICKED, OnSettingsClicked);
 
         _infoPanelCts.Cancel();
         _infoPanelCts.Dispose();
@@ -88,6 +92,11 @@ public class UiCanvasViewMediator : EventMediator
         await infoPanel.HideAsync();
 
         Destroy(infoPanelGo);
+    }
+
+    private void OnSettingsClicked(IEvent payload)
+    {
+        ShowPopup(UIPrefabsConfig.SettingsPopupPrefab);
     }
 
     private void ShowPopup(GameObject popupPrefab)

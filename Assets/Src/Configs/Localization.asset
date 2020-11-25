@@ -89,3 +89,17 @@ MonoBehaviour:
     LocalizationItems:
     - LocalizationItemId: loading
       En: LOADING...
+  - LocalizationGroupId: 9
+    LocalizationItems:
+    - LocalizationItemId: title
+      En: SETTINGS
+    - LocalizationItemId: music
+      En: 'Music:'
+    - LocalizationItemId: sounds
+      En: 'Sounds:'
+    - LocalizationItemId: continue
+      En: RESUME
+    - LocalizationItemId: main_menu
+      En: MAIN MENU
+    - LocalizationItemId: volume
+      En: 'Volume: '

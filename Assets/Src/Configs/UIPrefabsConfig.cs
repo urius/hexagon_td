@@ -15,6 +15,7 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject GeneralInfoPanelPrefab;
     public GameObject WinPopupPrefab;
     public GameObject LosePopupPrefab;
+    public GameObject SettingsPopupPrefab;
 
     //main screen
     public GameObject MainMenuScreenPrefab;

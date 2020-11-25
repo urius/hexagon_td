@@ -193,14 +193,6 @@ public class PathsManager : ICellsProvider<Vector2Int>
     {
         //clear all pathes and recalculate pathes for current units
         ClearAllPaths();
-        foreach (var unit in _unitsModel.Units)
-        {
-            if (!unit.IsOnLastCell && !unit.IsOnPreLastCell)
-            {
-                var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
-                unit.SubstitutePath(Pathfinder.FindPath(this, currentCell, finishCell));
-            }
-        }
 
         PathsUpdated();
     }
@@ -214,16 +206,6 @@ public class PathsManager : ICellsProvider<Vector2Int>
             _cachedPaths.Remove(pathEdgePoints);
 
             PathsUpdated();
-        }
-
-        //Update pathes for units affected by new turret
-        foreach (var unit in _unitsModel.Units)
-        {
-            if (unit.IsRestPathContainsCell(turret.Position))
-            {
-                var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
-                unit.SubstitutePath(Pathfinder.FindPath(this, currentCell, finishCell));
-            }
         }
     }
 

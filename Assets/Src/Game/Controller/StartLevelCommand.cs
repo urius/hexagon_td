@@ -11,7 +11,10 @@ public class StartLevelCommand : Command
         injectionBinder.GetInstance<BulletsHitSystem>().Start();
         injectionBinder.GetInstance<TurretsControlSystem>().Start();
         injectionBinder.GetInstance<WavesControlSystem>().Start();
+        injectionBinder.GetInstance<PlayerDataUpdateSystem>().Start();        
 
         LevelModel.SetLevelStarted();
+
+        AudioManager.Instance.Play(MusicId.Game_1);
     }
 }

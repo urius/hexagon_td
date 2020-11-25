@@ -53,21 +53,24 @@ public class GridViewMediator : EventMediator
 
     private void UpdateGoalCount()
     {
-        var goalBaseView = gridView.GetGoalBaseCellView(levelModel.GoalCell.CellPosition);
-        goalBaseView.SetGoalNum(levelModel.GoalCount);
+        foreach (var goalCell in levelModel.GoalCells)
+        {
+            var goalBaseView = gridView.GetGoalBaseCellView(goalCell.CellPosition);
+            goalBaseView.SetGoalNum(levelModel.GoalCount);
 
-        var accuracyRate = levelModel.GetAccuracyRate();
-        if (accuracyRate <= 1)
-        {
-            goalBaseView.SetColorMode(GoalBaseColor.CriticalDamage);
-        }
-        else if (accuracyRate <= 2)
-        {
-            goalBaseView.SetColorMode(GoalBaseColor.LiteDamage);
-        }
-        else
-        {
-            goalBaseView.SetColorMode(GoalBaseColor.Default);
+            var accuracyRate = levelModel.GetAccuracyRate();
+            if (accuracyRate <= 1)
+            {
+                goalBaseView.SetColorMode(GoalBaseColor.CriticalDamage);
+            }
+            else if (accuracyRate <= 2)
+            {
+                goalBaseView.SetColorMode(GoalBaseColor.LiteDamage);
+            }
+            else
+            {
+                goalBaseView.SetColorMode(GoalBaseColor.Default);
+            }
         }
     }
 
@@ -161,7 +164,7 @@ public class GridViewMediator : EventMediator
             gridView.DrawCell(cellDataMin.CellPosition, config.Prefab,
                 CellInfoHelper.IsRotatableCell(cellType, config.CellConfigMin.CellSubType),
                 cellType == CellType.Ground || cellType == CellType.Wall);
-        }        
+        }
 
         foreach (var cellDataMin in levelModel.Modifiers)
         {

@@ -39,6 +39,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e0f4bb5070f4c854db6fa14e8e289c0e, type: 3}
   - {fileID: 21300000, guid: 0b56c590c21db4168bdad8f0985d8106, type: 3}
   - {fileID: 21300000, guid: 06e34491b501847809a872f916e0a016, type: 3}
+  - {fileID: 21300000, guid: 8ba25df1cb9c447aa83816cd8c673fbe, type: 3}
   - {fileID: 21300000, guid: f79b88828bef24771b521a5c24d86327, type: 3}
   - {fileID: 21300000, guid: 8c7b98826e894455d9c7012ff7253377, type: 3}
   - {fileID: 21300000, guid: 3864a3a2d34164e8e875d8aa1630ee3b, type: 3}
@@ -47,7 +48,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f84565e29f13240de983c1f1be6f0dfc, type: 3}
   - {fileID: 21300000, guid: b3ed97a3e7a1a4c3aad18084c6a850ee, type: 3}
   - {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
+  - {fileID: 21300000, guid: 394d5e24da8cf44a184072ae872e747e, type: 3}
   - {fileID: 21300000, guid: 7aac2a256a54a46a99cb6e0da60443f8, type: 3}
+  - {fileID: 21300000, guid: 2a0829b5000d143d8a46aafb8af9742d, type: 3}
   - {fileID: 21300000, guid: fe1d078694e1447d99bb23ec4470ab57, type: 3}
   - {fileID: 21300000, guid: ff8b09a69483b46dfb055036e61f363c, type: 3}
   - {fileID: 21300000, guid: 62d0dec67b6d44816bbc5f1ae004e311, type: 3}
@@ -63,6 +66,7 @@ SpriteAtlas:
   - Btn1_n
   - Btn_button03_n
   - icon_turret_3_2
+  - close_pressed
   - Btn_button01_yellow
   - icon_turret_3_3
   - icon_turret_2_3
@@ -71,7 +75,9 @@ SpriteAtlas:
   - icon_turret_2_2
   - icon_turret_4_2
   - icon_turret_3_1
+  - ICON_Setting
   - icon_turret_1_1
+  - textbox02
   - Btn_LOGIN_n
   - Icon_Jump1
   - icon_turret_4_1

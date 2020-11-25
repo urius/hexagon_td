@@ -48,6 +48,7 @@ public enum LocalizationGroupId
     WinPopup,
     LosePopup,
     BootstrapScreen,
+    SettingsPopup,
 }
 
 [Serializable]

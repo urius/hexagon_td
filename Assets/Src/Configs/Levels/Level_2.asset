@@ -494,10 +494,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: 6, y: 4}
-    CellConfigMin:
-      CellType: 4
-      CellSubType: 0
   - CellPosition: {x: 6, y: 5}
     CellConfigMin:
       CellType: 1
@@ -702,10 +698,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
-  - CellPosition: {x: -5, y: -4}
-    CellConfigMin:
-      CellType: 2
-      CellSubType: 0
   - CellPosition: {x: -4, y: 5}
     CellConfigMin:
       CellType: 1
@@ -853,6 +845,14 @@ MonoBehaviour:
   - CellPosition: {x: 4, y: -5}
     CellConfigMin:
       CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 6, y: 4}
+    CellConfigMin:
+      CellType: 2
+      CellSubType: 0
+  - CellPosition: {x: -5, y: -4}
+    CellConfigMin:
+      CellType: 4
       CellSubType: 0
   _modifierConfigs:
   - CellPosition: {x: -5, y: -3}

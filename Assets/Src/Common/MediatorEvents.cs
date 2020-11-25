@@ -30,7 +30,10 @@ public class MediatorEvents
     public static string UI_LOSE_POPUP_MAIN_MENU_CLICKED = "UI_LOSE_POPUP_MAIN_MENU_CLICKED";    
     public static string UI_WIN_POPUP_NEXT_LEVEL_CLICKED = "UI_WIN_POPUP_NEXT_LEVEL_CLICKED";
     public static string UI_LOSE_POPUP_RESTART_LEVEL_CLICKED = "UI_LOSE_POPUP_RESTART_LEVEL_CLICKED";
-    public static string TIME_SCALE_CHANGE_CLICKED = "TIME_SCALE_CHANGE_CLICKED";
+    public static string UI_TIME_SCALE_CHANGE_CLICKED = "UI_TIME_SCALE_CHANGE_CLICKED";
+    public static string UI_SETTINGS_CLICKED = "UI_SETTINGS_CLICKED";
+    public static string UI_SETTINGS_POPUP_MAIN_MENU_CLICKED = "UI_SETTINGS_POPUP_MAIN_MENU_CLICKED";
+    public static string UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED = "UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED";    
 
     public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
 
@@ -111,6 +114,20 @@ public static class MediatorEventsParams
         {
             WorldPosition = wordPosition;
             MoneyAmount = moneyAmount;
+        }
+    }
+
+    public class UiSettingsPopupAudioValueChangedParams
+    {
+        public readonly float AudioVolume;
+        public readonly float MusicVolume;
+        public readonly float SoundsVolume;
+
+        public UiSettingsPopupAudioValueChangedParams(float audioVolume, float musicVolume, float soundsVolume)
+        {
+            AudioVolume = audioVolume;
+            MusicVolume = musicVolume;
+            SoundsVolume = soundsVolume;
         }
     }
 }

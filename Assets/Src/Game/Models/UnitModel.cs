@@ -95,7 +95,7 @@ public class UnitModel
         return false;
     }
 
-    public void SubstitutePath(Vector2Int[] newPath)
+    public void SubstitutePath(IReadOnlyList<Vector2Int> newPath)
     {
         _path = newPath;
         _currentPathCellIndex = 0;

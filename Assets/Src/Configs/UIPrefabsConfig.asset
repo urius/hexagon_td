@@ -34,6 +34,8 @@ MonoBehaviour:
     type: 3}
   LosePopupPrefab: {fileID: 2760322887035075438, guid: a47471a3e9d1544749707817e805af07,
     type: 3}
+  SettingsPopupPrefab: {fileID: 4570600153470943476, guid: 7ac48e5de477d418dba69cf6528adc69,
+    type: 3}
   MainMenuScreenPrefab: {fileID: 4836629071844955889, guid: bb492b21cf7c84c5ab44a0579da87c1e,
     type: 3}
   SelectLevelScreenPrefab: {fileID: 330097929463179937, guid: b41a22824efdf4bd5b6ccd8e963b53f1,

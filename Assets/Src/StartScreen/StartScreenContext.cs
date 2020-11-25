@@ -18,14 +18,13 @@ public class StartScreenContext : MVCSContext
 
         injectionBinder.Bind<DeafultPlayerGlobalModelProvider>().ToValue(mainMenuContextView.DeafultPlayerGlobalModelProvider);
 
-        new GlobalBindingsHelper(injectionBinder).Bind(mainMenuContextView.GlobalObjectsHolder); 
+        new GlobalBindingsHelper(injectionBinder, mediationBinder).Bind(mainMenuContextView.GlobalObjectsHolder); 
 
         //mediators
         mediationBinder.Bind<MenuSceneCanvasView>().To<MenuSceneCanvasViewMediator>();
         mediationBinder.Bind<MainMenuView>().To<MainMenuViewMediator>();
         mediationBinder.Bind<SelectLevelScreenView>().To<SelectLevelScreenViewMediator>();
         mediationBinder.Bind<LevelsScrollView>().To<LevelsScrollViewMediator>();
-        mediationBinder.Bind<LocalizedButtonView>().To<LocalizedButtonViewMediator>();
 
         //commands
         commandBinder.Bind(ContextEvent.START).To<StartScreenStartedCommand>();

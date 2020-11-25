@@ -9,6 +9,7 @@ public class UnitsControlSystem : EventSystemBase
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public UnitConfigsProvider UnitConfigsProvider { get; set; }
     [Inject] public WaveModel WaveModel { get; set; }
+    [Inject] public LevelTurretsModel LevelTurretsModel { get; set; }
 
     private int _framesCount = 0;
 
@@ -19,9 +20,46 @@ public class UnitsControlSystem : EventSystemBase
     public override void Start()
     {
         UpdateProvider.UpdateAction += OnUpdate;
+        LevelTurretsModel.TurretAdded += OnTurretAdded;
+        LevelTurretsModel.TurretRemoved += OnTurretRemoved;
+
         dispatcher.AddListener(MediatorEvents.UNIT_SPAWNED, OnUnitSpawnAnimationEnded);
         dispatcher.AddListener(MediatorEvents.UNIT_MOVE_TO_NEXT_CELL_FINISHED, OnUnitMoveToCellFinished);
         dispatcher.AddListener(MediatorEvents.UNIT_HALF_STATE_PASSED, OnUnitRequestFreeCell);
+    }
+
+    private void OnTurretRemoved(TurretModel turret)
+    {
+        foreach (var unit in LevelUnitsModel.Units)
+        {
+            if (!unit.IsOnLastCell && !unit.IsOnPreLastCell)
+            {
+                var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
+                var path = LevelModel.PathsManager.GetPath(currentCell, finishCell);
+                unit.SubstitutePath(path);
+            }
+        }
+    }
+
+    private void OnTurretAdded(TurretModel turret)
+    {
+        //Update pathes for units affected by new turret
+        foreach (var unit in LevelUnitsModel.Units)
+        {
+            if (unit.IsRestPathContainsCell(turret.Position))
+            {
+                var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
+                var path = LevelModel.PathsManager.GetPath(currentCell, finishCell);
+                if (path.Count <= 0)
+                {
+                    unit.SetDestroingState();
+                }
+                else
+                {
+                    unit.SubstitutePath(path);
+                }
+            }
+        }
     }
 
     private void OnUpdate()
