@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -21,7 +22,68 @@ public class AudioManager : MonoBehaviour
     {
         var clip = Array.Find(MusicConfigs, c => c.Id == musicId).AudioClip;
         _musicSource.clip = clip;
+        _musicSource.loop = true;
         _musicSource.Play();
+    }
+
+    public MusicId GetPlayingMusic()
+    {
+        var result = MusicId.None;
+
+        if (_musicSource.isPlaying)
+        {
+            result = Array.Find(MusicConfigs, c => c.AudioClip == _musicSource.clip).Id;
+        }
+
+        return result;
+    }
+
+    public Task PLayAsync(MusicId musicId)
+    {
+        var musicVolume = _musicSource.volume;
+        _musicSource.volume = 0;
+        Play(musicId);
+
+        var tsc = new TaskCompletionSource<bool>();
+        IEnumerator FadeIn()
+        {
+            var maxI = 20;
+            for (var i = 0; i < maxI; i++)
+            {
+                _musicSource.volume = Mathf.Lerp(0, musicVolume, (float)i / maxI);
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+            tsc.TrySetResult(true);
+        }
+
+        StartCoroutine(FadeIn());
+
+        return tsc.Task;
+    }
+
+    public Task FadeOutAndStopMusicAsync()
+    {
+        var musicVolume = _musicSource.volume;
+
+        var tsc = new TaskCompletionSource<bool>();
+        IEnumerator FadeOut()
+        {
+            var maxI = 20;
+            for (var i = 0; i < maxI; i++)
+            {
+                _musicSource.volume = Mathf.Lerp(musicVolume, 0, (float)i / maxI);
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+
+            _musicSource.Stop();
+            _musicSource.volume = musicVolume;
+
+            tsc.TrySetResult(true);
+        }
+
+        StartCoroutine(FadeOut());
+
+        return tsc.Task;
     }
 
     public void Play(SoundId soundId)
@@ -78,11 +140,12 @@ struct SoundConfig
 
 public enum MusicId
 {
-    Menu_1,
+    None,
     Game_1,
 }
 
 public enum SoundId
 {
+    None,
     ButtonClick_1,
 }

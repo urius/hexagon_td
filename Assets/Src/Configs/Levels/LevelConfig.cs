@@ -9,8 +9,8 @@ public class LevelConfig : ScriptableObject
     [SerializeField] public string Name { get; private set; }
     [SerializeField] public bool IsTransposed;
 
-    [SerializeField] public int StartMoneyAmount = 300;
-    [SerializeField] public int WaveCompletedReward = 100;
+    [SerializeField] public int StartMoneyAmount = 500;
+    [SerializeField] public int WaveCompletedReward = 150;
     [SerializeField] public int ModifierRepairValue = 5;
     [SerializeField] public int ModifierMineDamage = 5;
     [SerializeField] public int ModifierMoneyAmount = 10;

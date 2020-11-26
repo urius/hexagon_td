@@ -11,6 +11,10 @@ public class StartScreenStartedCommand : EventCommand
 
     public override void Execute()
     {
+        if (AudioManager.Instance.GetPlayingMusic() == MusicId.None)
+        {
+            AudioManager.Instance.Play(MusicId.Game_1);
+        }
         //first time screen opening in game session
 
         //TODO: move to bootstrapper

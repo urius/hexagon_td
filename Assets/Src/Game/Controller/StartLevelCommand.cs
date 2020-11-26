@@ -14,7 +14,5 @@ public class StartLevelCommand : Command
         injectionBinder.GetInstance<PlayerDataUpdateSystem>().Start();        
 
         LevelModel.SetLevelStarted();
-
-        AudioManager.Instance.Play(MusicId.Game_1);
     }
 }

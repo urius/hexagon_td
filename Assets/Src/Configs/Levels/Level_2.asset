@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   IsTransposed: 1
-  StartMoneyAmount: 300
-  WaveCompletedReward: 100
+  StartMoneyAmount: 500
+  WaveCompletedReward: 150
   ModifierRepairValue: 5
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
