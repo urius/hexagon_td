@@ -63,9 +63,10 @@ public abstract class TurretMediatorBase
 
     protected virtual void OnTurretUpgraded()
     {
+        Deactivate();
         DestroyView();
         TurretViewGo = CreateView(TurretModel);
-
+        Activate();
         RefreshAttackRadius();
 
         GameObject.Instantiate(UIPrefabsConfig.UpgradePSPrefab, TurretViewGo.transform.position, Quaternion.identity);

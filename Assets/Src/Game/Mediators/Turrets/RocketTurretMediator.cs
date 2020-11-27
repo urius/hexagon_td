@@ -101,12 +101,27 @@ public class RocketTurretMediator : TurretViewWithRotatingHeadMediator
 
     private void OnFired()
     {
+        AudioManager.Instance.Play(GetSoundId());
+
         var firePoint = GetFirePoint();
         var rocketGo = ViewManager.Instantiate(TurretConfig.BulletPrefab, firePoint.position, firePoint.rotation);
         var rocketView = rocketGo.GetComponent<RocketView>();
 
         rocketView.Show();
         _rockets.Add(new RocketFlyData(rocketView, TargetView, 3, TurretConfig));
+    }
+
+    private SoundId GetSoundId()
+    {
+        switch (TurretModel.TurretConfig.TurretLevelIndex)
+        {
+            case 0:
+                return SoundId.Rocket_1;
+            case 1:
+                return SoundId.Rocket_2;
+            default:
+                return SoundId.Rocket_3;
+        }
     }
 }
 

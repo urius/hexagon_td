@@ -147,5 +147,16 @@ public enum MusicId
 public enum SoundId
 {
     None,
-    ButtonClick_1,
+    Gun_1,
+    Gun_2,
+    Gun_3,
+    Laser_1,
+    Laser_2,
+    Laser_3,
+    Rocket_1,
+    Rocket_2,
+    Rocket_3,
+    SlowField_1,
+    SlowField_2,
+    SlowField_3,
 }

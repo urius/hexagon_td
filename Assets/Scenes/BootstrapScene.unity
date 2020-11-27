@@ -249,7 +249,25 @@ MonoBehaviour:
   MusicConfigs:
   - Id: 1
     AudioClip: {fileID: 8300000, guid: a47f3f6fc932d467dbb7bcc1a58abce6, type: 3}
-  SoundConfigs: []
+  SoundConfigs:
+  - Id: 1
+    AudioClip: {fileID: 8300000, guid: bfc339357b2a5442a9214509eb0b4da5, type: 3}
+  - Id: 2
+    AudioClip: {fileID: 8300000, guid: ea14308e70d314c7db180839ca284832, type: 3}
+  - Id: 3
+    AudioClip: {fileID: 8300000, guid: ea14308e70d314c7db180839ca284832, type: 3}
+  - Id: 7
+    AudioClip: {fileID: 8300000, guid: ffe5c6f7307f04605b116404019cebbb, type: 3}
+  - Id: 8
+    AudioClip: {fileID: 8300000, guid: ffe5c6f7307f04605b116404019cebbb, type: 3}
+  - Id: 9
+    AudioClip: {fileID: 8300000, guid: 53486d3db5ea84f20a0053e99dca3531, type: 3}
+  - Id: 10
+    AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
+  - Id: 11
+    AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
+  - Id: 12
+    AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,12 +22,14 @@ public class SlowFieldTurretMediator : TurretMediatorBase
 
         UpdateProvider.UpdateAction += OnUpdate;
         LevelUnitsModel.UnitRemoved += OnUnitRemoved;
+        _turretView.ParticlesBurst += OnParticlesBurst;
     }
 
     protected override void Deactivate()
     {
         LevelUnitsModel.UnitRemoved -= OnUnitRemoved;
         UpdateProvider.UpdateAction -= OnUpdate;
+        _turretView.ParticlesBurst -= OnParticlesBurst;
 
         base.Deactivate();
     }
@@ -38,6 +40,7 @@ public class SlowFieldTurretMediator : TurretMediatorBase
         var turretViewGo = GameObject.Instantiate(turretPrefab, RootTransformProvider.transform);
         turretViewGo.transform.position = CellPositionConverter.CellVec2ToWorld(turretModel.Position);
         _turretView = turretViewGo.GetComponent<SlowFieldTurretView>();
+
         return turretViewGo;
     }
 
@@ -105,5 +108,23 @@ public class SlowFieldTurretMediator : TurretMediatorBase
             return true;
         }
         return false;
+    }
+
+    private void OnParticlesBurst()
+    {
+        AudioManager.Instance.Play(GetSoundId());
+    }
+
+    private SoundId GetSoundId()
+    {
+        switch (TurretModel.TurretConfig.TurretLevelIndex)
+        {
+            case 0:
+                return SoundId.SlowField_1;
+            case 1:
+                return SoundId.SlowField_2;
+            default:
+                return SoundId.SlowField_3;
+        }
     }
 }

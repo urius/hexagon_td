@@ -17,8 +17,8 @@ MonoBehaviour:
   WaveCompletedReward: 100
   ModifierRepairValue: 5
   ModifierMineDamage: 5
-  ModifierMoneyAmount: 10
-  ModifierBigMoneyAmount: 30
+  ModifierMoneyAmount: 2
+  ModifierBigMoneyAmount: 5
   DefaulGoalCapacity: 10
   DestroyUnitReward: 10
   _cellConfigs:

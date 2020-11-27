@@ -25,6 +25,8 @@ public class GunTurretMediator : TurretViewWithRotatingHeadMediator
 
     private void OnFired()
     {
+        AudioManager.Instance.Play(GetSoundId());
+
         var firePoint = GetFirePoint();
         var bulletGo = ViewManager.Instantiate(TurretModel.TurretConfig.BulletPrefab, firePoint.position, firePoint.rotation);
 
@@ -35,6 +37,19 @@ public class GunTurretMediator : TurretViewWithRotatingHeadMediator
 
         var eventParams = new MediatorEventsParams.BulletHitTargetsParams(TurretModel.Damage, TurretModel.TargetUnit);
         moveTween.OnComplete(() => OnBulletHitsTarget(bulletGo, eventParams));
+    }
+
+    private SoundId GetSoundId()
+    {
+        switch(TurretModel.TurretConfig.TurretLevelIndex)
+        {
+            case 0:
+                return SoundId.Gun_1;
+            case 1:
+                return SoundId.Gun_2;
+            default:
+                return SoundId.Gun_3;
+        }
     }
 
     private void OnBulletHitsTarget(GameObject bulletGo, MediatorEventsParams.BulletHitTargetsParams param)
