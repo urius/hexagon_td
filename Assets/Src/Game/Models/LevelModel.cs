@@ -235,6 +235,7 @@ public class LevelModel
         if (GoalCount == 0)
         {
             WaveModel.TerminateWave();
+            SetTimeScale(1);
             FinishLevel(false);
         }
     }

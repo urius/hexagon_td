@@ -37,6 +37,8 @@ public class WavesControlSystem : EventSystemBase
         {
             if (WaveModel.IsCurrentWaveEmpty && LevelUnitsModel.UnitsCount == 0)
             {
+                LevelModel.SetTimeScale(1);
+
                 WaveModel.EndWave();
                 if (WaveModel.WaveState == WaveState.AfterLastWave)
                 {
