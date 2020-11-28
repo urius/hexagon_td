@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class TimeScaleChangeCommand : EventCommand
 {
+    [Inject] public LevelModel LevelModel { get; set; }
+
     public override void Execute()
     {
-        if (Time.timeScale >= 3)
+        if (LevelModel.TimeScale >= 3)
         {
-            Time.timeScale = 1;
+            LevelModel.SetTimeScale(1);
         }
         else
         {
-            Time.timeScale++;
+            LevelModel.SetTimeScale(LevelModel.TimeScale + 1);
         }
     }
 }

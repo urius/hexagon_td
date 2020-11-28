@@ -23,7 +23,7 @@ public class ProcessUpdatesSystem : EventSystemBase
 
     private void OnLevelFinished()
     {
-        Time.timeScale = 1;
+        LevelModel.SetTimeScale(1);
 
         UpdateProvider.UpdateAction -= OnUpdate;
     }

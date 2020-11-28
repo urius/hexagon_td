@@ -7,10 +7,36 @@ using UnityEngine;
 public class PlayerDataUpdateSystem : EventSystemBase
 {
     [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     public override void Start()
     {
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED, OnAudioValueChanged);
+        dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnSettingsClicked);
+        dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_SHOW_ANIMATION_ENDED, OnSettingsPopupShown);
+        dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_CLOSE_CLICKED, OnSettingsPopupCloseClicked);
+
+        LevelModel.GameSpeedChanged += OnGameSpeedChanged;
+    }
+
+    private void OnSettingsPopupShown(IEvent payload)
+    {
+        LevelModel.SetPauseMode(true);
+    }
+
+    private void OnSettingsPopupCloseClicked(IEvent payload)
+    {
+        LevelModel.SetPauseMode(false);
+    }
+
+    private void OnSettingsClicked(IEvent payload)
+    {
+        LevelModel.SetTimeScale(1);
+    }
+
+    private void OnGameSpeedChanged()
+    {
+        Time.timeScale = LevelModel.TimeScale;
     }
 
     private void OnAudioValueChanged(IEvent payload)

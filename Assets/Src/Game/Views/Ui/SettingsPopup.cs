@@ -21,6 +21,13 @@ public class SettingsPopup : PopupBase
     public float MusicVolume => _musicSlider.value;
     public float SoundsVolume => _soundsSlider.value;
 
+    public void SetVolumeIndicators(float master, float music, float sounds)
+    {
+        _volumeSlider.value = master;
+        _musicSlider.value = music;
+        _soundsSlider.value = sounds;
+    }
+
     protected override void Awake()
     {
         base.Awake();

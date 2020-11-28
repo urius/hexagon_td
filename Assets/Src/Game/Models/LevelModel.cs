@@ -11,7 +11,9 @@ public class LevelModel
     public event Action InsufficientMoneyTriggered = delegate { };
     public event Action GoalCountUpdated = delegate { };
     public event Action LevelFinished = delegate { };
-
+    public event Action GameSpeedChanged = delegate { };
+    public event Action PauseModeChanged = delegate { };
+    
     public bool IsWon = false;
     public bool IsDefeated = false;
 
@@ -56,12 +58,28 @@ public class LevelModel
         GoalCount = _levelConfig.DefaulGoalCapacity;
     }
 
+    public int TimeScale { get; private set; } = 1;
     public int Money { get; private set; }
     public int GoalCount { get; private set; }
     public int MaxGoalCapacity => _levelConfig.DefaulGoalCapacity;
     public int DestroyUnitReward => _levelConfig.DestroyUnitReward;
     public Task StartLevelTask => _levelStartedTsc.Task;
     public bool IsLevelFinished => IsWon || IsDefeated;
+    public bool IsPaused { get; private set; }
+
+    public void SetTimeScale(int timeScale)
+    {
+        TimeScale = timeScale;
+
+        GameSpeedChanged();
+    }
+
+    public void SetPauseMode(bool isPaused)
+    {
+        IsPaused = isPaused;
+
+        PauseModeChanged();
+    }
 
     public int GetAccuracyRate()
     {

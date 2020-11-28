@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SlowFieldTurretMediator : TurretMediatorBase
 {
-    [Inject] public IUpdateProvider UpdateProvider { get; set; }
     [Inject] public IRootTransformProvider RootTransformProvider { get; set; }
     [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
@@ -20,7 +19,6 @@ public class SlowFieldTurretMediator : TurretMediatorBase
 
         _unitViews = UnitViewsProvider.UnitViews;
 
-        UpdateProvider.UpdateAction += OnUpdate;
         LevelUnitsModel.UnitRemoved += OnUnitRemoved;
         _turretView.ParticlesBurst += OnParticlesBurst;
     }
@@ -28,7 +26,6 @@ public class SlowFieldTurretMediator : TurretMediatorBase
     protected override void Deactivate()
     {
         LevelUnitsModel.UnitRemoved -= OnUnitRemoved;
-        UpdateProvider.UpdateAction -= OnUpdate;
         _turretView.ParticlesBurst -= OnParticlesBurst;
 
         base.Deactivate();
@@ -53,7 +50,7 @@ public class SlowFieldTurretMediator : TurretMediatorBase
         _turretView.SetParticlesLifetime(lifetime);
     }
 
-    private void OnUpdate()
+    protected override void OnUpdate()
     {
         if (_unitIndex1 < _unitViews.Count)
         {

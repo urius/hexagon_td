@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IUpdateProvider
 {
     event Action UpdateAction;
+    event Action UpdateActionRealtime;
 }
 
 public interface IRootTransformProvider
@@ -15,6 +16,7 @@ public interface IRootTransformProvider
 public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvider
 {
     public event Action UpdateAction = delegate { };
+    public event Action UpdateActionRealtime = delegate { };
 
     public GlobalObjectsHolder GlobalObjectsHolder;
     public CellConfigProvider CellConfigProvider;
@@ -22,18 +24,35 @@ public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvi
     public TurretConfigProvider TurretConfigsProvider;
     public GridView GridView;
 
-    private void Awake()
+    private bool _isInitialized = false;
+    private LevelModel _levelModel;
+
+    private async void Awake()
     {
         GameSettingsSetupHelper.Setup();
 
-        context = new GameContext(this);
+        var gameContext = new GameContext(this);
+
+        context = gameContext;
         Context.firstContext = context;
         context.Launch();
+
+        await gameContext.InitializedTask;
+
+        _isInitialized = true;
+        _levelModel = gameContext.LevelModel;
     }
 
     private void FixedUpdate()
     {
-        UpdateAction();
+        if (_isInitialized)
+        {
+            if (!_levelModel.IsPaused)
+            {
+                UpdateAction();
+            }
+            UpdateActionRealtime();
+        }
     }
 }
 

@@ -41,7 +41,7 @@ public class ShowPathsMediator : EventMediator
         WaveModel.WaveStateChanged -= OnWaveStateChanged;
         dispatcher.RemoveListener(MediatorEvents.DRAW_GRID_COMPLETE, OnDrawGridComplete);
 
-        UpdateProvider.UpdateAction -= OnUpdate;
+        UpdateProvider.UpdateActionRealtime -= OnUpdate;
         LevelModel.PathsManager.PathsUpdated -= OnPathsUpdated;
     }
 
@@ -80,7 +80,7 @@ public class ShowPathsMediator : EventMediator
             CreatePath(path);
         }
 
-        UpdateProvider.UpdateAction += OnUpdate;
+        UpdateProvider.UpdateActionRealtime += OnUpdate;
         LevelModel.PathsManager.PathsUpdated += OnPathsUpdated;
 
         TweenFactory.Tween(PathsAlphaTweenKey, 0f, PathAlpha, 0.8f, TweenScaleFunctions.Linear, t => SetLinesAlpha(t.CurrentValue));
@@ -107,7 +107,7 @@ public class ShowPathsMediator : EventMediator
     {
         TweenFactory.RemoveTweenKey(PathsAlphaTweenKey, TweenStopBehavior.DoNotModify);
 
-        UpdateProvider.UpdateAction -= OnUpdate;
+        UpdateProvider.UpdateActionRealtime -= OnUpdate;
         LevelModel.PathsManager.PathsUpdated -= OnPathsUpdated;
 
         foreach (var line in _lines)

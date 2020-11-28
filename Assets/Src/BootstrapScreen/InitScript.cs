@@ -23,7 +23,16 @@ public class InitScript : MonoBehaviour
 
         //AskPermissions();
         LoadOrCreateData();
+        SetupAudioManager();
         LoadScene();
+    }
+
+    private void SetupAudioManager()
+    {
+        var playerModel = _playerGlobalModelHolder.PlayerGlobalModel;
+        AudioManager.Instance.SetMasterVolume(playerModel.AudioVolume);
+        AudioManager.Instance.SetMusicVolume(playerModel.MusicVolume);
+        AudioManager.Instance.SetSoundsVolume(playerModel.SoundsVolume);
     }
 
     private void LoadOrCreateData()

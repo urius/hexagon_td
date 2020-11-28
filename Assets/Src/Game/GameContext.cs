@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Threading.Tasks;
 using strange.extensions.context.impl;
 using UnityEngine;
 
 public class GameContext : MVCSContext
 {
+    private TaskCompletionSource<bool> _initializedTsc = new TaskCompletionSource<bool>();
+
     public GameContext(GameContextView view) : base(view)
     {
     }
+
+    public LevelModel LevelModel { get; private set; }
+    public Task InitializedTask => _initializedTsc.Task;
 
     protected override void mapBindings()
     {
@@ -17,6 +23,7 @@ public class GameContext : MVCSContext
         new GlobalBindingsHelper(injectionBinder, mediationBinder).Bind(gameContextView.GlobalObjectsHolder);
 
         var levelModel = new LevelModel(gameContextView.GlobalObjectsHolder.LevelConfigProvider.LevelConfig);
+        LevelModel = levelModel;
 
         injectionBinder
             .Bind<IUpdateProvider>()
@@ -107,5 +114,7 @@ public class GameContext : MVCSContext
     protected override void postBindings()
     {
         base.postBindings();
+
+        _initializedTsc.TrySetResult(true);
     }
 }

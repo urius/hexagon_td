@@ -8,6 +8,7 @@ public abstract class TurretMediatorBase
     [Inject(ContextKeys.CONTEXT_DISPATCHER)]
     public IEventDispatcher dispatcher { get; set; }
 
+    [Inject] public IUpdateProvider UpdateProvider { get; set; }
     [Inject] public IUnitModelByViewProvider UnitModelByViews { get; set; }
     [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
     [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
@@ -30,6 +31,7 @@ public abstract class TurretMediatorBase
     }
 
     protected abstract GameObject CreateView(TurretModel turretModel);
+    protected abstract void OnUpdate();
 
     protected virtual void Activate()
     {
@@ -38,6 +40,7 @@ public abstract class TurretMediatorBase
         TurretModel.Upgraded += OnTurretUpgraded;
         TurretModel.Destroyed += OnTurretDestroyed;
         TurretModel.SellAnimationTriggered += OnTriggerSellAnimation;
+        UpdateProvider.UpdateAction += OnUpdate;
         dispatcher.AddListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
         dispatcher.AddListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
 
@@ -49,6 +52,7 @@ public abstract class TurretMediatorBase
         TurretModel.Upgraded -= OnTurretUpgraded;
         TurretModel.Destroyed -= OnTurretDestroyed;
         TurretModel.SellAnimationTriggered -= OnTriggerSellAnimation;
+        UpdateProvider.UpdateAction -= OnUpdate;
         dispatcher.RemoveListener(CommandEvents.TURRET_SELECTED, OnTurretSelected);
         dispatcher.RemoveListener(MediatorEvents.TURRET_DESELECTED, OnTurretDeselected);
     }

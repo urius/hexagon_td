@@ -7,23 +7,29 @@ using UnityEngine;
 public class TimeScaleButtonMediator : EventMediator
 {
     [Inject] public TimeScaleButtonView View { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     private void Start()
     {
         View.Clicked += OnChangeTimeScaleClicked;
+        LevelModel.GameSpeedChanged += OnGameSpeedChanged;
 
-        View.ShowSpeedMultiplier((int)Time.timeScale);
+        View.ShowSpeedMultiplier(LevelModel.TimeScale);
     }
 
     private void OnDestroy()
     {
         View.Clicked -= OnChangeTimeScaleClicked;
+        LevelModel.GameSpeedChanged -= OnGameSpeedChanged;
+    }
+
+    private void OnGameSpeedChanged()
+    {
+        View.ShowSpeedMultiplier(LevelModel.TimeScale);
     }
 
     private void OnChangeTimeScaleClicked()
     {
         dispatcher.Dispatch(MediatorEvents.UI_TIME_SCALE_CHANGE_CLICKED);
-
-        View.ShowSpeedMultiplier((int)Time.timeScale);
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine;
 public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 {
     [Inject] public IViewManager ViewManager { get; set; }
-    [Inject] public IUpdateProvider UpdateProvider { get; set; }
     [Inject] public IRootTransformProvider RootTransformProvider { get; set; }
     [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     protected TurretViewWithRotatingHead TurretView;
     protected UnitView TargetView;
@@ -15,6 +15,7 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 
     private int _unitIndex;
     private IList<UnitView> _unitViews;
+
 
     protected TurretConfig TurretConfig => TurretModel.TurretConfig;
     private int _currentFirePointIndex = 0;
@@ -26,7 +27,6 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
         base.Activate();
 
         TurretModel.NewTargetSet += OnNewTargetSet;
-        UpdateProvider.UpdateAction += OnUpdate;
     }
 
     protected override void Deactivate()
@@ -34,10 +34,9 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
         base.Deactivate();
 
         TurretModel.NewTargetSet -= OnNewTargetSet;
-        UpdateProvider.UpdateAction -= OnUpdate;
     }
 
-    protected virtual void OnUpdate()
+    protected override void OnUpdate()
     {
         if (TargetView == null)
         {

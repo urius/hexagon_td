@@ -10,10 +10,9 @@ public class UnitViewMediator : EventMediator
     [Inject] public IUpdateProvider updateProvider { get; set; }
     [Inject] public UIPrefabsConfig UiPrefabsConfig { get; set; }
     [Inject] public IViewManager ViewManager { get; set; }
+    [Inject] public LevelModel LevelModel { get; set; }
 
     private UnitModel _unitModel;
-
-    private bool IsDestroying => _unitModel.IsDestroying;
 
     private Action _updateDelegate;
     private int _stateStep = 0;
@@ -41,7 +40,7 @@ public class UnitViewMediator : EventMediator
 
         if (unitView != null)
         {
-            updateProvider.UpdateAction -= unitView.UpdateDelegate;
+            updateProvider.UpdateActionRealtime -= unitView.UpdateDelegate;
         }
         updateProvider.UpdateAction -= OnUpdate;
     }
@@ -81,7 +80,7 @@ public class UnitViewMediator : EventMediator
 
         if (_unitModel.PreviousStateName == UnitStateName.Spawning)
         {
-            updateProvider.UpdateAction += unitView.UpdateDelegate;
+            updateProvider.UpdateActionRealtime += unitView.UpdateDelegate;
         }
 
         if (_unitModel.CurrentState.StateName == UnitStateName.Moving)
@@ -109,7 +108,7 @@ public class UnitViewMediator : EventMediator
 
             _updateDelegate = null;
 
-            updateProvider.UpdateAction -= unitView.UpdateDelegate;
+            updateProvider.UpdateActionRealtime -= unitView.UpdateDelegate;
             dispatcher.Dispatch(MediatorEvents.UNIT_DESTROY_ANIMATION_FINISHED, unitView);
         }
     }
