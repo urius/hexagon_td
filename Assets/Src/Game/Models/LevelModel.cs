@@ -263,7 +263,7 @@ public class WaveModel
 
     private readonly WaveSetting[] _wavesSettings;
 
-    private UnitTypeMin[] _currentWaveUnitsFlattened;
+    private (UnitTypeMin, UnitSkin)[] _currentWaveUnitsFlattened;
 
     public WaveModel(WaveSetting[] wavesSettings)
     {
@@ -277,7 +277,7 @@ public class WaveModel
     public bool IsCurrentWaveEmpty => UnitIndex >= _currentWaveUnitsFlattened.Length;
     public int TotalWavesCount => _wavesSettings.Length;
 
-    public UnitTypeMin GetUnitAndIncrement()
+    public (UnitTypeMin, UnitSkin) GetUnitAndIncrement()
     {
         var result = _currentWaveUnitsFlattened[UnitIndex];
         UnitIndex++;
@@ -327,11 +327,11 @@ public class WaveModel
 
     private void UpdateInnerData()
     {
-        var tempUnits = new List<UnitTypeMin>();
+        var tempUnits = new List<(UnitTypeMin, UnitSkin)>();
 
         foreach (var wavePart in _wavesSettings[WaveIndex].WaveParts)
         {
-            tempUnits.AddRange(Enumerable.Range(0, wavePart.Amount).Select(i => wavePart.UnitType));
+            tempUnits.AddRange(Enumerable.Range(0, wavePart.Amount).Select(i => (wavePart.UnitType, wavePart.OverrideSkin)));
         }
         _currentWaveUnitsFlattened = tempUnits.ToArray();
     }

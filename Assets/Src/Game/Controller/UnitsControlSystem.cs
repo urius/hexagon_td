@@ -96,15 +96,19 @@ public class UnitsControlSystem : EventSystemBase
                 haveActiveCells = true;
                 if (!WaveModel.IsCurrentWaveEmpty && LevelUnitsModel.IsCellWithoutUnit(spawnCell.CellPosition))
                 {
-                    var unitType = WaveModel.GetUnitAndIncrement();
+                    var unitData = WaveModel.GetUnitAndIncrement();
+                    var unitType = unitData.Item1;
                     var unitConfig = UnitConfigsProvider.GetConfigByType(unitType);
+
+                    var unitSkinType = unitData.Item2 == UnitSkin.None ? unitConfig.Skin : unitData.Item2;
+                    var unitSkinConfig = UnitConfigsProvider.GetSkinConfigBySkin(unitSkinType);
 
                     //injectionBinder.Unbind<UnitModel>();
                     //injectionBinder.Bind<UnitModel>().ToValue(unitModel);
                     //  OnRegister happens on next frame, so this workaround is not working
 
                     var path = LevelModel.GetPath(spawnCell.CellPosition);
-                    var unitModel = new UnitModel(path, unitConfig);
+                    var unitModel = new UnitModel(path, unitConfig, unitSkinConfig);
                     LevelUnitsModel.AddUnit(unitModel);
                     LevelUnitsModel.OwnCellByUnit(unitModel);
 

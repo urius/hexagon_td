@@ -15,5 +15,6 @@ public class WaveSetting
 public class WavePartSetting
 {
     public UnitTypeMin UnitType;
+    public UnitSkin OverrideSkin;
     public int Amount;
 }

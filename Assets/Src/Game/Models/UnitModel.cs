@@ -18,7 +18,7 @@ public class UnitModel
     private readonly UnitConfig _config;
     private readonly LinkedList<TurretModel> _slowDownAffectors = new LinkedList<TurretModel>();
 
-    public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config)
+    public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config, UnitSkinConfig skinConfig)
     {
         _path = path;
         _config = config;
@@ -30,11 +30,14 @@ public class UnitModel
         HP = MaxHP;
         Speed = config.Speed;
 
+        Prefab = skinConfig.Prefab;
+        ExplosionPrefab = skinConfig.ExplosionPrefab;
+
         CurrentState = new SpawningState(CurrentCellPosition);
     }
 
-    public GameObject Prefab => _config.Prefab;
-    public GameObject ExplosionPrefab => _config.ExplosionPrefab;
+    public GameObject Prefab { get; private set; }
+    public GameObject ExplosionPrefab { get; private set; }
     public int HP { get; private set; }
     public float Speed { get; private set; }
 

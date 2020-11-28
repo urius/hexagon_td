@@ -8,10 +8,16 @@ using UnityEngine;
 public class UnitConfigsProvider : ScriptableObject
 {
     public UnitConfig[] Configs;
+    public UnitSkinConfig[] Skins;
 
     public UnitConfig GetConfigByType(UnitTypeMin type)
     {
         return Configs.FirstOrDefault(c => c.UnitType == type);
+    }
+
+    public UnitSkinConfig GetSkinConfigBySkin(UnitSkin skin)
+    {
+        return Skins.FirstOrDefault(c => c.Skin == skin);
     }
 }
 
@@ -19,10 +25,17 @@ public class UnitConfigsProvider : ScriptableObject
 public class UnitConfig
 {
     public UnitTypeMin UnitType;
-    public GameObject Prefab;
-    public GameObject ExplosionPrefab;
+    public UnitSkin Skin;
     public int HP = 1;
     public float Speed = 3;
+}
+
+[Serializable]
+public class UnitSkinConfig
+{
+    public UnitSkin Skin;
+    public GameObject Prefab;
+    public GameObject ExplosionPrefab;
 }
 
 public enum UnitTypeMin
@@ -57,4 +70,19 @@ public enum UnitTypeMin
     Armor_10_superslow,
     Armor_10_slow,
     Armor_10_fast,
+}
+
+public enum UnitSkin
+{
+    None,
+    Green_lite,
+    Indigo,
+    Gray_with_red_1,
+    Dark_green,
+    Red_with_blue,
+    Green_with_brown,
+    Gray_with_red_2,
+    Orange_with_green_armor,
+    Blue_with_red_heavy,
+    Red_with_orange_heavy,
 }
