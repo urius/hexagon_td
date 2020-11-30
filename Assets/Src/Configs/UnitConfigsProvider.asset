@@ -14,212 +14,173 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Configs:
   - UnitType: 0
-    Prefab: {fileID: 1754644785219521630, guid: e5b4644c34cdf4922aabb4125102bb4c,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
+    Skin: 1
     HP: 20
     Speed: 2
   - UnitType: 1
-    Prefab: {fileID: 1754644785219521630, guid: e5b4644c34cdf4922aabb4125102bb4c,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
+    Skin: 1
     HP: 20
     Speed: 3
   - UnitType: 2
+    Skin: 1
+    HP: 20
+    Speed: 4
+  - UnitType: 3
+    Skin: 2
+    HP: 40
+    Speed: 2
+  - UnitType: 4
+    Skin: 2
+    HP: 40
+    Speed: 3
+  - UnitType: 5
+    Skin: 2
+    HP: 40
+    Speed: 4
+  - UnitType: 6
+    Skin: 3
+    HP: 80
+    Speed: 2
+  - UnitType: 7
+    Skin: 3
+    HP: 80
+    Speed: 3
+  - UnitType: 8
+    Skin: 3
+    HP: 80
+    Speed: 4
+  - UnitType: 9
+    Skin: 4
+    HP: 150
+    Speed: 2
+  - UnitType: 10
+    Skin: 4
+    HP: 150
+    Speed: 3
+  - UnitType: 11
+    Skin: 4
+    HP: 150
+    Speed: 4
+  - UnitType: 12
+    Skin: 5
+    HP: 250
+    Speed: 1
+  - UnitType: 13
+    Skin: 5
+    HP: 250
+    Speed: 2
+  - UnitType: 14
+    Skin: 5
+    HP: 250
+    Speed: 3
+  - UnitType: 15
+    Skin: 6
+    HP: 400
+    Speed: 1
+  - UnitType: 16
+    Skin: 6
+    HP: 400
+    Speed: 2
+  - UnitType: 17
+    Skin: 6
+    HP: 400
+    Speed: 3
+  - UnitType: 18
+    Skin: 7
+    HP: 600
+    Speed: 0.8
+  - UnitType: 19
+    Skin: 7
+    HP: 600
+    Speed: 1.5
+  - UnitType: 20
+    Skin: 7
+    HP: 600
+    Speed: 2
+  - UnitType: 21
+    Skin: 8
+    HP: 1000
+    Speed: 0.7
+  - UnitType: 22
+    Skin: 8
+    HP: 1000
+    Speed: 1.5
+  - UnitType: 23
+    Skin: 8
+    HP: 1000
+    Speed: 2
+  - UnitType: 24
+    Skin: 9
+    HP: 1500
+    Speed: 0.5
+  - UnitType: 25
+    Skin: 9
+    HP: 1500
+    Speed: 1
+  - UnitType: 26
+    Skin: 9
+    HP: 1500
+    Speed: 2
+  - UnitType: 27
+    Skin: 10
+    HP: 2000
+    Speed: 0.5
+  - UnitType: 28
+    Skin: 10
+    HP: 2000
+    Speed: 1
+  - UnitType: 29
+    Skin: 10
+    HP: 2000
+    Speed: 2
+  Skins:
+  - Skin: 1
     Prefab: {fileID: 1754644785219521630, guid: e5b4644c34cdf4922aabb4125102bb4c,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 20
-    Speed: 4
-  - UnitType: 3
+  - Skin: 2
     Prefab: {fileID: 1754644785219521630, guid: 953df565d6061465f989eb7df2a5f820,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 40
-    Speed: 2
-  - UnitType: 4
-    Prefab: {fileID: 1754644785219521630, guid: 953df565d6061465f989eb7df2a5f820,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 40
-    Speed: 3
-  - UnitType: 5
-    Prefab: {fileID: 1754644785219521630, guid: 953df565d6061465f989eb7df2a5f820,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 40
-    Speed: 4
-  - UnitType: 6
+  - Skin: 3
     Prefab: {fileID: 1754644785219521630, guid: 971d14682e9804d17a128524670c0b1a,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 80
-    Speed: 2
-  - UnitType: 7
-    Prefab: {fileID: 1754644785219521630, guid: 971d14682e9804d17a128524670c0b1a,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 80
-    Speed: 3
-  - UnitType: 8
-    Prefab: {fileID: 1754644785219521630, guid: 971d14682e9804d17a128524670c0b1a,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 80
-    Speed: 4
-  - UnitType: 9
+  - Skin: 4
     Prefab: {fileID: 1754644785219521630, guid: a9bb4a1c20de9424c886c81bd2ee5a4a,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 150
-    Speed: 2
-  - UnitType: 10
-    Prefab: {fileID: 1754644785219521630, guid: a9bb4a1c20de9424c886c81bd2ee5a4a,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 150
-    Speed: 3
-  - UnitType: 11
-    Prefab: {fileID: 1754644785219521630, guid: a9bb4a1c20de9424c886c81bd2ee5a4a,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 150
-    Speed: 4
-  - UnitType: 12
+  - Skin: 5
     Prefab: {fileID: 1754644785219521630, guid: b8551a1e4800840d68f2876ad92748d3,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 250
-    Speed: 1
-  - UnitType: 13
-    Prefab: {fileID: 1754644785219521630, guid: b8551a1e4800840d68f2876ad92748d3,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 250
-    Speed: 2
-  - UnitType: 14
-    Prefab: {fileID: 1754644785219521630, guid: b8551a1e4800840d68f2876ad92748d3,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 250
-    Speed: 3
-  - UnitType: 15
+  - Skin: 6
     Prefab: {fileID: 1754644785219521630, guid: 34b1536db269147f289cfb36f268cd16,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 400
-    Speed: 1
-  - UnitType: 16
-    Prefab: {fileID: 1754644785219521630, guid: 34b1536db269147f289cfb36f268cd16,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 400
-    Speed: 2
-  - UnitType: 17
-    Prefab: {fileID: 1754644785219521630, guid: 34b1536db269147f289cfb36f268cd16,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 400
-    Speed: 3
-  - UnitType: 18
+  - Skin: 7
     Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 600
-    Speed: 0.8
-  - UnitType: 19
-    Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 600
-    Speed: 1.5
-  - UnitType: 20
-    Prefab: {fileID: 1754644785219521630, guid: ffcab322af3394766b92609bcd4ca37b,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 600
-    Speed: 2
-  - UnitType: 21
+  - Skin: 8
     Prefab: {fileID: 1754644785219521630, guid: f1bb9677e4629482f9503378d0bf8043,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1000
-    Speed: 0.7
-  - UnitType: 22
-    Prefab: {fileID: 1754644785219521630, guid: f1bb9677e4629482f9503378d0bf8043,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 1000
-    Speed: 1.5
-  - UnitType: 23
-    Prefab: {fileID: 1754644785219521630, guid: f1bb9677e4629482f9503378d0bf8043,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 1000
-    Speed: 2
-  - UnitType: 24
+  - Skin: 9
     Prefab: {fileID: 1754644785219521630, guid: 307c86ab0a10c4a278ca641ad609a0db,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 1500
-    Speed: 0.5
-  - UnitType: 25
-    Prefab: {fileID: 1754644785219521630, guid: 307c86ab0a10c4a278ca641ad609a0db,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 1500
-    Speed: 1
-  - UnitType: 26
-    Prefab: {fileID: 1754644785219521630, guid: 307c86ab0a10c4a278ca641ad609a0db,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 1500
-    Speed: 2
-  - UnitType: 27
+  - Skin: 10
     Prefab: {fileID: 1754644785219521630, guid: 7debe80560fa84ccca94bced41f16fa9,
       type: 3}
     ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
       type: 3}
-    HP: 2000
-    Speed: 0.5
-  - UnitType: 28
-    Prefab: {fileID: 1754644785219521630, guid: 7debe80560fa84ccca94bced41f16fa9,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 2000
-    Speed: 1
-  - UnitType: 29
-    Prefab: {fileID: 1754644785219521630, guid: 7debe80560fa84ccca94bced41f16fa9,
-      type: 3}
-    ExplosionPrefab: {fileID: 1590011503536073636, guid: efdecb38e255241fd917fe051f61631c,
-      type: 3}
-    HP: 2000
-    Speed: 2
