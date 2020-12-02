@@ -29,6 +29,51 @@ MonoBehaviour:
     - isPassed: 0
       isUnlocked: 1
       StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
+    - isPassed: 0
+      isUnlocked: 1
+      StarsAmount: 0
     AudioVolume: 0.5
     MusicVolume: 0.5
     SoundsVolume: 0.5

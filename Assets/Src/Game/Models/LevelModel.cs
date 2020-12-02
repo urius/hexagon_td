@@ -196,7 +196,7 @@ public class LevelModel
         return result;
     }
 
-    public IEnumerable<IReadOnlyList<Vector2Int>> GetPaths()
+    public IReadOnlyList<IReadOnlyList<Vector2Int>> GetPaths()
     {
         return SpawnCells.Select(c => GetPath(c.CellPosition)).ToArray();
     }
@@ -269,10 +269,9 @@ public class WaveModel
     public WaveModel(WaveSetting[] wavesSettings)
     {
         _wavesSettings = wavesSettings;
-        UpdateInnerData();
     }
 
-    public int WaveIndex { get; private set; }
+    public int WaveIndex { get; private set; } = -1;
     public int UnitIndex { get; private set; }
     public WaveState WaveState { get; private set; } = WaveState.BeforeFirstWave;
     public bool IsCurrentWaveEmpty => UnitIndex >= _currentWaveUnitsFlattened.Length;
@@ -290,9 +289,14 @@ public class WaveModel
         return !_wavesSettings[WaveIndex].DisabledBaseIndices.Contains(baseIndex);
     }
 
+    public bool IsBaseAllowedToSpawnOnNextWave(int baseIndex)
+    {
+        return !_wavesSettings[WaveIndex + 1].DisabledBaseIndices.Contains(baseIndex);
+    }
+
     public void Reset()
     {
-        WaveIndex = 0;
+        WaveIndex = -1;
         UpdateInnerData();
 
         UnitIndex = 0;

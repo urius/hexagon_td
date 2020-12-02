@@ -140,6 +140,8 @@ public enum TeleportType
     Green,
     Red,
     Yellow,
+    Purple,
+    Orange,
 }
 
 public enum GoalBaseType

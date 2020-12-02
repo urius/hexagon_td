@@ -23,10 +23,7 @@ public class WavesControlSystem : EventSystemBase
     {
         if (WaveModel.WaveState == WaveState.BeforeFirstWave || WaveModel.WaveState == WaveState.BetweenWaves)
         {
-            if (WaveModel.WaveState == WaveState.BetweenWaves)
-            {
-                WaveModel.AdvanceWave();
-            }
+            WaveModel.AdvanceWave();            
             WaveModel.StartWave();
         }
     }

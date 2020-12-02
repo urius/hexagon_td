@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ea1f398fba2428e9ad0669899d7e62, type: 3}
-  m_Name: Level_6
+  m_Name: Level_9
   m_EditorClassIdentifier: 
   IsTransposed: 1
   StartMoneyAmount: 500
@@ -238,6 +238,30 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
+  - CellPosition: {x: -6, y: -5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -6, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -6, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -6, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -6, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -6, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: -5, y: -5}
     CellConfigMin:
       CellType: 0
@@ -246,11 +270,15 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: -5, y: 3}
+  - CellPosition: {x: -5, y: -1}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: -5, y: 4}
+  - CellPosition: {x: -5, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -5, y: 3}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -258,11 +286,39 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: -4, y: -5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: -4, y: -4}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: -4, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -4, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -4, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -4, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -4, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: -4, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -4, y: 5}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -274,7 +330,47 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: -3, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -3, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: -3, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -3, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -3, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -3, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -3, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -2, y: -5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -2, y: -4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -2, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -2, y: -1}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -282,7 +378,19 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: -2, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -2, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: -2, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -2, y: 5}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -290,7 +398,39 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: -1, y: -4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -1, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -1, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: -1, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -1, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -1, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -1, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: -1, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 0, y: -5}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -298,7 +438,19 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: 0, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 0, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: 0, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 0, y: 1}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -306,7 +458,15 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: 0, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: 0, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 1, y: -5}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -314,7 +474,27 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: 1, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: 1, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 1, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 1, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 1, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 1, y: 5}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -326,7 +506,35 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: 2, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 2, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 2, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 2, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 2, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: 2, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 2, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 3, y: -5}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -334,7 +542,71 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: 3, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 3, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: 3, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 3, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 3, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 3, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 3, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: -5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: -4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: -3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: -1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 0}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 5}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 5, y: -4}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -350,7 +622,19 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
+  - CellPosition: {x: 5, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 5, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
   - CellPosition: {x: 5, y: 4}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 6, y: -3}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -358,7 +642,11 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: 6, y: 0}
+  - CellPosition: {x: 6, y: 1}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 6, y: 3}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -366,15 +654,151 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
-  - CellPosition: {x: -2, y: 3}
+  - CellPosition: {x: 5, y: 5}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 6, y: -5}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 5, y: -5}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 6, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 5, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 4, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 3, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 2, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 1, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 0, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -1, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -2, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 1, y: -3}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: -3, y: 4}
+  - CellPosition: {x: -3, y: -2}
     CellConfigMin:
-      CellType: 0
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -4, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -5, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -6, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -7, y: -2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 6, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 5, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 4, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 3, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 2, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 1, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 0, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -1, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -2, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -3, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -4, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -5, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -6, y: 2}
+    CellConfigMin:
+      CellType: 1
       CellSubType: 0
   - CellPosition: {x: -7, y: 2}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: 6, y: 4}
+    CellConfigMin:
+      CellType: 2
+      CellSubType: 0
+  - CellPosition: {x: 6, y: 0}
+    CellConfigMin:
+      CellType: 2
+      CellSubType: 0
+  - CellPosition: {x: 6, y: -4}
+    CellConfigMin:
+      CellType: 2
+      CellSubType: 0
+  - CellPosition: {x: -7, y: 4}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -6, y: 4}
     CellConfigMin:
       CellType: 1
       CellSubType: 0
@@ -386,19 +810,7 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
-  - CellPosition: {x: -7, y: 4}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -7, y: 1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -7, y: -2}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -7, y: -1}
+  - CellPosition: {x: -6, y: 0}
     CellConfigMin:
       CellType: 1
       CellSubType: 0
@@ -406,7 +818,15 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
-  - CellPosition: {x: -7, y: -5}
+  - CellPosition: {x: -7, y: 1}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -7, y: -1}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 0
+  - CellPosition: {x: -6, y: -4}
     CellConfigMin:
       CellType: 1
       CellSubType: 0
@@ -418,472 +838,52 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 0
-  - CellPosition: {x: 5, y: 5}
+  - CellPosition: {x: -7, y: -5}
     CellConfigMin:
       CellType: 1
       CellSubType: 0
-  - CellPosition: {x: -6, y: 5}
+  - CellPosition: {x: -5, y: 4}
     CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: 2}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -4, y: -5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: -5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 2, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -2, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -4, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 0, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -3, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 2, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -4, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 6, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 6, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 6, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -2, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: 4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 0, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: -4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -2, y: -5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 6, y: 4}
-    CellConfigMin:
-      CellType: 2
-      CellSubType: 0
-  - CellPosition: {x: 6, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: -4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 2, y: 0}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: 0}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 2, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: 4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -2, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -5, y: -4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -3, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -3, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: -5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -4, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -3, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: 4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 6, y: -4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 5, y: -5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: -5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 4, y: -4}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 0, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -4, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -2, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -1, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -3, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -4, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -4, y: 0}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -2, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -5, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -5, y: 2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 5}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -5, y: -1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: -3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -5, y: -2}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: -6, y: -4}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -6, y: 4}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -6, y: 0}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -6, y: -2}
-    CellConfigMin:
-      CellType: 1
+      CellType: 4
       CellSubType: 0
   - CellPosition: {x: -5, y: 0}
     CellConfigMin:
       CellType: 4
       CellSubType: 0
-  - CellPosition: {x: -4, y: 2}
+  - CellPosition: {x: -5, y: -4}
     CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -4, y: 3}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -3, y: 5}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -2, y: 2}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 0, y: 1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 0, y: 4}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 2, y: 1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 2, y: 3}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 2, y: -1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 2, y: -3}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 4, y: 3}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 4, y: 1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 4, y: -1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 4, y: -3}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 6, y: -2}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 3, y: -5}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 0, y: -5}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 0, y: -2}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -2, y: -4}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: -3, y: -1}
-    CellConfigMin:
-      CellType: 1
-      CellSubType: 0
-  - CellPosition: {x: 6, y: -5}
-    CellConfigMin:
-      CellType: 1
+      CellType: 4
       CellSubType: 0
   _modifierConfigs:
-  - CellPosition: {x: 4, y: 5}
+  - CellPosition: {x: 4, y: -3}
     CellConfigMin:
       CellType: 5
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 5}
+      CellSubType: 1
+  - CellPosition: {x: 4, y: -4}
     CellConfigMin:
       CellType: 5
-      CellSubType: 0
-  - CellPosition: {x: 2, y: 5}
+      CellSubType: 1
+  - CellPosition: {x: 4, y: -5}
     CellConfigMin:
       CellType: 5
-      CellSubType: 0
-  - CellPosition: {x: 3, y: 2}
+      CellSubType: 1
+  - CellPosition: {x: 3, y: -3}
     CellConfigMin:
       CellType: 5
-      CellSubType: 5
+      CellSubType: 1
   - CellPosition: {x: 3, y: -4}
     CellConfigMin:
       CellType: 5
-      CellSubType: 5
-  - CellPosition: {x: 1, y: -3}
+      CellSubType: 1
+  - CellPosition: {x: 3, y: -5}
     CellConfigMin:
       CellType: 5
       CellSubType: 1
-  - CellPosition: {x: 1, y: -4}
+  - CellPosition: {x: 2, y: -3}
     CellConfigMin:
       CellType: 5
       CellSubType: 1
-  - CellPosition: {x: 1, y: -5}
+  - CellPosition: {x: 2, y: -4}
     CellConfigMin:
       CellType: 5
       CellSubType: 1
@@ -891,106 +891,164 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 1
+  - CellPosition: {x: -3, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -3, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
   - CellPosition: {x: -2, y: 1}
     CellConfigMin:
       CellType: 5
       CellSubType: 1
-  - CellPosition: {x: 6, y: -4}
+  - CellPosition: {x: -2, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -2, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -3, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -1, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -1, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -1, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: 0, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: 1, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: 2, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: -1, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: -4, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: 5, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 4
+  - CellPosition: {x: 5, y: 0}
     CellConfigMin:
       CellType: 5
       CellSubType: 2
-  - CellPosition: {x: 5, y: 1}
+  - CellPosition: {x: 5, y: -4}
     CellConfigMin:
       CellType: 5
-      CellSubType: 9
-  - CellPosition: {x: 0, y: 3}
+      CellSubType: 2
+  - CellPosition: {x: 3, y: 5}
     CellConfigMin:
       CellType: 5
-      CellSubType: 9
+      CellSubType: 10
+  - CellPosition: {x: 3, y: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 12
   - CellPosition: {x: 3, y: -1}
     CellConfigMin:
       CellType: 5
       CellSubType: 12
-  - CellPosition: {x: -4, y: 4}
+  - CellPosition: {x: 0, y: -5}
     CellConfigMin:
       CellType: 5
-      CellSubType: 11
-  - CellPosition: {x: -4, y: -5}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 11
-  - CellPosition: {x: -4, y: -2}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 8
-  - CellPosition: {x: -3, y: -4}
+      CellSubType: 12
+  - CellPosition: {x: 3, y: 1}
     CellConfigMin:
       CellType: 5
       CellSubType: 10
-  - CellPosition: {x: -2, y: 0}
+  - CellPosition: {x: 0, y: -3}
     CellConfigMin:
       CellType: 5
-      CellSubType: 7
-  - CellPosition: {x: -3, y: 4}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 4
-  - CellPosition: {x: 0, y: -1}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 4
-  - CellPosition: {x: -1, y: 5}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 6
+      CellSubType: 10
   _wavesSettings:
   - WaveParts:
-    - UnitType: 1
-      OverrideSkin: 0
-      Amount: 25
+    - UnitType: 0
+      OverrideSkin: 5
+      Amount: 10
+    - UnitType: 0
+      OverrideSkin: 2
+      Amount: 10
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 4
       OverrideSkin: 0
       Amount: 20
-    DisabledBaseIndices: 
+    DisabledBaseIndices: 02000000
   - WaveParts:
     - UnitType: 7
       OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
+      Amount: 10
+    - UnitType: 6
+      OverrideSkin: 10
+      Amount: 10
+    DisabledBaseIndices: 01000000
   - WaveParts:
-    - UnitType: 9
-      OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 12
+    - UnitType: 10
       OverrideSkin: 0
       Amount: 20
+    DisabledBaseIndices: 00000000
+  - WaveParts:
+    - UnitType: 13
+      OverrideSkin: 2
+      Amount: 7
+    - UnitType: 13
+      OverrideSkin: 0
+      Amount: 8
+    - UnitType: 13
+      OverrideSkin: 8
+      Amount: 5
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 15
+    - UnitType: 17
       OverrideSkin: 0
       Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 14
-      OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
+    DisabledBaseIndices: 0000000001000000
   - WaveParts:
     - UnitType: 19
+      OverrideSkin: 3
+      Amount: 10
+    - UnitType: 19
       OverrideSkin: 0
-      Amount: 20
-    DisabledBaseIndices: 
+      Amount: 10
+    DisabledBaseIndices: 01000000
   - WaveParts:
     - UnitType: 22
       OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
+      Amount: 20
+    DisabledBaseIndices: 0000000002000000
   - WaveParts:
     - UnitType: 25
+      OverrideSkin: 2
+      Amount: 10
+    - UnitType: 25
+      OverrideSkin: 5
+      Amount: 10
+    DisabledBaseIndices: 0000000001000000
+  - WaveParts:
+    - UnitType: 28
       OverrideSkin: 0
-      Amount: 25
+      Amount: 20
     DisabledBaseIndices: 

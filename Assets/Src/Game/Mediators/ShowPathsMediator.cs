@@ -72,12 +72,15 @@ public class ShowPathsMediator : EventMediator
         RemovePaths();
 
         _lineTextureOffset = Vector2.zero;
-        
+
         var paths = LevelModel.GetPaths();
         _lines.Capacity = paths.Sum(p => p.Count);
-        foreach (var path in paths)
+        for (var i = 0; i < paths.Count; i++)
         {
-            CreatePath(path);
+            if (WaveModel.IsBaseAllowedToSpawnOnNextWave(i))
+            {
+                CreatePath(paths[i]);
+            }
         }
 
         UpdateProvider.UpdateActionRealtime += OnUpdate;
