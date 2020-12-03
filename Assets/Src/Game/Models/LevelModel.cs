@@ -137,12 +137,19 @@ public class LevelModel
             {
                 foreach (var spawnCell in SpawnCells)
                 {
+                    var havePath = false;
                     foreach (var goalCell in GoalCells)
                     {
-                        if (!PathsManager.IsPathExists(spawnCell.CellPosition, goalCell.CellPosition, cellPosition))
+                        if (PathsManager.IsPathExists(spawnCell.CellPosition, goalCell.CellPosition, cellPosition))
                         {
-                            return false;
+                            havePath = true;
+                            break;
                         }
+                    }
+
+                    if(!havePath)
+                    {
+                        return false;
                     }
                 }
             }
