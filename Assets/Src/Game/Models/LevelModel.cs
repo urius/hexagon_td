@@ -261,6 +261,8 @@ public class LevelModel
         IsWon = isWin;
         IsDefeated = !isWin;
 
+        SetPauseMode(true);
+
         LevelFinished();
     }
 }
