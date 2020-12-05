@@ -25,13 +25,16 @@ public class GunTurretMediator : TurretViewWithRotatingHeadMediator
 
     private void OnFired()
     {
+        if (!IsTargetInAttackZone) return;
+
         AudioManager.Instance.Play(GetSoundId());
 
         var firePoint = GetFirePoint();
-        var bulletGo = ViewManager.Instantiate(TurretModel.TurretConfig.BulletPrefab, firePoint.position, firePoint.rotation);
-
         var shootTargetPosition = TargetView.AdvanceShootTransform.position;
         shootTargetPosition.y = firePoint.position.y;
+
+        var bulletGo = ViewManager.Instantiate(TurretModel.TurretConfig.BulletPrefab, firePoint.position, firePoint.rotation);
+
         var duration = (shootTargetPosition - firePoint.position).magnitude / TurretModel.TurretConfig.BulletSpeed;
         var moveTween = bulletGo.transform.DOMove(shootTargetPosition, duration);
 

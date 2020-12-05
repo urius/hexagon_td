@@ -15,10 +15,10 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 
     private int _unitIndex;
     private IList<UnitView> _unitViews;
-
+    private int _currentFirePointIndex = 0;
 
     protected TurretConfig TurretConfig => TurretModel.TurretConfig;
-    private int _currentFirePointIndex = 0;
+    protected bool IsTargetInAttackZone => TargetView != null ? Vector3.SqrMagnitude(TargetView.transform.position - SelfPosition) <= AttackRadiusSqr : false;
 
     protected override void Activate()
     {
@@ -50,7 +50,7 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
                 dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LOCKED, TurretModel);
             }
 
-            if (Vector3.SqrMagnitude(TargetView.transform.position - SelfPosition) > AttackRadiusSqr)
+            if (!IsTargetInAttackZone)
             {
                 var param = new MediatorEventsParams.TurretUnitLeaveAttackZoneParams(TurretModel, TurretModel.TargetUnit);
                 dispatcher.Dispatch(MediatorEvents.TURRET_UNIT_LEAVE_ATTACK_ZONE, param);
