@@ -21,6 +21,7 @@ public class TurretConfig
     public GameObject Prefab;
     public GameObject BuildModePrefab;
     public Sprite IconSprite;
+    public int RotationSpeedDegrees = 1;
     public float AttackRadiusCells;
     public int AttackInfluenceDistance = -1;
     public int Damage;

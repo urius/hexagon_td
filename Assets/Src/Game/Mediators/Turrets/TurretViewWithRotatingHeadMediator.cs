@@ -16,15 +16,28 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
     private int _unitIndex;
     private IList<UnitView> _unitViews;
     private int _currentFirePointIndex = 0;
+    private Transform _targetTransform;
+    private float _rotationSpeedDegrees;
 
     protected TurretConfig TurretConfig => TurretModel.TurretConfig;
-    protected bool IsTargetInAttackZone => TargetView != null ? Vector3.SqrMagnitude(TargetView.transform.position - SelfPosition) <= AttackRadiusSqr : false;
+    protected bool IsTargetInAttackZone => TargetView != null ?
+        Vector3.SqrMagnitude(TargetView.transform.position - SelfPosition) <= AttackRadiusSqr : false;
+    protected bool IsLookOnTarget
+    {
+        get
+        {
+            var targetRotation = GetTargetRotation(_targetTransform);
+            return Quaternion.Angle(TurretView.HeadRotation, targetRotation) < _rotationSpeedDegrees;
+        }
+    }
 
     protected override void Activate()
     {
         _unitViews = UnitViewsProvider.UnitViews;
 
         base.Activate();
+
+        _rotationSpeedDegrees = TurretConfig.RotationSpeedDegrees;
 
         TurretModel.NewTargetSet += OnNewTargetSet;
     }
@@ -44,7 +57,9 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
         }
         else
         {
-            if (!TargetIsLocked && TurretView.IsLookOnTarget)
+            ProcessHeadRotation();
+
+            if (!TargetIsLocked && IsLookOnTarget)
             {
                 TargetIsLocked = true;
                 dispatcher.Dispatch(MediatorEvents.TURRET_TARGET_LOCKED, TurretModel);
@@ -69,12 +84,12 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 
     override protected void OnTurretUpgraded()
     {
-        var turretRotationBuf = TurretView.TurretRotation;
+        var turretRotationBuf = TurretView.HeadRotation;
         TargetIsLocked = false;
 
         base.OnTurretUpgraded();
 
-        TurretView.TurretRotation = turretRotationBuf;
+        TurretView.HeadRotation = turretRotationBuf;
     }
 
     protected override GameObject CreateView(TurretModel turretModel)
@@ -83,7 +98,7 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
         var turretViewGo = GameObject.Instantiate(turretPrefab, RootTransformProvider.transform);
         turretViewGo.transform.position = CellPositionConverter.CellVec2ToWorld(turretModel.Position);
         TurretView = turretViewGo.GetComponent<TurretViewWithRotatingHead>();
-        TurretView.SetTargetTransform(GetTransformForTargeting(TargetView));
+        _targetTransform = GetTransformForTargeting(TargetView);
         return turretViewGo;
     }
 
@@ -94,7 +109,23 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
 
     protected virtual void ShowSparks(Vector3 point, Vector3 direction)
     {
-        ViewManager.Instantiate(TurretConfig.BulletSparksPrefab, point, Quaternion.LookRotation(direction));        
+        ViewManager.Instantiate(TurretConfig.BulletSparksPrefab, point, Quaternion.LookRotation(direction));
+    }
+
+    private void ProcessHeadRotation()
+    {
+        if (_targetTransform != null)
+        {
+            var targetRotation = GetTargetRotation(_targetTransform);
+            TurretView.HeadRotation = Quaternion.RotateTowards(TurretView.HeadRotation, targetRotation, _rotationSpeedDegrees);
+        }
+    }
+
+    private Quaternion GetTargetRotation(Transform targetTransform)
+    {
+        var lookVector = targetTransform.position - TurretView.HeadPosition;
+        lookVector.y = 0;
+        return Quaternion.LookRotation(lookVector, Vector3.up);
     }
 
     private void OnNewTargetSet()
@@ -102,12 +133,12 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
         if (TurretModel.TargetUnit != null)
         {
             TargetView = UnitViewsProvider.GetViewByModel(TurretModel.TargetUnit);
-            TurretView.SetTargetTransform(GetTransformForTargeting(TargetView));
+            _targetTransform = GetTransformForTargeting(TargetView);
         }
         else
         {
             TargetView = null;
-            TurretView.SetTargetTransform(null);
+            _targetTransform = null;
         }
 
         TargetIsLocked = false;
