@@ -12,10 +12,10 @@ public class BuildTurretButtonView : View
     [SerializeField] private Button _button;
     [SerializeField] private Text _costTextField;
     [SerializeField] private Color _disabledTextColor;
+    [SerializeField] private Color _textFieldDefaultColor;
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private int _turretTypeId;
 
-    private Color _textFieldDefaultColor;
 
     public int TurretTypeId => _turretTypeId;
 
@@ -40,12 +40,5 @@ public class BuildTurretButtonView : View
     public void OnButtonPointerUp()
     {
         ButtonPointerUp();
-    }
-
-    protected override void Awake()
-    {
-        _textFieldDefaultColor = _costTextField.color;
-
-        base.Awake();
     }
 }
