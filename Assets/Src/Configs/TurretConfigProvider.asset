@@ -21,7 +21,7 @@ MonoBehaviour:
     RotationSpeedDegrees: 6
     AttackRadiusCells: 2
     AttackInfluenceDistance: -1
-    Damage: 2
+    Damage: 3
     SpeedMultiplier: 1
     ReloadTimeFrames: 12
     Price: 100
@@ -40,7 +40,7 @@ MonoBehaviour:
     AttackInfluenceDistance: -1
     Damage: 4
     SpeedMultiplier: 1
-    ReloadTimeFrames: 10
+    ReloadTimeFrames: 8
     Price: 200
     BulletPrefab: {fileID: 2342135959751401273, guid: 1d72155b67db14a2cb7b80c3421b7594,
       type: 3}
@@ -55,7 +55,7 @@ MonoBehaviour:
     RotationSpeedDegrees: 10
     AttackRadiusCells: 3
     AttackInfluenceDistance: -1
-    Damage: 4
+    Damage: 5
     SpeedMultiplier: 1
     ReloadTimeFrames: 4
     Price: 400

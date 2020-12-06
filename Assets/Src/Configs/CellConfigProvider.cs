@@ -121,12 +121,14 @@ public enum GroundType
 {
     Default,
     Red,
+    LinesInner,
 }
 
 public enum WallType
 {
     Default,
     Red,
+    Green,
 }
 
 public enum EnemyBaseType

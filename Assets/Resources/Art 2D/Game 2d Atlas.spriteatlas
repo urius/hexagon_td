@@ -32,7 +32,7 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: fd177b1262698410f94cca68824160ba, type: 3}
     - {fileID: 102900000, guid: b90e40059e668426bb0c3c00a7ef263a, type: 3}
-    totalSpriteSurfaceArea: 248448
+    totalSpriteSurfaceArea: 256640
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -65,6 +65,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2d4a8aad1fa4b4488b937b055af3238b, type: 3}
   - {fileID: 21300000, guid: aa2f8d9e42b6c4d4f90890c157e7f5f3, type: 3}
   - {fileID: 21300000, guid: a5bd7ade82e344718bc30064c64e0490, type: 3}
+  - {fileID: 21300000, guid: bc6e6f2f5ed424f24a3267fcd87602b3, type: 3}
+  - {fileID: 21300000, guid: c7aa075f9d26d446d94431e11b6b8e01, type: 3}
   - {fileID: 21300000, guid: cdb21daf3d79744398996d1da8e7586e, type: 3}
   m_PackedSpriteNamesToIndex:
   - Round over turret
@@ -96,6 +98,8 @@ SpriteAtlas:
   - Modifier-speed-down
   - Modifier-money
   - direction_90
+  - Floor_frame_inner
+  - Floor_inner_lines
   - Floor_default
   m_Tag: Game 2d Atlas
   m_IsVariant: 0

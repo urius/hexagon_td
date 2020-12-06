@@ -23,6 +23,8 @@ public class PrefabPainterEditor : EditorWindow
     private bool _isTransposed = false;
     private int _numCellsHor = 13;
     private int _numCellsVer = 16;
+    private WallType _defaultWall = WallType.Default;
+    private GroundType _defaultGround = GroundType.Default;
 
     [MenuItem("Tools/Cells Prefab Painter")]
     private static void InitWindow()
@@ -100,6 +102,8 @@ public class PrefabPainterEditor : EditorWindow
         }
         _numCellsHor = EditorGUILayout.IntField("Horizontal Size:", _numCellsHor);
         _numCellsVer = EditorGUILayout.IntField("Vertical Size:", _numCellsVer);
+        _defaultWall = (WallType)EditorGUILayout.EnumPopup("Default Wall type: ", _defaultWall);
+        _defaultGround = (GroundType)EditorGUILayout.EnumPopup("Default Ground type: ", _defaultGround);
         GUILayout.Space(25f);
 
         var cellBrushTypeOld = _cellBrushType;
@@ -200,8 +204,8 @@ public class PrefabPainterEditor : EditorWindow
 
     private void SetupWalls(LevelConfig levelConfig)
     {
-        var wallCellConfig = _configsProvider.CellConfigProvider.GetConfig(CellType.Wall, CellSubType.Default).CellConfigMin;
-        var groundCellConfig = _configsProvider.CellConfigProvider.GetConfig(CellType.Ground, CellSubType.Default).CellConfigMin;
+        var wallCellConfig = _configsProvider.CellConfigProvider.GetConfig(CellType.Wall, (CellSubType)_defaultWall).CellConfigMin;
+        var groundCellConfig = _configsProvider.CellConfigProvider.GetConfig(CellType.Ground, (CellSubType)_defaultGround).CellConfigMin;
 
         (int start, int end) GetBoundCoords(int size)
         {

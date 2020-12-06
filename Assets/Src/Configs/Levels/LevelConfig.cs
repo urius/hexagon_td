@@ -24,6 +24,7 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private CellDataMin[] _modifierConfigs = new CellDataMin[0];
     public IReadOnlyList<CellDataMin> Modifiers => _modifierConfigs;
 
+    [Header("Waves settings")]
     [SerializeField] private WaveSetting[] _wavesSettings;
     public WaveSetting[] WavesSettings => _wavesSettings;
 
