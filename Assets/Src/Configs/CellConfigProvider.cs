@@ -129,6 +129,7 @@ public enum WallType
     Default,
     Red,
     Green,
+    Turquoise,
 }
 
 public enum EnemyBaseType

@@ -28,6 +28,11 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 1
       CellSubType: 2
+  - Prefab: {fileID: 5346769349531122457, guid: 1e018827e67b64aaebf26498034b789b,
+      type: 3}
+    CellConfigMin:
+      CellType: 1
+      CellSubType: 3
   - Prefab: {fileID: 3027810109025745163, guid: 9e01e347b2a5f4179a639188c1edf165,
       type: 3}
     CellConfigMin:
