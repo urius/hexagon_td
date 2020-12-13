@@ -666,10 +666,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 4
       CellSubType: 0
-  - CellPosition: {x: 6, y: 0}
-    CellConfigMin:
-      CellType: 4
-      CellSubType: 0
   - CellPosition: {x: 6, y: -4}
     CellConfigMin:
       CellType: 0
@@ -853,6 +849,10 @@ MonoBehaviour:
   - CellPosition: {x: -4, y: 3}
     CellConfigMin:
       CellType: 0
+      CellSubType: 0
+  - CellPosition: {x: 6, y: 0}
+    CellConfigMin:
+      CellType: 2
       CellSubType: 0
   _modifierConfigs:
   - CellPosition: {x: 2, y: 1}

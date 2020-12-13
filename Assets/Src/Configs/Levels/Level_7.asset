@@ -863,14 +863,34 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 1
+  - CellPosition: {x: 3, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 2, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 1, y: 0}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 6
+  - CellPosition: {x: 3, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
+  - CellPosition: {x: 3, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 1
   - CellPosition: {x: -4, y: 4}
     CellConfigMin:
       CellType: 5
-      CellSubType: 0
+      CellSubType: 3
   - CellPosition: {x: -4, y: -4}
     CellConfigMin:
       CellType: 5
-      CellSubType: 0
+      CellSubType: 3
   _wavesSettings:
   - WaveParts:
     - UnitType: 1
