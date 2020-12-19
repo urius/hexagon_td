@@ -180,7 +180,10 @@ public class PrefabPainterEditor : EditorWindow
     {
         var clone = ScriptableObject.Instantiate<LevelConfig>(_levelConfig);
 
-        _levelConfig.SetName(_saveFileName);
+        if (_levelConfig.NameKey == null || _levelConfig.NameKey == string.Empty)
+        {
+            _levelConfig.NameKey = _saveFileName;
+        }
         var folder = "Assets/Src/Configs/Levels/";
         ScriptableObjectCreator.SaveAsset(_levelConfig, folder, _saveFileName, true);
         EditorUtility.FocusProjectWindow();

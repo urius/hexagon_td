@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ea1f398fba2428e9ad0669899d7e62, type: 3}
   m_Name: Level_6
   m_EditorClassIdentifier: 
+  NameKey: build_your_way_2
   IsTransposed: 1
   StartMoneyAmount: 500
   WaveCompletedReward: 100
@@ -899,34 +900,14 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 2
-  - CellPosition: {x: 5, y: 1}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 9
   - CellPosition: {x: 0, y: 3}
     CellConfigMin:
       CellType: 5
       CellSubType: 9
-  - CellPosition: {x: 3, y: -1}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 12
-  - CellPosition: {x: -4, y: 4}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 11
-  - CellPosition: {x: -4, y: -5}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 11
   - CellPosition: {x: -4, y: -2}
     CellConfigMin:
       CellType: 5
       CellSubType: 8
-  - CellPosition: {x: -3, y: -4}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 10
   - CellPosition: {x: -2, y: 0}
     CellConfigMin:
       CellType: 5
@@ -939,10 +920,30 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 4
-  - CellPosition: {x: -1, y: 5}
+  - CellPosition: {x: 5, y: 0}
     CellConfigMin:
       CellType: 5
-      CellSubType: 6
+      CellSubType: 9
+  - CellPosition: {x: 5, y: -3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 9
+  - CellPosition: {x: -4, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 7
+  - CellPosition: {x: -3, y: -3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 8
+  - CellPosition: {x: -4, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 2
+  - CellPosition: {x: -5, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 8
   _wavesSettings:
   - WaveParts:
     - UnitType: 1

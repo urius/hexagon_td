@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Configs/Level", fileName = "LevelConfig")]
 public class LevelConfig : ScriptableObject
 {
-    [SerializeField] public string Name { get; private set; }
+    [SerializeField] public string NameKey;
     [SerializeField] public bool IsTransposed;
 
     [SerializeField] public int StartMoneyAmount = 500;
@@ -27,11 +27,6 @@ public class LevelConfig : ScriptableObject
     [Header("Waves settings")]
     [SerializeField] private WaveSetting[] _wavesSettings;
     public WaveSetting[] WavesSettings => _wavesSettings;
-
-    public void SetName(string name)
-    {
-        Name = name;
-    }
 
     public bool IsCellFree(Vector2Int cellPosition)
     {

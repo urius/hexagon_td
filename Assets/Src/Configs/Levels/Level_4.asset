@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ea1f398fba2428e9ad0669899d7e62, type: 3}
   m_Name: Level_4
   m_EditorClassIdentifier: 
+  NameKey: Level_4
   IsTransposed: 1
   StartMoneyAmount: 500
   WaveCompletedReward: 100
@@ -951,44 +952,98 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 9
+  - CellPosition: {x: 0, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: -1, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: -5, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: -6, y: 5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: 6, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: 5, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: 4, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: 6, y: -1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: 3, y: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: -6, y: 1}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
+  - CellPosition: {x: -6, y: 3}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 5
   _wavesSettings:
   - WaveParts:
     - UnitType: 1
+      OverrideSkin: 0
       Amount: 25
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 4
+      OverrideSkin: 0
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 7
+      OverrideSkin: 0
       Amount: 25
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 9
+      OverrideSkin: 0
       Amount: 25
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 12
+      OverrideSkin: 0
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 15
+      OverrideSkin: 0
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 14
+      OverrideSkin: 0
       Amount: 25
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 19
+      OverrideSkin: 0
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 22
+      OverrideSkin: 0
       Amount: 25
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 25
+      OverrideSkin: 0
       Amount: 25
     DisabledBaseIndices: 

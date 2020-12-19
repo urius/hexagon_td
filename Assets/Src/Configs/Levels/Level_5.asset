@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ea1f398fba2428e9ad0669899d7e62, type: 3}
   m_Name: Level_5
   m_EditorClassIdentifier: 
+  NameKey: there_is_always_another_exit
   IsTransposed: 1
   StartMoneyAmount: 500
   WaveCompletedReward: 100
@@ -903,10 +904,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 2
-  - CellPosition: {x: 3, y: 0}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 6
   - CellPosition: {x: 4, y: -2}
     CellConfigMin:
       CellType: 5
