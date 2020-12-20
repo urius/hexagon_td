@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: short_not_better
   IsTransposed: 1
-  StartMoneyAmount: 700
+  StartMoneyAmount: 600
   WaveCompletedReward: 100
   ModifierRepairValue: 5
   ModifierMineDamage: 30
-  ModifierMoneyAmount: 10
+  ModifierMoneyAmount: 5
   ModifierBigMoneyAmount: 20
   DefaulGoalCapacity: 10
   DestroyUnitReward: 10
@@ -459,10 +459,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 0
-  - CellPosition: {x: 0, y: 3}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
   - CellPosition: {x: 0, y: 4}
     CellConfigMin:
       CellType: 0
@@ -484,10 +480,6 @@ MonoBehaviour:
       CellType: 0
       CellSubType: 0
   - CellPosition: {x: 1, y: 1}
-    CellConfigMin:
-      CellType: 0
-      CellSubType: 0
-  - CellPosition: {x: 1, y: 2}
     CellConfigMin:
       CellType: 0
       CellSubType: 0
@@ -855,6 +847,14 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 0
       CellSubType: 2
+  - CellPosition: {x: 1, y: 2}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 2
+  - CellPosition: {x: 0, y: 3}
+    CellConfigMin:
+      CellType: 0
+      CellSubType: 2
   _modifierConfigs:
   - CellPosition: {x: -5, y: 2}
     CellConfigMin:
@@ -920,14 +920,6 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 1
-  - CellPosition: {x: -7, y: -5}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 2
-  - CellPosition: {x: -7, y: -4}
-    CellConfigMin:
-      CellType: 5
-      CellSubType: 2
   - CellPosition: {x: 2, y: -5}
     CellConfigMin:
       CellType: 5
@@ -940,14 +932,38 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 4
-  - CellPosition: {x: -1, y: -5}
+  - CellPosition: {x: -5, y: -5}
     CellConfigMin:
       CellType: 5
       CellSubType: 4
+  - CellPosition: {x: -6, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 4
+  - CellPosition: {x: -4, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 4
+  - CellPosition: {x: -7, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 4
+  - CellPosition: {x: 3, y: -5}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 4
+  - CellPosition: {x: 1, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 2
+  - CellPosition: {x: 0, y: 4}
+    CellConfigMin:
+      CellType: 5
+      CellSubType: 2
   _wavesSettings:
   - WaveParts:
     - UnitType: 2
-      OverrideSkin: 2
+      OverrideSkin: 0
       Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
@@ -957,7 +973,7 @@ MonoBehaviour:
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 8
-      OverrideSkin: 2
+      OverrideSkin: 4
       Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
@@ -966,8 +982,8 @@ MonoBehaviour:
       Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 13
-      OverrideSkin: 4
+    - UnitType: 12
+      OverrideSkin: 2
       Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
@@ -977,24 +993,24 @@ MonoBehaviour:
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 19
-      OverrideSkin: 4
+      OverrideSkin: 3
       Amount: 15
     - UnitType: 21
       OverrideSkin: 10
-      Amount: 15
+      Amount: 2
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 22
       OverrideSkin: 5
-      Amount: 20
+      Amount: 10
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 25
-      OverrideSkin: 0
+    - UnitType: 24
+      OverrideSkin: 2
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 23
-      OverrideSkin: 6
+      OverrideSkin: 3
       Amount: 15
     DisabledBaseIndices: 
