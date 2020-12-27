@@ -106,6 +106,8 @@ public class UnitViewMediator : EventMediator
                 ViewManager.Instantiate(_unitModel.ExplosionPrefab, unitView.transform.position, unitView.transform.rotation);
             }
 
+            AudioManager.Instance.Play(SoundId.UnitDestroyed);
+
             _updateDelegate = null;
 
             updateProvider.UpdateActionRealtime -= unitView.UpdateDelegate;

@@ -251,23 +251,35 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: a47f3f6fc932d467dbb7bcc1a58abce6, type: 3}
   SoundConfigs:
   - Id: 1
-    AudioClip: {fileID: 8300000, guid: ea14308e70d314c7db180839ca284832, type: 3}
+    AudioClip: {fileID: 8300000, guid: 1a793353666934396a5c8fe701583e3b, type: 3}
   - Id: 2
-    AudioClip: {fileID: 8300000, guid: 266508a4d13ac48d195660d97d8c916a, type: 3}
+    AudioClip: {fileID: 8300000, guid: c031358b037bf49da9233f4cf89fbb49, type: 3}
   - Id: 3
-    AudioClip: {fileID: 8300000, guid: 22843a5152dc4461e89e73e6f857a8cd, type: 3}
+    AudioClip: {fileID: 8300000, guid: 2c9160a9333624a72abec8fbf19e0e6f, type: 3}
+  - Id: 4
+    AudioClip: {fileID: 8300000, guid: 388da82dc50ad440fb3b8e8e29a34df1, type: 3}
+  - Id: 5
+    AudioClip: {fileID: 8300000, guid: 388da82dc50ad440fb3b8e8e29a34df1, type: 3}
+  - Id: 6
+    AudioClip: {fileID: 8300000, guid: 388da82dc50ad440fb3b8e8e29a34df1, type: 3}
   - Id: 7
-    AudioClip: {fileID: 8300000, guid: ffe5c6f7307f04605b116404019cebbb, type: 3}
+    AudioClip: {fileID: 8300000, guid: f48cdd94491814a4cb981572e3ffc102, type: 3}
   - Id: 8
-    AudioClip: {fileID: 8300000, guid: ffe5c6f7307f04605b116404019cebbb, type: 3}
+    AudioClip: {fileID: 8300000, guid: f48cdd94491814a4cb981572e3ffc102, type: 3}
   - Id: 9
     AudioClip: {fileID: 8300000, guid: 53486d3db5ea84f20a0053e99dca3531, type: 3}
   - Id: 10
-    AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
+    AudioClip: {fileID: 8300000, guid: faf1bf2d125e245038349bf3b1853c23, type: 3}
   - Id: 11
-    AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
+    AudioClip: {fileID: 8300000, guid: f4166e35c458c4ed6a816c181e54190c, type: 3}
   - Id: 12
     AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
+  - Id: 13
+    AudioClip: {fileID: 8300000, guid: c450b8ab31cc4468db5a1ff90754d831, type: 3}
+  - Id: 14
+    AudioClip: {fileID: 8300000, guid: dcb8e3b01fcbb4cfa9242038a127c790, type: 3}
+  - Id: 15
+    AudioClip: {fileID: 8300000, guid: 7ab7005a8d6b54423a977d1e608b43dc, type: 3}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0

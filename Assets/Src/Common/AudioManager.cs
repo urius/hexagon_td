@@ -16,7 +16,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private SoundConfig[] SoundConfigs;
 
     private AudioSource _musicSource;
-    private AudioSource _soundsSource;
+    private AudioSource _primarySoundsSource;
+    private readonly List<AudioSource> _additionalAudioSources = new List<AudioSource>();
 
     public void Play(MusicId musicId)
     {
@@ -89,7 +90,14 @@ public class AudioManager : MonoBehaviour
     public void Play(SoundId soundId)
     {
         var clip = Array.Find(SoundConfigs, c => c.Id == soundId).AudioClip;
-        _soundsSource.PlayOneShot(clip);
+        _primarySoundsSource.PlayOneShot(clip);
+    }
+
+    public void PlayOnSource(AudioSource source, SoundId soundId)
+    {
+        var clip = Array.Find(SoundConfigs, c => c.Id == soundId).AudioClip;
+        source.clip = clip;
+        source.Play();
     }
 
     public void SetMasterVolume(float value)
@@ -104,7 +112,33 @@ public class AudioManager : MonoBehaviour
 
     public void SetSoundsVolume(float value)
     {
-        _soundsSource.volume = value;
+        _primarySoundsSource.volume = value;
+        _additionalAudioSources.ForEach(s => s.volume = value);
+    }
+
+    public AudioSource CreateAudioSource()
+    {
+        var source = gameObject.AddComponent<AudioSource>();
+
+        _additionalAudioSources.Add(source);
+
+        return source;
+    }
+
+    public bool RemoveAudioSource(AudioSource source)
+    {
+        source.Stop();
+        source.clip = null;
+        var result = _additionalAudioSources.Remove(source);
+        Destroy(source);
+
+        return result;
+    }
+
+    public float GetSoundLength(SoundId soundId)
+    {
+        var clip = Array.Find(SoundConfigs, c => c.Id == soundId).AudioClip;
+        return clip.length;
     }
 
     private void Awake()
@@ -117,10 +151,10 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         _musicSource = gameObject.AddComponent<AudioSource>();
-        _soundsSource = gameObject.AddComponent<AudioSource>();
+        _primarySoundsSource = gameObject.AddComponent<AudioSource>();
 
         _musicSource.outputAudioMixerGroup = MusicGroup;
-        _soundsSource.outputAudioMixerGroup = SoundsGroup;
+        _primarySoundsSource.outputAudioMixerGroup = SoundsGroup;
     }
 }
 
@@ -159,4 +193,7 @@ public enum SoundId
     SlowField_1,
     SlowField_2,
     SlowField_3,
+    UnitDestroyed,
+    LevelComplete,
+    LevelLose,
 }

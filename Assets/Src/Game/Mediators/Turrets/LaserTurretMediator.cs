@@ -3,11 +3,15 @@ using UnityEngine;
 
 public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
 {
-    const int EndFireFrames = 10;
+    const int EndFireFrames = 15;
 
     private Transform _bulletTransform;
     private Transform _firePoint;
     private int EndFireFramesLeft;
+    private SoundId _fireSoundId;
+    private float _fireSoundLength;
+    private float _lastShotTime = -1;
+    private AudioSource _audioSource;
 
     protected override void Activate()
     {
@@ -15,13 +19,23 @@ public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
 
         UpdateFirePoint();
 
+        _fireSoundId = GetSoundId();
+        _fireSoundLength = AudioManager.Instance.GetSoundLength(_fireSoundId);
+        if (_audioSource == null) _audioSource = AudioManager.Instance.CreateAudioSource();
+        _audioSource.loop = true;
+
         TurretModel.Fired += OnFired;
+        LevelModel.PauseModeChanged += OnPauseModeChanged;
     }
 
     protected override void Deactivate()
     {
         StopFire();
+        LevelModel.PauseModeChanged -= OnPauseModeChanged;
         TurretModel.Fired -= OnFired;
+
+        AudioManager.Instance.RemoveAudioSource(_audioSource);
+        _audioSource = null;
 
         base.Deactivate();
     }
@@ -33,6 +47,16 @@ public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
         base.OnTurretUpgraded();
 
         UpdateFirePoint();
+    }
+
+    private bool IsFireSoundFinished => !_audioSource.isPlaying;// Time.realtimeSinceStartup - _lastShotTime >= _fireSoundLength;
+
+    private void OnPauseModeChanged()
+    {
+        if (LevelModel.IsPaused)
+        {
+            _audioSource.Stop();
+        }
     }
 
     private void OnFired()
@@ -50,6 +74,17 @@ public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
         EndFireFramesLeft = EndFireFrames;
 
         CheckCollisions();
+
+        PlayFireSoundIfNeeded();
+    }
+
+    private void PlayFireSoundIfNeeded()
+    {
+        if (IsFireSoundFinished)
+        {
+            AudioManager.Instance.PlayOnSource(_audioSource, _fireSoundId);
+            _lastShotTime = Time.realtimeSinceStartup;
+        }
     }
 
     private void UpdateFirePoint()
@@ -84,7 +119,7 @@ public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
         _bulletTransform.rotation = _firePoint.rotation;
 
         EndFireFramesLeft--;
-        if (EndFireFramesLeft <= 0)
+        if (EndFireFramesLeft < 0)
         {
             StopFire();
         }
@@ -96,8 +131,23 @@ public class LaserTurretMediator : TurretViewWithRotatingHeadMediator
         {
             ViewManager.Destroy(_bulletTransform.gameObject);
             _bulletTransform = null;
+
+            _audioSource.Stop();
         }
 
         UpdateProvider.UpdateAction -= OnUpdateFiring;
+    }
+
+    private SoundId GetSoundId()
+    {
+        switch (TurretModel.TurretConfig.TurretLevelIndex)
+        {
+            case 0:
+                return SoundId.Laser_1;
+            case 1:
+                return SoundId.Laser_2;
+            default:
+                return SoundId.Laser_3;
+        }
     }
 }

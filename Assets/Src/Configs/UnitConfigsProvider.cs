@@ -70,6 +70,12 @@ public enum UnitTypeMin
     Armor_10_superslow,
     Armor_10_slow,
     Armor_10_fast,
+    Armor_11_superslow,
+    Armor_11_slow,
+    Armor_11_fast,
+    Armor_12_superslow,
+    Armor_12_slow,
+    Armor_12_fast,
 }
 
 public enum UnitSkin

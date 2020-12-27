@@ -133,6 +133,30 @@ MonoBehaviour:
     Skin: 10
     HP: 2000
     Speed: 2
+  - UnitType: 30
+    Skin: 2
+    HP: 3000
+    Speed: 0.4
+  - UnitType: 31
+    Skin: 2
+    HP: 3000
+    Speed: 1
+  - UnitType: 32
+    Skin: 10
+    HP: 3000
+    Speed: 1.8
+  - UnitType: 33
+    Skin: 3
+    HP: 5000
+    Speed: 0.4
+  - UnitType: 34
+    Skin: 3
+    HP: 5000
+    Speed: 0.8
+  - UnitType: 35
+    Skin: 3
+    HP: 5000
+    Speed: 1.6
   Skins:
   - Skin: 1
     Prefab: {fileID: 1754644785219521630, guid: e5b4644c34cdf4922aabb4125102bb4c,
