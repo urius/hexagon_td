@@ -45,6 +45,7 @@ public class WavesControlSystem : EventSystemBase
                 } else
                 {
                     LevelModel.TryAddMoney(LevelModel.WaveCompletionReward);
+                    dispatcher.Dispatch(CommandEvents.UI_REQUEST_ANIMATE_WAVE_REWARD, LevelModel.WaveCompletionReward);
                 }
             }
         }
