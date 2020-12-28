@@ -931,7 +931,7 @@ MonoBehaviour:
   _wavesSettings:
   - WaveParts:
     - UnitType: 1
-      OverrideSkin: 2
+      OverrideSkin: 1
       Amount: 15
     DisabledBaseIndices: 00000000
   - WaveParts:
@@ -940,51 +940,54 @@ MonoBehaviour:
       Amount: 15
     DisabledBaseIndices: 01000000
   - WaveParts:
-    - UnitType: 7
-      OverrideSkin: 0
+    - UnitType: 6
+      OverrideSkin: 4
       Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 9
       OverrideSkin: 2
-      Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 13
-      OverrideSkin: 4
       Amount: 10
-    - UnitType: 8
+    - UnitType: 7
       OverrideSkin: 1
       Amount: 10
     DisabledBaseIndices: 00000000
   - WaveParts:
+    - UnitType: 13
+      OverrideSkin: 2
+      Amount: 10
+    - UnitType: 8
+      OverrideSkin: 4
+      Amount: 10
+    DisabledBaseIndices: 01000000
+  - WaveParts:
     - UnitType: 16
+      OverrideSkin: 5
+      Amount: 20
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 19
+      OverrideSkin: 3
+      Amount: 15
+    - UnitType: 21
+      OverrideSkin: 10
+      Amount: 5
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 19
       OverrideSkin: 2
       Amount: 20
     DisabledBaseIndices: 01000000
   - WaveParts:
-    - UnitType: 19
-      OverrideSkin: 4
-      Amount: 15
-    - UnitType: 21
-      OverrideSkin: 10
-      Amount: 10
-    DisabledBaseIndices: 
-  - WaveParts:
     - UnitType: 22
-      OverrideSkin: 5
-      Amount: 20
-    DisabledBaseIndices: 01000000
-  - WaveParts:
-    - UnitType: 25
-      OverrideSkin: 0
+      OverrideSkin: 3
       Amount: 20
     DisabledBaseIndices: 00000000
   - WaveParts:
-    - UnitType: 28
-      OverrideSkin: 10
-      Amount: 10
-    - UnitType: 20
+    - UnitType: 33
+      OverrideSkin: 8
+      Amount: 2
+    - UnitType: 23
       OverrideSkin: 5
       Amount: 15
     DisabledBaseIndices: 

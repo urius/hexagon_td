@@ -15,13 +15,13 @@ MonoBehaviour:
   NameKey: teleports_can_help
   IsTransposed: 1
   StartMoneyAmount: 500
-  WaveCompletedReward: 100
+  WaveCompletedReward: 200
   ModifierRepairValue: 5
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
   ModifierBigMoneyAmount: 30
   DefaulGoalCapacity: 10
-  DestroyUnitReward: 10
+  DestroyUnitReward: 15
   _cellConfigs:
   - CellPosition: {x: -7, y: 6}
     CellConfigMin:
@@ -854,52 +854,64 @@ MonoBehaviour:
       CellSubType: 2
   _wavesSettings:
   - WaveParts:
-    - UnitType: 0
-      OverrideSkin: 0
-      Amount: 20
+    - UnitType: 2
+      OverrideSkin: 1
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 3
-      OverrideSkin: 0
+    - UnitType: 4
+      OverrideSkin: 1
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 6
-      OverrideSkin: 0
+      OverrideSkin: 2
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 9
-      OverrideSkin: 0
+      OverrideSkin: 2
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 12
-      OverrideSkin: 0
+    - UnitType: 13
+      OverrideSkin: 3
+      Amount: 10
+    - UnitType: 11
+      OverrideSkin: 4
+      Amount: 10
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 16
+      OverrideSkin: 2
+      Amount: 15
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 19
+      OverrideSkin: 3
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 0
-      Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 18
-      OverrideSkin: 0
-      Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 21
-      OverrideSkin: 0
-      Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 24
-      OverrideSkin: 0
-      Amount: 20
+    - UnitType: 23
+      OverrideSkin: 5
+      Amount: 4
+    - UnitType: 22
+      OverrideSkin: 6
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 27
-      OverrideSkin: 0
-      Amount: 20
+      OverrideSkin: 8
+      Amount: 4
+    - UnitType: 22
+      OverrideSkin: 2
+      Amount: 15
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 28
+      OverrideSkin: 7
+      Amount: 10
+    - UnitType: 34
+      OverrideSkin: 10
+      Amount: 1
     DisabledBaseIndices: 
