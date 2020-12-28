@@ -14,5 +14,7 @@ public class StartLevelCommand : Command
         injectionBinder.GetInstance<PlayerDataUpdateSystem>().Start();        
 
         LevelModel.SetLevelStarted();
+
+        AudioManager.Instance.FadeInAndPlayMusicIfNotPlayedAsync(MusicId.Game_1);
     }
 }

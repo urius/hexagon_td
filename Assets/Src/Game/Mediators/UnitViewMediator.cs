@@ -100,13 +100,13 @@ public class UnitViewMediator : EventMediator
             if (_unitModel.HP > 0)
             {
                 Instantiate(UiPrefabsConfig.ExplosionGoalPrefab, unitView.transform.position, unitView.transform.rotation);
+                AudioManager.Instance.Play(SoundId.UnitDestroyedOnBase);
             }
             else
             {
                 ViewManager.Instantiate(_unitModel.ExplosionPrefab, unitView.transform.position, unitView.transform.rotation);
+                AudioManager.Instance.Play(SoundId.UnitDestroyed);
             }
-
-            AudioManager.Instance.Play(SoundId.UnitDestroyed);
 
             _updateDelegate = null;
 

@@ -28,6 +28,16 @@ public class AudioManager : MonoBehaviour
         _musicSource.Play();
     }
 
+    public Task FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
+    {
+        if (GetPlayingMusic() == MusicId.None)
+        {
+            return PLayAsync(musicId);
+        }
+
+        return Task.CompletedTask;
+    }
+
     public MusicId GetPlayingMusic()
     {
         var result = MusicId.None;
@@ -211,4 +221,5 @@ public enum SoundId
     LevelLose,
     WinStar_1,
     WinStar_2,
+    UnitDestroyedOnBase,
 }
