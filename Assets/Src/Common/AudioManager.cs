@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource _musicSource;
     private AudioSource _primarySoundsSource;
     private readonly List<AudioSource> _additionalAudioSources = new List<AudioSource>();
+    private readonly Dictionary<SoundId, int> _soundsPlayTimeFrames = new Dictionary<SoundId, int>();
 
     public void Play(MusicId musicId)
     {
@@ -89,6 +90,18 @@ public class AudioManager : MonoBehaviour
 
     public void Play(SoundId soundId)
     {
+        if (!_soundsPlayTimeFrames.ContainsKey(soundId))
+        {
+            _soundsPlayTimeFrames.Add(soundId, Time.frameCount);
+        }
+        else
+        {
+            if (Time.frameCount - _soundsPlayTimeFrames[soundId] < 2)
+            {
+                return;
+            }
+            _soundsPlayTimeFrames[soundId] = Time.frameCount;
+        }
         var clip = Array.Find(SoundConfigs, c => c.Id == soundId).AudioClip;
         _primarySoundsSource.PlayOneShot(clip);
     }
@@ -196,4 +209,6 @@ public enum SoundId
     UnitDestroyed,
     LevelComplete,
     LevelLose,
+    WinStar_1,
+    WinStar_2,
 }

@@ -259,9 +259,9 @@ MonoBehaviour:
   - Id: 4
     AudioClip: {fileID: 8300000, guid: 388da82dc50ad440fb3b8e8e29a34df1, type: 3}
   - Id: 5
-    AudioClip: {fileID: 8300000, guid: 388da82dc50ad440fb3b8e8e29a34df1, type: 3}
+    AudioClip: {fileID: 8300000, guid: 9d904d10815674970b85c5eed4c25718, type: 3}
   - Id: 6
-    AudioClip: {fileID: 8300000, guid: 388da82dc50ad440fb3b8e8e29a34df1, type: 3}
+    AudioClip: {fileID: 8300000, guid: 183b63b6d1d2a4801940d492741050d7, type: 3}
   - Id: 7
     AudioClip: {fileID: 8300000, guid: f48cdd94491814a4cb981572e3ffc102, type: 3}
   - Id: 8
@@ -280,6 +280,10 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: dcb8e3b01fcbb4cfa9242038a127c790, type: 3}
   - Id: 15
     AudioClip: {fileID: 8300000, guid: 7ab7005a8d6b54423a977d1e608b43dc, type: 3}
+  - Id: 16
+    AudioClip: {fileID: 8300000, guid: b19691b26ef2d4f29bd6fb3ddb1727f3, type: 3}
+  - Id: 17
+    AudioClip: {fileID: 8300000, guid: 0a59b7ebd129948dbadc90c323eb2248, type: 3}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0

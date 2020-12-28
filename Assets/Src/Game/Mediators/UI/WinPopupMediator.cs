@@ -55,7 +55,19 @@ public class WinPopupMediator : EventMediator
         {
             if (_starsAnimCts.IsCancellationRequested) return;
             WinPopup.AnimateStar(i);
+            PlayStarSound(i);
             await Task.Delay(300, _starsAnimCts.Token);
+        }
+    }
+
+    private void PlayStarSound(int index)
+    {
+        if (index < 2)
+        {
+            AudioManager.Instance.Play(SoundId.WinStar_1);
+        } else
+        {
+            AudioManager.Instance.Play(SoundId.WinStar_2);
         }
     }
 }
