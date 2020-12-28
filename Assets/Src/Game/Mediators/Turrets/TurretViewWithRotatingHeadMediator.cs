@@ -57,7 +57,6 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
         }
         else
         {
-            ProcessHeadRotation();
 
             if (!TargetIsLocked && IsLookOnTarget)
             {
@@ -69,6 +68,9 @@ public class TurretViewWithRotatingHeadMediator : TurretMediatorBase
             {
                 var param = new MediatorEventsParams.TurretUnitLeaveAttackZoneParams(TurretModel, TurretModel.TargetUnit);
                 dispatcher.Dispatch(MediatorEvents.TURRET_UNIT_LEAVE_ATTACK_ZONE, param);
+            } else
+            {
+                ProcessHeadRotation();
             }
         }
     }
