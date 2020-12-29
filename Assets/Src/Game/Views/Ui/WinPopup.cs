@@ -14,7 +14,6 @@ public class WinPopup : PopupBase
     [SerializeField] private Text _titleTxt;
     [SerializeField] private Text _infoTxt;
     [SerializeField] private Animation[] _starsAnimations;
-    [SerializeField] private Color _filledStarColor;
 
     public void SetTitle(string title)
     {

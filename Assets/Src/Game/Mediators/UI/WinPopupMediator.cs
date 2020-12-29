@@ -50,13 +50,14 @@ public class WinPopupMediator : EventMediator
     private async void AnimateStarsAsync(int starsAmount)
     {
         await WinPopup.ShowTask;
+        await Task.Delay(300, _starsAnimCts.Token);
 
         for (var i = 0; i < starsAmount; i++)
         {
             if (_starsAnimCts.IsCancellationRequested) return;
             WinPopup.AnimateStar(i);
             PlayStarSound(i);
-            await Task.Delay(300, _starsAnimCts.Token);
+            await Task.Delay(500, _starsAnimCts.Token);
         }
     }
 

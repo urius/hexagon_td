@@ -97,7 +97,6 @@ MonoBehaviour:
   - {fileID: 2043286084756889865}
   - {fileID: 5702632411992498221}
   - {fileID: 8924192526826503463}
-  _filledStarColor: {r: 0.972549, g: 0.972549, b: 0, a: 1}
 --- !u!111 &1199989061
 Animation:
   m_ObjectHideFlags: 0

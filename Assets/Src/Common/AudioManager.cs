@@ -106,7 +106,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            if (Time.frameCount - _soundsPlayTimeFrames[soundId] < 2)
+            if (Time.frameCount - _soundsPlayTimeFrames[soundId] < 4)
             {
                 return;
             }
