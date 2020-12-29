@@ -56,14 +56,14 @@ public class UiCanvasViewMediator : EventMediator
                 await ShowGeneralInfo(text, 800);
                 break;
             case WaveState.AfterLastWave:
-                AudioManager.Instance.FadeOutAndStopMusicAsync();
+                await AudioManager.Instance.FadeOutAndStopMusicAsync();
                 AudioManager.Instance.Play(SoundId.LevelComplete);
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "all_waves_finished");
                 await ShowGeneralInfo(text, 800, showTimeMs: 1500);
                 ShowPopup(UIPrefabsConfig.WinPopupPrefab);
                 break;
             case WaveState.Terminated:
-                AudioManager.Instance.FadeOutAndStopMusicAsync();
+                await AudioManager.Instance.FadeOutAndStopMusicAsync();
                 AudioManager.Instance.Play(SoundId.LevelLose);
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "defeat");
                 ShowPopup(UIPrefabsConfig.LosePopupPrefab);

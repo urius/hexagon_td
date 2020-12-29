@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
         var tsc = new TaskCompletionSource<bool>();
         IEnumerator FadeOut()
         {
-            var maxI = 20;
+            var maxI = 10;
             for (var i = 0; i < maxI; i++)
             {
                 _musicSource.volume = Mathf.Lerp(musicVolume, 0, (float)i / maxI);
