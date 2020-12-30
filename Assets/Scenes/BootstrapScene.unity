@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -263,17 +263,17 @@ MonoBehaviour:
   - Id: 6
     AudioClip: {fileID: 8300000, guid: 183b63b6d1d2a4801940d492741050d7, type: 3}
   - Id: 7
-    AudioClip: {fileID: 8300000, guid: f48cdd94491814a4cb981572e3ffc102, type: 3}
+    AudioClip: {fileID: 8300000, guid: 021f9a7409f40492b8d8dd188502a109, type: 3}
   - Id: 8
-    AudioClip: {fileID: 8300000, guid: f48cdd94491814a4cb981572e3ffc102, type: 3}
+    AudioClip: {fileID: 8300000, guid: 54a92614714e044aeb483b1338a85daa, type: 3}
   - Id: 9
-    AudioClip: {fileID: 8300000, guid: 53486d3db5ea84f20a0053e99dca3531, type: 3}
+    AudioClip: {fileID: 8300000, guid: 8bd80a4f577744a7e85f7a187b094c3f, type: 3}
   - Id: 10
-    AudioClip: {fileID: 8300000, guid: faf1bf2d125e245038349bf3b1853c23, type: 3}
+    AudioClip: {fileID: 8300000, guid: c2b1f9c1bedcc46e9b2aa30d2a87e348, type: 3}
   - Id: 11
-    AudioClip: {fileID: 8300000, guid: f4166e35c458c4ed6a816c181e54190c, type: 3}
+    AudioClip: {fileID: 8300000, guid: 0dfac846c4f0d466cbcacc6881370a8e, type: 3}
   - Id: 12
-    AudioClip: {fileID: 8300000, guid: 5fe911d3ecff147b19b22b20fa6b752c, type: 3}
+    AudioClip: {fileID: 8300000, guid: 032b0aa3c0a7d4f94a8158ddeba2670d, type: 3}
   - Id: 13
     AudioClip: {fileID: 8300000, guid: c450b8ab31cc4468db5a1ff90754d831, type: 3}
   - Id: 14

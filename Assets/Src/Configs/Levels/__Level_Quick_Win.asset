@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: teleports_can_help
   IsTransposed: 1
-  StartMoneyAmount: 500
+  StartMoneyAmount: 5000
   WaveCompletedReward: 200
   ModifierRepairValue: 5
   ModifierMineDamage: 5
