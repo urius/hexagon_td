@@ -7,6 +7,7 @@ public class SlowFieldTurretMediator : TurretMediatorBase
     [Inject] public IRootTransformProvider RootTransformProvider { get; set; }
     [Inject] public IUnitViewsProvider UnitViewsProvider { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
+    [Inject] public WaveModel WaveModel { get; set; }
 
     private SlowFieldTurretView _turretView;
     private int _unitIndex1;
@@ -109,7 +110,10 @@ public class SlowFieldTurretMediator : TurretMediatorBase
 
     private void OnParticlesBurst()
     {
-        AudioManager.Instance.Play(GetSoundId());
+        if (WaveModel.WaveState == WaveState.InWave)
+        {
+            AudioManager.Instance.Play(GetSoundId());
+        }
     }
 
     private SoundId GetSoundId()
