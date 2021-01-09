@@ -138,6 +138,9 @@ public class GridViewMediator : EventMediator
             unitGo.transform.SetParent(gridView.transform, true);
 
             dispatcher.Dispatch(MediatorEvents.UNIT_SPAWNED, unitModel);
+        } else
+        {
+            Debug.Log("Spawn finished with null unit");
         }
     }
 

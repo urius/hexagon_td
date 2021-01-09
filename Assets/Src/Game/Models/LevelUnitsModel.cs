@@ -49,7 +49,11 @@ public class LevelUnitsModel
 
     public void DestroyUnit(UnitModel unitModel)
     {
-        if (unitModel.IsDestroying) return;
+        if (unitModel.IsDestroying)
+        {
+            Debug.Log("Already destroying");
+            return;
+        }
 
         unitModel.SetDestroingState();
 

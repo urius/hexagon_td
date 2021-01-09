@@ -69,7 +69,7 @@ public class UnitsControlSystem : EventSystemBase
         {
             _framesCount = 0;
 
-            foreach (var waitingUnit in LevelUnitsModel.WaitingUnits)
+            foreach (var waitingUnit in LevelUnitsModel.WaitingUnits)//Every frame Allocations!!
             {
                 if (LevelUnitsModel.IsCellWithoutUnit(waitingUnit.NextCellPosition))
                 {
@@ -110,7 +110,7 @@ public class UnitsControlSystem : EventSystemBase
                     var path = LevelModel.GetPath(spawnCell.CellPosition);
                     var unitModel = new UnitModel(path, unitConfig, unitSkinConfig);
                     LevelUnitsModel.AddUnit(unitModel);
-                    LevelUnitsModel.OwnCellByUnit(unitModel);
+                    //LevelUnitsModel.OwnCellByUnit(unitModel);
 
                     dispatcher.Dispatch(CommandEvents.START_SPAWN_UNIT, unitModel);
                 }
@@ -151,6 +151,7 @@ public class UnitsControlSystem : EventSystemBase
 
     private void OnUnitSpawnAnimationEnded(IEvent payload)
     {
+        Debug.Log("Spawn animation finished");
         UpdateUnitState(payload.data as UnitModel);
     }
 

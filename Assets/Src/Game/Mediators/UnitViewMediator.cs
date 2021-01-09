@@ -78,6 +78,8 @@ public class UnitViewMediator : EventMediator
         _stateStep = 0;
         _updateDelegate = null;
 
+        Debug.Log("State updated: " + _unitModel.PreviousStateName.ToString());
+
         if (_unitModel.PreviousStateName == UnitStateName.Spawning)
         {
             updateProvider.UpdateActionRealtime += unitView.UpdateDelegate;

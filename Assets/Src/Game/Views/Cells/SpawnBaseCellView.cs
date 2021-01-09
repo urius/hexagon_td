@@ -22,11 +22,16 @@ public class SpawnBaseCellView : CellView
         _animationTsc.TrySetResult(true);
     }
 
-    public Task PlaySpawnAnimationAsync()
+    public async Task PlaySpawnAnimationAsync()
     {
+        if (_animationTsc != null)
+        {
+            await _animationTsc.Task;
+        }
         _animationTsc = new TaskCompletionSource<bool>();
+        _spawnAnimation.Stop();
         _spawnAnimation.Play();
 
-        return _animationTsc.Task;
+        await _animationTsc.Task;
     }
 }
