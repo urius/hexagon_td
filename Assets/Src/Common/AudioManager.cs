@@ -17,7 +17,6 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _musicSource;
     private AudioSource _musicSecondarySource;
-    private AudioSource _musicEffectsSource;
     private AudioSource _primarySoundsSource;
     private float _musicVolume;
     private MusicId _currentPlayingMusicId;
@@ -40,12 +39,6 @@ public class AudioManager : MonoBehaviour
             _musicSecondarySource.clip = musicConfig.SecondaryAudioClip;
             _musicSecondarySource.Play();
         }
-    }
-
-    public void PlayOnMusicSource(SoundId soundId)
-    {
-        var clip = Array.Find(SoundConfigs, c => c.Id == soundId).AudioClip;
-        _musicEffectsSource.PlayOneShot(clip);
     }
 
     public async Task FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
@@ -145,7 +138,6 @@ public class AudioManager : MonoBehaviour
     {
         _musicVolume = value;
         _musicSource.volume = _musicVolume;
-        _musicEffectsSource.volume = _musicVolume;
         if (_inWaveMusicMode)
         {
             _musicSecondarySource.volume = _musicVolume;
@@ -196,7 +188,6 @@ public class AudioManager : MonoBehaviour
         _musicSource.loop = true;
         _musicSecondarySource = gameObject.AddComponent<AudioSource>();
         _musicSecondarySource.loop = true;
-        _musicEffectsSource = gameObject.AddComponent<AudioSource>();
         _primarySoundsSource = gameObject.AddComponent<AudioSource>();
 
         _musicSource.outputAudioMixerGroup = MusicGroup;
