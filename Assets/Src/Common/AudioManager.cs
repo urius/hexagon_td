@@ -16,26 +16,49 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private SoundConfig[] SoundConfigs;
 
     private AudioSource _musicSource;
+    private AudioSource _musicSecondarySource;
+    private AudioSource _musicEffectsSource;
     private AudioSource _primarySoundsSource;
+    private float _musicVolume;
+    private MusicId _currentPlayingMusicId;
+    private bool _inWaveMusicMode;
     private readonly List<AudioSource> _additionalAudioSources = new List<AudioSource>();
     private readonly Dictionary<SoundId, int> _soundsPlayTimeFrames = new Dictionary<SoundId, int>();
 
     public void Play(MusicId musicId)
     {
-        var clip = Array.Find(MusicConfigs, c => c.Id == musicId).AudioClip;
-        _musicSource.clip = clip;
-        _musicSource.loop = true;
+        _currentPlayingMusicId = musicId;
+
+        var musicConfig = Array.Find(MusicConfigs, c => c.Id == musicId);
+        _musicSource.clip = musicConfig.AudioClip;
         _musicSource.Play();
+
+        _inWaveMusicMode = false;
+        _musicSecondarySource.volume = 0;
+        if (musicConfig.SecondaryAudioClip != null)
+        {
+            _musicSecondarySource.clip = musicConfig.SecondaryAudioClip;
+            _musicSecondarySource.Play();
+        }
     }
 
-    public Task FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
+    public void PlayOnMusicSource(SoundId soundId)
     {
-        if (GetPlayingMusic() == MusicId.None)
-        {
-            return PLayAsync(musicId);
-        }
+        var clip = Array.Find(SoundConfigs, c => c.Id == soundId).AudioClip;
+        _musicEffectsSource.PlayOneShot(clip);
+    }
 
-        return Task.CompletedTask;
+    public async Task FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
+    {
+        var playingMusic = GetPlayingMusic();
+        if (GetPlayingMusic() != musicId)
+        {
+            if (playingMusic != MusicId.None)
+            {
+                await FadeOutAndStopMusicAsync();
+            }
+            await PlayAsync(musicId);
+        }
     }
 
     public MusicId GetPlayingMusic()
@@ -50,52 +73,42 @@ public class AudioManager : MonoBehaviour
         return result;
     }
 
-    public Task PLayAsync(MusicId musicId)
+    public Task PlayAsync(MusicId musicId)
     {
-        var musicVolume = _musicSource.volume;
         _musicSource.volume = 0;
         Play(musicId);
 
-        var tsc = new TaskCompletionSource<bool>();
-        IEnumerator FadeIn()
-        {
-            var maxI = 20;
-            for (var i = 0; i < maxI; i++)
-            {
-                _musicSource.volume = Mathf.Lerp(0, musicVolume, (float)i / maxI);
-                yield return new WaitForSecondsRealtime(0.05f);
-            }
-            tsc.TrySetResult(true);
-        }
-
-        StartCoroutine(FadeIn());
-
-        return tsc.Task;
+        return FadeInAsync(_musicSource);
     }
 
-    public Task FadeOutAndStopMusicAsync()
+    public void SetInWaveMusicMode(bool isInWaveEnabled)
     {
-        var musicVolume = _musicSource.volume;
-
-        var tsc = new TaskCompletionSource<bool>();
-        IEnumerator FadeOut()
+        _inWaveMusicMode = isInWaveEnabled;
+        var clip = Array.Find(MusicConfigs, c => c.Id == _currentPlayingMusicId).SecondaryAudioClip;
+        if (clip != null)
         {
-            var maxI = 10;
-            for (var i = 0; i < maxI; i++)
+            if (isInWaveEnabled)
             {
-                _musicSource.volume = Mathf.Lerp(musicVolume, 0, (float)i / maxI);
-                yield return new WaitForSecondsRealtime(0.05f);
+                FadeInAsync(_musicSecondarySource);
             }
-
-            _musicSource.Stop();
-            _musicSource.volume = musicVolume;
-
-            tsc.TrySetResult(true);
+            else
+            {
+                FadeOutAsync(_musicSecondarySource);
+            }
         }
+    }
 
-        StartCoroutine(FadeOut());
+    public async Task FadeOutAndStopMusicAsync()
+    {
+        var mainMusicFadeOutTask = FadeOutAsync(_musicSource);
+        var secondaryMusicFadeOutTask = FadeOutAsync(_musicSecondarySource);
 
-        return tsc.Task;
+        await Task.WhenAll(mainMusicFadeOutTask, secondaryMusicFadeOutTask);
+
+        _musicSource.Stop();
+        _musicSecondarySource.Stop();
+        _musicSource.volume = _musicVolume;
+        _musicSecondarySource.volume = 0;
     }
 
     public void Play(SoundId soundId)
@@ -130,7 +143,13 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusicVolume(float value)
     {
-        _musicSource.volume = value;
+        _musicVolume = value;
+        _musicSource.volume = _musicVolume;
+        _musicEffectsSource.volume = _musicVolume;
+        if (_inWaveMusicMode)
+        {
+            _musicSecondarySource.volume = _musicVolume;
+        }
     }
 
     public void SetSoundsVolume(float value)
@@ -174,10 +193,55 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         _musicSource = gameObject.AddComponent<AudioSource>();
+        _musicSource.loop = true;
+        _musicSecondarySource = gameObject.AddComponent<AudioSource>();
+        _musicSecondarySource.loop = true;
+        _musicEffectsSource = gameObject.AddComponent<AudioSource>();
         _primarySoundsSource = gameObject.AddComponent<AudioSource>();
 
         _musicSource.outputAudioMixerGroup = MusicGroup;
         _primarySoundsSource.outputAudioMixerGroup = SoundsGroup;
+    }
+
+    private Task FadeInAsync(AudioSource source)
+    {
+        var tsc = new TaskCompletionSource<bool>();
+        IEnumerator FadeIn()
+        {
+            var startVolume = source.volume;
+            var maxI = 20;
+            for (var i = 0; i < maxI; i++)
+            {
+                source.volume = Mathf.Lerp(startVolume, _musicVolume, (float)i / maxI);
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+            tsc.TrySetResult(true);
+        }
+
+        StartCoroutine(FadeIn());
+
+        return tsc.Task;
+    }
+
+    private Task FadeOutAsync(AudioSource source)
+    {
+        var tsc = new TaskCompletionSource<bool>();
+        IEnumerator FadeOut()
+        {
+            var startVolume = source.volume;
+            var maxI = 10;
+            for (var i = 0; i <= maxI; i++)
+            {
+                source.volume = Mathf.Lerp(startVolume, 0, (float)i / maxI);
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+
+            tsc.TrySetResult(true);
+        }
+
+        StartCoroutine(FadeOut());
+
+        return tsc.Task;
     }
 }
 
@@ -186,6 +250,7 @@ struct MusicConfig
 {
     public MusicId Id;
     public AudioClip AudioClip;
+    public AudioClip SecondaryAudioClip;
 }
 
 [Serializable]
@@ -198,6 +263,7 @@ struct SoundConfig
 public enum MusicId
 {
     None,
+    Menu_1,
     Game_1,
 }
 

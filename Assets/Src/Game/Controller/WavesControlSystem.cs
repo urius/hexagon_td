@@ -25,6 +25,7 @@ public class WavesControlSystem : EventSystemBase
         {
             WaveModel.AdvanceWave();            
             WaveModel.StartWave();
+            AudioManager.Instance.SetInWaveMusicMode(true);
         }
     }
 
@@ -37,6 +38,7 @@ public class WavesControlSystem : EventSystemBase
                 LevelModel.SetTimeScale(1);
 
                 WaveModel.EndWave();
+                AudioManager.Instance.SetInWaveMusicMode(false);
                 if (WaveModel.WaveState == WaveState.AfterLastWave)
                 {
                     LevelModel.FinishLevel(true);

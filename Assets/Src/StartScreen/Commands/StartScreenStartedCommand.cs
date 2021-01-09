@@ -9,12 +9,14 @@ public class StartScreenStartedCommand : EventCommand
     [Inject] public DeafultPlayerGlobalModelProvider DeafultPlayerGlobalModelProvider { get; set; }
     [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
 
-    public override void Execute()
+    public override async void Execute()
     {
-        if (AudioManager.Instance.GetPlayingMusic() == MusicId.None)
+        if (AudioManager.Instance.GetPlayingMusic() != MusicId.None)
         {
-            AudioManager.Instance.Play(MusicId.Game_1);
+            await AudioManager.Instance.FadeOutAndStopMusicAsync();
         }
+
+        AudioManager.Instance.Play(MusicId.Menu_1);
         //first time screen opening in game session
 
         //TODO: move to bootstrapper
