@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using UnityEngine;
 
@@ -44,15 +45,16 @@ public class UnitsControlSystem : EventSystemBase
     private void OnTurretAdded(TurretModel turret)
     {
         //Update pathes for units affected by new turret
+        var unitsToDestroy = new List<UnitModel>();
         foreach (var unit in LevelUnitsModel.Units)
         {
             if (unit.IsRestPathContainsCell(turret.Position))
             {
                 var (currentCell, finishCell) = unit.GetRestPathEdgePoints();
-                var path = LevelModel.PathsManager.GetPath(currentCell, finishCell);
+                var path = LevelModel.GetPath(currentCell);
                 if (path.Count <= 0)
                 {
-                    unit.SetDestroingState();
+                    unitsToDestroy.Add(unit);
                 }
                 else
                 {
@@ -60,6 +62,7 @@ public class UnitsControlSystem : EventSystemBase
                 }
             }
         }
+        unitsToDestroy.ForEach(LevelUnitsModel.DestroyUnit);
     }
 
     private void OnUpdate()
