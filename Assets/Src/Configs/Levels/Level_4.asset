@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: repair_station
   IsTransposed: 1
-  StartMoneyAmount: 500
+  StartMoneyAmount: 700
   WaveCompletedReward: 100
-  ModifierRepairValue: 5
+  ModifierRepairValue: 20
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
   ModifierBigMoneyAmount: 30
@@ -999,51 +999,60 @@ MonoBehaviour:
   _wavesSettings:
   - WaveParts:
     - UnitType: 1
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 1
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 4
-      OverrideSkin: 0
+      OverrideSkin: 1
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 7
-      OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 9
-      OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 12
-      OverrideSkin: 0
+      OverrideSkin: 1
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 0
-      Amount: 20
+    - UnitType: 10
+      OverrideSkin: 2
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
+    - UnitType: 13
+      OverrideSkin: 2
+      Amount: 10
     - UnitType: 14
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 6
+      Amount: 5
     DisabledBaseIndices: 
   - WaveParts:
+    - UnitType: 16
+      OverrideSkin: 3
+      Amount: 15
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 17
+      OverrideSkin: 1
+      Amount: 10
     - UnitType: 19
-      OverrideSkin: 0
-      Amount: 20
+      OverrideSkin: 5
+      Amount: 10
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 22
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 2
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 25
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 2
+      Amount: 10
+    - UnitType: 27
+      OverrideSkin: 8
+      Amount: 2
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 28
+      OverrideSkin: 8
+      Amount: 10
     DisabledBaseIndices: 
