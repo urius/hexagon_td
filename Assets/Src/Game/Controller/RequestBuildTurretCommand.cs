@@ -15,8 +15,11 @@
             if (!LevelModel.TrySubstractMoney(turretConfig.Price))
             {
                 LevelModel.TriggerInsufficientMoney();
+                AudioManager.Instance.Play(SoundId.TurretUnableToPlace);
                 return;
             }
+
+            AudioManager.Instance.Play(SoundId.TurretPlaced);
 
             var turretModel = new TurretModel(turretConfig, data.GridPosition);
             LevelModel.LevelTurretsModel.AddTurret(turretModel);
@@ -40,6 +43,9 @@
                         .Initialize(turretModel);
                     break;
             }
+        } else
+        {
+            AudioManager.Instance.Play(SoundId.TurretUnableToPlace);
         }
     }
 }

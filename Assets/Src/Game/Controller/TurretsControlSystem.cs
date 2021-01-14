@@ -48,17 +48,35 @@ public class TurretsControlSystem : EventSystemBase
     {
         var turret = payload.data as TurretModel;
 
-        var upgradedTurretConfig = TurretConfigProvider.GetConfig(turret.TurretType, turret.TurretConfig.TurretLevelIndex + 1);
+        var turretLevelFrom = turret.TurretConfig.TurretLevelIndex + 1;
+        var upgradedTurretConfig = TurretConfigProvider.GetConfig(turret.TurretType, turretLevelFrom);
         if (upgradedTurretConfig != null)
         {
             if (LevelModel.TrySubstractMoney(upgradedTurretConfig.Price - turret.TurretConfig.Price))
             {
                 turret.Upgrade(upgradedTurretConfig);
+                AudioManager.Instance.Play(GetUpgradeSoundId(turretLevelFrom));
             } else
             {
                 LevelModel.TriggerInsufficientMoney();
+                AudioManager.Instance.Play(SoundId.DeniedAction);
             }
         }
+    }
+
+    private SoundId GetUpgradeSoundId(int turretLevel)
+    {
+        switch(turretLevel)
+        {
+            case 1:
+                return SoundId.TurretUpdgrade1;
+            case 2:
+                return SoundId.TurretUpdgrade2;
+            case 3:
+                return SoundId.TurretUpdgrade3;
+        }
+
+        return SoundId.None;
     }
 
     private void OnTurretSellClicked(IEvent payload)
@@ -75,6 +93,8 @@ public class TurretsControlSystem : EventSystemBase
             {
                 unitModel.RemoveSlowTurretAffect(turret);
             }
+
+            AudioManager.Instance.Play(SoundId.SellTurret);
         }
     }
 }

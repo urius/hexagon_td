@@ -22,6 +22,7 @@ public class SettingsButtonMediator : EventMediator
 
     private void OnSettingsClicked()
     {
+        AudioManager.Instance.Play(SoundId.ClickDefault);
         dispatcher.Dispatch(MediatorEvents.UI_SETTINGS_CLICKED);
     }
 }

@@ -107,6 +107,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6592562088341129402, guid: ba26cb16f34174b46a1efc49be938f82,
+        type: 3}
+      propertyPath: _sound
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 6592562088341129406, guid: ba26cb16f34174b46a1efc49be938f82,
         type: 3}
       propertyPath: m_LocalPosition.x

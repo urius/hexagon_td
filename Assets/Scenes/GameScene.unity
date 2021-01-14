@@ -1102,6 +1102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1359261931}
+  _sound: 21
   _animation: {fileID: 772409508}
 --- !u!1 &866889507
 GameObject:

@@ -45,11 +45,13 @@ public class SettingsPopupMediator : EventMediator
 
     private void OnMainMenuBtnClicked()
     {
+        AudioManager.Instance.Play(SoundId.ClickDefault);
         dispatcher.Dispatch(MediatorEvents.UI_SETTINGS_POPUP_MAIN_MENU_CLICKED);
     }
 
     private void OnCloseClicked()
     {
+        AudioManager.Instance.Play(SoundId.ClickDefault);
         dispatcher.Dispatch(MediatorEvents.UI_SETTINGS_POPUP_CLOSE_CLICKED);
     }
 }

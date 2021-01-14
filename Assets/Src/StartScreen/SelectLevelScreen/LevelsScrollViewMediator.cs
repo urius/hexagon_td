@@ -120,6 +120,7 @@ public class LevelsScrollViewMediator : EventMediator
     private void OnLevelClick(int levelIndex)
     {
         SelectLevelByIndex(levelIndex);
+        PlayClickSound();
     }
 
     private void SelectLevelByIndex(int levelIndex)
@@ -137,12 +138,19 @@ public class LevelsScrollViewMediator : EventMediator
         dispatcher.Dispatch(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, levelIndex);
     }
 
+    private void PlayClickSound()
+    {
+        AudioManager.Instance.Play(SoundId.ClickDefault);
+    }
+
     private void OnRightClick()
     {
         var newPosition = _contentTransform.anchoredPosition.x - _itemContainerWidth * 1.5f;
         newPosition = CorrectPosition(newPosition);
 
         ScrollTo(newPosition);
+
+        PlayClickSound();
     }
 
     private void OnLeftClick()
@@ -151,6 +159,8 @@ public class LevelsScrollViewMediator : EventMediator
         newPosition = CorrectPosition(newPosition);
 
         ScrollTo(newPosition);
+
+        PlayClickSound();
     }
 
     private void OnDragEnded()

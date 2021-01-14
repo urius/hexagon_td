@@ -47,6 +47,8 @@ public class GridViewMediator : EventMediator
 
     private void OnTeleporting(Vector2Int from, Vector2Int to)
     {
+        //AudioManager.Instance.Play(SoundId.PortalEnter);
+        AudioManager.Instance.Play(SoundId.PortalExit);
         gridView.GetTeleportCellView(from).PlayTeleportOutAnimation();
         gridView.GetTeleportCellView(to).PlayTeleportInAnimation();
     }

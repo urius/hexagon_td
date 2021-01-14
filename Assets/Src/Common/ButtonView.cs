@@ -8,6 +8,7 @@ public class ButtonView : View
     public event Action OnClick = delegate { };
 
     [SerializeField] private Text _text;
+    [SerializeField] private SoundId _sound;
 
     private Button _button;
 
@@ -19,6 +20,7 @@ public class ButtonView : View
     public void EventOnClick()
     {
         OnClick();
+        AudioManager.Instance.Play(_sound); //Little hack
     }
 
     override protected void Awake()

@@ -47,6 +47,8 @@ public class MenuSceneCanvasViewMediator : EventMediator
     private void OnHomeClicked(IEvent payload)
     {
         ShowScreen(UIPrefabsConfig.MainMenuScreenPrefab);
+
+        AudioManager.Instance.Play(SoundId.ClickDefault);
     }
 
     private void ShowScreen(GameObject screenPrefab)

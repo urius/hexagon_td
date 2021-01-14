@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 6592562088503712111}
+  _sound: 19
 --- !u!1 &6592562088503712097
 GameObject:
   m_ObjectHideFlags: 0

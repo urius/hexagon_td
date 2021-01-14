@@ -55,6 +55,8 @@ public class TurretActionsMediator
         SetupTexts(turretModel.TurretConfig);
 
         Activate();
+
+        AudioManager.Instance.Play(SoundId.ClickOnTurret);
     }
 
     private void SetupTexts(TurretConfig turretConfig)
