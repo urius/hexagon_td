@@ -194,7 +194,7 @@ public class UnitsControlSystem : EventSystemBase
     {
         unit.ShowEarnedMoney(moneyAmount);
         LevelModel.TryAddMoney(moneyAmount);
-        AudioManager.Instance.Play(SoundId.ExtraMoneyCell);
+        //AudioManager.Instance.Play(SoundId.ExtraMoneyCell);
     }
 
     private void OnUnitRequestFreeCell(IEvent payload)
