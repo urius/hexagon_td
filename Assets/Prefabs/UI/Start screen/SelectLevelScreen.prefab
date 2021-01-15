@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 330097928128475358}
-  _sound: 20
+  _sound: 19
   _localizationGroupId: 4
   _localizationKey: levels_menu_start
 --- !u!1 &330097929463179937

@@ -318,7 +318,7 @@ MonoBehaviour:
   - Id: 31
     AudioClip: {fileID: 8300000, guid: 50a25b5327ad74a78b8bf4195bef6a5a, type: 3}
   - Id: 32
-    AudioClip: {fileID: 8300000, guid: 50a25b5327ad74a78b8bf4195bef6a5a, type: 3}
+    AudioClip: {fileID: 8300000, guid: 516e289f55f9b458fbea891373bc3e8b, type: 3}
   - Id: 33
     AudioClip: {fileID: 8300000, guid: 37fe4657c43064557900192395d48849, type: 3}
 --- !u!1 &602336341

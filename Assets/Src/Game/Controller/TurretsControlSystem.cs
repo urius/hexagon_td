@@ -59,7 +59,7 @@ public class TurretsControlSystem : EventSystemBase
             } else
             {
                 LevelModel.TriggerInsufficientMoney();
-                AudioManager.Instance.Play(SoundId.DeniedAction);
+                AudioManager.Instance.Play(SoundId.InsufficientFunds);
             }
         }
     }

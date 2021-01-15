@@ -292,6 +292,6 @@ public enum SoundId
     TurretUpdgrade3,
     TurretPlaced,
     TurretUnableToPlace,
-    DeniedAction,
+    InsufficientFunds,
     WaveFinished,
 }

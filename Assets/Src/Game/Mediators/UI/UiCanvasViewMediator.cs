@@ -52,9 +52,10 @@ public class UiCanvasViewMediator : EventMediator
                 await ShowGeneralInfo(text);
                 break;
             case WaveState.BetweenWaves:
-                AudioManager.Instance.Play(SoundId.WaveFinished);
+                await DelayAsync(800, CancellationToken.None);
                 text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_finished"), WaveModel.WaveIndex + 1);
-                await ShowGeneralInfo(text, 800);
+                AudioManager.Instance.Play(SoundId.WaveFinished);
+                await ShowGeneralInfo(text);
                 break;
             case WaveState.AfterLastWave:
                 await AudioManager.Instance.FadeOutAndStopMusicAsync();
