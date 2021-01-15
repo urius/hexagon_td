@@ -20,7 +20,7 @@ MonoBehaviour:
   ModifierMineDamage: 5
   ModifierMoneyAmount: 5
   ModifierBigMoneyAmount: 10
-  DefaulGoalCapacity: 10
+  DefaulGoalCapacity: 20
   DestroyUnitReward: 10
   _cellConfigs:
   - CellPosition: {x: -8, y: 6}
@@ -887,51 +887,63 @@ MonoBehaviour:
   _wavesSettings:
   - WaveParts:
     - UnitType: 1
-      OverrideSkin: 0
+      OverrideSkin: 1
       Amount: 25
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 4
-      OverrideSkin: 0
+      OverrideSkin: 1
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 7
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 4
+      Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 9
-      OverrideSkin: 0
-      Amount: 25
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 12
-      OverrideSkin: 0
-      Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 0
-      Amount: 20
+      OverrideSkin: 2
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 14
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 3
+      Amount: 5
+    - UnitType: 13
+      OverrideSkin: 5
+      Amount: 15
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 15
+      OverrideSkin: 2
+      Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 19
-      OverrideSkin: 0
+      OverrideSkin: 7
       Amount: 20
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 22
-      OverrideSkin: 0
-      Amount: 25
+      OverrideSkin: 2
+      Amount: 2
+    - UnitType: 19
+      OverrideSkin: 3
+      Amount: 15
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 25
-      OverrideSkin: 0
-      Amount: 25
+    - UnitType: 17
+      OverrideSkin: 1
+      Amount: 15
+    - UnitType: 22
+      OverrideSkin: 6
+      Amount: 15
+    DisabledBaseIndices: 
+  - WaveParts:
+    - UnitType: 31
+      OverrideSkin: 8
+      Amount: 5
+    - UnitType: 33
+      OverrideSkin: 10
+      Amount: 2
     DisabledBaseIndices: 
