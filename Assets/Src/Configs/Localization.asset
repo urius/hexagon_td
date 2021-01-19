@@ -103,3 +103,9 @@ MonoBehaviour:
       En: MAIN MENU
     - LocalizationItemId: volume
       En: 'Volume: '
+  - LocalizationGroupId: 10
+    LocalizationItems:
+    - LocalizationItemId: title
+      En: Ho2 to play
+    - LocalizationItemId: slide_1_description
+      En: Drag turret to free place to build it

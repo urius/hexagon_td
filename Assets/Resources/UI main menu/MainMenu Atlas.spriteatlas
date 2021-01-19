@@ -31,7 +31,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 0c3df0b14d8b441bc8d8adeeadc42c64, type: 3}
-    totalSpriteSurfaceArea: 1187467
+    totalSpriteSurfaceArea: 1464233
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -40,6 +40,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 63a0d072412db8249a03bc103d231ee9, type: 3}
   - {fileID: 21300000, guid: 11dcb8939096b4a82a610b2c81e11f3b, type: 3}
   - {fileID: 21300000, guid: 67ad03d42392547f3984cadb964f4093, type: 3}
+  - {fileID: 21300000, guid: 081a7085fdbce4079a5c04177ddaaf74, type: 3}
   - {fileID: 21300000, guid: 153f61976acc7d446a197dec5b0413fa, type: 3}
   - {fileID: 21300000, guid: 954280c8d94f0482285a961c02078d30, type: 3}
   - {fileID: 21300000, guid: e343ac29e001649bc8dc818229f842f5, type: 3}
@@ -49,15 +50,20 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2b992ddb3c43cf748860a5e8e302ea11, type: 3}
   - {fileID: 21300000, guid: 9d769e2ce8ce3b5418d90fce4c023e4d, type: 3}
   - {fileID: 21300000, guid: 2667409c057ea447282890bf97c03fc3, type: 3}
+  - {fileID: 21300000, guid: bb3e5c4d4a6754fdba7802434a6697e9, type: 3}
   - {fileID: 21300000, guid: 3cd6a35d29a856a4b96daf627a953e5c, type: 3}
+  - {fileID: 21300000, guid: 3d67179ddd62d4bf5969257e990bd9fa, type: 3}
   - {fileID: 21300000, guid: 8078b6ed2767546c9b8a1554429b9dde, type: 3}
   - {fileID: 21300000, guid: 94ead6be41efe48f98b09f8d5d809d10, type: 3}
+  - {fileID: 21300000, guid: 5cd17dce1b3354a6d9748263db8c2a02, type: 3}
+  - {fileID: 21300000, guid: 05ff3fbf6098f46a0a9409ee727e4805, type: 3}
   m_PackedSpriteNamesToIndex:
   - Btn_button03_n
   - Btn_button04_Yellow
   - Btn_sci-fi button03_n
   - Btn_button02_h
   - bg_map
+  - finger_no_click
   - Btn_sci-fi button02_h
   - Btn_Next_n
   - Icon3-2
@@ -67,8 +73,12 @@ SpriteAtlas:
   - circle01-2
   - Btn_sci-fi button02_n
   - Icon_Star1
+  - turret_red
   - Btn_sci-fi button03_h
+  - turret_green
   - bg2_trimed
   - Icon_Locked
+  - game_view_1
+  - finger_click
   m_Tag: MainMenu Atlas
   m_IsVariant: 0
