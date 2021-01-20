@@ -15,6 +15,7 @@ public class MainMenuViewMediator : EventMediator
         base.OnRegister();
 
         MainMenuView.PlayButtonClicked += OnPlayClicked;
+        MainMenuView.HowToPlayButtonClicked += OnHowToPlayClicked;
 
         MainMenuView.SetTexts(
             Loc.Get(LocalizationGroupId.StartScreen, "main_menu_play"),
@@ -26,5 +27,11 @@ public class MainMenuViewMediator : EventMediator
     {
         MainMenuView.HideAnimated();
         dispatcher.Dispatch(MediatorEvents.UI_SS_PLAY_CLICKED);
+    }
+
+    private void OnHowToPlayClicked()
+    {
+        MainMenuView.HideAnimated();
+        dispatcher.Dispatch(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED);
     }
 }

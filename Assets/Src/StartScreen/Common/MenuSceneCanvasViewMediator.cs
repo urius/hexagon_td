@@ -12,13 +12,15 @@ public class MenuSceneCanvasViewMediator : EventMediator
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
 
     private GameObject _currentActiveScreenPrefab;
+    private GameObject _currentActiveScreenGo;
 
     public override void OnRegister()
     {
         base.OnRegister();
 
-        dispatcher.AddListener(MediatorEvents.UI_SL_HOME_CLICKED, OnHomeClicked);
+        dispatcher.AddListener(MediatorEvents.UI_HOME_CLICKED, OnHomeClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
+        dispatcher.AddListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
     }
 
     private void Start()
@@ -35,13 +37,19 @@ public class MenuSceneCanvasViewMediator : EventMediator
 
     private void OnDestroy()
     {
-        dispatcher.RemoveListener(MediatorEvents.UI_SL_HOME_CLICKED, OnHomeClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_HOME_CLICKED, OnHomeClicked);
         dispatcher.RemoveListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
     }
 
     private void OnMainMenuPlayClicked(IEvent payload)
     {
         ShowScreen(UIPrefabsConfig.SelectLevelScreenPrefab);
+    }
+
+    private void OnMainMenuHowToPlayClicked(IEvent payload)
+    {
+        ShowScreen(UIPrefabsConfig.HowToPlayScreenPrefab);
     }
 
     private void OnHomeClicked(IEvent payload)
@@ -55,8 +63,12 @@ public class MenuSceneCanvasViewMediator : EventMediator
     {
         if (_currentActiveScreenPrefab != screenPrefab)
         {
+            if (_currentActiveScreenGo != null)
+            {
+                _currentActiveScreenGo.GetComponentInChildren<ScreenView>().HideAnimated();
+            }
             _currentActiveScreenPrefab = screenPrefab;
-            Instantiate(screenPrefab, MenuSceneCanvasView.RootTransform);
+            _currentActiveScreenGo = Instantiate(screenPrefab, MenuSceneCanvasView.RootTransform);
         }
     }
 }

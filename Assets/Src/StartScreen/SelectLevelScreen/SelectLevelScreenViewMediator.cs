@@ -17,20 +17,12 @@ public class SelectLevelScreenViewMediator : EventMediator
 
         dispatcher.AddListener(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, OnLevelClicked);
         SelectLevelScreenView.StartClicked += OnStartClicked;
-        SelectLevelScreenView.HomeClicked += OnHomeClicked;
     }
 
     private void OnDestroy()
     {
         dispatcher.RemoveListener(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, OnLevelClicked);
         SelectLevelScreenView.StartClicked -= OnStartClicked;
-        SelectLevelScreenView.HomeClicked -= OnHomeClicked;
-    }
-
-    private void OnHomeClicked()
-    {
-        SelectLevelScreenView.HideAnimated();
-        dispatcher.Dispatch(MediatorEvents.UI_SL_HOME_CLICKED);
     }
 
     private void OnStartClicked()

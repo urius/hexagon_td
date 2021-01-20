@@ -109,3 +109,5 @@ MonoBehaviour:
       En: Ho2 to play
     - LocalizationItemId: slide_1_description
       En: Drag turret to free place to build it
+    - LocalizationItemId: slide_2_description
+      En: Click on turret to open turret menu. Here you can upgrade or sell turret

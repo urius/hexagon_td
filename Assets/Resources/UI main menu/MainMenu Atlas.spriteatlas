@@ -31,7 +31,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 0c3df0b14d8b441bc8d8adeeadc42c64, type: 3}
-    totalSpriteSurfaceArea: 1464233
+    totalSpriteSurfaceArea: 1468329
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -57,6 +57,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 94ead6be41efe48f98b09f8d5d809d10, type: 3}
   - {fileID: 21300000, guid: 5cd17dce1b3354a6d9748263db8c2a02, type: 3}
   - {fileID: 21300000, guid: 05ff3fbf6098f46a0a9409ee727e4805, type: 3}
+  - {fileID: 21300000, guid: e4f4eadf6cbb4489da413431a4145fb4, type: 3}
   m_PackedSpriteNamesToIndex:
   - Btn_button03_n
   - Btn_button04_Yellow
@@ -80,5 +81,6 @@ SpriteAtlas:
   - Icon_Locked
   - game_view_1
   - finger_click
+  - ICON_play
   m_Tag: MainMenu Atlas
   m_IsVariant: 0

@@ -35,13 +35,15 @@ public class MediatorEvents
     public static string UI_SETTINGS_POPUP_MAIN_MENU_CLICKED = "UI_SETTINGS_POPUP_MAIN_MENU_CLICKED";
     public static string UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED = "UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED";
     public static string UI_SETTINGS_POPUP_SHOW_ANIMATION_ENDED = "UI_SETTINGS_POPUP_SHOW_ANIMATION_ENDED";
-    public static string UI_SETTINGS_POPUP_CLOSE_CLICKED = "UI_SETTINGS_POPUP_CLOSE_CLICKED";    
+    public static string UI_SETTINGS_POPUP_CLOSE_CLICKED = "UI_SETTINGS_POPUP_CLOSE_CLICKED";
+
+    public static string UI_HOME_CLICKED = "UI_HOME_CLICKED";
 
     public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
+    public static string UI_SS_HOW_TO_PLAY_CLICKED = "UI_SS_HOW_TO_PLAY_CLICKED";    
 
     public static string UI_SL_SELECT_LEVEL_CLICKED = "UI_SL_SELECT_LEVEL_CLICKED";
     public static string UI_SL_START_LEVEL_CLICKED = "UI_SL_START_LEVEL_CLICKED";
-    public static string UI_SL_HOME_CLICKED = "UI_SL_HOME_CLICKED";
     public static string UI_SL_LEVEL_SELECTED = "UI_SL_LEVEL_SELECTED";    
 
     public static string UI_TS_SHOW_ANIM_ENDED = "UI_TS_SHOW_ANIM_ENDED";

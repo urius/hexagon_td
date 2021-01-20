@@ -46,3 +46,5 @@ MonoBehaviour:
     type: 3}
   SelectLevelItemSelectionPrefab: {fileID: 3366146521097664114, guid: 55fe9359652d041c2bafc319d1ea6a28,
     type: 3}
+  HowToPlayScreenPrefab: {fileID: 3563468057543684807, guid: 29af8ad3327b74bca8c89b7631316247,
+    type: 3}
