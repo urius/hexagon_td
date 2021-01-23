@@ -18,6 +18,7 @@ public class HowToPlayScreenMediator : EventMediator
         HowToPlayScreenView.NextButton.onClick.AddListener(OnNextClicked);
         HowToPlayScreenView.RightArrowButton.onClick.AddListener(OnNextClicked);
         HowToPlayScreenView.LeftArrowButton.onClick.AddListener(OnPrevClicked);
+        HowToPlayScreenView.FinishButton.onClick.AddListener(OnFinishClicked);
     }
 
     public override void OnRemove()
@@ -25,6 +26,7 @@ public class HowToPlayScreenMediator : EventMediator
         HowToPlayScreenView.NextButton.onClick.RemoveListener(OnNextClicked);
         HowToPlayScreenView.RightArrowButton.onClick.RemoveListener(OnNextClicked);
         HowToPlayScreenView.LeftArrowButton.onClick.RemoveListener(OnPrevClicked);
+        HowToPlayScreenView.FinishButton.onClick.AddListener(OnFinishClicked);
 
         base.OnRemove();
     }
@@ -42,6 +44,17 @@ public class HowToPlayScreenMediator : EventMediator
             var targetAlpha = (i == index) ? 1 : 0;
             TweenSlideVisibility(slides[i], targetAlpha, duration);
         }
+
+        UpdateNavButtons(index);
+    }
+
+    private void UpdateNavButtons(int index)
+    {
+        HowToPlayScreenView.LeftArrowButton.interactable = index != 0;
+        var isLastSlide = index == HowToPlayScreenView.SlideCanvasGroups.Length - 1;
+        HowToPlayScreenView.RightArrowButton.interactable = !isLastSlide;
+        HowToPlayScreenView.NextButton.gameObject.SetActive(!isLastSlide);
+        HowToPlayScreenView.FinishButton.gameObject.SetActive(isLastSlide);
     }
 
     private void TweenSlideVisibility(CanvasGroup canvasGroup, int targetAlpha, float duration)
@@ -59,5 +72,10 @@ public class HowToPlayScreenMediator : EventMediator
     {
         _shownSlideIndex = Math.Max(_shownSlideIndex - 1, 0);
         ShowSlide(_shownSlideIndex, 0.5f);
+    }
+
+    private void OnFinishClicked()
+    {
+        dispatcher.Dispatch(MediatorEvents.UI_HOME_CLICKED);
     }
 }

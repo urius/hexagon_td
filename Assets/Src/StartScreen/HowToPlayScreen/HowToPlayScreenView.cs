@@ -14,6 +14,8 @@ public class HowToPlayScreenView : ScreenView
     public Button RightArrowButton => _rightArrowButton;
     [SerializeField] private Button _nextButton;
     public Button NextButton => _nextButton;
+    [SerializeField] private Button _finishButton;
+    public Button FinishButton => _finishButton;
     [SerializeField] private CanvasGroup[] _slideCanvasGroups;
     public CanvasGroup[] SlideCanvasGroups => _slideCanvasGroups;
 }

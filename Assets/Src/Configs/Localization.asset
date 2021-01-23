@@ -16,13 +16,13 @@ MonoBehaviour:
   - LocalizationGroupId: 0
     LocalizationItems:
     - LocalizationItemId: gun
-      En: Laser gun
+      En: Blaster
     - LocalizationItemId: laser
-      En: Laser beam
+      En: Rail laser
     - LocalizationItemId: rocket
-      En: Rocket turret
+      En: Rocket
     - LocalizationItemId: slower
-      En: Slower tower
+      En: Freezer
   - LocalizationGroupId: 1
     LocalizationItems:
     - LocalizationItemId: sell
@@ -108,6 +108,75 @@ MonoBehaviour:
     - LocalizationItemId: title
       En: Ho2 to play
     - LocalizationItemId: slide_1_description
-      En: Drag turret to free place to build it
+      En: Drag turret to a free place to build it
     - LocalizationItemId: slide_2_description
       En: Click on turret to open turret menu. Here you can upgrade or sell turret
+    - LocalizationItemId: slide_3_description
+      En: Click "Start wave" button when you are ready to start the wave
+    - LocalizationItemId: slide_4_description
+      En: Don't let enemies to reach your base
+    - LocalizationItemId: slide_5_description
+      En: Make enemies move through modifiers to get profit. There are also negative
+        modifiers, that should be avoided
+    - LocalizationItemId: modifiers_slide_1_title
+      En: 'Modifiers (1/2):'
+    - LocalizationItemId: modifiers_slide_2_title
+      En: 'Modifiers (2/2):'
+    - LocalizationItemId: modifier_money_title
+      En: Money
+    - LocalizationItemId: modifier_money_description
+      En: Adds extra amount of money for every enemy passed through
+    - LocalizationItemId: modifier_big_money_title
+      En: BIg money
+    - LocalizationItemId: modifier_big_money_description
+      En: Adds extra big amount of money for every enemy passed through
+    - LocalizationItemId: modifier_mine_title
+      En: Mine
+    - LocalizationItemId: modifier_mine_description
+      En: Adds damage to every enemy passed through
+    - LocalizationItemId: modifier_repair_title
+      En: Repair
+    - LocalizationItemId: modifier_repair_description
+      En: Partially repairs all enemies passing through
+    - LocalizationItemId: modifier_direction_title
+      En: direction modifier
+    - LocalizationItemId: modifier_direction_description
+      En: defines direction for enemies to move from current cell
+    - LocalizationItemId: modifier_no_build_title
+      En: No build
+    - LocalizationItemId: modifier_no_build_description
+      En: you can't build turrets on cells with that modifier
+    - LocalizationItemId: enemy_base
+      En: Enemy base
+    - LocalizationItemId: goal_base
+      En: Goal base
+    - LocalizationItemId: slide_6_description
+      En: List of cell modifiers
+    - LocalizationItemId: slide_7_description
+      En: List of cell modifiers
+    - LocalizationItemId: modifier_speed_down_title
+      En: Slow down
+    - LocalizationItemId: modifier_speed_down_description
+      En: slows down enemies that are passing through
+    - LocalizationItemId: modifier_speed_up_title
+      En: Speed up
+    - LocalizationItemId: modifier_speed_up_description
+      En: speeds up enemies that are passing through
+    - LocalizationItemId: slide_8_title
+      En: Turrets
+    - LocalizationItemId: slide_8_description
+      En: List of turrets
+    - LocalizationItemId: turret_1_description
+      En: Cheap turret. Works on close distances. Good for making additional walls
+        to confuse enemies
+    - LocalizationItemId: turret_2_description
+      En: Can damage many enemies, if they are standing on one line. Works on middle
+        distances
+    - LocalizationItemId: turret_3_description
+      En: Heavy turret. Works on far distances. Can miss if enemies are too close
+    - LocalizationItemId: turret_4_description
+      En: Gives no damage. Slows down near enemies. Radius depends on turret level
+    - LocalizationItemId: next_slide
+      En: Next
+    - LocalizationItemId: finish_button
+      En: OK
