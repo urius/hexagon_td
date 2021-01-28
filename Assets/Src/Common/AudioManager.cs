@@ -178,8 +178,6 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -294,4 +292,7 @@ public enum SoundId
     TurretUnableToPlace,
     InsufficientFunds,
     WaveFinished,
+    GameTime1,
+    GameTime2,
+    GameTime3,
 }

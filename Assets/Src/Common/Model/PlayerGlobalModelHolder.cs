@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [CreateAssetMenu(fileName = "PlayerGlobalModelHolder", menuName = "Common/Model/PlayerGlobalModelHolder")]
 public class PlayerGlobalModelHolder : ScriptableObject
@@ -17,5 +18,17 @@ public class PlayerGlobalModelHolder : ScriptableObject
     {
         _playerGlobalModel = model;
         _modelInnitializedTsc.TrySetResult(true);
+    }
+
+    public async void Load()
+    {
+        var result = await NetworkManager.Instance.GetAsync("https://twinpixel.ru/data_provider.php?command=get&id=test4");
+        Debug.Log("Download complete");
+        Debug.Log(result.downloadHandler.text);
+    }
+
+    public void Save()
+    {
+
     }
 }

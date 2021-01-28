@@ -207,14 +207,28 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 262952618}
+  - component: {fileID: 262952620}
   - component: {fileID: 262952619}
+  - component: {fileID: 262952617}
   m_Layer: 0
-  m_Name: '[ AudioManager ]'
+  m_Name: '[ Global ]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &262952617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262952616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fb8f599348b4c39bbb2a321b13a603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &262952618
 Transform:
   m_ObjectHideFlags: 0
@@ -268,17 +282,17 @@ MonoBehaviour:
   - Id: 6
     AudioClip: {fileID: 8300000, guid: 183b63b6d1d2a4801940d492741050d7, type: 3}
   - Id: 7
-    AudioClip: {fileID: 8300000, guid: 021f9a7409f40492b8d8dd188502a109, type: 3}
-  - Id: 8
     AudioClip: {fileID: 8300000, guid: 54a92614714e044aeb483b1338a85daa, type: 3}
-  - Id: 9
+  - Id: 8
     AudioClip: {fileID: 8300000, guid: 8bd80a4f577744a7e85f7a187b094c3f, type: 3}
+  - Id: 9
+    AudioClip: {fileID: 8300000, guid: 021f9a7409f40492b8d8dd188502a109, type: 3}
   - Id: 10
-    AudioClip: {fileID: 8300000, guid: c2b1f9c1bedcc46e9b2aa30d2a87e348, type: 3}
-  - Id: 11
     AudioClip: {fileID: 8300000, guid: 0dfac846c4f0d466cbcacc6881370a8e, type: 3}
-  - Id: 12
+  - Id: 11
     AudioClip: {fileID: 8300000, guid: 032b0aa3c0a7d4f94a8158ddeba2670d, type: 3}
+  - Id: 12
+    AudioClip: {fileID: 8300000, guid: c2b1f9c1bedcc46e9b2aa30d2a87e348, type: 3}
   - Id: 13
     AudioClip: {fileID: 8300000, guid: c450b8ab31cc4468db5a1ff90754d831, type: 3}
   - Id: 14
@@ -292,7 +306,7 @@ MonoBehaviour:
   - Id: 18
     AudioClip: {fileID: 8300000, guid: 7362d8e60fd6f4cd4b97655c2327e2b3, type: 3}
   - Id: 19
-    AudioClip: {fileID: 8300000, guid: 2e40eec8be96043b49e72f4c0b866d85, type: 3}
+    AudioClip: {fileID: 8300000, guid: aa1192bbb670d4ced91eac1707c7fbab, type: 3}
   - Id: 20
     AudioClip: {fileID: 8300000, guid: 635f1fd2a51c449e78731cd16b7e9586, type: 3}
   - Id: 21
@@ -308,11 +322,9 @@ MonoBehaviour:
   - Id: 26
     AudioClip: {fileID: 8300000, guid: ebb09a424aaeb42a0870e61ceebca783, type: 3}
   - Id: 27
-    AudioClip: {fileID: 8300000, guid: ab4323ebb18cd4375885cd95d79e102f, type: 3}
-  - Id: 28
     AudioClip: {fileID: 8300000, guid: ad54fec69fcfa47138b7e4f4501187cb, type: 3}
-  - Id: 29
-    AudioClip: {fileID: 8300000, guid: d7fd932c0d7d246d5b138d4d22a5b64c, type: 3}
+  - Id: 28
+    AudioClip: {fileID: 8300000, guid: ab4323ebb18cd4375885cd95d79e102f, type: 3}
   - Id: 30
     AudioClip: {fileID: 8300000, guid: 4f93138c99f3d471fadb4acffbc83b1f, type: 3}
   - Id: 31
@@ -321,6 +333,24 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: 516e289f55f9b458fbea891373bc3e8b, type: 3}
   - Id: 33
     AudioClip: {fileID: 8300000, guid: 37fe4657c43064557900192395d48849, type: 3}
+  - Id: 34
+    AudioClip: {fileID: 8300000, guid: 2124392be7da74582b80b66144a82be4, type: 3}
+  - Id: 35
+    AudioClip: {fileID: 8300000, guid: ae49548305eda4cb28c8e25a5b09b2c8, type: 3}
+  - Id: 36
+    AudioClip: {fileID: 8300000, guid: f702002908c4243f88ac179e9551edc9, type: 3}
+--- !u!114 &262952620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262952616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25e591fb8fe649259f419a2522459c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0

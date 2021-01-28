@@ -13,7 +13,7 @@ public class LevelModel
     public event Action LevelFinished = delegate { };
     public event Action GameSpeedChanged = delegate { };
     public event Action PauseModeChanged = delegate { };
-    
+
     public bool IsWon = false;
     public bool IsDefeated = false;
 
@@ -69,9 +69,13 @@ public class LevelModel
 
     public void SetTimeScale(int timeScale)
     {
+        var isTimeScaleChanged = TimeScale != timeScale;
         TimeScale = timeScale;
 
-        GameSpeedChanged();
+        if (isTimeScaleChanged)
+        {
+            GameSpeedChanged();
+        }
     }
 
     public void SetPauseMode(bool isPaused)
@@ -147,7 +151,7 @@ public class LevelModel
                         }
                     }
 
-                    if(!havePath)
+                    if (!havePath)
                     {
                         return false;
                     }

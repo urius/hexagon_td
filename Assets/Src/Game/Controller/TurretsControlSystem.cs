@@ -48,14 +48,14 @@ public class TurretsControlSystem : EventSystemBase
     {
         var turret = payload.data as TurretModel;
 
-        var turretLevelFrom = turret.TurretConfig.TurretLevelIndex + 1;
-        var upgradedTurretConfig = TurretConfigProvider.GetConfig(turret.TurretType, turretLevelFrom);
+        var newTurretLevelIndex = turret.TurretConfig.TurretLevelIndex + 1;
+        var upgradedTurretConfig = TurretConfigProvider.GetConfig(turret.TurretType, newTurretLevelIndex);
         if (upgradedTurretConfig != null)
         {
             if (LevelModel.TrySubstractMoney(upgradedTurretConfig.Price - turret.TurretConfig.Price))
             {
                 turret.Upgrade(upgradedTurretConfig);
-                AudioManager.Instance.Play(GetUpgradeSoundId(turretLevelFrom));
+                AudioManager.Instance.Play(GetUpgradeSoundId(newTurretLevelIndex));
             } else
             {
                 LevelModel.TriggerInsufficientMoney();
@@ -64,16 +64,14 @@ public class TurretsControlSystem : EventSystemBase
         }
     }
 
-    private SoundId GetUpgradeSoundId(int turretLevel)
+    private SoundId GetUpgradeSoundId(int newTurretLevelIndex)
     {
-        switch(turretLevel)
+        switch(newTurretLevelIndex)
         {
             case 1:
                 return SoundId.TurretUpdgrade1;
             case 2:
                 return SoundId.TurretUpdgrade2;
-            case 3:
-                return SoundId.TurretUpdgrade3;
         }
 
         return SoundId.None;

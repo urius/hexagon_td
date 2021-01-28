@@ -25,6 +25,18 @@ public class TimeScaleButtonMediator : EventMediator
 
     private void OnGameSpeedChanged()
     {
+        switch (LevelModel.TimeScale)
+        {
+            case 1:
+                AudioManager.Instance.Play(SoundId.GameTime1);
+                break;
+            case 2:
+                AudioManager.Instance.Play(SoundId.GameTime2);
+                break;
+            case 3:
+                AudioManager.Instance.Play(SoundId.GameTime3);
+                break;
+        }
         View.ShowSpeedMultiplier(LevelModel.TimeScale);
     }
 
