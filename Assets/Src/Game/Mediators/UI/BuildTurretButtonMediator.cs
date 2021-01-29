@@ -34,12 +34,13 @@ public class BuildTurretButtonMediator : EventMediator
 
     private void OnButtonPointerDown()
     {
+        AudioManager.Instance.Play(SoundId.BuildTurretCanceled);
         dispatcher.Dispatch(MediatorEvents.UI_BUILD_TURRET_MOUSE_DOWN, View.TurretTypeId);
     }
 
     private void OnButtonPointerUp()
     {
-        dispatcher.Dispatch(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, View.TurretTypeId);
+        dispatcher.Dispatch(MediatorEvents.UI_BUILD_TURRET_MOUSE_UP, View.IsUnderMouse);
     }
 
     private void OnMoneyAmountUpdated()

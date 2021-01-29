@@ -15,8 +15,9 @@ public class BuildTurretButtonView : View
     [SerializeField] private Color _textFieldDefaultColor;
     [SerializeField] private EventTrigger _eventTrigger;
     [SerializeField] private int _turretTypeId;
+    private bool _isUnderMouse;
 
-
+    public bool IsUnderMouse => _isUnderMouse;
     public int TurretTypeId => _turretTypeId;
 
     public void SetEnabled(bool isEnabled)
@@ -33,12 +34,17 @@ public class BuildTurretButtonView : View
 
     public void OnButtonPointerDown()
     {
-        Debug.Log("OnButtonPointerDown");
+        _isUnderMouse = true;
         ButtonPointerDown();
     }
 
     public void OnButtonPointerUp()
     {
         ButtonPointerUp();
+    }
+
+    public void OnButtonPointerExit()
+    {
+        _isUnderMouse = false;
     }
 }

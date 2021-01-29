@@ -22,9 +22,13 @@ public class PlayerGlobalModelHolder : ScriptableObject
 
     public async void Load()
     {
-        var result = await NetworkManager.Instance.GetAsync("https://twinpixel.ru/data_provider.php?command=get&id=test4");
+        var id = SystemInfo.deviceUniqueIdentifier;
+        var result = await NetworkManager.GetAsync<PlayerGlobalModel>("https://twinpixel.ru/data_provider.php?command=get&id=test4");
         Debug.Log("Download complete");
-        Debug.Log(result.downloadHandler.text);
+        Debug.Log(result);
+
+        var loadedModel = result;
+        Debug.Log(loadedModel);
     }
 
     public void Save()

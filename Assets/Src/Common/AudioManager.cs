@@ -295,4 +295,6 @@ public enum SoundId
     GameTime1,
     GameTime2,
     GameTime3,
+    ChooseTurretFouBuild,
+    BuildTurretCanceled,
 }

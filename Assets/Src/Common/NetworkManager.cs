@@ -1,38 +1,28 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 using UnityEngine.Networking;
 
-public class NetworkManager : MonoBehaviour
+public class NetworkManager
 {
-    public static NetworkManager Instance;
-
-    public Task<UnityWebRequest> GetAsync(string url)
+    public async static Task<T> GetAsync<T>(string url)
     {
-        var tsc = new TaskCompletionSource<UnityWebRequest>();
-        void Callback(UnityWebRequest request)
-        {
-            tsc.TrySetResult(request);
-        }
-
-        StartCoroutine(GetRequest(url, Callback));
-
-        return tsc.Task;
+        var sender = new WebRequestsSender();
+        var response = await sender.GetAsync<NetworkDefaultResponse<T>>(url);
+        return response.payload;
     }
+}
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+[Serializable]
+public class NetworkDefaultResponse<TPayload>
+{
+    public TPayload payload;
+    public WebRequestError error;
+}
 
-    IEnumerator GetRequest(string url, Action<UnityWebRequest> callback)
-    {
-        using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-            yield return request.SendWebRequest();
-            callback(request);
-        }
-    }
+[Serializable]
+public class WebRequestError
+{
+    public int code;
+    public string message;
 }

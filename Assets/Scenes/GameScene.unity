@@ -2803,8 +2803,45 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7886352286900732434, guid: 2624d572a7fe242a1863a9d33096e39d,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886352286900732434, guid: 2624d572a7fe242a1863a9d33096e39d,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886352286900732434, guid: 2624d572a7fe242a1863a9d33096e39d,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2730768260047782431}
+    - target: {fileID: 7886352286900732434, guid: 2624d572a7fe242a1863a9d33096e39d,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnButtonPointerDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886352286900732434, guid: 2624d572a7fe242a1863a9d33096e39d,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2624d572a7fe242a1863a9d33096e39d, type: 3}
+--- !u!114 &2730768260047782431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2067644452698909900, guid: 2624d572a7fe242a1863a9d33096e39d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2730768260047782430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce95cc70a3d42478098de0fdb832b5b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4373820142850114332
 PrefabInstance:
   m_ObjectHideFlags: 0

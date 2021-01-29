@@ -7,6 +7,7 @@ using UnityEngine;
 public class GridViewMediator : EventMediator
 {
     private GameObject _flyingTurret;
+    private TurretType _flyingTurretType;
 
     [Inject] public GridView gridView { get; set; }
     [Inject] public LevelModel levelModel { get; set; }
@@ -98,8 +99,8 @@ public class GridViewMediator : EventMediator
         {
             Destroy(_flyingTurret);
         }
-        var turretType = (TurretType)payload.data;
-        var turretConfig = turretsConfigProvider.GetConfig(turretType, 0);
+        _flyingTurretType = (TurretType)payload.data;
+        var turretConfig = turretsConfigProvider.GetConfig(_flyingTurretType, 0);
         FlyingTurretConfigProvider.SetConfig(turretConfig);
         _flyingTurret = Instantiate(turretConfig.BuildModePrefab, rootTransformProvider.transform);
     }
@@ -111,9 +112,16 @@ public class GridViewMediator : EventMediator
             Destroy(_flyingTurret);
             _flyingTurret = null;
 
-            var offset = new Vector3(0, 0, cellSizeProvider.CellSize.y);
-            dispatcher.Dispatch(MediatorEvents.REQUEST_BUILD_TURRET,
-                new MediatorEventsParams.RequestBuildParams((TurretType)payload.data, gridView.WorldToCell(worldMousePositionProvider.Position + offset)));
+            var isBuildCanceled = (bool)payload.data;
+            if (!isBuildCanceled)
+            {
+                var offset = new Vector3(0, 0, cellSizeProvider.CellSize.y);
+                dispatcher.Dispatch(MediatorEvents.REQUEST_BUILD_TURRET,
+                    new MediatorEventsParams.RequestBuildParams(_flyingTurretType, gridView.WorldToCell(worldMousePositionProvider.Position + offset)));
+            } else
+            {
+                AudioManager.Instance.Play(SoundId.BuildTurretCanceled);
+            }
         }
     }
 
@@ -140,7 +148,8 @@ public class GridViewMediator : EventMediator
             unitGo.transform.SetParent(gridView.transform, true);
 
             dispatcher.Dispatch(MediatorEvents.UNIT_SPAWNED, unitModel);
-        } else
+        }
+        else
         {
             Debug.Log("Spawn finished with null unit");
         }
