@@ -38,7 +38,7 @@ public class SelectLevelScreenViewMediator : EventMediator
 
         dispatcher.Dispatch(MediatorEvents.UI_SL_LEVEL_SELECTED, levelIndex);
 
-        if (levelProgress.isUnlocked)
+        if (levelProgress.IsUnlocked)
         {
             SelectLevelScreenView.ShowStartButton();
         }

@@ -14,95 +14,95 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerGlobalModel:
     LevelsProgress:
-    - isPassed: 1
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 1
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 1
-      isUnlocked: 1
-      StarsAmount: 2
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
-    - isPassed: 0
-      isUnlocked: 1
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
       StarsAmount: 0
     AudioVolume: 0.5
     MusicVolume: 0.5

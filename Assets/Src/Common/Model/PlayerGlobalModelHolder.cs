@@ -23,9 +23,8 @@ public class PlayerGlobalModelHolder : ScriptableObject
     public async void Load()
     {
         var id = SystemInfo.deviceUniqueIdentifier;
-        var result = await NetworkManager.GetUserRemoteDataAsync("test_id");
+        var result = await NetworkManager.GetUserRemoteDataAsync("test_id_2");
         Debug.Log("Download complete");
-        Debug.Log(result);
 
         var loadedModel = result;
         Debug.Log(loadedModel);

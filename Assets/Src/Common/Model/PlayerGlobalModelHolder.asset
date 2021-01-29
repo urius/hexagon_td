@@ -13,4 +13,97 @@ MonoBehaviour:
   m_Name: PlayerGlobalModelHolder
   m_EditorClassIdentifier: 
   _playerGlobalModel:
-    LevelsProgress: []
+    LevelsProgress:
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 1
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 0
+      IsUnlocked: 1
+      StarsAmount: 0
+    AudioVolume: 0.7
+    MusicVolume: 0.7
+    SoundsVolume: 0.7

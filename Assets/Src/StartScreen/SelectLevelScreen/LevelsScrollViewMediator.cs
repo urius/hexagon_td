@@ -55,10 +55,10 @@ public class LevelsScrollViewMediator : EventMediator
         for (var i = 0; i < PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress.Length; i++)
         {
             var levelProgress = PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress[i];
-            if (levelProgress.isUnlocked)
+            if (levelProgress.IsUnlocked)
             {
                 result = i;
-                if (!levelProgress.isPassed)
+                if (!levelProgress.IsPassed)
                 {
                     break;
                 }
@@ -99,9 +99,9 @@ public class LevelsScrollViewMediator : EventMediator
             var itemView = _itemViews[i];
             var levelProgress = playerGlobalModel.LevelsProgress[i];
             itemView.SetLevelNum(i + 1);
-            itemView.SetLocked(!levelProgress.isUnlocked);
-            itemView.SetPassedMode(levelProgress.isPassed);
-            if (levelProgress.isPassed)
+            itemView.SetLocked(!levelProgress.IsUnlocked);
+            itemView.SetPassedMode(levelProgress.IsPassed);
+            if (levelProgress.IsPassed)
             {
                 itemView.SetupStars(levelProgress.StarsAmount);
             }
@@ -132,7 +132,7 @@ public class LevelsScrollViewMediator : EventMediator
         }
 
         _selection = Instantiate(UIPrefabsConfig.SelectLevelItemSelectionPrefab, _itemViews[levelIndex].transform);
-        var isLocked = !PlayerGlobalModelHolder.PlayerGlobalModel.GetProgressByLevel(levelIndex).isUnlocked;
+        var isLocked = !PlayerGlobalModelHolder.PlayerGlobalModel.GetProgressByLevel(levelIndex).IsUnlocked;
         _selection.GetComponent<LevelsScrollItemSelectionView>().SetLockedState(isLocked);
 
         dispatcher.Dispatch(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, levelIndex);

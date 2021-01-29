@@ -35,14 +35,14 @@ public class PlayerGlobalModel
         var lastPassedLevelIndex = -1;
         for (var i = 0; i < LevelsProgress.Length; i++)
         {
-            if (LevelsProgress[i].isPassed)
+            if (LevelsProgress[i].IsPassed)
             {
                 lastPassedLevelIndex = i;
             }
 
             if (lastPassedLevelIndex >= 0 && (i - lastPassedLevelIndex) <= 2)
             {
-                LevelsProgress[i].isUnlocked = true;
+                LevelsProgress[i].IsUnlocked = true;
             }
         }
     }
@@ -54,8 +54,8 @@ public class PlayerGlobalModel
 
     public void SetLevelPassed(int levelIndex, int starsAmount)
     {
-        LevelsProgress[levelIndex].isUnlocked = true;
-        LevelsProgress[levelIndex].isPassed = true;
+        LevelsProgress[levelIndex].IsUnlocked = true;
+        LevelsProgress[levelIndex].IsPassed = true;
         LevelsProgress[levelIndex].StarsAmount = starsAmount;
     }
 
@@ -73,8 +73,8 @@ public class PlayerGlobalModel
 [Serializable]
 public struct LevelProgressDataMin
 {
-    public bool isPassed;
-    public bool isUnlocked;
+    public bool IsPassed;
+    public bool IsUnlocked;
     public int StarsAmount;
 }
 
