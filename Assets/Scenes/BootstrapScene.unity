@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -277,9 +277,9 @@ MonoBehaviour:
   - Id: 10
     AudioClip: {fileID: 8300000, guid: faf1bf2d125e245038349bf3b1853c23, type: 3}
   - Id: 11
-    AudioClip: {fileID: 8300000, guid: 016d7640fb1224671aa3f784d5ac5675, type: 3}
+    AudioClip: {fileID: 8300000, guid: f4166e35c458c4ed6a816c181e54190c, type: 3}
   - Id: 12
-    AudioClip: {fileID: 8300000, guid: cf7bac9fdbc9b4203b2f5afc41bdb1c1, type: 3}
+    AudioClip: {fileID: 8300000, guid: 1b48b0b70efda4c0dae66931ea494914, type: 3}
   - Id: 13
     AudioClip: {fileID: 8300000, guid: c450b8ab31cc4468db5a1ff90754d831, type: 3}
   - Id: 14
