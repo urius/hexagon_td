@@ -24,4 +24,7 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject SelectLevelItemPrefab;
     public GameObject SelectLevelItemSelectionPrefab;
     public GameObject HowToPlayScreenPrefab;
+
+    //common
+    public GameObject ErrorPopupPrefab;
 }

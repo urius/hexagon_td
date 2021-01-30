@@ -13,97 +13,100 @@ MonoBehaviour:
   m_Name: PlayerGlobalModelHolder
   m_EditorClassIdentifier: 
   _playerGlobalModel:
+    Id: 5DE7BEC4-636D-5E15-A1FA-FDCEEC1DD65C
+    LoadsCount: 2
+    Gold: 0
     LevelsProgress:
     - IsPassed: 0
       IsUnlocked: 1
-      StarsAmount: 1
-    - IsPassed: 0
-      IsUnlocked: 1
       StarsAmount: 0
     - IsPassed: 0
       IsUnlocked: 1
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 1
+      IsUnlocked: 0
       StarsAmount: 0
-    AudioVolume: 0.7
-    MusicVolume: 0.7
-    SoundsVolume: 0.7
+    - IsPassed: 0
+      IsUnlocked: 0
+      StarsAmount: 0
+    AudioVolume: 0.6
+    MusicVolume: 0.5
+    SoundsVolume: 1

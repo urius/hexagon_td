@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
@@ -15,16 +16,16 @@ public class InitScript : MonoBehaviour
     [SerializeField] private LocalizationProvider _localizationProvider;
     [SerializeField] private Text _loadingText;
 
-    private void Start()
+    private async UniTaskVoid Start()
     {
-        _loadingText.text = _localizationProvider.Get(LocalizationGroupId.BootstrapScreen, "loading");
+        _loadingText.text = LocalizationProvider.Instance.Get(LocalizationGroupId.BootstrapScreen, "loading");
 
         _levelConfigProvider.SetCurrentLevelConfig(null);
 
         //AskPermissions();
-        LoadOrCreateData();
+        await LoadOrCreateData();
         SetupAudioManager();
-        LoadScene();
+        //LoadScene();
     }
 
     private void SetupAudioManager()
@@ -35,26 +36,28 @@ public class InitScript : MonoBehaviour
         AudioManager.Instance.SetSoundsVolume(playerModel.SoundsVolume);
     }
 
-    private void LoadOrCreateData()
+    private async UniTask LoadOrCreateData()
     {
         _loadingText.text = "load data";
 
-        Debug.Log("PlayerGlobalModel load started");
-        if (!PlayerGlobalModel.TryLoad(out var playerGlobalModel))
+        var id = SystemInfo.deviceUniqueIdentifier;
+        var result = await NetworkManager.GetUserDataAsync(id);
+
+        if (result.IsSuccess)
         {
-           // _loadingText.text = "create new model";
-            Debug.Log("_deafultPlayerGlobalModelProvider is null:" + (_deafultPlayerGlobalModelProvider == null));
-            playerGlobalModel = new PlayerGlobalModel(_deafultPlayerGlobalModelProvider.PlayerGlobalModel);
+            if (!result.Result.IsError)
+            {
+                var playerGlobalModel = result.Result.payload;
+                playerGlobalModel.AdjustLevelsAmount(_levelsCollectionProvider.Levels.Length);
+                _playerGlobalModelHolder.SetModel(playerGlobalModel);
+            } else
+            {
+                //TODO show popup with data error (contact with developer)
+            }
+        } else
+        {
+            //TODO show popup with server error (try again later)
         }
-
-        //_loadingText.text = "AdjustLevelsAmount";
-
-        Debug.Log("_levelsCollectionProvider is null:" + (_levelsCollectionProvider == null));
-        Debug.Log("_levelsCollectionProvider.Levels is null:" + (_levelsCollectionProvider.Levels == null));
-        playerGlobalModel.AdjustLevelsAmount(_levelsCollectionProvider.Levels.Length);
-
-        Debug.Log("_playerGlobalModelHolder is null:" + (_playerGlobalModelHolder == null));
-        _playerGlobalModelHolder.SetModel(playerGlobalModel);
     }
 
     private void AskPermissions()

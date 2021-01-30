@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Localization", menuName = "Configs/Localization")]
 public class LocalizationProvider : ScriptableObject
 {
+    public static LocalizationProvider Instance { get; private set; }
+
     [SerializeField]
     private LocalizationGroup[] _localizationGroups;
 
@@ -29,6 +31,11 @@ public class LocalizationProvider : ScriptableObject
         }
 
         return groupId + ":" + itemId;
+    }
+
+    private void OnEnable()
+    {
+        Instance = this;
     }
 
     private string ProcessSpecialSymbols(string original)

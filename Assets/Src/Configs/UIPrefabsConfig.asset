@@ -48,3 +48,5 @@ MonoBehaviour:
     type: 3}
   HowToPlayScreenPrefab: {fileID: 3563468057543684807, guid: 29af8ad3327b74bca8c89b7631316247,
     type: 3}
+  ErrorPopupPrefab: {fileID: 687499843564840909, guid: 4cf96bea5cd8f41228aeba83a6a3626f,
+    type: 3}

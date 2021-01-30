@@ -1,33 +1,22 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class PlayerGlobalModel
 {
-    private const string SavedFileName = "virus_defence_player_model";
-
+    public string Id;
+    public int LoadsCount;
+    public int Gold;
     public LevelProgressDataMin[] LevelsProgress;
     public float AudioVolume = 0.7f;
     public float MusicVolume = 0.7f;
     public float SoundsVolume = 0.7f;
-
-    public static bool TryLoad(out PlayerGlobalModel playerGlobalModel)
-    {
-        return SaveLoadHelper.TryLoadSerialized(SavedFileName, out playerGlobalModel);
-    }
 
     public PlayerGlobalModel(PlayerGlobalModel original)
     {
         LevelsProgress = original.LevelsProgress;
 
         UpdateUnlockState();
-    }
-
-    public void Save()
-    {
-        SaveLoadHelper.SaveSerialized(this, SavedFileName);
     }
 
     public void UpdateUnlockState()
