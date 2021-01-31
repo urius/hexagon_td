@@ -13,7 +13,6 @@ public class InitScript : MonoBehaviour
     [SerializeField] private PlayerGlobalModelHolder _playerGlobalModelHolder;
     [SerializeField] private LevelsCollectionProvider _levelsCollectionProvider;
     [SerializeField] private LevelConfigProvider _levelConfigProvider;
-    [SerializeField] private LocalizationProvider _localizationProvider;
     [SerializeField] private Text _loadingText;
     [SerializeField] private RectTransform _canvasTransform;
     [SerializeField] private UIPrefabsConfig _uiPrefabsConfig;
@@ -34,7 +33,16 @@ public class InitScript : MonoBehaviour
         {
             SetupAudioManager();
             LoadScene();
-        };
+        }
+        else
+        {
+            await UniTask.DelayFrame(10);
+
+            if (Application.isPlaying)
+            {
+                StartLoadSequence().Forget();
+            }        
+        }
     }
 
     private void SetupAudioManager()
@@ -61,19 +69,24 @@ public class InitScript : MonoBehaviour
                 _playerGlobalModelHolder.SetModel(playerGlobalModel);
 
                 return true;
-            } else
-            {
-                var errorPopupGo = Instantiate(_uiPrefabsConfig.ErrorPopupPrefab, _canvasTransform);
-                var errorPopup = errorPopupGo.GetComponent<ErrorPopup>();
-                errorPopup.SetTexts("Error", $"Retrieve data error\ncode: {result.Result.error.code}", "Try again");
-                //TODO show popup with data error (contact with developer)
-                await errorPopup.LifeTimeTask;
-
-                StartLoadSequence().Forget();
             }
-        } else
+            else
+            {
+                var trayAgainText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "try_again");
+                var errorDescription = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "retreive_data_error_description");
+                errorDescription = string.Format(errorDescription, result.Result.error.code);
+                var errorPopup = ErrorPopup.Show(_canvasTransform, errorDescription, trayAgainText);
+
+                await errorPopup.LifeTimeTask;
+            }
+        }
+        else
         {
-            //TODO show popup with server error (try again later)
+            var trayAgainText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "try_again");
+            var errorDescription = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "connection_error_description");
+            var errorPopup = ErrorPopup.Show(_canvasTransform, errorDescription, trayAgainText);
+
+            await errorPopup.LifeTimeTask;
         }
 
         return false;

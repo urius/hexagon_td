@@ -57,6 +57,7 @@ public enum LocalizationGroupId
     BootstrapScreen,
     SettingsPopup,
     TutorialScreen,
+    ErrorPopup,
 }
 
 [Serializable]

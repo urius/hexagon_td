@@ -180,3 +180,13 @@ MonoBehaviour:
       En: Next
     - LocalizationItemId: finish_button
       En: OK
+  - LocalizationGroupId: 11
+    LocalizationItems:
+    - LocalizationItemId: error
+      En: Error
+    - LocalizationItemId: try_again
+      En: Try again
+    - LocalizationItemId: retreive_data_error_description
+      En: Unable to retreive data^^error code:{0}
+    - LocalizationItemId: connection_error_description
+      En: Unable to connect to server^^Please, try again later

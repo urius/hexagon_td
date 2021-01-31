@@ -20,6 +20,17 @@ public class ErrorPopup : MonoBehaviour
     private TaskCompletionSource<bool> _lifeTimeTsc = new TaskCompletionSource<bool>();
     public Task LifeTimeTask => _lifeTimeTsc.Task;
 
+    public static ErrorPopup Show(RectTransform targetTransform, string message, string closeButtonText)
+    {
+        var prefab = Resources.Load<GameObject>(UIPrefabsConfig.ErrorPopupPrefabPath);
+        var errorPopupGo = Instantiate(prefab, targetTransform);
+        var errorPopup = errorPopupGo.GetComponent<ErrorPopup>();
+        var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
+        errorPopup.SetTexts(errorText, message, closeButtonText);
+
+        return errorPopup;
+    }
+
     public async void SetTexts(string title, string message, string buttonText)
     {
         await _startTsc.Task;

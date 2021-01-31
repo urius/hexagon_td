@@ -342,6 +342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25e591fb8fe649259f419a2522459c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _localizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
+    type: 2}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,13 +375,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerGlobalModelHolder: {fileID: 11400000, guid: 0b7d068b3556a4b15bd2341b3676fac9,
     type: 2}
-  _deafultPlayerGlobalModelProvider: {fileID: 11400000, guid: 53946e3232602437b98d2d299ac8e5ba,
-    type: 2}
   _levelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
     type: 2}
   _levelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
-    type: 2}
-  _localizationProvider: {fileID: 11400000, guid: e38649f855a44463a8f0e9b049b2211a,
     type: 2}
   _loadingText: {fileID: 113723794}
   _canvasTransform: {fileID: 1173789540}
