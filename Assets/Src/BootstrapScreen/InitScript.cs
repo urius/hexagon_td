@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Android;
@@ -15,6 +16,8 @@ public class InitScript : MonoBehaviour
     [SerializeField] private LevelConfigProvider _levelConfigProvider;
     [SerializeField] private LocalizationProvider _localizationProvider;
     [SerializeField] private Text _loadingText;
+    [SerializeField] private RectTransform _canvasTransform;
+    [SerializeField] private UIPrefabsConfig _uiPrefabsConfig;
 
     private async UniTaskVoid Start()
     {
@@ -22,10 +25,17 @@ public class InitScript : MonoBehaviour
 
         _levelConfigProvider.SetCurrentLevelConfig(null);
 
+        StartLoadSequence().Forget();
+    }
+
+    private async UniTaskVoid StartLoadSequence()
+    {
         //AskPermissions();
-        await LoadOrCreateData();
-        SetupAudioManager();
-        //LoadScene();
+        if (await LoadOrCreateData())
+        {
+            SetupAudioManager();
+            LoadScene();
+        };
     }
 
     private void SetupAudioManager()
@@ -36,7 +46,7 @@ public class InitScript : MonoBehaviour
         AudioManager.Instance.SetSoundsVolume(playerModel.SoundsVolume);
     }
 
-    private async UniTask LoadOrCreateData()
+    private async UniTask<bool> LoadOrCreateData()
     {
         _loadingText.text = "load data";
 
@@ -45,19 +55,29 @@ public class InitScript : MonoBehaviour
 
         if (result.IsSuccess)
         {
-            if (!result.Result.IsError)
+            if (!result.Result.IsError && false)
             {
                 var playerGlobalModel = result.Result.payload;
                 playerGlobalModel.AdjustLevelsAmount(_levelsCollectionProvider.Levels.Length);
                 _playerGlobalModelHolder.SetModel(playerGlobalModel);
+
+                return true;
             } else
             {
+                var errorPopupGo = Instantiate(_uiPrefabsConfig.ErrorPopupPrefab, _canvasTransform);
+                var errorPopup = errorPopupGo.GetComponent<ErrorPopup>();
+                errorPopup.SetTexts("Error", $"Retrieve data error\ncode: {result.Result.error.code}", "Try again");
                 //TODO show popup with data error (contact with developer)
+                await errorPopup.LifeTimeTask;
+
+                StartLoadSequence().Forget();
             }
         } else
         {
             //TODO show popup with server error (try again later)
         }
+
+        return false;
     }
 
     private void AskPermissions()

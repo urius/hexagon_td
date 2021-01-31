@@ -17,6 +17,8 @@ public class ErrorPopup : MonoBehaviour
     private Button _button;
 
     private TaskCompletionSource<bool> _startTsc = new TaskCompletionSource<bool>();
+    private TaskCompletionSource<bool> _lifeTimeTsc = new TaskCompletionSource<bool>();
+    public Task LifeTimeTask => _lifeTimeTsc.Task;
 
     public async void SetTexts(string title, string message, string buttonText)
     {
@@ -43,6 +45,8 @@ public class ErrorPopup : MonoBehaviour
 
     private void OnDestroy()
     {
+        _lifeTimeTsc.TrySetResult(true);
+
         _button.onClick.RemoveAllListeners();
     }
 }

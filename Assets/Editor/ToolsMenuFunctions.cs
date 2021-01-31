@@ -3,6 +3,12 @@ using UnityEditor;
 
 public class ToolsMenuFunctions
 {
+    [MenuItem("Tools/UnloadUnusedAssets")]
+    private static void UnloadUnusedAssets()
+    {
+        Resources.UnloadUnusedAssets();
+    }
+
     [MenuItem("Tools/Configs")]
     private static void ShowResourcesFolder()
     {
