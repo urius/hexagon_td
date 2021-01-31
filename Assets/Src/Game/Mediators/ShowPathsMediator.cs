@@ -15,7 +15,7 @@ public class ShowPathsMediator : EventMediator
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUIPrefabsConfig { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
 
     private readonly Vector3 _offset = Vector3.up;
@@ -29,7 +29,7 @@ public class ShowPathsMediator : EventMediator
     {
         base.OnRegister();
 
-        _pathLinePrefab = UIPrefabsConfig.PathLinePrefab;
+        _pathLinePrefab = GUIPrefabsConfig.PathLinePrefab;
         _lineMaterial = _pathLinePrefab.GetComponent<LineRenderer>().sharedMaterial;
 
         WaveModel.WaveStateChanged += OnWaveStateChanged;

@@ -8,7 +8,7 @@ public class UnitViewMediator : EventMediator
     [Inject] public UnitView unitView { get; set; }
     [Inject] public IUnitModelByViewProvider modelByView { get; set; }
     [Inject] public IUpdateProvider updateProvider { get; set; }
-    [Inject] public UIPrefabsConfig UiPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUiPrefabsConfig { get; set; }
     [Inject] public IViewManager ViewManager { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
 
@@ -28,7 +28,7 @@ public class UnitViewMediator : EventMediator
     {
         updateProvider.UpdateAction += OnUpdate;
 
-        _hpBar = Instantiate(UiPrefabsConfig.HpBarPrefab, unitView.transform).GetComponent<HpBar>();
+        _hpBar = Instantiate(GUiPrefabsConfig.HpBarPrefab, unitView.transform).GetComponent<HpBar>();
         _hpBar.gameObject.SetActive(false);
     }
 
@@ -101,7 +101,7 @@ public class UnitViewMediator : EventMediator
         {
             if (_unitModel.HP > 0)
             {
-                Instantiate(UiPrefabsConfig.ExplosionGoalPrefab, unitView.transform.position, unitView.transform.rotation);
+                Instantiate(GUiPrefabsConfig.ExplosionGoalPrefab, unitView.transform.position, unitView.transform.rotation);
                 AudioManager.Instance.Play(SoundId.UnitDestroyedOnBase);
             }
             else

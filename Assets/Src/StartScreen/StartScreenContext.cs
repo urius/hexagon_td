@@ -16,9 +16,9 @@ public class StartScreenContext : MVCSContext
 
         var mainMenuContextView = ((GameObject)contextView).GetComponent<StartScreenContextView>();
 
-        injectionBinder.Bind<DeafultPlayerGlobalModelProvider>().ToValue(mainMenuContextView.DeafultPlayerGlobalModelProvider);
+        new GlobalBindingsHelper(injectionBinder, mediationBinder).Bind(mainMenuContextView.GlobalObjectsHolder);
 
-        new GlobalBindingsHelper(injectionBinder, mediationBinder).Bind(mainMenuContextView.GlobalObjectsHolder); 
+        injectionBinder.Bind<UIPrefabsConfig>().ToValue(mainMenuContextView.UIPrefabsConfig).CrossContext();
 
         //mediators
         mediationBinder.Bind<HomeButtonView>().To<HomeButtonMediator>();

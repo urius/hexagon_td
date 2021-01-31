@@ -9,7 +9,7 @@ public class GameScreenPanelMediator : EventMediator
     [Inject] public ScreenPanelViewHolder ScreenPanelViewHolder { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public WorldMousePositionProvider WorldMousePositionProvider { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUIPrefabsConfig { get; set; }
 
     private Vector3 _screenMouseDownPos;
     private float _clickSensitivityPixelsSqr;
@@ -58,7 +58,7 @@ public class GameScreenPanelMediator : EventMediator
     private void OnEarnMoneyAnimationRequest(IEvent payload)
     {
         var data = payload.data as MediatorEventsParams.EarnMoneyAnimationParams;
-        var flyingTextGo = Instantiate(UIPrefabsConfig.FlyingTextPrefab, ScreenPanelView.transform);
+        var flyingTextGo = Instantiate(GUIPrefabsConfig.FlyingTextPrefab, ScreenPanelView.transform);
         var flyingText = flyingTextGo.GetComponent<FlyingTextView>();
 
         flyingText.SetText($"+{data.MoneyAmount}$");

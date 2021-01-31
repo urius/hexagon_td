@@ -262,8 +262,7 @@ MonoBehaviour:
       type: 2}
     LevelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
       type: 2}
-  DeafultPlayerGlobalModelProvider: {fileID: 11400000, guid: 53946e3232602437b98d2d299ac8e5ba,
-    type: 2}
+  UIPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
 --- !u!1 &839307715
 GameObject:
   m_ObjectHideFlags: 0

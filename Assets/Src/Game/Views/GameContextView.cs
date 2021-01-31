@@ -22,6 +22,7 @@ public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvi
     public CellConfigProvider CellConfigProvider;
     public UnitConfigsProvider UnitConfigsProvider;
     public TurretConfigProvider TurretConfigsProvider;
+    public GUIPrefabsConfig GUIPrefabsConfig;
     public GridView GridView;
 
     private bool _isInitialized = false;

@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class InitScript : MonoBehaviour
 {
     [SerializeField] private PlayerGlobalModelHolder _playerGlobalModelHolder;
-    [SerializeField] private DeafultPlayerGlobalModelProvider _deafultPlayerGlobalModelProvider;
     [SerializeField] private LevelsCollectionProvider _levelsCollectionProvider;
     [SerializeField] private LevelConfigProvider _levelConfigProvider;
     [SerializeField] private LocalizationProvider _localizationProvider;
@@ -55,7 +54,7 @@ public class InitScript : MonoBehaviour
 
         if (result.IsSuccess)
         {
-            if (!result.Result.IsError && false)
+            if (!result.Result.IsError)
             {
                 var playerGlobalModel = result.Result.payload;
                 playerGlobalModel.AdjustLevelsAmount(_levelsCollectionProvider.Levels.Length);

@@ -12,7 +12,7 @@ public class UiCanvasViewMediator : EventMediator
     [Inject] public UICanvasView UICanvasView { get; set; }
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUIPrefabsConfig { get; set; }
     [Inject] public LocalizationProvider Loc { get; set; }
 
     private CancellationTokenSource _infoPanelCts = new CancellationTokenSource();
@@ -62,13 +62,13 @@ public class UiCanvasViewMediator : EventMediator
                 AudioManager.Instance.Play(SoundId.LevelComplete);
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "all_waves_finished");
                 await ShowGeneralInfo(text, 800, showTimeMs: 1500);
-                ShowPopup(UIPrefabsConfig.WinPopupPrefab);
+                ShowPopup(GUIPrefabsConfig.WinPopupPrefab);
                 break;
             case WaveState.Terminated:
                 await AudioManager.Instance.FadeOutAndStopMusicAsync();
                 AudioManager.Instance.Play(SoundId.LevelLose);
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "defeat");
-                ShowPopup(UIPrefabsConfig.LosePopupPrefab);
+                ShowPopup(GUIPrefabsConfig.LosePopupPrefab);
                 var genInfoTask = ShowGeneralInfo(text, textColor: Color.red, showTimeMs: 1500);
                 break;
         }
@@ -85,7 +85,7 @@ public class UiCanvasViewMediator : EventMediator
         var stopToken = _infoPanelCts.Token;
 
         await DelayAsync(delayMs, stopToken);
-        var infoPanelGo = Instantiate(UIPrefabsConfig.GeneralInfoPanelPrefab, UICanvasView.transform);
+        var infoPanelGo = Instantiate(GUIPrefabsConfig.GeneralInfoPanelPrefab, UICanvasView.transform);
         var infoPanel = infoPanelGo.GetComponent<GeneralInfoPanelView>();
 
         if (textColor != null)
@@ -102,7 +102,7 @@ public class UiCanvasViewMediator : EventMediator
 
     private void OnSettingsClicked(IEvent payload)
     {
-        ShowPopup(UIPrefabsConfig.SettingsPopupPrefab);
+        ShowPopup(GUIPrefabsConfig.SettingsPopupPrefab);
     }
 
     private void ShowPopup(GameObject popupPrefab)

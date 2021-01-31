@@ -10,7 +10,7 @@ public class TurretActionsMediator
 
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
     [Inject] public IScreenPanelViewProvider ScreenPanelViewProvider { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUIPrefabsConfig { get; set; }
     [Inject] public LocalizationProvider Loc { get; set; }
     [Inject] public TurretConfigProvider TurretConfigProvider { get; set; }
 
@@ -28,7 +28,7 @@ public class TurretActionsMediator
         var camera = Camera.main;
 
         var screenPoint = camera.WorldToScreenPoint(CellPositionConverter.CellVec2ToWorld(turretModel.Position));
-        var go = GameObject.Instantiate(UIPrefabsConfig.TurretActionsPrefab, ScreenPanelViewProvider.ScreenPanelView.transform);
+        var go = GameObject.Instantiate(GUIPrefabsConfig.TurretActionsPrefab, ScreenPanelViewProvider.ScreenPanelView.transform);
         var rectTransform = go.GetComponent<RectTransform>();
         _view = go.GetComponent<TurretActionsView>();
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, screenPoint, camera, out var worldPoint))

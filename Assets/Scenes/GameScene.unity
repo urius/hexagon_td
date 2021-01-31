@@ -2231,6 +2231,7 @@ MonoBehaviour:
     type: 2}
   TurretConfigsProvider: {fileID: 11400000, guid: 2ab157ab7588940ddb1bf87b784d88be,
     type: 2}
+  GUIPrefabsConfig: {fileID: 11400000, guid: b9dc9f978972a45d39c0e396fc80f90b, type: 2}
   GridView: {fileID: 69795387}
 --- !u!4 &1920064364 stripped
 Transform:

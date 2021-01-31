@@ -7,7 +7,7 @@ using UnityEngine;
 public class StartScreenContextView : ContextView
 {
     public GlobalObjectsHolder GlobalObjectsHolder;
-    public DeafultPlayerGlobalModelProvider DeafultPlayerGlobalModelProvider;    
+    public UIPrefabsConfig UIPrefabsConfig;
 
     private void Awake()
     {

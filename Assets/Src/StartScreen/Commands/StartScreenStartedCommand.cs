@@ -6,8 +6,6 @@ using UnityEngine;
 public class StartScreenStartedCommand : EventCommand
 {
     [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
-    [Inject] public DeafultPlayerGlobalModelProvider DeafultPlayerGlobalModelProvider { get; set; }
-    [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
 
     public override async void Execute()
     {

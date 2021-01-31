@@ -9,6 +9,12 @@ public class ToolsMenuFunctions
         Resources.UnloadUnusedAssets();
     }
 
+    [MenuItem("Tools/UnloadUnusedAssetsImmediate")]
+    private static void UnloadUnusedAssetsImmediate()
+    {
+        EditorUtility.UnloadUnusedAssetsImmediate();
+    }
+
     [MenuItem("Tools/Configs")]
     private static void ShowResourcesFolder()
     {

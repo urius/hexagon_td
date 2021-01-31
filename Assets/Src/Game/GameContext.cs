@@ -37,6 +37,7 @@ public class GameContext : MVCSContext
         injectionBinder.Bind<CellConfigProvider>().ToValue(gameContextView.CellConfigProvider);
         injectionBinder.Bind<UnitConfigsProvider>().ToValue(gameContextView.UnitConfigsProvider);
         injectionBinder.Bind<TurretConfigProvider>().ToValue(gameContextView.TurretConfigsProvider);
+        injectionBinder.Bind<GUIPrefabsConfig>().ToValue(gameContextView.GUIPrefabsConfig);
 
         injectionBinder
             .Bind<IUnitModelByViewProvider>()

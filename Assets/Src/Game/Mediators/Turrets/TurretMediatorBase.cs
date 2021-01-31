@@ -13,7 +13,7 @@ public abstract class TurretMediatorBase
     [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
     [Inject] public TurretConfigProvider TurretsConfigProvider { get; set; }
     [Inject] public ICellPositionConverter CellPositionConverter { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUIPrefabsConfig { get; set; }
 
     protected Vector3 SelfPosition;
     protected double AttackRadiusSqr;
@@ -73,7 +73,7 @@ public abstract class TurretMediatorBase
         Activate();
         RefreshAttackRadius();
 
-        GameObject.Instantiate(UIPrefabsConfig.UpgradePSPrefab, TurretViewGo.transform.position, Quaternion.identity);
+        GameObject.Instantiate(GUIPrefabsConfig.UpgradePSPrefab, TurretViewGo.transform.position, Quaternion.identity);
     }
 
     protected virtual void RefreshAttackRadius()
@@ -89,12 +89,12 @@ public abstract class TurretMediatorBase
         DestroyTurretSelectedGUIView();
         if (TurretModel == turetModel)
         {
-            var turretRadiusGo = GameObject.Instantiate(UIPrefabsConfig.TurretRadiusPrefab);
+            var turretRadiusGo = GameObject.Instantiate(GUIPrefabsConfig.TurretRadiusPrefab);
             _turretRadius = turretRadiusGo.GetComponent<TurretRadiusView>();
             _turretRadius.transform.position = SelfPosition;
             _turretRadius.SetSize(2 * (float)Math.Sqrt(AttackRadiusSqr));
 
-            _turretSelection = GameObject.Instantiate(UIPrefabsConfig.TurretSelectionPrefab);
+            _turretSelection = GameObject.Instantiate(GUIPrefabsConfig.TurretSelectionPrefab);
             _turretSelection.transform.position = SelfPosition;
         }
     }

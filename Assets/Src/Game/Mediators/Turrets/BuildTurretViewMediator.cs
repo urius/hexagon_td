@@ -10,7 +10,7 @@ public class BuildTurretViewMediator : EventMediator
     [Inject] public WorldMousePositionProvider WorldMousePositionProvider { get; set; }
     [Inject] public ICellSizeProvider CellSizeProvider { get; set; }
     [Inject] public FlyingTurretConfigProvider FlyingTurretConfigProvider { get; set; }
-    [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public GUIPrefabsConfig GUIPrefabsConfig { get; set; }
 
     private Vector3Int _lastCellCoords;
     private TurretRadiusView _turretRadius;
@@ -39,7 +39,7 @@ public class BuildTurretViewMediator : EventMediator
 
     private void CreateRadiusView()
     {
-        var turretRadiusGo = GameObject.Instantiate(UIPrefabsConfig.TurretRadiusPrefab, BuildTurretView.transform);
+        var turretRadiusGo = GameObject.Instantiate(GUIPrefabsConfig.TurretRadiusPrefab, BuildTurretView.transform);
         _turretRadius = turretRadiusGo.GetComponent<TurretRadiusView>();
         _turretRadius.SetSize(2 * FlyingTurretConfigProvider.TurretConfig.AttackRadiusCells * CellSizeProvider.CellSize.x);
 

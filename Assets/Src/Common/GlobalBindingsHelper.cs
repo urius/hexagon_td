@@ -20,7 +20,6 @@ public class GlobalBindingsHelper
     {
         injectionBinder.Bind<LevelsCollectionProvider>().ToValue(globalObjectsHolder.LevelsCollectionProvider).CrossContext();
         injectionBinder.Bind<LocalizationProvider>().ToValue(globalObjectsHolder.LocalizationProvider).CrossContext();
-        injectionBinder.Bind<UIPrefabsConfig>().ToValue(globalObjectsHolder.UIPrefabsConfig).CrossContext();
         injectionBinder.Bind<PlayerGlobalModelHolder>().ToValue(globalObjectsHolder.PlayerGlobalModelHolder).CrossContext();
         injectionBinder.Bind<LevelConfigProvider>().ToValue(globalObjectsHolder.LevelConfigProvider).CrossContext();
 
@@ -34,7 +33,6 @@ public class GlobalObjectsHolder
 {
     [SerializeField] public LocalizationProvider LocalizationProvider;
     [SerializeField] public LevelsCollectionProvider LevelsCollectionProvider;
-    [SerializeField] public UIPrefabsConfig UIPrefabsConfig;
     [SerializeField] public PlayerGlobalModelHolder PlayerGlobalModelHolder;
     [SerializeField] public LevelConfigProvider LevelConfigProvider;
 }
