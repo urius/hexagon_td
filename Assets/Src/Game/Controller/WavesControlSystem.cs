@@ -29,7 +29,7 @@ public class WavesControlSystem : EventSystemBase
         }
     }
 
-    private void OnSecondPassed(IEvent payload)
+    private async void OnSecondPassed(IEvent payload)
     {
         if (WaveModel.WaveState == WaveState.InWave)
         {

@@ -6,6 +6,7 @@ public class ProcessUpdatesSystem : EventSystemBase
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
     [Inject] public UnitConfigsProvider UnitConfigsProvider { get; set; }
+    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
 
     private int _framesCount = 0;
@@ -21,11 +22,13 @@ public class ProcessUpdatesSystem : EventSystemBase
         UpdateProvider.UpdateAction += OnUpdate;
     }
 
-    private void OnLevelFinished()
+    private async void OnLevelFinished()
     {
         LevelModel.SetTimeScale(1);
 
         UpdateProvider.UpdateAction -= OnUpdate;
+
+        await NetworkManager.SaveUserDataAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
     }
 
     private void OnUpdate()

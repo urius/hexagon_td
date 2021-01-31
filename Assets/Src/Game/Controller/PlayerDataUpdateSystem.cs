@@ -14,6 +14,7 @@ public class PlayerDataUpdateSystem : EventSystemBase
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED, OnAudioValueChanged);
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnSettingsClicked);
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_SHOW_ANIMATION_ENDED, OnSettingsPopupShown);
+        dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_MAIN_MENU_CLICKED, OnSettingsPopupMainMenuClicked);
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_CLOSE_CLICKED, OnSettingsPopupCloseClicked);
 
         LevelModel.GameSpeedChanged += OnGameSpeedChanged;
@@ -24,9 +25,16 @@ public class PlayerDataUpdateSystem : EventSystemBase
         LevelModel.SetPauseMode(true);
     }
 
-    private void OnSettingsPopupCloseClicked(IEvent payload)
+    private async void OnSettingsPopupCloseClicked(IEvent payload)
     {
         LevelModel.SetPauseMode(false);
+
+        await NetworkManager.SaveUserAudioSettingsAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
+    }
+
+    private async void OnSettingsPopupMainMenuClicked(IEvent payload)
+    {
+        await NetworkManager.SaveUserAudioSettingsAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
     }
 
     private void OnSettingsClicked(IEvent payload)
