@@ -34,3 +34,4 @@ MonoBehaviour:
     type: 3}
   LosePopupPrefab: {fileID: 2760322887035075438, guid: a47471a3e9d1544749707817e805af07,
     type: 3}
+  SettingsPopupPrefabPath: Assets/Resources/Prefabs/UI/SettingsPopup.prefab

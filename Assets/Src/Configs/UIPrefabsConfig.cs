@@ -13,10 +13,12 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject SelectLevelItemContainerPrefab;
     public GameObject SelectLevelItemPrefab;
     public GameObject SelectLevelItemSelectionPrefab;
-    public GameObject HowToPlayScreenPrefab => LoadPrefab($"{PrefabsUiFolder}/HowToPlayScreen");
+    [AssetPath.Attribute(typeof(GameObject))]
+    public string HowToPlayScreenPrefabPath;
+    public GameObject HowToPlayScreenPrefab => LoadPrefab(HowToPlayScreenPrefabPath);
 
     public GameObject LoadPrefab(string path)
     {
-        return Resources.Load<GameObject>(path);
+        return AssetPath.Load<GameObject>(path);
     }
 }

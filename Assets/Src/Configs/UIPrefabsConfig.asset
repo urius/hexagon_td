@@ -12,30 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe4b72c24c1449e4ae1291ab46c3f5e, type: 3}
   m_Name: UIPrefabsConfig
   m_EditorClassIdentifier: 
-  TurretActionsPrefab: {fileID: 8090922877214974050, guid: 190db560754104f8680539aa591f2629,
-    type: 3}
-  TurretRadiusPrefab: {fileID: 3189221853718104474, guid: 8fda4cf5372ff423eb9d0f59180d5723,
-    type: 3}
-  TurretSelectionPrefab: {fileID: 2497826691097653791, guid: d98c876deb0ad4745b6474ee9918457f,
-    type: 3}
-  UpgradePSPrefab: {fileID: 122493116638437580, guid: d7681dc86563e4087bf4769f03d75e6c,
-    type: 3}
-  PathLinePrefab: {fileID: 6421234071440195023, guid: ac84d033a926645baa38849fc82b7629,
-    type: 3}
-  FlyingTextPrefab: {fileID: 1308853209302066814, guid: af407b20651ca4f52930d9402edb2b5f,
-    type: 3}
-  ExplosionGoalPrefab: {fileID: 1590011503536073636, guid: 9117aaa36c5a34eaba9c73d2ff4d8ade,
-    type: 3}
-  HpBarPrefab: {fileID: 7571221945825122137, guid: 5860a8b8bad8f4c308c71333ddd36624,
-    type: 3}
-  GeneralInfoPanelPrefab: {fileID: 3154937408131652060, guid: 1c2ce52ebf426447b8e18a2fd6b681cd,
-    type: 3}
-  WinPopupPrefab: {fileID: 628941601317464405, guid: 5d15194f080344349b0ba922f149a8aa,
-    type: 3}
-  LosePopupPrefab: {fileID: 2760322887035075438, guid: a47471a3e9d1544749707817e805af07,
-    type: 3}
-  SettingsPopupPrefab: {fileID: 4570600153470943476, guid: 7ac48e5de477d418dba69cf6528adc69,
-    type: 3}
   MainMenuScreenPrefab: {fileID: 4836629071844955889, guid: bb492b21cf7c84c5ab44a0579da87c1e,
     type: 3}
   SelectLevelScreenPrefab: {fileID: 330097929463179937, guid: b41a22824efdf4bd5b6ccd8e963b53f1,
@@ -46,3 +22,4 @@ MonoBehaviour:
     type: 3}
   SelectLevelItemSelectionPrefab: {fileID: 3366146521097664114, guid: 55fe9359652d041c2bafc319d1ea6a28,
     type: 3}
+  HowToPlayScreenPrefabPath: Assets/Resources/Prefabs/UI/Start screen/HowToPlayScreen.prefab
