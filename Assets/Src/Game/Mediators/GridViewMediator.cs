@@ -103,6 +103,9 @@ public class GridViewMediator : EventMediator
         var turretConfig = turretsConfigProvider.GetConfig(_flyingTurretType, 0);
         FlyingTurretConfigProvider.SetConfig(turretConfig);
         _flyingTurret = Instantiate(turretConfig.BuildModePrefab, rootTransformProvider.transform);
+        var pos = _flyingTurret.transform.position;
+        pos.y = -5;
+        _flyingTurret.transform.position = pos;
     }
 
     private void OnBuildTurretMouseUp(IEvent payload)
