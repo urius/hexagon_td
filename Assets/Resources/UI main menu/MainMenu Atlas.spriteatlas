@@ -31,15 +31,18 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 0c3df0b14d8b441bc8d8adeeadc42c64, type: 3}
-    totalSpriteSurfaceArea: 1629097
+    totalSpriteSurfaceArea: 1700891
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 19519c4050e9349549c77829c7b993f8, type: 3}
   - {fileID: 21300000, guid: 0eb7909000d384b7dbf83356fd36a091, type: 3}
   - {fileID: 21300000, guid: 91d770e0d3d0f493a880dfddc7574603, type: 3}
+  - {fileID: 21300000, guid: fecadf6157aef45b08b41fe31896bf50, type: 3}
+  - {fileID: 21300000, guid: ecd503d1fd1204ed1b01d6471ad7a0fe, type: 3}
   - {fileID: 21300000, guid: 63a0d072412db8249a03bc103d231ee9, type: 3}
   - {fileID: 21300000, guid: 11dcb8939096b4a82a610b2c81e11f3b, type: 3}
+  - {fileID: 21300000, guid: ddd04494ff5c5ea44b4ac21cdab87e60, type: 3}
   - {fileID: 21300000, guid: 67ad03d42392547f3984cadb964f4093, type: 3}
   - {fileID: 21300000, guid: e3741c458b61945189a974fdb0279a07, type: 3}
   - {fileID: 21300000, guid: 081a7085fdbce4079a5c04177ddaaf74, type: 3}
@@ -65,8 +68,11 @@ SpriteAtlas:
   - Icon_Next4
   - Btn_button03_n
   - Btn_button04_Yellow
+  - DNA_icon
+  - small title02_bg
   - Btn_sci-fi button03_n
   - Btn_button02_h
+  - ICON_Plus
   - bg_map
   - game_view_2
   - finger_no_click

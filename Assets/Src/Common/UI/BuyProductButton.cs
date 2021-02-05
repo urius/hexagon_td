@@ -23,7 +23,7 @@ public class BuyProductButton : MonoBehaviour
 
     private async void OnBuyClick()
     {
-        var result = await IAPManager.Instance.BuyProductAsync(_productId);
+        var result = await new BuyGoldCommand().Execute(_productId);
         if (result)
         {
             gameObject.SetActive(false);

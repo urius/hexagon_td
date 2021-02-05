@@ -4,6 +4,8 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerGlobalModel
 {
+    public event Action GoldAmountUpdated;
+
     public string Id;
     public int LoadsCount;
     public int Gold;
@@ -56,6 +58,17 @@ public class PlayerGlobalModel
             list.AddRange(new LevelProgressDataMin[levelsAmount - LevelsProgress.Length]);
             LevelsProgress = list.ToArray();
         }
+    }
+
+    public void AddGold(int goldAmount)
+    {
+        Gold += goldAmount;
+        if (Gold < 0)
+        {
+            Gold = 0;
+        }
+
+        GoldAmountUpdated?.Invoke();
     }
 }
 
