@@ -30,8 +30,6 @@ MonoBehaviour:
     type: 3}
   GeneralInfoPanelPrefab: {fileID: 3154937408131652060, guid: 1c2ce52ebf426447b8e18a2fd6b681cd,
     type: 3}
-  WinPopupPrefab: {fileID: 628941601317464405, guid: 5d15194f080344349b0ba922f149a8aa,
-    type: 3}
-  LosePopupPrefab: {fileID: 2760322887035075438, guid: a47471a3e9d1544749707817e805af07,
-    type: 3}
+  WinPopupPrefabPath: Assets/Resources/Prefabs/UI/WinPopup.prefab
+  LosePopupPrefabPath: Assets/Resources/Prefabs/UI/LosePopup.prefab
   SettingsPopupPrefabPath: Assets/Resources/Prefabs/UI/SettingsPopup.prefab

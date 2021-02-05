@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerGlobalModel:
     Id: 5DE7BEC4-636D-5E15-A1FA-FDCEEC1DD65C
-    LoadsCount: 2
+    LoadsCount: 3
     Gold: 0
     LevelsProgress:
     - IsPassed: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
       IsUnlocked: 0
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 0
+      IsUnlocked: 1
       StarsAmount: 0
     - IsPassed: 0
       IsUnlocked: 0
@@ -107,6 +107,6 @@ MonoBehaviour:
     - IsPassed: 0
       IsUnlocked: 0
       StarsAmount: 0
-    AudioVolume: 0.6
-    MusicVolume: 0.5
-    SoundsVolume: 1
+    AudioVolume: 0.1825571
+    MusicVolume: 0.39352667
+    SoundsVolume: 0.15497395
