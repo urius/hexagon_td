@@ -12,6 +12,9 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public event Action<Product> ProcessPurchaseTriggered = delegate { };
     public event Action<Product, PurchaseFailureReason> PurchaseFailed = delegate { };
 
+    private readonly TaskCompletionSource<bool> _isInitializedTsc = new TaskCompletionSource<bool>();
+    public Task<bool> InitializedTask => _isInitializedTsc.Task;
+
     public const string Gold100 = "gold_100";
     public const string Gold500 = "gold_500";
 
@@ -78,11 +81,15 @@ public class IAPManager : MonoBehaviour, IStoreListener
         m_StoreController = controller;
         // Store specific subsystem, for accessing device-specific store features.
         m_StoreExtensionProvider = extensions;
+
+        _isInitializedTsc.TrySetResult(true);
     }
 
     public void OnInitializeFailed(InitializationFailureReason error)
     {
         Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+
+        _isInitializedTsc.TrySetResult(false);
     }
 
     public void OnPurchaseFailed(Product p, PurchaseFailureReason r)

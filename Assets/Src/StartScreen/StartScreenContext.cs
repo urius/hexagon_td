@@ -27,6 +27,7 @@ public class StartScreenContext : MVCSContext
         mediationBinder.Bind<SelectLevelScreenView>().To<SelectLevelScreenViewMediator>();
         mediationBinder.Bind<LevelsScrollView>().To<LevelsScrollViewMediator>();
         mediationBinder.Bind<HowToPlayScreenView>().To<HowToPlayScreenMediator>();
+        mediationBinder.Bind<GoldWidgetView>().To<GoldWidgetMediator>();
 
         //commands
         commandBinder.Bind(ContextEvent.START).To<StartScreenStartedCommand>().Once();

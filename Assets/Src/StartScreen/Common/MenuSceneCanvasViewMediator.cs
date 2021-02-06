@@ -19,8 +19,13 @@ public class MenuSceneCanvasViewMediator : EventMediator
         base.OnRegister();
 
         dispatcher.AddListener(MediatorEvents.UI_HOME_CLICKED, OnHomeClicked);
+        dispatcher.AddListener(MediatorEvents.UI_GOLD_CLICKED, OnGoldClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
+    }
+
+    private void OnGoldClicked(IEvent payload)
+    {
     }
 
     private void Start()
