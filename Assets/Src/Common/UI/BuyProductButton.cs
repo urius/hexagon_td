@@ -6,14 +6,24 @@ using UnityEngine.UI;
 
 public class BuyProductButton : MonoBehaviour
 {
-    [SerializeField]
-    private string _productId;
-    [SerializeField]
-    private Button _button;
+    public event Action<string> Clicked = delegate { };
 
-    void Start()
+    [SerializeField] private Button _button;
+    [SerializeField] private Text _goldAmount;
+    [SerializeField] private Text _price;
+
+    private string _productId;
+
+    public void Start()
     {
         _button.onClick.AddListener(OnBuyClick);
+    }
+
+    public void Setup(string productId, int goldAmount, string priceText)
+    {
+        _productId = productId;
+        _goldAmount.text = goldAmount.ToSpaceSeparatedAmount();
+        _price.text = priceText;
     }
 
     private void OnDestroy()
@@ -21,12 +31,8 @@ public class BuyProductButton : MonoBehaviour
         _button.onClick.RemoveListener(OnBuyClick);
     }
 
-    private async void OnBuyClick()
+    private void OnBuyClick()
     {
-        var result = await new BuyGoldCommand().Execute(_productId);
-        if (result)
-        {
-            gameObject.SetActive(false);
-        }
+        Clicked(_productId);
     }
 }

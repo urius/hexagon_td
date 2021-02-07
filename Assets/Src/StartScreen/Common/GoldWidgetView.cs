@@ -16,7 +16,7 @@ public class GoldWidgetView : View
 
     public void SetAmount(int amount)
     {
-        _amountText.text = amount.ToString("# ### ##0");
+        _amountText.text = amount.ToSpaceSeparatedAmount();
     }
 
     public void ToShowState()
