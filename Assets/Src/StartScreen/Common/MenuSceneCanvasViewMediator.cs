@@ -26,6 +26,14 @@ public class MenuSceneCanvasViewMediator : EventMediator
 
     private void OnGoldClicked(IEvent payload)
     {
+        var goldStoreWindowGO = Instantiate(CommonUIPrefabsConfig.Instance.GoldStoreWindowPrefab, MenuSceneCanvasView.RootTransform);
+        var goldStoewWindow = goldStoreWindowGO.GetComponent<GoldStoreWindow>();
+        goldStoewWindow.CloseClicked += OnCloseClicked;
+        void OnCloseClicked()
+        {
+            goldStoewWindow.CloseClicked -= OnCloseClicked;
+            Destroy(goldStoreWindowGO);
+        }
     }
 
     private void Start()

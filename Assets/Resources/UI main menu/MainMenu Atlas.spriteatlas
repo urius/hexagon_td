@@ -31,7 +31,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 0c3df0b14d8b441bc8d8adeeadc42c64, type: 3}
-    totalSpriteSurfaceArea: 1705071
+    totalSpriteSurfaceArea: 1708815
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -47,6 +47,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e3741c458b61945189a974fdb0279a07, type: 3}
   - {fileID: 21300000, guid: 081a7085fdbce4079a5c04177ddaaf74, type: 3}
   - {fileID: 21300000, guid: 153f61976acc7d446a197dec5b0413fa, type: 3}
+  - {fileID: 21300000, guid: b8c1b8389bc8e4968b2c17249d6a821f, type: 3}
   - {fileID: 21300000, guid: 954280c8d94f0482285a961c02078d30, type: 3}
   - {fileID: 21300000, guid: e343ac29e001649bc8dc818229f842f5, type: 3}
   - {fileID: 21300000, guid: 4ed0a77920b5848ed98ae1582280ad87, type: 3}
@@ -78,6 +79,7 @@ SpriteAtlas:
   - game_view_2
   - finger_no_click
   - Btn_sci-fi button02_h
+  - close_pressed
   - Btn_Next_n
   - Icon3-2
   - Icon_Home

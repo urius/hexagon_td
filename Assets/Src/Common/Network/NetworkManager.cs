@@ -27,6 +27,12 @@ public class NetworkManager
         return requestResult;
     }
 
+    public async static Task<WebRequestResult<NetworkDefaultResponse<GetProductsResponse>>> GetStoreProductsAsync()
+    {
+        var requestResult = await WebRequestsSender.GetAsync<NetworkDefaultResponse<GetProductsResponse>>($"{DataProviderUrl}?command=get_products");
+        return requestResult;
+    }
+
     public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserDataAsync(PlayerGlobalModel model)
     {
         var id = model.Id;
@@ -82,6 +88,12 @@ public struct WebRequestError
 {
     public int code;
     public string message;
+}
+
+[Serializable]
+public struct GetProductsResponse
+{
+    public string[] products;
 }
 
 [Serializable]

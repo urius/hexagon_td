@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.Purchasing.Extension;
 
 public class IAPManager : MonoBehaviour, IStoreListener
 {
@@ -15,8 +16,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
     private readonly TaskCompletionSource<bool> _isInitializedTsc = new TaskCompletionSource<bool>();
     public Task<bool> InitializedTask => _isInitializedTsc.Task;
 
-    public const string Gold100 = "gold_100";
-    public const string Gold500 = "gold_500";
+    public readonly List<string> Products = new List<string>();
 
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider;
@@ -34,13 +34,33 @@ public class IAPManager : MonoBehaviour, IStoreListener
         }
     }
 
-    public void InitializePurchasing()
+    public Product GetProductData(string productId)
+    {
+        return m_StoreController.products.WithID(productId);
+    }
+
+    public async void InitializePurchasing()
     {
         if (IsInitialized) return;
 
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-        builder.AddProduct(Gold100, ProductType.Consumable);
-        builder.AddProduct(Gold500, ProductType.Consumable);
+
+        var storeProductsResponse = await NetworkManager.GetStoreProductsAsync();
+        if (storeProductsResponse.IsSuccess && !storeProductsResponse.Result.IsError)
+        {
+            var products = storeProductsResponse.Result.payload.products;
+            Products.AddRange(products);
+        }
+        else
+        {
+            Products.AddRange(new[] { "gold_1000", "gold_5000", "gold_60000" });
+        }
+
+        var length = Math.Min(Products.Count, 3);
+        for (var i = 0; i < length; i++)
+        {
+            builder.AddProduct(Products[i], ProductType.Consumable);
+        }
 
         UnityPurchasing.Initialize(this, builder);
     }
