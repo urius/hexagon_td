@@ -42,7 +42,7 @@ public class GoldWidgetMediator : EventMediator
 
     private void OnGoldAmountUpdated()
     {
-        WidgetView.SetAmount(_playerModel.Gold);
+        WidgetView.SetAmountAnimated(_playerModel.Gold);
     }
 
     private void OnButtonClicked()

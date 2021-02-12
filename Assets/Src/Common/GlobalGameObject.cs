@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalGameObject : MonoBehaviour
 {
     [SerializeField] private LocalizationProvider _localizationProvider;
+    [SerializeField] private CommonUIPrefabsConfig _commonUIPrefabsConfig;
 
     private void Awake()
     {

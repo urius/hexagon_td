@@ -65,21 +65,33 @@ public class IAPManager : MonoBehaviour, IStoreListener
         UnityPurchasing.Initialize(this, builder);
     }
 
-    public async Task<bool> BuyProductAsync(string productId)
+    public async Task<PurchaseResult> BuyProductAsync(string productId)
     {
-        var purchaseTsc = new TaskCompletionSource<bool>();
+        var purchaseTsc = new TaskCompletionSource<PurchaseResult>();
         void OnPurchaseFailed(Product p, PurchaseFailureReason r)
         {
             if (p.definition.id == productId)
             {
-                purchaseTsc.TrySetResult(false);
+                var purchaseResult = new PurchaseResult()
+                {
+                    IsSuccess = false,
+                    FailureReason = r,
+                    ProductData = p,
+                };
+                purchaseTsc.TrySetResult(purchaseResult);
             }
         }
         void OnPurchaseSuccess(Product p)
         {
             if (p.definition.id == productId)
             {
-                purchaseTsc.TrySetResult(true);
+                var purchaseResult = new PurchaseResult()
+                {
+                    IsSuccess = true,
+                    ProductData = p,
+                    FailureReason = PurchaseFailureReason.Unknown,
+                };
+                purchaseTsc.TrySetResult(purchaseResult);
             }
         }
         PurchaseFailed += OnPurchaseFailed;
@@ -153,4 +165,13 @@ public class IAPManager : MonoBehaviour, IStoreListener
             Debug.Log("BuyProductID FAIL. Not initialized.");
         }
     }
+}
+
+public struct PurchaseResult
+{
+    public bool IsSuccess;
+    public Product ProductData;
+    public PurchaseFailureReason FailureReason;
+
+    public string Receipt => ProductData != null ? ProductData.receipt : "null ProductData receipt";
 }
