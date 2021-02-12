@@ -55,7 +55,7 @@ public class LevelModel
         ModifierBigMoneyAmount = _levelConfig.ModifierBigMoneyAmount;
         WaveCompletionReward = _levelConfig.WaveCompletedReward;
 
-        GoalCount = _levelConfig.DefaulGoalCapacity;
+        ResetGoalCapacity();
     }
 
     public int TimeScale { get; private set; } = 1;
@@ -260,6 +260,13 @@ public class LevelModel
         WaveModel.Reset();
     }
 
+    public void ResetCurrentWave()
+    {
+        ResetGoalCapacity();
+
+        WaveModel.ResetCurrentWave();
+    }
+
     public void FinishLevel(bool isWin)
     {
         IsWon = isWin;
@@ -268,6 +275,11 @@ public class LevelModel
         SetPauseMode(true);
 
         LevelFinished();
+    }
+
+    private void ResetGoalCapacity()
+    {
+        GoalCount = _levelConfig.DefaulGoalCapacity;
     }
 }
 
@@ -340,6 +352,14 @@ public class WaveModel
     public void EndWave()
     {
         WaveState = (WaveIndex < TotalWavesCount - 1) ? WaveState.BetweenWaves : WaveState.AfterLastWave;
+        WaveStateChanged();
+    }
+
+    internal void ResetCurrentWave()
+    {
+        UnitIndex = 0;
+        WaveState = WaveState.BetweenWaves;
+
         WaveStateChanged();
     }
 
