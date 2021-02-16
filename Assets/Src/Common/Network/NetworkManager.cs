@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class NetworkManager
 {
@@ -51,6 +49,15 @@ public class NetworkManager
         return requestResult;
     }
 
+    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserGoldAsync(PlayerGlobalModel model)
+    {
+        var id = model.Id;
+        var saveData = ConvertToSavePlayerGoldRequest(model);
+        var saveDataStr = JsonUtility.ToJson(saveData);
+        var requestResult = await WebRequestsSender.PostAsync<NetworkDefaultResponse<SaveDataResponsePayload>>($"{DataProviderUrl}?command=set_gold&id={id}", saveDataStr);
+        return requestResult;
+    }
+
     private static SavePlayerDataRequest ConvertToSavePlayerDataRequest(PlayerGlobalModel model)
     {
         return new SavePlayerDataRequest()
@@ -70,6 +77,16 @@ public class NetworkManager
             AudioVolume = model.AudioVolume,
             MusicVolume = model.MusicVolume,
             SoundsVolume = model.SoundsVolume,
+        };
+    }
+
+    private static SavePlayerGoldRequest ConvertToSavePlayerGoldRequest(PlayerGlobalModel model)
+    {
+        return new SavePlayerGoldRequest()
+        {
+            Gold = model.Gold,
+            GoldStr = Base64Helper.Base64Encode(model.Gold.ToString()),
+            Hash = MD5Helper.MD5Hash(model.Gold.ToString()),
         };
     }
 }
@@ -118,4 +135,12 @@ public struct SavePlayerAudioSettingsRequest
     public float AudioVolume;
     public float MusicVolume;
     public float SoundsVolume;
+}
+
+[Serializable]
+public struct SavePlayerGoldRequest
+{
+    public int Gold;
+    public string GoldStr;
+    public string Hash;
 }

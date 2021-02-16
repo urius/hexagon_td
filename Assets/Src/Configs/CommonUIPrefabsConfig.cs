@@ -8,6 +8,7 @@ public class CommonUIPrefabsConfig : ScriptableObject
     public static CommonUIPrefabsConfig Instance { get; private set; }
 
     public GameObject GoldStoreWindowPrefab;
+    public GameObject DNAIconPrefab;
 
     private void OnEnable()
     {

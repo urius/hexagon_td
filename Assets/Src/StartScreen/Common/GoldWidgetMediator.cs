@@ -1,4 +1,9 @@
-﻿using strange.extensions.mediation.impl;
+﻿using System;
+using System.Threading.Tasks;
+using DigitalRuby.Tween;
+using strange.extensions.mediation.impl;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class GoldWidgetMediator : EventMediator
 {
@@ -40,9 +45,48 @@ public class GoldWidgetMediator : EventMediator
         base.OnRemove();
     }
 
-    private void OnGoldAmountUpdated()
+    private async void OnGoldAmountUpdated(int amount)
     {
-        WidgetView.SetAmountAnimated(_playerModel.Gold);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, new Vector2(Screen.width, Screen.height), Camera.main,
+            out var screenLocalDim);
+
+        if (amount > 0)
+        {
+            var particlesNum = 10;
+            if (amount > 1000) particlesNum = 20;
+            if (amount > 10000) particlesNum = 50;
+            for (var i = 0; i < particlesNum; i++)
+            {
+                AnimateGoldItem(UnityEngine.Random.insideUnitCircle * screenLocalDim.x, UnityEngine.Random.Range(0.5f, 1f));
+            }
+
+            await Task.Delay(500);
+
+            WidgetView.SetAmountAnimated(_playerModel.Gold);
+        }
+        else
+        {
+            WidgetView.SetAmountAnimated(_playerModel.Gold);
+        }
+    }
+
+    private void AnimateGoldItem(Vector2 startPos, float duration)
+    {
+        var widgetRect = WidgetView.RectTransform;
+        var targetRect = WidgetView.FlyTargerRectTransform;
+
+        var DNAIconGO = Instantiate(CommonUIPrefabsConfig.Instance.DNAIconPrefab, transform.parent);
+        var DNAIconRect = DNAIconGO.GetComponent<RectTransform>();
+        var DNAIconImg = DNAIconGO.GetComponent<Image>();
+
+        DNAIconRect.localPosition = startPos;
+
+        var targetLocalPos = widgetRect.parent.InverseTransformPoint(targetRect.parent.TransformPoint(targetRect.localPosition));
+        TweenFactory.Tween(DNAIconImg, DNAIconImg.color.a, 0.4f, duration, TweenScaleFunctions.CubicEaseIn,
+            t => DNAIconImg.color = new Color(DNAIconImg.color.r, DNAIconImg.color.g, DNAIconImg.color.b, t.CurrentValue));
+
+        TweenFactory.Tween(DNAIconGO, DNAIconRect.localPosition, targetLocalPos, duration, TweenScaleFunctions.CubicEaseIn,
+            t => DNAIconRect.localPosition = t.CurrentValue, t => Destroy(DNAIconGO));
     }
 
     private void OnButtonClicked()

@@ -7,6 +7,7 @@ using System;
 public class PlayerGlobalModelHolderEditor : Editor
 {
     private string _id;
+    private string _gold;
 
     private void OnEnable()
     {
@@ -20,6 +21,7 @@ public class PlayerGlobalModelHolderEditor : Editor
         GUILayout.Label("\n\n---\nEditor tools:");
 
         _id = EditorGUILayout.TextField("ID:", _id);
+        _gold = EditorGUILayout.TextField("Gold:", _gold);
         if (GUILayout.Button("Load"))
         {
             var modelHolder = (PlayerGlobalModelHolder)serializedObject.targetObject;
@@ -37,12 +39,19 @@ public class PlayerGlobalModelHolderEditor : Editor
             var modelHolder = ((PlayerGlobalModelHolder)serializedObject.targetObject);
             SaveAudio(modelHolder.PlayerGlobalModel);
         }
+
+        if (GUILayout.Button("Save gold"))
+        {
+            var modelHolder = ((PlayerGlobalModelHolder)serializedObject.targetObject);
+            SaveGold(modelHolder.PlayerGlobalModel);
+        }
     }
 
     private async void Load(PlayerGlobalModelHolder modelHolder)
     {
         var result = await NetworkManager.GetUserDataAsync(_id);
         modelHolder.SetModel(result.Result.payload);
+        _gold = modelHolder.PlayerGlobalModel.Gold.ToString();
     }
 
     private async void Save(PlayerGlobalModel playerGlobalModel)
@@ -55,5 +64,15 @@ public class PlayerGlobalModelHolderEditor : Editor
     {
         var result = await NetworkManager.SaveUserAudioSettingsAsync(playerGlobalModel);
         Debug.Log("Save audio result: " + result);
+    }
+
+    private async void SaveGold(PlayerGlobalModel playerGlobalModel)
+    {
+        if (_gold != string.Empty && int.TryParse(_gold, out var intGold))
+        {
+            playerGlobalModel.Gold = intGold;
+        }
+        var result = await NetworkManager.SaveUserGoldAsync(playerGlobalModel);
+        Debug.Log("Save Gold result: " + result);
     }
 }

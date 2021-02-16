@@ -10,6 +10,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
     [Inject] public MenuSceneCanvasView MenuSceneCanvasView { get; set; }
     [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
+    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
 
     private GameObject _currentActiveScreenPrefab;
     private GameObject _currentActiveScreenGo;
@@ -27,13 +28,6 @@ public class MenuSceneCanvasViewMediator : EventMediator
     private void OnGoldClicked(IEvent payload)
     {
         var goldStoreWindowGO = Instantiate(CommonUIPrefabsConfig.Instance.GoldStoreWindowPrefab, MenuSceneCanvasView.RootTransform);
-        var goldStoewWindow = goldStoreWindowGO.GetComponent<GoldStoreWindow>();
-        goldStoewWindow.CloseClicked += OnCloseClicked;
-        void OnCloseClicked()
-        {
-            goldStoewWindow.CloseClicked -= OnCloseClicked;
-            Destroy(goldStoreWindowGO);
-        }
     }
 
     private void Start()

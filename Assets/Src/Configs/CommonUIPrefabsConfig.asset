@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoldStoreWindowPrefab: {fileID: 2485008941821386576, guid: 17819438fc04645f29226a45733eea62,
     type: 3}
+  DNAIconPrefab: {fileID: 679825138655417403, guid: a93d7ae3142c24163b47cae868459d32,
+    type: 3}

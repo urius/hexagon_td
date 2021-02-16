@@ -1,23 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
 
 [Serializable]
 public class PlayerGlobalModel
 {
-    public event Action GoldAmountUpdated;
-
+    public event Action<int> GoldAmountUpdated;
+    
     public string Id;
     public int LoadsCount;
-    public int Gold;
     public LevelProgressDataMin[] LevelsProgress;
     public float AudioVolume = 0.7f;
     public float MusicVolume = 0.7f;
     public float SoundsVolume = 0.7f;
+    public int Gold
+    {
+        get
+        {
+            return int.Parse(Base64Helper.Base64Decode(GoldStr));
+        }
+
+        set
+        {
+            GoldStr = Base64Helper.Base64Encode(value.ToString());
+        }
+    }
+    [SerializeField]
+    private string GoldStr;
 
     public PlayerGlobalModel(PlayerGlobalModel original)
     {
         LevelsProgress = original.LevelsProgress;
-
         UpdateUnlockState();
     }
 
@@ -48,6 +62,8 @@ public class PlayerGlobalModel
         LevelsProgress[levelIndex].IsUnlocked = true;
         LevelsProgress[levelIndex].IsPassed = true;
         LevelsProgress[levelIndex].StarsAmount = starsAmount;
+
+        UpdateUnlockState();
     }
 
     public void AdjustLevelsAmount(int levelsAmount)
@@ -62,13 +78,14 @@ public class PlayerGlobalModel
 
     public void AddGold(int goldAmount)
     {
+        var goldBefore = Gold;
         Gold += goldAmount;
         if (Gold < 0)
         {
             Gold = 0;
         }
 
-        GoldAmountUpdated?.Invoke();
+        GoldAmountUpdated?.Invoke(goldAmount);
     }
 }
 

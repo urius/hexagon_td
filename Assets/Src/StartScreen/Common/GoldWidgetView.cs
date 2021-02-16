@@ -14,6 +14,10 @@ public class GoldWidgetView : View
     [SerializeField] private Button _button;
     [SerializeField] private Text _amountText;
     [SerializeField] private Animator _animator;
+    [SerializeField] private RectTransform _rectTransform;
+    public RectTransform RectTransform => _rectTransform;
+    [SerializeField] private RectTransform _flyTargerRectTransform;
+    public RectTransform FlyTargerRectTransform => _flyTargerRectTransform;
 
     private int _currentAmount;
 

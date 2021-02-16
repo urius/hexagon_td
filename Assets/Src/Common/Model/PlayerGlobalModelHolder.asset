@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerGlobalModel:
     Id: 5DE7BEC4-636D-5E15-A1FA-FDCEEC1DD65C
-    LoadsCount: 2
-    Gold: 1000
+    LoadsCount: 6
     LevelsProgress:
     - IsPassed: 0
       IsUnlocked: 1
@@ -23,90 +22,7 @@ MonoBehaviour:
     - IsPassed: 0
       IsUnlocked: 1
       StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
     AudioVolume: 0.5
     MusicVolume: 0.5
     SoundsVolume: 1
+    GoldStr: MTUwMA==

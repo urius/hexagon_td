@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GoldStoreWindow : MonoBehaviour
 {
-    public event Action CloseClicked = delegate { };
-
     [SerializeField] private Button _closeButton;
 
     [SerializeField] private Text _titleText;
@@ -24,6 +19,8 @@ public class GoldStoreWindow : MonoBehaviour
 
     private void Awake()
     {
+        _closeButton.onClick.AddListener(Close);
+
         var iapManager = IAPManager.Instance;
         var buttons = _buttons;
         for (var i = 0; i < _buttons.Length; i++)
@@ -31,7 +28,7 @@ public class GoldStoreWindow : MonoBehaviour
             var productId = iapManager.Products[i];
             var goldAmount = int.Parse(productId.Split('_')[1]);
             var product = iapManager.GetProductData(productId);
-            buttons[i].Setup(productId, goldAmount, product.metadata.localizedPriceString);
+            buttons[i].Setup(productId, goldAmount, product.metadata.localizedPriceString, product.metadata.localizedTitle);
 
             buttons[i].Clicked += OnBuyProductClicked;
         }
@@ -40,25 +37,24 @@ public class GoldStoreWindow : MonoBehaviour
     private async void OnBuyProductClicked(string productId)
     {
         _waitOverlay.ToWaitMode();
-        var isBuySuccess = await new BuyGoldCommand().Execute(productId);
-        if (isBuySuccess)
+        var buyGoldResult = await new BuyGoldCommand().Execute(productId);
+        if (buyGoldResult.IsSuccess)
         {
-            CloseClicked();
+            Close();
         }
         else
         {
             _waitOverlay.ToDefaultMode();
+            var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
+            var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
+            ErrorPopup.Show(transform.parent as RectTransform, errorText + ": " + buyGoldResult.Error, closeText);
         }
-    }
-
-    private void OnEnable()
-    {
-        _closeButton.onClick.AddListener(OnCloseClicked);
     }
 
     private void OnDestroy()
     {
-        _closeButton.onClick.RemoveListener(OnCloseClicked);
+        _closeButton.onClick.RemoveListener(Close);
+
         var buttons = _buttons;
         for (var i = 0; i < buttons.Length; i++)
         {
@@ -66,8 +62,8 @@ public class GoldStoreWindow : MonoBehaviour
         }
     }
 
-    private void OnCloseClicked()
+    private void Close()
     {
-        CloseClicked();
+        Destroy(gameObject);
     }
 }

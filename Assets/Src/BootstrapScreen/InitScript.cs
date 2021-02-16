@@ -17,7 +17,7 @@ public class InitScript : MonoBehaviour
     [SerializeField] private RectTransform _canvasTransform;
     [SerializeField] private UIPrefabsConfig _uiPrefabsConfig;
 
-    private async UniTaskVoid Start()
+    private void Start()
     {
         _loadingText.text = LocalizationProvider.Instance.Get(LocalizationGroupId.BootstrapScreen, "loading");
 
