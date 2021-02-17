@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 
 public class WebRequestsSender
 {
+    private int[] _retryMsArray = new int[] { 0, 500, 1000, 5000 };
+
     public async UniTask<WebRequestResult<T>> GetAsync<T>(string url)
     {
         var resultStr = await GetAsync(url);
@@ -15,7 +17,7 @@ public class WebRequestsSender
 
     public UniTask<WebRequestResult<string>> GetAsync(string url)
     {
-        return SendRequestAsync(UnityWebRequest.Get(url));
+        return SendRequestAsync(() => UnityWebRequest.Get(url));
     }
 
     public async UniTask<WebRequestResult<T>> PostAsync<T>(string url, string postData)
@@ -26,30 +28,45 @@ public class WebRequestsSender
 
     public UniTask<WebRequestResult<string>> PostAsync(string url, string postData)
     {
-        WWWForm form = new WWWForm();
-        form.AddField("data", postData);
-        var request = UnityWebRequest.Post(url, form);
+        UnityWebRequest factory()
+        {
+            WWWForm form = new WWWForm();
+            form.AddField("data", postData);
+            return UnityWebRequest.Post(url, form);
+        }
 
-        return SendRequestAsync(request);
+        return SendRequestAsync(factory);
     }
 
-    private async UniTask<WebRequestResult<string>> SendRequestAsync(UnityWebRequest unityWebRequest)
+    private async UniTask<WebRequestResult<string>> SendRequestAsync(Func<UnityWebRequest> unityWebRequestFactory)
     {
-        using (unityWebRequest)
+        var retryPrefix = string.Empty;
+        for (var i = 0; i < _retryMsArray.Length; i++)
         {
-            try
+            var unityWebRequest = unityWebRequestFactory();
+            using (unityWebRequest)
             {
-                var result = await unityWebRequest.SendWebRequest();
-
-                Debug.Log($"[ Request ] -> {unityWebRequest.url}\n[ Response ] -> {result.downloadHandler.text}");
-                if (result.error == null)
+                if (_retryMsArray[i] > 0)
                 {
-                    return new WebRequestResult<string>(result.downloadHandler.text);
+                    await UniTask.Delay(_retryMsArray[i]);
+                    retryPrefix = $"[ Retry #{i} ]";
                 }
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
+
+                try
+                {
+                    Debug.Log($"{retryPrefix}[ Request ] -> {unityWebRequest.url}\n");
+                    var result = await unityWebRequest.SendWebRequest();
+
+                    Debug.Log($"[ Response ] -> {result.downloadHandler.text} (url: {unityWebRequest.url})\n");
+                    if (result.error == null)
+                    {
+                        return new WebRequestResult<string>(result.downloadHandler.text);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
             }
         }
 
