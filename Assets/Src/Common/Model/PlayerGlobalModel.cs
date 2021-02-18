@@ -141,6 +141,9 @@ public class PlayerGlobalModel
             if (levelsProgressItems[index].IsDefaultState)
             {
                 resultCount = index;
+            } else
+            {
+                break;
             }
         }
 
