@@ -29,12 +29,12 @@ public class PlayerDataUpdateSystem : EventSystemBase
     {
         LevelModel.SetPauseMode(false);
 
-        await NetworkManager.SaveUserAudioSettingsAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
+        await new SaveSettingsCommand().ExecuteAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
     }
 
     private async void OnSettingsPopupMainMenuClicked(IEvent payload)
     {
-        await NetworkManager.SaveUserAudioSettingsAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
+        await new SaveSettingsCommand().ExecuteAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
     }
 
     private void OnSettingsClicked(IEvent payload)

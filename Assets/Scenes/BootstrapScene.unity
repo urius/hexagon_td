@@ -359,6 +359,8 @@ MonoBehaviour:
     type: 2}
   _commonUIPrefabsConfig: {fileID: 11400000, guid: 0d3db70908ee1409d9c72b155446bac7,
     type: 2}
+  _levelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
+    type: 2}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0

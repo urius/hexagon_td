@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class InitScript : MonoBehaviour
 {
     [SerializeField] private PlayerGlobalModelHolder _playerGlobalModelHolder;
-    [SerializeField] private LevelsCollectionProvider _levelsCollectionProvider;
     [SerializeField] private LevelConfigProvider _levelConfigProvider;
     [SerializeField] private Text _loadingText;
     [SerializeField] private RectTransform _canvasTransform;

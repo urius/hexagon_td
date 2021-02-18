@@ -19,9 +19,9 @@ public class NetworkManager
         }
     }
 
-    public async static Task<WebRequestResult<NetworkDefaultResponse<PlayerGlobalModel>>> GetUserDataAsync(string id)
+    public async static Task<WebRequestResult<NetworkDefaultResponse<GetUserDataResponse>>> GetUserDataAsync(string id)
     {
-        var requestResult = await WebRequestsSender.GetAsync<NetworkDefaultResponse<PlayerGlobalModel>>($"{DataProviderUrl}?command=get&id={id}");
+        var requestResult = await WebRequestsSender.GetAsync<NetworkDefaultResponse<GetUserDataResponse>>($"{DataProviderUrl}?command=get&id={id}");
         return requestResult;
     }
 
@@ -31,61 +31,36 @@ public class NetworkManager
         return requestResult;
     }
 
-    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserDataAsync(PlayerGlobalModel model)
+    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveAsync<TData>(string id, TData saveData)
+        where TData : struct
     {
-        var id = model.Id;
-        var saveData = ConvertToSavePlayerDataRequest(model);
         var saveDataStr = JsonUtility.ToJson(saveData);
         var requestResult = await WebRequestsSender.PostAsync<NetworkDefaultResponse<SaveDataResponsePayload>>($"{DataProviderUrl}?command=set&id={id}", saveDataStr);
         return requestResult;
     }
 
-    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserAudioSettingsAsync(PlayerGlobalModel model)
+    public static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserDataAsync(string id, SavePlayerDataRequest saveData)
     {
-        var id = model.Id;
-        var saveData = ConvertToSavePlayerAudioSettingsRequest(model);
-        var saveDataStr = JsonUtility.ToJson(saveData);
-        var requestResult = await WebRequestsSender.PostAsync<NetworkDefaultResponse<SaveDataResponsePayload>>($"{DataProviderUrl}?command=set&id={id}", saveDataStr);
-        return requestResult;
+        return SaveAsync(id, saveData);
     }
 
-    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserGoldAsync(string id, int goldAmount)
+    public static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserAudioSettingsAsync(string id, SavePlayerSettingsRequest saveData)
+    {
+        return SaveAsync(id, saveData);
+    }
+
+    public static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserGoldAsync(string id, int goldAmount)
     {
         var saveData = ConvertToSavePlayerGoldRequest(goldAmount);
-        var saveDataStr = JsonUtility.ToJson(saveData);
-        var requestResult = await WebRequestsSender.PostAsync<NetworkDefaultResponse<SaveDataResponsePayload>>($"{DataProviderUrl}?command=set_gold&id={id}", saveDataStr);
-        return requestResult;
-    }
-
-    private static SavePlayerDataRequest ConvertToSavePlayerDataRequest(PlayerGlobalModel model)
-    {
-        return new SavePlayerDataRequest()
-        {
-            LoadsCount = model.LoadsCount,
-            LevelsProgress = model.LevelsProgress,
-            AudioVolume = model.AudioVolume,
-            MusicVolume = model.MusicVolume,
-            SoundsVolume = model.SoundsVolume,
-        };
-    }
-
-    private static SavePlayerAudioSettingsRequest ConvertToSavePlayerAudioSettingsRequest(PlayerGlobalModel model)
-    {
-        return new SavePlayerAudioSettingsRequest()
-        {
-            AudioVolume = model.AudioVolume,
-            MusicVolume = model.MusicVolume,
-            SoundsVolume = model.SoundsVolume,
-        };
+        return SaveAsync(id, saveData);
     }
 
     private static SavePlayerGoldRequest ConvertToSavePlayerGoldRequest(int goldAmount)
     {
         return new SavePlayerGoldRequest()
         {
-            Gold = goldAmount,
-            GoldStr = Base64Helper.Base64Encode(goldAmount.ToString()),
-            Hash = MD5Helper.MD5Hash(goldAmount.ToString()),
+            gold = goldAmount,
+            gold_str = Base64Helper.Base64Encode(goldAmount.ToString()),
         };
     }
 }
@@ -113,6 +88,32 @@ public struct GetProductsResponse
 }
 
 [Serializable]
+public struct PlayerAudioSettingsDto
+{
+    public float audio;
+    public float music;
+    public float sounds;
+}
+
+[Serializable]
+public struct GetUserDataResponse
+{
+    public string id;
+    public int loads;
+    public LevelProgressDto[] levels_progress;
+    public PlayerAudioSettingsDto settings;
+    public string gold_str;
+}
+
+[Serializable]
+public struct LevelProgressDto
+{
+    public bool is_passed;
+    public bool is_unlocked;
+    public int stars_amount;
+}
+
+[Serializable]
 public struct SaveDataResponsePayload
 {
     public bool result;
@@ -121,25 +122,21 @@ public struct SaveDataResponsePayload
 [Serializable]
 public struct SavePlayerDataRequest
 {
-    public int LoadsCount;
-    public LevelProgressDataMin[] LevelsProgress;
-    public float AudioVolume;
-    public float MusicVolume;
-    public float SoundsVolume;
+    public int loads;
+    public LevelProgressDto[] levels_progress;
+    public PlayerAudioSettingsDto settings;
+    public string gold_str;
 }
 
 [Serializable]
-public struct SavePlayerAudioSettingsRequest
+public struct SavePlayerSettingsRequest
 {
-    public float AudioVolume;
-    public float MusicVolume;
-    public float SoundsVolume;
+    public PlayerAudioSettingsDto settings;
 }
 
 [Serializable]
 public struct SavePlayerGoldRequest
 {
-    public int Gold;
-    public string GoldStr;
-    public string Hash;
+    public int gold;
+    public string gold_str;
 }

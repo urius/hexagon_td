@@ -50,19 +50,23 @@ public class PlayerGlobalModelHolderEditor : Editor
     private async void Load(PlayerGlobalModelHolder modelHolder)
     {
         var result = await NetworkManager.GetUserDataAsync(_id);
-        modelHolder.SetModel(result.Result.payload);
+        modelHolder.SetModel(new PlayerGlobalModel(result.Result.payload));
         _gold = modelHolder.PlayerGlobalModel.Gold.ToString();
     }
 
     private async void Save(PlayerGlobalModel playerGlobalModel)
     {
-        var result = await NetworkManager.SaveUserDataAsync(playerGlobalModel);
+        if (_gold != string.Empty && int.TryParse(_gold, out var intGold))
+        {
+            playerGlobalModel.Gold = intGold;
+        }
+        var result = await NetworkManager.SaveUserDataAsync(_id, playerGlobalModel.ToSaveDto());
         Debug.Log("Save result: " + result);
     }
 
     private async void SaveAudio(PlayerGlobalModel playerGlobalModel)
     {
-        var result = await NetworkManager.SaveUserAudioSettingsAsync(playerGlobalModel);
+        var result = await NetworkManager.SaveUserAudioSettingsAsync(playerGlobalModel.Id, playerGlobalModel.ToSaveSettingsDto());
         Debug.Log("Save audio result: " + result);
     }
 
@@ -72,7 +76,7 @@ public class PlayerGlobalModelHolderEditor : Editor
         {
             playerGlobalModel.Gold = intGold;
         }
-        var result = await NetworkManager.SaveUserGoldAsync(playerGlobalModel.Id, playerGlobalModel.Gold);
+        var result = await NetworkManager.SaveUserGoldAsync(_id, playerGlobalModel.Gold);
         Debug.Log("Save Gold result: " + result);
     }
 }

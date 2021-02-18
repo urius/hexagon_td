@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public struct BuyGoldCommand
 {
-    public async Task<BuyGoldResult> ExecuteAsync(string productId)
+    public async UniTask<bool> ExecuteAsync(string productId, RectTransform errorPopupDisplayTransform)
     {
         var buyResult = await IAPManager.Instance.BuyProductAsync(productId);
         if (buyResult.IsSuccess)
@@ -11,28 +11,26 @@ public struct BuyGoldCommand
             var addedAmount = int.Parse(productId.Split('_')[1]);
 
             var saveResult = await NetworkManager.SaveUserGoldAsync(PlayerGlobalModelHolder.Model.Id, PlayerGlobalModelHolder.Model.Gold + addedAmount);
-            if(!saveResult.IsSuccess)
+            if (saveResult.IsSuccess)
             {
                 PlayerGlobalModelHolder.Model.AddGold(addedAmount);
-                return new BuyGoldResult
-                {
-                    IsSuccess = false,
-                    Error = "Save data error",
-                };
+                return true;
             }
-        } else
-        {
-            return new BuyGoldResult
+            else
             {
-                IsSuccess = false,
-                Error = buyResult.FailureReason.ToString(),
-            };
+                var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
+                var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
+                ErrorPopup.Show(errorPopupDisplayTransform, errorText + ": Save data error", closeText);
+            }
+        }
+        else
+        {
+            var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
+            var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
+            ErrorPopup.Show(errorPopupDisplayTransform, errorText + $": {buyResult.FailureReason}", closeText);
         }
 
-        return new BuyGoldResult
-        {
-            IsSuccess = true,
-        };
+        return false;
     }
 }
 

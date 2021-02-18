@@ -8,12 +8,11 @@ public struct LoadDataCommand
     public async UniTask<bool> ExecuteAsync(string id, RectTransform displayErrorRectTransform)
     {
         var result = await NetworkManager.GetUserDataAsync(id);
-
         if (result.IsSuccess)
         {
             if (!result.Result.IsError)
             {
-                var playerGlobalModel = result.Result.payload;
+                var playerGlobalModel = new PlayerGlobalModel(result.Result.payload);
                 var levelsCollectionProvider = LevelsCollectionProvider.Instance;
                 playerGlobalModel.AdjustLevelsAmount(levelsCollectionProvider.Levels.Length);
                 PlayerGlobalModelHolder.Instance.SetModel(playerGlobalModel);

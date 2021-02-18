@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelConfigProvider", menuName = "Configs/LevelConfigProvider")]
 public class LevelConfigProvider : ScriptableObject
 {
+    //TODO LevelConfigProvider -> CurrentLevelConfigProvider
+    // -> PlayerSessionData ?
+
     [SerializeField]
     private LevelConfig _levelConfig;
     public LevelConfig LevelConfig => _levelConfig;

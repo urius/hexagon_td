@@ -28,7 +28,7 @@ public class ProcessUpdatesSystem : EventSystemBase
 
         UpdateProvider.UpdateAction -= OnUpdate;
 
-        await NetworkManager.SaveUserDataAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
+        await new SaveUserDataCommand().ExecuteAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
     }
 
     private void OnUpdate()

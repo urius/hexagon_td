@@ -190,3 +190,6 @@ MonoBehaviour:
       En: Close
     - LocalizationItemId: retreive_data_error_description
       En: Unable to retreive data^^error code:{0}
+    - LocalizationItemId: connection_error_description
+      En: Failed to connect to server.^^ Please check your intennet connection and
+        try again

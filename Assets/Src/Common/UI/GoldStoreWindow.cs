@@ -37,17 +37,14 @@ public class GoldStoreWindow : MonoBehaviour
     private async void OnBuyProductClicked(string productId)
     {
         _waitOverlay.ToWaitMode();
-        var buyGoldResult = await new BuyGoldCommand().ExecuteAsync(productId);
-        if (buyGoldResult.IsSuccess)
+        var buyGoldResult = await new BuyGoldCommand().ExecuteAsync(productId, transform.parent as RectTransform);
+        if (buyGoldResult)
         {
             Close();
         }
         else
         {
             _waitOverlay.ToDefaultMode();
-            var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
-            var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
-            ErrorPopup.Show(transform.parent as RectTransform, errorText + ": " + buyGoldResult.Error, closeText);
         }
     }
 
