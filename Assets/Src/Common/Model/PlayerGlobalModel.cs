@@ -134,9 +134,18 @@ public class PlayerGlobalModel
 
     private LevelProgressDto[] ToLevelsProgressDto(IReadOnlyList<LevelProgressDataMin> levelsProgressItems)
     {
-        var result = new LevelProgressDto[levelsProgressItems.Count];
-
+        var resultCount = levelsProgressItems.Count;
         for (var i = 0; i < levelsProgressItems.Count; i++)
+        {
+            var index = levelsProgressItems.Count - 1 - i;
+            if (levelsProgressItems[index].IsDefaultState)
+            {
+                resultCount = index;
+            }
+        }
+
+        var result = new LevelProgressDto[resultCount];
+        for (var i = 0; i < resultCount; i++)
         {
             var item = levelsProgressItems[i];
             result[i] = new LevelProgressDto()
@@ -167,5 +176,7 @@ public struct LevelProgressDataMin
     public bool IsPassed;
     public bool IsUnlocked;
     public int StarsAmount;
+
+    public bool IsDefaultState => IsPassed == false && IsUnlocked == false && StarsAmount == 0;
 }
 
