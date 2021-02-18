@@ -106,7 +106,7 @@ MonoBehaviour:
     - IsPassed: 0
       IsUnlocked: 0
       StarsAmount: 0
-    AudioVolume: 0.5
+    AudioVolume: 0.6
     MusicVolume: 0.5
-    SoundsVolume: 0.46794194
-    GoldStr: MTAwMA==
+    SoundsVolume: 0.5
+    GoldStr: MzMwMA==

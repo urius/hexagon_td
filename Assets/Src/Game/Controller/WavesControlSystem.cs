@@ -29,7 +29,7 @@ public class WavesControlSystem : EventSystemBase
         }
     }
 
-    private async void OnSecondPassed(IEvent payload)
+    private void OnSecondPassed(IEvent payload)
     {
         if (WaveModel.WaveState == WaveState.InWave)
         {
@@ -41,9 +41,9 @@ public class WavesControlSystem : EventSystemBase
                 AudioManager.Instance.SetInWaveMusicMode(false);
                 if (WaveModel.WaveState == WaveState.AfterLastWave)
                 {
-                    LevelModel.FinishLevel(true);
-
                     UpdatePlayerData();
+
+                    LevelModel.FinishLevel(true);
                 } else
                 {
                     LevelModel.TryAddMoney(LevelModel.WaveCompletionReward);

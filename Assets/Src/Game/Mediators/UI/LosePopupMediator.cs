@@ -11,23 +11,35 @@ public class LosePopupMediator : EventMediator
         LosePopup.SetTitle(Loc.Get(LocalizationGroupId.LosePopup, "title"));
         LosePopup.SetInfo(Loc.Get(LocalizationGroupId.LosePopup, "info"));
 
+        Activate();
+    }
+
+    private void Activate()
+    {
         LosePopup.MainMenuButtonClicked += OnMainClicked;
         LosePopup.RestartButtonClicked += OnRestartClicked;
     }
 
-    private void OnDestroy()
+    private void Deactivate()
     {
         LosePopup.MainMenuButtonClicked -= OnMainClicked;
         LosePopup.RestartButtonClicked -= OnRestartClicked;
     }
 
+    private void OnDestroy()
+    {
+        Deactivate();
+    }
+
     private void OnMainClicked()
     {
+        Deactivate();
         dispatcher.Dispatch(MediatorEvents.UI_LOSE_POPUP_MAIN_MENU_CLICKED);
     }
 
     private void OnRestartClicked()
     {
+        Deactivate();
         dispatcher.Dispatch(MediatorEvents.UI_LOSE_POPUP_RESTART_LEVEL_CLICKED);
     }
 }
