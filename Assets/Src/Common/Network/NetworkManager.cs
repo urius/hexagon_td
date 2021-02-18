@@ -49,10 +49,9 @@ public class NetworkManager
         return requestResult;
     }
 
-    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserGoldAsync(PlayerGlobalModel model)
+    public async static Task<WebRequestResult<NetworkDefaultResponse<SaveDataResponsePayload>>> SaveUserGoldAsync(string id, int goldAmount)
     {
-        var id = model.Id;
-        var saveData = ConvertToSavePlayerGoldRequest(model);
+        var saveData = ConvertToSavePlayerGoldRequest(goldAmount);
         var saveDataStr = JsonUtility.ToJson(saveData);
         var requestResult = await WebRequestsSender.PostAsync<NetworkDefaultResponse<SaveDataResponsePayload>>($"{DataProviderUrl}?command=set_gold&id={id}", saveDataStr);
         return requestResult;
@@ -80,13 +79,13 @@ public class NetworkManager
         };
     }
 
-    private static SavePlayerGoldRequest ConvertToSavePlayerGoldRequest(PlayerGlobalModel model)
+    private static SavePlayerGoldRequest ConvertToSavePlayerGoldRequest(int goldAmount)
     {
         return new SavePlayerGoldRequest()
         {
-            Gold = model.Gold,
-            GoldStr = Base64Helper.Base64Encode(model.Gold.ToString()),
-            Hash = MD5Helper.MD5Hash(model.Gold.ToString()),
+            Gold = goldAmount,
+            GoldStr = Base64Helper.Base64Encode(goldAmount.ToString()),
+            Hash = MD5Helper.MD5Hash(goldAmount.ToString()),
         };
     }
 }

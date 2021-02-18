@@ -3,17 +3,17 @@ using UnityEngine;
 
 public struct BuyGoldCommand
 {
-    public async Task<BuyGoldResult> Execute(string productId)
+    public async Task<BuyGoldResult> ExecuteAsync(string productId)
     {
         var buyResult = await IAPManager.Instance.BuyProductAsync(productId);
         if (buyResult.IsSuccess)
         {
             var addedAmount = int.Parse(productId.Split('_')[1]);
-            PlayerGlobalModelHolder.Model.AddGold(addedAmount);
 
-            var saveResult = await NetworkManager.SaveUserGoldAsync(PlayerGlobalModelHolder.Model);
+            var saveResult = await NetworkManager.SaveUserGoldAsync(PlayerGlobalModelHolder.Model.Id, PlayerGlobalModelHolder.Model.Gold + addedAmount);
             if(!saveResult.IsSuccess)
             {
+                PlayerGlobalModelHolder.Model.AddGold(addedAmount);
                 return new BuyGoldResult
                 {
                     IsSuccess = false,

@@ -72,7 +72,7 @@ public class PlayerGlobalModelHolderEditor : Editor
         {
             playerGlobalModel.Gold = intGold;
         }
-        var result = await NetworkManager.SaveUserGoldAsync(playerGlobalModel);
+        var result = await NetworkManager.SaveUserGoldAsync(playerGlobalModel.Id, playerGlobalModel.Gold);
         Debug.Log("Save Gold result: " + result);
     }
 }

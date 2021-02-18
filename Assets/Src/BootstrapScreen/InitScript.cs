@@ -58,38 +58,9 @@ public class InitScript : MonoBehaviour
         _loadingText.text = "load data";
 
         var id = SystemInfo.deviceUniqueIdentifier;
-        var result = await NetworkManager.GetUserDataAsync(id);
+        var result = await new LoadDataCommand().ExecuteAsync(id, _canvasTransform);
 
-        if (result.IsSuccess)
-        {
-            if (!result.Result.IsError)
-            {
-                var playerGlobalModel = result.Result.payload;
-                playerGlobalModel.AdjustLevelsAmount(_levelsCollectionProvider.Levels.Length);
-                _playerGlobalModelHolder.SetModel(playerGlobalModel);
-
-                return true;
-            }
-            else
-            {
-                var trayAgainText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "try_again");
-                var errorDescription = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "retreive_data_error_description");
-                errorDescription = string.Format(errorDescription, result.Result.error.code);
-                var errorPopup = ErrorPopup.Show(_canvasTransform, errorDescription, trayAgainText);
-
-                await errorPopup.LifeTimeTask;
-            }
-        }
-        else
-        {
-            var trayAgainText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "try_again");
-            var errorDescription = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "connection_error_description");
-            var errorPopup = ErrorPopup.Show(_canvasTransform, errorDescription, trayAgainText);
-
-            await errorPopup.LifeTimeTask;
-        }
-
-        return false;
+        return result;
     }
 
     private void AskPermissions()

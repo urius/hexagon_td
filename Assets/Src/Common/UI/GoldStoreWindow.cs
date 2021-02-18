@@ -37,7 +37,7 @@ public class GoldStoreWindow : MonoBehaviour
     private async void OnBuyProductClicked(string productId)
     {
         _waitOverlay.ToWaitMode();
-        var buyGoldResult = await new BuyGoldCommand().Execute(productId);
+        var buyGoldResult = await new BuyGoldCommand().ExecuteAsync(productId);
         if (buyGoldResult.IsSuccess)
         {
             Close();
