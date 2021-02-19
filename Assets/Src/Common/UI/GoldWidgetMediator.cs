@@ -16,7 +16,7 @@ public class GoldWidgetMediator : EventMediator
     {
         base.OnRegister();
 
-        _playerModel = PlayerGlobalModelHolder.Model;
+        _playerModel = PlayerSessionModel.Model;
 
         WidgetView.ButtonClicked += OnButtonClicked;
         _playerModel.GoldAmountUpdated += OnGoldAmountUpdated;
@@ -24,7 +24,7 @@ public class GoldWidgetMediator : EventMediator
 
     public async void Start()
     {
-        WidgetView.SetAmount(PlayerGlobalModelHolder.Model.Gold);
+        WidgetView.SetAmount(PlayerSessionModel.Model.Gold);
 
         await IAPManager.Instance.InitializedTask;
         if (!_isDestroyed)

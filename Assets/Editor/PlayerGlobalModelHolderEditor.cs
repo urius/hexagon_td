@@ -3,7 +3,7 @@ using UnityEditor;
 using System.IO;
 using System;
 
-[CustomEditor(typeof(PlayerGlobalModelHolder))]
+[CustomEditor(typeof(PlayerSessionModel))]
 public class PlayerGlobalModelHolderEditor : Editor
 {
     private string _id;
@@ -24,30 +24,30 @@ public class PlayerGlobalModelHolderEditor : Editor
         _gold = EditorGUILayout.TextField("Gold:", _gold);
         if (GUILayout.Button("Load"))
         {
-            var modelHolder = (PlayerGlobalModelHolder)serializedObject.targetObject;
+            var modelHolder = (PlayerSessionModel)serializedObject.targetObject;
             Load(modelHolder);
         }
 
         if (GUILayout.Button("Save"))
         {
-            var modelHolder = ((PlayerGlobalModelHolder)serializedObject.targetObject);
+            var modelHolder = ((PlayerSessionModel)serializedObject.targetObject);
             Save(modelHolder.PlayerGlobalModel);
         }
 
         if (GUILayout.Button("Save audio settings"))
         {
-            var modelHolder = ((PlayerGlobalModelHolder)serializedObject.targetObject);
+            var modelHolder = ((PlayerSessionModel)serializedObject.targetObject);
             SaveAudio(modelHolder.PlayerGlobalModel);
         }
 
         if (GUILayout.Button("Save gold"))
         {
-            var modelHolder = ((PlayerGlobalModelHolder)serializedObject.targetObject);
+            var modelHolder = ((PlayerSessionModel)serializedObject.targetObject);
             SaveGold(modelHolder.PlayerGlobalModel);
         }
     }
 
-    private async void Load(PlayerGlobalModelHolder modelHolder)
+    private async void Load(PlayerSessionModel modelHolder)
     {
         var result = await NetworkManager.GetUserDataAsync(_id);
         modelHolder.SetModel(new PlayerGlobalModel(result.Result.payload));

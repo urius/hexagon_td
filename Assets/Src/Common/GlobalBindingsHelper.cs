@@ -20,7 +20,7 @@ public class GlobalBindingsHelper
     {
         injectionBinder.Bind<LevelsCollectionProvider>().ToValue(globalObjectsHolder.LevelsCollectionProvider).CrossContext();
         injectionBinder.Bind<LocalizationProvider>().ToValue(globalObjectsHolder.LocalizationProvider).CrossContext();
-        injectionBinder.Bind<PlayerGlobalModelHolder>().ToValue(globalObjectsHolder.PlayerGlobalModelHolder).CrossContext();
+        injectionBinder.Bind<PlayerSessionModel>().ToValue(globalObjectsHolder.PlayerGlobalModelHolder).CrossContext();
         injectionBinder.Bind<LevelConfigProvider>().ToValue(globalObjectsHolder.LevelConfigProvider).CrossContext();
 
         mediationBinder.Bind<LocalizedButtonView>().To<LocalizedButtonViewMediator>();
@@ -34,6 +34,6 @@ public class GlobalObjectsHolder
 {
     [SerializeField] public LocalizationProvider LocalizationProvider;
     [SerializeField] public LevelsCollectionProvider LevelsCollectionProvider;
-    [SerializeField] public PlayerGlobalModelHolder PlayerGlobalModelHolder;
+    [SerializeField] public PlayerSessionModel PlayerGlobalModelHolder;
     [SerializeField] public LevelConfigProvider LevelConfigProvider;
 }

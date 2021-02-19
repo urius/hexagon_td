@@ -10,10 +10,10 @@ public struct BuyGoldCommand
         {
             var addedAmount = int.Parse(productId.Split('_')[1]);
 
-            var saveResult = await NetworkManager.SaveUserGoldAsync(PlayerGlobalModelHolder.Model.Id, PlayerGlobalModelHolder.Model.Gold + addedAmount);
+            var saveResult = await NetworkManager.SaveUserGoldAsync(PlayerSessionModel.Model.Id, PlayerSessionModel.Model.Gold + addedAmount);
             if (saveResult.IsSuccess)
             {
-                PlayerGlobalModelHolder.Model.AddGold(addedAmount);
+                PlayerSessionModel.Model.AddGold(addedAmount);
                 return true;
             }
             else

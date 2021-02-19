@@ -27,7 +27,7 @@ public class WavesControlSystem : EventSystemBase
 
     private void OnContinueWaveClicked(IEvent payload)
     {
-        if (PlayerGlobalModelHolder.Model.TrySpendGold(LevelModel.GetContinueWavePrice()))
+        if (PlayerSessionModel.Model.TrySpendGold(LevelModel.GetContinueWavePrice()))
         {
             LevelModel.ContinueCurrentWave();
         }
@@ -62,6 +62,6 @@ public class WavesControlSystem : EventSystemBase
     {
         var levelIndex = LevelsCollectionProvider.GetLevelIndexByConfig(LevelConfigProvider.LevelConfig);
         var stars = LevelModel.GetAccuracyRate();
-        PlayerGlobalModelHolder.Model.SetLevelPassed(levelIndex, stars);
+        PlayerSessionModel.Model.SetLevelPassed(levelIndex, stars);
     }
 }

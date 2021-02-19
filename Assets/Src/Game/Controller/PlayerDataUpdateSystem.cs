@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerDataUpdateSystem : EventSystemBase
 {
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
 
     public override void Start()

@@ -11,7 +11,7 @@ public class LevelsScrollViewMediator : EventMediator
     [Inject] public LevelsScrollView SelectLevelScrollView { get; set; }
     [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
 
     private LevelsScrollViewItem[] _itemViews;
     private RectTransform[] _containers;

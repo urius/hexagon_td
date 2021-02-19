@@ -8,7 +8,7 @@ using UnityEngine;
 public class SelectLevelScreenViewMediator : EventMediator
 {
     [Inject] public SelectLevelScreenView SelectLevelScreenView { get; set; }
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
     [Inject] public LocalizationProvider LocalizationProvider { get; set; }
 
     public override void OnRegister()

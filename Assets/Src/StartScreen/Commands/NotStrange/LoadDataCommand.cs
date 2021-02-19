@@ -15,7 +15,7 @@ public struct LoadDataCommand
                 var playerGlobalModel = new PlayerGlobalModel(result.Result.payload);
                 var levelsCollectionProvider = LevelsCollectionProvider.Instance;
                 playerGlobalModel.AdjustLevelsAmount(levelsCollectionProvider.Levels.Length);
-                PlayerGlobalModelHolder.Instance.SetModel(playerGlobalModel);
+                PlayerSessionModel.Instance.SetModel(playerGlobalModel);
 
                 return true;
             }

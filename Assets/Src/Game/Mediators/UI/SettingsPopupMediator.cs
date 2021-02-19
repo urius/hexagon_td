@@ -7,7 +7,7 @@ using UnityEngine;
 public class SettingsPopupMediator : EventMediator
 {
     [Inject] public SettingsPopup View { get; set; }
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
 
     public override void OnRegister()
     {

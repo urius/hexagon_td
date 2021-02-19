@@ -6,7 +6,7 @@ public class ProcessUpdatesSystem : EventSystemBase
     [Inject] public LevelModel LevelModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
     [Inject] public UnitConfigsProvider UnitConfigsProvider { get; set; }
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
     [Inject] public IUpdateProvider UpdateProvider { get; set; }
 
     private int _framesCount = 0;

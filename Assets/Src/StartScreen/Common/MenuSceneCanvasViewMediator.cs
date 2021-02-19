@@ -10,7 +10,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
     [Inject] public MenuSceneCanvasView MenuSceneCanvasView { get; set; }
     [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
 
     private GameObject _currentActiveScreenPrefab;
     private GameObject _currentActiveScreenGo;

@@ -55,7 +55,7 @@ public class LosePopupMediator : EventMediator
 
     private void OnContinueClicked()
     {
-        if (PlayerGlobalModelHolder.Model.Gold >= LevelModel.GetContinueWavePrice())
+        if (PlayerSessionModel.Model.Gold >= LevelModel.GetContinueWavePrice())
         {
             dispatcher.Dispatch(MediatorEvents.UI_LOSE_POPUP_CONTINUE_CLICKED);
         }

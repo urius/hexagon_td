@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StartScreenStartedCommand : EventCommand
 {
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
+    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
 
     public override async void Execute()
     {

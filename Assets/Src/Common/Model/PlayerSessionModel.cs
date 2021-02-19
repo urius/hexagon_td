@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerGlobalModelHolder", menuName = "Common/Model/PlayerGlobalModelHolder")]
-public class PlayerGlobalModelHolder : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerSessionModel", menuName = "Common/Model/PlayerSessionModel")]
+public class PlayerSessionModel : ScriptableObject
 {
-    public static PlayerGlobalModelHolder Instance;
+    public static PlayerSessionModel Instance;
     public static PlayerGlobalModel Model => Instance.PlayerGlobalModel;
 
     [SerializeField]

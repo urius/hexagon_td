@@ -13,6 +13,6 @@ public struct SaveUserDataCommand
 
     public UniTask<bool> ExecuteAsync()
     {
-        return ExecuteAsync(PlayerGlobalModelHolder.Model);
+        return ExecuteAsync(PlayerSessionModel.Model);
     }
 }
