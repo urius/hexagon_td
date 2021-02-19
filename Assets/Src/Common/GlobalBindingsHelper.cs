@@ -25,6 +25,7 @@ public class GlobalBindingsHelper
 
         mediationBinder.Bind<LocalizedButtonView>().To<LocalizedButtonViewMediator>();
         mediationBinder.Bind<LocalizedTextView>().To<LocalizedTextViewMediator>();
+        mediationBinder.Bind<GoldWidgetView>().To<GoldWidgetMediator>();
     }
 }
 

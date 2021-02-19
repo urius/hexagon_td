@@ -83,8 +83,8 @@ MonoBehaviour:
       En: Critical amount of units have reached the goal base
     - LocalizationItemId: home
       En: Main menu
-    - LocalizationItemId: restart_level
-      En: Restart
+    - LocalizationItemId: continue_level
+      En: Continue
   - LocalizationGroupId: 8
     LocalizationItems:
     - LocalizationItemId: loading

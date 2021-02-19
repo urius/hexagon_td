@@ -16,50 +16,50 @@ MonoBehaviour:
     Id: 5DE7BEC4-636D-5E15-A1FA-FDCEEC1DD65C
     LoadsCount: 1
     LevelsProgress:
-    - IsPassed: 0
+    - IsPassed: 1
       IsUnlocked: 1
       StarsAmount: 1
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 0
     - IsPassed: 0
       IsUnlocked: 1
       StarsAmount: 0
     - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
+      IsUnlocked: 1
       StarsAmount: 0
     - IsPassed: 0
       IsUnlocked: 0

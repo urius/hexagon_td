@@ -17,13 +17,13 @@ public class LosePopupMediator : EventMediator
     private void Activate()
     {
         LosePopup.MainMenuButtonClicked += OnMainClicked;
-        LosePopup.RestartButtonClicked += OnRestartClicked;
+        LosePopup.ContinueButtonClicked += OnRestartClicked;
     }
 
     private void Deactivate()
     {
         LosePopup.MainMenuButtonClicked -= OnMainClicked;
-        LosePopup.RestartButtonClicked -= OnRestartClicked;
+        LosePopup.ContinueButtonClicked -= OnRestartClicked;
     }
 
     private void OnDestroy()

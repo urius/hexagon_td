@@ -12,14 +12,11 @@ public class GoldWidgetMediator : EventMediator
     private PlayerGlobalModel _playerModel;
     private bool _isDestroyed = false;
 
-    public void Awake()
-    {
-        _playerModel = PlayerGlobalModelHolder.Model;
-    }
-
     public override void OnRegister()
     {
         base.OnRegister();
+
+        _playerModel = PlayerGlobalModelHolder.Model;
 
         WidgetView.ButtonClicked += OnButtonClicked;
         _playerModel.GoldAmountUpdated += OnGoldAmountUpdated;

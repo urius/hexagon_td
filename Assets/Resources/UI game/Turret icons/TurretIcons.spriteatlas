@@ -50,6 +50,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 8f712814928de4ba2b0b5d47c1f2b0e5, type: 3}
   - {fileID: 21300000, guid: 394d5e24da8cf44a184072ae872e747e, type: 3}
   - {fileID: 21300000, guid: 7aac2a256a54a46a99cb6e0da60443f8, type: 3}
+  - {fileID: 21300000, guid: 778e3e55091484de2966e31ee224d670, type: 3}
   - {fileID: 21300000, guid: 2a0829b5000d143d8a46aafb8af9742d, type: 3}
   - {fileID: 21300000, guid: fe1d078694e1447d99bb23ec4470ab57, type: 3}
   - {fileID: 21300000, guid: ff8b09a69483b46dfb055036e61f363c, type: 3}
@@ -77,6 +78,7 @@ SpriteAtlas:
   - icon_turret_3_1
   - ICON_Setting
   - icon_turret_1_1
+  - DNA_icon
   - textbox02
   - Btn_LOGIN_n
   - Icon_Jump1
