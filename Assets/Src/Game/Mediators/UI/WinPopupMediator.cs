@@ -10,15 +10,13 @@ public class WinPopupMediator : EventMediator
 {
     [Inject] public WinPopup WinPopup { get; set; }
     [Inject] public LocalizationProvider Loc { get; set; }
-    [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
-    [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
 
     private CancellationTokenSource _starsAnimCts = new CancellationTokenSource();
 
     private void Start()
     {
-        var levelIndex = Array.IndexOf(LevelsCollectionProvider.Levels, LevelConfigProvider.LevelConfig);
+        var levelIndex = Array.IndexOf(LevelsCollectionProvider.Instance.Levels, LevelModel.LevelConfig);
         var title = string.Format(Loc.Get(LocalizationGroupId.WinPopup, "title"), levelIndex < 0 ? string.Empty : (levelIndex + 1).ToString());
         WinPopup.SetTitle(title);
         WinPopup.SetInfo(Loc.Get(LocalizationGroupId.WinPopup, "info"));

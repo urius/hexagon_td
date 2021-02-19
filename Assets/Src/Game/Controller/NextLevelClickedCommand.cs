@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
-using UnityEngine;
 
 public class NextLevelClickedCommand : EventCommand
 {
@@ -15,7 +12,7 @@ public class NextLevelClickedCommand : EventCommand
     {
         Retain();
 
-        //Advance level index or go to main if it is last level
+        PlayerSessionModel.Instance.AdvanceSelectedLevel();
         var saveDataTask = new SaveUserDataCommand().ExecuteAsync();
 
         var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);

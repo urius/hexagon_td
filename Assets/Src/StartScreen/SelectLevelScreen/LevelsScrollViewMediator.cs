@@ -11,7 +11,6 @@ public class LevelsScrollViewMediator : EventMediator
     [Inject] public LevelsScrollView SelectLevelScrollView { get; set; }
     [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
-    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
 
     private LevelsScrollViewItem[] _itemViews;
     private RectTransform[] _containers;
@@ -43,10 +42,11 @@ public class LevelsScrollViewMediator : EventMediator
         _itemContainerWidth = ((RectTransform)UIPrefabsConfig.SelectLevelItemContainerPrefab.transform).rect.width;
 
         CreateItems(LevelsCollectionProvider.Levels.Length);
-        SetupItems(PlayerGlobalModelHolder.PlayerGlobalModel);
+        SetupItems(PlayerSessionModel.Model);
         SubscribeOnItemsClick();
 
-        var levelIndexToSelect = GetFirstUncompletedLevelIndex();
+        var selectedLevelIndex = PlayerSessionModel.Instance.SelectedLevelIndex;
+        var levelIndexToSelect = selectedLevelIndex < 0 ? GetFirstUncompletedLevelIndex() : selectedLevelIndex;
         ShowPageWithLevel(levelIndexToSelect);
         SelectLevelByIndex(levelIndexToSelect);
     }
@@ -62,9 +62,9 @@ public class LevelsScrollViewMediator : EventMediator
     private int GetFirstUncompletedLevelIndex()
     {
         var result = 0;
-        for (var i = 0; i < PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress.Length; i++)
+        for (var i = 0; i < PlayerSessionModel.Model.LevelsProgress.Length; i++)
         {
-            var levelProgress = PlayerGlobalModelHolder.PlayerGlobalModel.LevelsProgress[i];
+            var levelProgress = PlayerSessionModel.Model.LevelsProgress[i];
             if (levelProgress.IsUnlocked)
             {
                 result = i;
@@ -142,7 +142,7 @@ public class LevelsScrollViewMediator : EventMediator
         }
 
         _selection = Instantiate(UIPrefabsConfig.SelectLevelItemSelectionPrefab, _itemViews[levelIndex].transform);
-        var isLocked = !PlayerGlobalModelHolder.PlayerGlobalModel.GetProgressByLevel(levelIndex).IsUnlocked;
+        var isLocked = !PlayerSessionModel.Model.GetProgressByLevel(levelIndex).IsUnlocked;
         _selection.GetComponent<LevelsScrollItemSelectionView>().SetLockedState(isLocked);
 
         dispatcher.Dispatch(MediatorEvents.UI_SL_SELECT_LEVEL_CLICKED, levelIndex);

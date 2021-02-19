@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
@@ -11,7 +7,6 @@ using UnityEngine.UI;
 public class InitScript : MonoBehaviour
 {
     [SerializeField] private PlayerSessionModel _playerGlobalModelHolder;
-    [SerializeField] private LevelConfigProvider _levelConfigProvider;
     [SerializeField] private Text _loadingText;
     [SerializeField] private RectTransform _canvasTransform;
     [SerializeField] private UIPrefabsConfig _uiPrefabsConfig;
@@ -20,7 +15,7 @@ public class InitScript : MonoBehaviour
     {
         _loadingText.text = LocalizationProvider.Instance.Get(LocalizationGroupId.BootstrapScreen, "loading");
 
-        _levelConfigProvider.SetCurrentLevelConfig(null);
+        PlayerSessionModel.Instance.Reset();
 
         StartLoadSequence().Forget();
     }

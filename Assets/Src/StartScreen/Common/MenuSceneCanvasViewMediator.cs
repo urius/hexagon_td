@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using strange.extensions.dispatcher.eventdispatcher.api;
+﻿using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
 public class MenuSceneCanvasViewMediator : EventMediator
 {
     [Inject] public MenuSceneCanvasView MenuSceneCanvasView { get; set; }
-    [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
     [Inject] public UIPrefabsConfig UIPrefabsConfig { get; set; }
     [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
 
@@ -32,7 +28,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
 
     private void Start()
     {
-        if (LevelConfigProvider.LevelConfig == null)
+        if (PlayerSessionModel.Instance.SelectedLevelIndex < 0)
         {
             ShowScreen(UIPrefabsConfig.MainMenuScreenPrefab);
         }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using strange.extensions.injector.api;
 using strange.extensions.mediation.api;
 using UnityEngine;
@@ -21,7 +19,6 @@ public class GlobalBindingsHelper
         injectionBinder.Bind<LevelsCollectionProvider>().ToValue(globalObjectsHolder.LevelsCollectionProvider).CrossContext();
         injectionBinder.Bind<LocalizationProvider>().ToValue(globalObjectsHolder.LocalizationProvider).CrossContext();
         injectionBinder.Bind<PlayerSessionModel>().ToValue(globalObjectsHolder.PlayerGlobalModelHolder).CrossContext();
-        injectionBinder.Bind<LevelConfigProvider>().ToValue(globalObjectsHolder.LevelConfigProvider).CrossContext();
 
         mediationBinder.Bind<LocalizedButtonView>().To<LocalizedButtonViewMediator>();
         mediationBinder.Bind<LocalizedTextView>().To<LocalizedTextViewMediator>();
@@ -35,5 +32,4 @@ public class GlobalObjectsHolder
     [SerializeField] public LocalizationProvider LocalizationProvider;
     [SerializeField] public LevelsCollectionProvider LevelsCollectionProvider;
     [SerializeField] public PlayerSessionModel PlayerGlobalModelHolder;
-    [SerializeField] public LevelConfigProvider LevelConfigProvider;
 }

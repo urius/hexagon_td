@@ -5,8 +5,6 @@ public class WavesControlSystem : EventSystemBase
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
-    [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
-    [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
 
     public override void Start()
     {
@@ -59,8 +57,8 @@ public class WavesControlSystem : EventSystemBase
     }
 
     private void UpdatePlayerData()
-    {
-        var levelIndex = LevelsCollectionProvider.GetLevelIndexByConfig(LevelConfigProvider.LevelConfig);
+    {        
+        var levelIndex = LevelsCollectionProvider.Instance.GetLevelIndexByConfig(LevelModel.LevelConfig);
         var stars = LevelModel.GetAccuracyRate();
         PlayerSessionModel.Model.SetLevelPassed(levelIndex, stars);
     }

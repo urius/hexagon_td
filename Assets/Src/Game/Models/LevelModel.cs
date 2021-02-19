@@ -30,8 +30,7 @@ public class LevelModel
 
     public readonly int ModifierBigMoneyAmount;
     public readonly int WaveCompletionReward;
-
-    private readonly LevelConfig _levelConfig;
+    public readonly LevelConfig LevelConfig;
 
     private readonly Vector2Int[] _teleportCellPositions;
     private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
@@ -39,22 +38,22 @@ public class LevelModel
 
     public LevelModel(LevelConfig levelConfig)
     {
-        _levelConfig = levelConfig;
+        LevelConfig = levelConfig;
         WaveModel = new WaveModel(levelConfig.WavesSettings);
 
-        SpawnCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
-        GoalCells = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).ToArray();
-        _teleportCellPositions = _levelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
+        SpawnCells = LevelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
+        GoalCells = LevelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.GoalBase).ToArray();
+        _teleportCellPositions = LevelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.Teleport).Select(c => c.CellPosition).ToArray();
         _modifiers = levelConfig.Modifiers.ToDictionary(c => c.CellPosition, c => (ModifierType)c.CellConfigMin.CellSubType);
 
         PathsManager = new PathsManager(levelConfig.Cells, _modifiers, LevelTurretsModel, LevelUnitsModel);
 
-        Money = _levelConfig.StartMoneyAmount;
-        ModifierRepairValue = _levelConfig.ModifierRepairValue;
-        ModifierMineDamage = _levelConfig.ModifierMineDamage;
-        ModifierMoneyAmount = _levelConfig.ModifierMoneyAmount;
-        ModifierBigMoneyAmount = _levelConfig.ModifierBigMoneyAmount;
-        WaveCompletionReward = _levelConfig.WaveCompletedReward;
+        Money = LevelConfig.StartMoneyAmount;
+        ModifierRepairValue = LevelConfig.ModifierRepairValue;
+        ModifierMineDamage = LevelConfig.ModifierMineDamage;
+        ModifierMoneyAmount = LevelConfig.ModifierMoneyAmount;
+        ModifierBigMoneyAmount = LevelConfig.ModifierBigMoneyAmount;
+        WaveCompletionReward = LevelConfig.WaveCompletedReward;
 
         ResetGoalCapacity();
     }
@@ -62,8 +61,8 @@ public class LevelModel
     public int TimeScale { get; private set; } = 1;
     public int Money { get; private set; }
     public int GoalCount { get; private set; }
-    public int MaxGoalCapacity => _levelConfig.DefaulGoalCapacity;
-    public int DestroyUnitReward => _levelConfig.DestroyUnitReward;
+    public int MaxGoalCapacity => LevelConfig.DefaulGoalCapacity;
+    public int DestroyUnitReward => LevelConfig.DestroyUnitReward;
     public Task StartLevelTask => _levelStartedTsc.Task;
     public bool IsLevelFinished => IsWon || IsDefeated;
     public bool IsPaused { get; private set; }
@@ -181,7 +180,7 @@ public class LevelModel
 
     private bool IsGround(Vector2Int cellPosition)
     {
-        var cell = _levelConfig.Cells.FirstOrDefault(c => c.CellPosition == cellPosition);
+        var cell = LevelConfig.Cells.FirstOrDefault(c => c.CellPosition == cellPosition);
         return cell != null && cell.CellConfigMin.CellType == CellType.Ground;
     }
 
@@ -190,9 +189,9 @@ public class LevelModel
         return _modifiers.TryGetValue(cellPosition, out var modifier) && modifier == ModifierType.NoBuild;
     }
 
-    public bool IsTransposed => _levelConfig.IsTransposed;
-    public IReadOnlyList<CellDataMin> Cells => _levelConfig.Cells;
-    public IReadOnlyList<CellDataMin> Modifiers => _levelConfig.Modifiers;
+    public bool IsTransposed => LevelConfig.IsTransposed;
+    public IReadOnlyList<CellDataMin> Cells => LevelConfig.Cells;
+    public IReadOnlyList<CellDataMin> Modifiers => LevelConfig.Modifiers;
 
     public IReadOnlyList<Vector2Int> GetPath(Vector2Int cellPosition)
     {
@@ -259,7 +258,7 @@ public class LevelModel
 
     public void ResetLevel()
     {
-        GoalCount = _levelConfig.DefaulGoalCapacity;
+        GoalCount = LevelConfig.DefaulGoalCapacity;
         IsWon = IsDefeated = false;
         GoalCountUpdated();
 
@@ -287,7 +286,7 @@ public class LevelModel
 
     private void ResetGoalCapacity()
     {
-        GoalCount = _levelConfig.DefaulGoalCapacity;
+        GoalCount = LevelConfig.DefaulGoalCapacity;
         GoalCountUpdated();
     }
 }

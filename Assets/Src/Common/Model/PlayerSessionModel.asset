@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e49c597e975fb41849a3c396889f2284, type: 3}
-  m_Name: PlayerGlobalModelHolder
+  m_Name: PlayerSessionModel
   m_EditorClassIdentifier: 
   _playerGlobalModel:
     Id: 5DE7BEC4-636D-5E15-A1FA-FDCEEC1DD65C
@@ -21,7 +21,7 @@ MonoBehaviour:
       StarsAmount: 1
     - IsPassed: 1
       IsUnlocked: 1
-      StarsAmount: 0
+      StarsAmount: 3
     - IsPassed: 1
       IsUnlocked: 1
       StarsAmount: 0
@@ -55,6 +55,12 @@ MonoBehaviour:
     - IsPassed: 1
       IsUnlocked: 1
       StarsAmount: 0
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 3
+    - IsPassed: 1
+      IsUnlocked: 1
+      StarsAmount: 2
     - IsPassed: 0
       IsUnlocked: 1
       StarsAmount: 0
@@ -100,13 +106,8 @@ MonoBehaviour:
     - IsPassed: 0
       IsUnlocked: 0
       StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    - IsPassed: 0
-      IsUnlocked: 0
-      StarsAmount: 0
-    AudioVolume: 0.6
-    MusicVolume: 0.5
+    AudioVolume: 0.7385843
+    MusicVolume: 1
     SoundsVolume: 0.5
-    GoldStr: MzMwMA==
+    GoldStr: MjAw
+  SelectedLevelIndex: 1
