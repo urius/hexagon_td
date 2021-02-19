@@ -154,7 +154,7 @@ public class UnitsControlSystem : EventSystemBase
 
     private void OnUnitSpawnAnimationEnded(IEvent payload)
     {
-        Debug.Log("Spawn animation finished");
+        //Debug.Log("Spawn animation finished");
         UpdateUnitState(payload.data as UnitModel);
     }
 

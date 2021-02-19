@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using strange.extensions.dispatcher.eventdispatcher.api;
-using UnityEngine;
+﻿using strange.extensions.dispatcher.eventdispatcher.api;
 
 public class WavesControlSystem : EventSystemBase
 {
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public LevelUnitsModel LevelUnitsModel { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
-    [Inject] public PlayerGlobalModelHolder PlayerGlobalModelHolder { get; set; }
     [Inject] public LevelsCollectionProvider LevelsCollectionProvider { get; set; }
     [Inject] public LevelConfigProvider LevelConfigProvider { get; set; }
 
@@ -17,15 +12,24 @@ public class WavesControlSystem : EventSystemBase
     {
         dispatcher.AddListener(CommandEvents.SECOND_PASSED, OnSecondPassed);
         dispatcher.AddListener(MediatorEvents.UI_START_WAVE_CLICKED, OnStartWaveClicked);
+        dispatcher.AddListener(MediatorEvents.UI_LOSE_POPUP_CONTINUE_CLICKED, OnContinueWaveClicked);
     }
 
     private void OnStartWaveClicked(IEvent payload)
     {
         if (WaveModel.WaveState == WaveState.BeforeFirstWave || WaveModel.WaveState == WaveState.BetweenWaves)
         {
-            WaveModel.AdvanceWave();            
+            WaveModel.AdvanceWave();
             WaveModel.StartWave();
             AudioManager.Instance.SetInWaveMusicMode(true);
+        }
+    }
+
+    private void OnContinueWaveClicked(IEvent payload)
+    {
+        if (PlayerGlobalModelHolder.Model.TrySpendGold(LevelModel.GetContinueWavePrice()))
+        {
+            LevelModel.ContinueCurrentWave();
         }
     }
 
@@ -44,7 +48,8 @@ public class WavesControlSystem : EventSystemBase
                     UpdatePlayerData();
 
                     LevelModel.FinishLevel(true);
-                } else
+                }
+                else
                 {
                     LevelModel.TryAddMoney(LevelModel.WaveCompletionReward);
                     dispatcher.Dispatch(CommandEvents.UI_REQUEST_ANIMATE_WAVE_REWARD, LevelModel.WaveCompletionReward);
@@ -57,6 +62,6 @@ public class WavesControlSystem : EventSystemBase
     {
         var levelIndex = LevelsCollectionProvider.GetLevelIndexByConfig(LevelConfigProvider.LevelConfig);
         var stars = LevelModel.GetAccuracyRate();
-        PlayerGlobalModelHolder.PlayerGlobalModel.SetLevelPassed(levelIndex, stars);
+        PlayerGlobalModelHolder.Model.SetLevelPassed(levelIndex, stars);
     }
 }

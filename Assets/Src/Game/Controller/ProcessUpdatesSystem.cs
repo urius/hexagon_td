@@ -22,13 +22,9 @@ public class ProcessUpdatesSystem : EventSystemBase
         UpdateProvider.UpdateAction += OnUpdate;
     }
 
-    private async void OnLevelFinished()
+    private void OnLevelFinished()
     {
         LevelModel.SetTimeScale(1);
-
-        UpdateProvider.UpdateAction -= OnUpdate;
-
-        await new SaveUserDataCommand().ExecuteAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
     }
 
     private void OnUpdate()

@@ -27,6 +27,7 @@ public class LevelModel
     public readonly int ModifierRepairValue;
     public readonly int ModifierMineDamage;
     public readonly int ModifierMoneyAmount;
+
     public readonly int ModifierBigMoneyAmount;
     public readonly int WaveCompletionReward;
 
@@ -173,6 +174,11 @@ public class LevelModel
         _levelStartedTsc.TrySetResult(true);
     }
 
+    public int GetContinueWavePrice()
+    {
+        return (WaveModel.WaveIndex + 1) * 100;
+    }
+
     private bool IsGround(Vector2Int cellPosition)
     {
         var cell = _levelConfig.Cells.FirstOrDefault(c => c.CellPosition == cellPosition);
@@ -260,11 +266,13 @@ public class LevelModel
         WaveModel.Reset();
     }
 
-    public void ResetCurrentWave()
+    public void ContinueCurrentWave()
     {
         ResetGoalCapacity();
 
-        WaveModel.ResetCurrentWave();
+        WaveModel.StartWave();
+
+        SetPauseMode(false);
     }
 
     public void FinishLevel(bool isWin)
@@ -280,6 +288,7 @@ public class LevelModel
     private void ResetGoalCapacity()
     {
         GoalCount = _levelConfig.DefaulGoalCapacity;
+        GoalCountUpdated();
     }
 }
 
@@ -298,7 +307,10 @@ public class WaveModel
 
     public int WaveIndex { get; private set; } = -1;
     public int UnitIndex { get; private set; }
-    public WaveState WaveState { get; private set; } = WaveState.BeforeFirstWave;
+    public WaveState PreviousWaveState { get; private set; } = WaveState.Undefined;
+
+    private WaveState _waveState = WaveState.BeforeFirstWave;
+    public WaveState WaveState { get { return _waveState; } private set { PreviousWaveState = _waveState; _waveState = value; } }
     public bool IsCurrentWaveEmpty => UnitIndex >= _currentWaveUnitsFlattened.Length;
     public int TotalWavesCount => _wavesSettings.Length;
 
@@ -355,14 +367,6 @@ public class WaveModel
         WaveStateChanged();
     }
 
-    internal void ResetCurrentWave()
-    {
-        UnitIndex = 0;
-        WaveState = WaveState.BetweenWaves;
-
-        WaveStateChanged();
-    }
-
     private void UpdateInnerData()
     {
         var tempUnits = new List<(UnitTypeMin, UnitSkin)>();
@@ -377,6 +381,7 @@ public class WaveModel
 
 public enum WaveState
 {
+    Undefined,
     BeforeFirstWave,
     InWave,
     BetweenWaves,

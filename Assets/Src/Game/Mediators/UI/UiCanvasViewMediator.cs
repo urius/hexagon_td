@@ -25,6 +25,7 @@ public class UiCanvasViewMediator : EventMediator
 
         WaveModel.WaveStateChanged += OnWaveStateChanged;
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnSettingsClicked);
+        dispatcher.AddListener(MediatorEvents.UI_GOLD_CLICKED, OnGoldClicked);
 
         OnWaveStateChanged();
     }
@@ -33,9 +34,15 @@ public class UiCanvasViewMediator : EventMediator
     {
         WaveModel.WaveStateChanged -= OnWaveStateChanged;
         dispatcher.RemoveListener(MediatorEvents.UI_SETTINGS_CLICKED, OnSettingsClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_GOLD_CLICKED, OnGoldClicked);
 
         _infoPanelCts.Cancel();
         _infoPanelCts.Dispose();
+    }
+
+    private void OnGoldClicked(IEvent payload)
+    {
+        Instantiate(CommonUIPrefabsConfig.Instance.GoldStoreWindowPrefab, UICanvasView.transform);
     }
 
     private async void OnWaveStateChanged()
@@ -47,7 +54,7 @@ public class UiCanvasViewMediator : EventMediator
                 text = Loc.Get(LocalizationGroupId.GeneralInfoPanel, "before_first_wave");
                 await ShowGeneralInfo(text, 200);
                 break;
-            case WaveState.InWave:
+            case WaveState.InWave when WaveModel.PreviousWaveState != WaveState.Terminated:
                 text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_started"), WaveModel.WaveIndex + 1);
                 await ShowGeneralInfo(text);
                 break;

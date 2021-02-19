@@ -4,6 +4,7 @@ using UnityEngine;
 public class GoalBaseView : CellView
 {
     [SerializeField] private TextMeshPro _text;
+    [SerializeField ]private Color _colorDefault;
     [SerializeField] private Color _colorLiteDamage;
     [SerializeField] private Color _colorCritical;
 
@@ -21,6 +22,9 @@ public class GoalBaseView : CellView
                 break;
             case GoalBaseColor.CriticalDamage:
                 _text.color = _colorCritical;
+                break;
+            case GoalBaseColor.Default:
+                _text.color = _colorDefault;
                 break;
         }
     }

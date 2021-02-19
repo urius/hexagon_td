@@ -97,7 +97,6 @@ public class GameContext : MVCSContext
         commandBinder.Bind(MediatorEvents.UI_LOSE_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_SETTINGS_POPUP_MAIN_MENU_CLICKED).To<MainMenuClickedCommand>().Pooled();        
         commandBinder.Bind(MediatorEvents.UI_WIN_POPUP_NEXT_LEVEL_CLICKED).To<NextLevelClickedCommand>().Pooled();
-        commandBinder.Bind(MediatorEvents.UI_LOSE_POPUP_RESTART_LEVEL_CLICKED).To<RestartClickedCommand>().Pooled();
         commandBinder.Bind(MediatorEvents.UI_TIME_SCALE_CHANGE_CLICKED).To<TimeScaleChangeCommand>().Pooled();
 
         //controllers&systems

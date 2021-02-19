@@ -114,6 +114,16 @@ public class PlayerGlobalModel
         GoldAmountUpdated?.Invoke(goldAmount);
     }
 
+    public bool TrySpendGold(int amount)
+    {
+        if (amount <= Gold)
+        {
+            AddGold(-amount);
+            return true;
+        }
+        return false;
+    }
+
     private LevelProgressDataMin[] FromLevelsProgressDto(IReadOnlyList<LevelProgressDto> levelsProgressDto)
     {
         var result = new LevelProgressDataMin[levelsProgressDto.Count];
@@ -141,7 +151,8 @@ public class PlayerGlobalModel
             if (levelsProgressItems[index].IsDefaultState)
             {
                 resultCount = index;
-            } else
+            }
+            else
             {
                 break;
             }

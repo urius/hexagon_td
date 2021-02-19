@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _debugText: {fileID: 0}
   _text: {fileID: 1857074962652418639}
+  _colorDefault: {r: 0.09803922, g: 1, b: 0.972549, a: 1}
   _colorLiteDamage: {r: 1, g: 0.96276593, b: 0, a: 1}
   _colorCritical: {r: 1, g: 0, b: 0.09570503, a: 1}
 --- !u!1 &7866841451760399646

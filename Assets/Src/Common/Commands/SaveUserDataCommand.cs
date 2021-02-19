@@ -10,4 +10,9 @@ public struct SaveUserDataCommand
         var result = await NetworkManager.SaveUserDataAsync(model.Id, model.ToSaveDto());
         return result.IsSuccess;
     }
+
+    public UniTask<bool> ExecuteAsync()
+    {
+        return ExecuteAsync(PlayerGlobalModelHolder.Model);
+    }
 }
