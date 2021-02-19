@@ -46,7 +46,17 @@ public class LevelsScrollViewMediator : EventMediator
         SetupItems(PlayerGlobalModelHolder.PlayerGlobalModel);
         SubscribeOnItemsClick();
 
-        SelectLevelByIndex(GetFirstUncompletedLevelIndex());
+        var levelIndexToSelect = GetFirstUncompletedLevelIndex();
+        ShowPageWithLevel(levelIndexToSelect);
+        SelectLevelByIndex(levelIndexToSelect);
+    }
+
+    private void ShowPageWithLevel(int levelIndexToSelect)
+    {
+        var containerIndex = levelIndexToSelect / ItemsContainerCapacity;
+        var tempPos = _contentTransform.anchoredPosition;
+        tempPos.x -= containerIndex * _itemContainerWidth;
+        _contentTransform.anchoredPosition = tempPos;
     }
 
     private int GetFirstUncompletedLevelIndex()
