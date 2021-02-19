@@ -58,6 +58,13 @@ public class UiCanvasViewMediator : EventMediator
                 text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_started"), WaveModel.WaveIndex + 1);
                 await ShowGeneralInfo(text);
                 break;
+            case WaveState.InWave when WaveModel.PreviousWaveState == WaveState.Terminated:
+                await AudioManager.Instance.ResumeLatestPlayedMusicAsync();
+                break;
+            case WaveState.InWave when WaveModel.PreviousWaveState != WaveState.Terminated:
+                text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_started"), WaveModel.WaveIndex + 1);
+                await ShowGeneralInfo(text);
+                break;
             case WaveState.BetweenWaves:
                 await DelayAsync(800, CancellationToken.None);
                 text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_finished"), WaveModel.WaveIndex + 1);

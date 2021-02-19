@@ -19,14 +19,14 @@ public class AudioManager : MonoBehaviour
     private AudioSource _musicSecondarySource;
     private AudioSource _primarySoundsSource;
     private float _musicVolume;
-    private MusicId _currentPlayingMusicId;
+    private MusicId _latestPlayedMusicId;
     private bool _inWaveMusicMode;
     private readonly List<AudioSource> _additionalAudioSources = new List<AudioSource>();
     private readonly Dictionary<SoundId, int> _soundsPlayTimeFrames = new Dictionary<SoundId, int>();
 
     public void Play(MusicId musicId)
     {
-        _currentPlayingMusicId = musicId;
+        _latestPlayedMusicId = musicId;
 
         var musicConfig = Array.Find(MusicConfigs, c => c.Id == musicId);
         _musicSource.clip = musicConfig.AudioClip;
@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
     public void SetInWaveMusicMode(bool isInWaveEnabled)
     {
         _inWaveMusicMode = isInWaveEnabled;
-        var clip = Array.Find(MusicConfigs, c => c.Id == _currentPlayingMusicId).SecondaryAudioClip;
+        var clip = Array.Find(MusicConfigs, c => c.Id == _latestPlayedMusicId).SecondaryAudioClip;
         if (clip != null)
         {
             if (isInWaveEnabled)
@@ -102,6 +102,21 @@ public class AudioManager : MonoBehaviour
         _musicSecondarySource.Stop();
         _musicSource.volume = _musicVolume;
         _musicSecondarySource.volume = 0;
+    }
+
+    public Task ResumeLatestPlayedMusicAsync()
+    {
+        if (_latestPlayedMusicId == MusicId.None) return Task.CompletedTask;
+
+        _musicSource.Play();
+        _musicSecondarySource.Play();
+        _musicSource.volume = 0;
+        _musicSecondarySource.volume = 0;
+
+        var mainMusicFadeInTask = FadeInAsync(_musicSource);
+        var secondaryMusicInWaveTask = _inWaveMusicMode ? FadeInAsync(_musicSecondarySource) : Task.CompletedTask;
+
+        return Task.WhenAll(mainMusicFadeInTask, secondaryMusicInWaveTask);
     }
 
     public void Play(SoundId soundId)
