@@ -1,4 +1,5 @@
-﻿using strange.extensions.dispatcher.eventdispatcher.api;
+﻿using System;
+using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class MenuSceneCanvasViewMediator : EventMediator
     private GameObject _currentActiveScreenPrefab;
     private GameObject _currentActiveScreenGo;
 
+    private RectTransform RootTransform => MenuSceneCanvasView.RootTransform;
+
     public override void OnRegister()
     {
         base.OnRegister();
@@ -19,11 +22,12 @@ public class MenuSceneCanvasViewMediator : EventMediator
         dispatcher.AddListener(MediatorEvents.UI_GOLD_CLICKED, OnGoldClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
+        dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnMainMenuSettingsClicked);
     }
 
     private void OnGoldClicked(IEvent payload)
     {
-        var goldStoreWindowGO = Instantiate(CommonUIPrefabsConfig.Instance.GoldStoreWindowPrefab, MenuSceneCanvasView.RootTransform);
+        var goldStoreWindowGO = Instantiate(CommonUIPrefabsConfig.Instance.GoldStoreWindowPrefab, RootTransform);
     }
 
     private void Start()
@@ -55,6 +59,11 @@ public class MenuSceneCanvasViewMediator : EventMediator
         ShowScreen(UIPrefabsConfig.HowToPlayScreenPrefab);
     }
 
+    private void OnMainMenuSettingsClicked(IEvent payload)
+    {
+        Instantiate(UIPrefabsConfig.SettingsForStartScreenPrefab, RootTransform);
+    }
+
     private void OnHomeClicked(IEvent payload)
     {
         ShowScreen(UIPrefabsConfig.MainMenuScreenPrefab);
@@ -71,7 +80,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
                 _currentActiveScreenGo.GetComponentInChildren<ScreenView>().HideAnimated();
             }
             _currentActiveScreenPrefab = screenPrefab;
-            _currentActiveScreenGo = Instantiate(screenPrefab, MenuSceneCanvasView.RootTransform);
+            _currentActiveScreenGo = Instantiate(screenPrefab, RootTransform);
         }
     }
 }

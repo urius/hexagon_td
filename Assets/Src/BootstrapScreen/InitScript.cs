@@ -9,7 +9,6 @@ public class InitScript : MonoBehaviour
     [SerializeField] private PlayerSessionModel _playerGlobalModelHolder;
     [SerializeField] private Text _loadingText;
     [SerializeField] private RectTransform _canvasTransform;
-    [SerializeField] private UIPrefabsConfig _uiPrefabsConfig;
 
     private void Start()
     {

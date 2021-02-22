@@ -361,6 +361,7 @@ MonoBehaviour:
     type: 2}
   _levelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
     type: 2}
+  _uiPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,13 +393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerGlobalModelHolder: {fileID: 11400000, guid: 0b7d068b3556a4b15bd2341b3676fac9,
     type: 2}
-  _levelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
-    type: 2}
-  _levelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
-    type: 2}
   _loadingText: {fileID: 113723794}
   _canvasTransform: {fileID: 1173789540}
-  _uiPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
 --- !u!4 &602336343
 Transform:
   m_ObjectHideFlags: 0

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class StartScreenStartedCommand : EventCommand
 {
-    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
-
     public override async void Execute()
     {
         if (AudioManager.Instance.GetPlayingMusic() != MusicId.None)
@@ -15,14 +13,8 @@ public class StartScreenStartedCommand : EventCommand
         }
 
         AudioManager.Instance.Play(MusicId.Menu_1);
-        //first time screen opening in game session
 
-        //TODO: move to bootstrapper
-        //TODO: load or initialize player model
-        /*var playerModel = new PlayerGlobalModel(
-            DeafultPlayerGlobalModelProvider.PlayerGlobalModel,
-            LevelsCollectionProvider.Levels.Length);
-        */
-        //PlayerGlobalModelHolder.SetModel(playerModel);
+        //start systems
+        injectionBinder.GetInstance<StartScreenControlSystem>().Start();
     }
 }

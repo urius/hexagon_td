@@ -103,6 +103,10 @@ MonoBehaviour:
       En: MAIN MENU
     - LocalizationItemId: volume
       En: 'Volume: '
+    - LocalizationItemId: close
+      En: Close
+    - LocalizationItemId: id_name
+      En: 'id:'
   - LocalizationGroupId: 10
     LocalizationItems:
     - LocalizationItemId: title

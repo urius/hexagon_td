@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -264,8 +264,6 @@ MonoBehaviour:
     LevelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
       type: 2}
     PlayerGlobalModelHolder: {fileID: 11400000, guid: 0b7d068b3556a4b15bd2341b3676fac9,
-      type: 2}
-    LevelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
       type: 2}
   UIPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
 --- !u!1 &839307715

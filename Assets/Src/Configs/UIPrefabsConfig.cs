@@ -3,9 +3,11 @@
 [CreateAssetMenu(menuName = "Configs/UIPrefabsConfig", fileName = "UIPrefabsConfig")]
 public class UIPrefabsConfig : ScriptableObject
 {
-    public const string ErrorPopupPrefabPath = PrefabsUiFolder + "/ErrorPopupContainer";
-
-    private const string PrefabsUiFolder = "Prefabs/UI";
+    public static UIPrefabsConfig Instance { get; private set; }
+    private void OnEnable()
+    {
+        Instance = this;
+    }
 
     //main screen
     public GameObject MainMenuScreenPrefab;
@@ -13,9 +15,16 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject SelectLevelItemContainerPrefab;
     public GameObject SelectLevelItemPrefab;
     public GameObject SelectLevelItemSelectionPrefab;
+
+    [AssetPath.Attribute(typeof(GameObject))]
+    public string ErrorPopupPrefabPath;
+    public GameObject ErrorPopupPrefab => LoadPrefab(ErrorPopupPrefabPath);
     [AssetPath.Attribute(typeof(GameObject))]
     public string HowToPlayScreenPrefabPath;
     public GameObject HowToPlayScreenPrefab => LoadPrefab(HowToPlayScreenPrefabPath);
+    [AssetPath.Attribute(typeof(GameObject))]
+    public string SettingsForStartScreenPrefabPath;
+    public GameObject SettingsForStartScreenPrefab => LoadPrefab(SettingsForStartScreenPrefabPath);
 
     public GameObject LoadPrefab(string path)
     {

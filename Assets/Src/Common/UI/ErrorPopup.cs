@@ -22,7 +22,7 @@ public class ErrorPopup : MonoBehaviour
 
     public static ErrorPopup Show(RectTransform targetTransform, string message, string closeButtonText)
     {
-        var prefab = Resources.Load<GameObject>(UIPrefabsConfig.ErrorPopupPrefabPath);
+        var prefab = UIPrefabsConfig.Instance.ErrorPopupPrefab;
         var errorPopupGo = Instantiate(prefab, targetTransform);
         var errorPopup = errorPopupGo.GetComponent<ErrorPopup>();
         var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");

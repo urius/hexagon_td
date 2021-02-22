@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Text: Error description
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
 --- !u!1 &687499844070052558
 GameObject:
   m_ObjectHideFlags: 0

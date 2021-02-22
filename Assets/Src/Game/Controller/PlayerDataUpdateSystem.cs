@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using strange.extensions.dispatcher.eventdispatcher.api;
+﻿using strange.extensions.dispatcher.eventdispatcher.api;
 using UnityEngine;
 
 public class PlayerDataUpdateSystem : EventSystemBase
 {
-    [Inject] public PlayerSessionModel PlayerGlobalModelHolder { get; set; }
     [Inject] public LevelModel LevelModel { get; set; }
+
+    private bool _needToSaveSettings = false;
 
     public override void Start()
     {
@@ -28,7 +26,11 @@ public class PlayerDataUpdateSystem : EventSystemBase
     {
         LevelModel.SetPauseMode(false);
 
-        await new SaveSettingsCommand().ExecuteAsync(PlayerGlobalModelHolder.PlayerGlobalModel);
+        if (_needToSaveSettings)
+        {
+            _needToSaveSettings = false;
+            await new SaveSettingsCommand().ExecuteAsync();
+        }
     }
 
     private void OnSettingsClicked(IEvent payload)
@@ -43,31 +45,9 @@ public class PlayerDataUpdateSystem : EventSystemBase
 
     private void OnAudioValueChanged(IEvent payload)
     {
+        _needToSaveSettings = true;
+
         var data = payload.data as MediatorEventsParams.UiSettingsPopupAudioValueChangedParams;
-
-        SetAudioVolumePercent(data.AudioVolume);
-        SetMusicVolumePercent(data.MusicVolume);
-        SetSoundsVolumePercent(data.SoundsVolume);
-    }
-
-    private void SetAudioVolumePercent(float audioValue)
-    {
-        PlayerGlobalModelHolder.PlayerGlobalModel.AudioVolume = audioValue;
-
-        AudioManager.Instance.SetMasterVolume(audioValue);
-    }
-
-    private void SetMusicVolumePercent(float musicValue)
-    {
-        PlayerGlobalModelHolder.PlayerGlobalModel.MusicVolume = musicValue;
-
-        AudioManager.Instance.SetMusicVolume(musicValue);
-    }
-
-    private void SetSoundsVolumePercent(float soundsVolume)
-    {
-        PlayerGlobalModelHolder.PlayerGlobalModel.SoundsVolume = soundsVolume;
-
-        AudioManager.Instance.SetSoundsVolume(soundsVolume);
+        new SetAudioCommand().Execute(data.AudioVolume, data.MusicVolume, data.SoundsVolume);
     }
 }
