@@ -37,7 +37,7 @@ public class TurretActionsView : MonoBehaviour
     {
         _upgradeButton.interactable = isEnabled;
         _upgradePriceText.gameObject.SetActive(isEnabled);
-        _upgradePriceText.gameObject.SetActive(isEnabled);
+        _upgradeButtonText.gameObject.SetActive(isEnabled);
     }
 
     public void SetUpgradeTexts(string upgradeTxt, string upgradePriceTxt)
