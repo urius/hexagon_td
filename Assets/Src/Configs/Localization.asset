@@ -57,6 +57,8 @@ MonoBehaviour:
       En: Settings
     - LocalizationItemId: main_menu_how_to_play
       En: How to play
+    - LocalizationItemId: main_menu_special_thanks
+      En: Special thanks
     - LocalizationItemId: levels_menu_start
       En: Start
     - LocalizationItemId: levels_menu_level_locked

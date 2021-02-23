@@ -25,3 +25,4 @@ MonoBehaviour:
   ErrorPopupPrefabPath: Assets/Resources/Prefabs/UI/Common/ErrorPopupContainer.prefab
   HowToPlayScreenPrefabPath: Assets/Resources/Prefabs/UI/Start screen/HowToPlayScreen.prefab
   SettingsForStartScreenPrefabPath: Assets/Resources/Prefabs/UI/Start screen/SettingsPopup_StartScreen.prefab
+  SpecialThanksPrefabPath: Assets/Resources/Prefabs/UI/Start screen/SpecialThanksScreen.prefab

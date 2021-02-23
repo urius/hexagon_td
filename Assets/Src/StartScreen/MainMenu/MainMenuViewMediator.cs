@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using strange.extensions.mediation.impl;
-using UnityEngine;
+﻿using strange.extensions.mediation.impl;
 
 public class MainMenuViewMediator : EventMediator
 {
@@ -17,11 +13,14 @@ public class MainMenuViewMediator : EventMediator
         MainMenuView.PlayButtonClicked += OnPlayClicked;
         MainMenuView.HowToPlayButtonClicked += OnHowToPlayClicked;
         MainMenuView.SettingsButtonClicked += OnSettingsClicked;
+        MainMenuView.SpecialThanksClicked += OnSpecialThanksClicked;
 
         MainMenuView.SetTexts(
             Loc.Get(LocalizationGroupId.StartScreen, "main_menu_play"),
             Loc.Get(LocalizationGroupId.StartScreen, "main_menu_settings"),
-            Loc.Get(LocalizationGroupId.StartScreen, "main_menu_how_to_play"));
+            Loc.Get(LocalizationGroupId.StartScreen, "main_menu_how_to_play"),
+            Loc.Get(LocalizationGroupId.StartScreen, "main_menu_special_thanks")
+            );
     }
 
     private void OnPlayClicked()
@@ -39,5 +38,11 @@ public class MainMenuViewMediator : EventMediator
     private void OnSettingsClicked()
     {
         dispatcher.Dispatch(MediatorEvents.UI_SETTINGS_CLICKED);
+    }
+
+    private void OnSpecialThanksClicked()
+    {
+        MainMenuView.HideAnimated();
+        dispatcher.Dispatch(MediatorEvents.UI_SS_SPECIAL_THANKS_CLICKED);
     }
 }

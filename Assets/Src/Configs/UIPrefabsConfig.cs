@@ -16,15 +16,14 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject SelectLevelItemPrefab;
     public GameObject SelectLevelItemSelectionPrefab;
 
-    [AssetPath.Attribute(typeof(GameObject))]
-    public string ErrorPopupPrefabPath;
+    [AssetPath.Attribute(typeof(GameObject))] public string ErrorPopupPrefabPath;
     public GameObject ErrorPopupPrefab => LoadPrefab(ErrorPopupPrefabPath);
-    [AssetPath.Attribute(typeof(GameObject))]
-    public string HowToPlayScreenPrefabPath;
+    [AssetPath.Attribute(typeof(GameObject))] public string HowToPlayScreenPrefabPath;
     public GameObject HowToPlayScreenPrefab => LoadPrefab(HowToPlayScreenPrefabPath);
-    [AssetPath.Attribute(typeof(GameObject))]
-    public string SettingsForStartScreenPrefabPath;
+    [AssetPath.Attribute(typeof(GameObject))] public string SettingsForStartScreenPrefabPath;
     public GameObject SettingsForStartScreenPrefab => LoadPrefab(SettingsForStartScreenPrefabPath);
+    [AssetPath.Attribute(typeof(GameObject))] public string SpecialThanksPrefabPath;
+    public GameObject SpecialThanksPrefab => LoadPrefab(SpecialThanksPrefabPath);
 
     public GameObject LoadPrefab(string path)
     {

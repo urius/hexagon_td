@@ -41,7 +41,8 @@ public class MediatorEvents
     public static string UI_GOLD_CLICKED = "UI_GOLD_CLICKED";
 
     public static string UI_SS_PLAY_CLICKED = "UI_SS_PLAY_CLICKED";
-    public static string UI_SS_HOW_TO_PLAY_CLICKED = "UI_SS_HOW_TO_PLAY_CLICKED";    
+    public static string UI_SS_HOW_TO_PLAY_CLICKED = "UI_SS_HOW_TO_PLAY_CLICKED";
+    public static string UI_SS_SPECIAL_THANKS_CLICKED = "UI_SS_SPECIAL_THANKS_CLICKED";
 
     public static string UI_SL_SELECT_LEVEL_CLICKED = "UI_SL_SELECT_LEVEL_CLICKED";
     public static string UI_SL_START_LEVEL_CLICKED = "UI_SL_START_LEVEL_CLICKED";

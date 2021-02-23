@@ -23,6 +23,17 @@ public class MenuSceneCanvasViewMediator : EventMediator
         dispatcher.AddListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnMainMenuSettingsClicked);
+        dispatcher.AddListener(MediatorEvents.UI_SS_SPECIAL_THANKS_CLICKED, OnMainMenuSpecialThanksClicked);
+    }
+
+    private void OnDestroy()
+    {
+        dispatcher.RemoveListener(MediatorEvents.UI_HOME_CLICKED, OnHomeClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_GOLD_CLICKED, OnGoldClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_SETTINGS_CLICKED, OnMainMenuSettingsClicked);
+        dispatcher.RemoveListener(MediatorEvents.UI_SS_SPECIAL_THANKS_CLICKED, OnMainMenuSpecialThanksClicked);
     }
 
     private void OnGoldClicked(IEvent payload)
@@ -42,13 +53,6 @@ public class MenuSceneCanvasViewMediator : EventMediator
         }
     }
 
-    private void OnDestroy()
-    {
-        dispatcher.RemoveListener(MediatorEvents.UI_HOME_CLICKED, OnHomeClicked);
-        dispatcher.RemoveListener(MediatorEvents.UI_SS_PLAY_CLICKED, OnMainMenuPlayClicked);
-        dispatcher.RemoveListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
-    }
-
     private void OnMainMenuPlayClicked(IEvent payload)
     {
         ShowScreen(UIPrefabsConfig.SelectLevelScreenPrefab);
@@ -62,6 +66,11 @@ public class MenuSceneCanvasViewMediator : EventMediator
     private void OnMainMenuSettingsClicked(IEvent payload)
     {
         Instantiate(UIPrefabsConfig.SettingsForStartScreenPrefab, RootTransform);
+    }
+
+    private void OnMainMenuSpecialThanksClicked(IEvent payload)
+    {
+        ShowScreen(UIPrefabsConfig.SpecialThanksPrefab);
     }
 
     private void OnHomeClicked(IEvent payload)
