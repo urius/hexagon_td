@@ -58,6 +58,7 @@ public enum LocalizationGroupId
     SettingsPopup,
     TutorialScreen,
     ErrorPopup,
+    SpecialThanksScreen,
 }
 
 [Serializable]

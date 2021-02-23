@@ -23,7 +23,7 @@ public class BuyProductButton : MonoBehaviour
     public void Setup(string productId, int goldAmount, string priceText, string description)
     {
         _productId = productId;
-        _goldAmount.text = goldAmount.ToSpaceSeparatedAmount();
+        _goldAmount.text = "+" + goldAmount.ToSpaceSeparatedAmount();
         _price.text = priceText;
         _description.text = description;
     }

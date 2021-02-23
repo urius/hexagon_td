@@ -199,3 +199,7 @@ MonoBehaviour:
     - LocalizationItemId: connection_error_description
       En: Failed to connect to server.^^ Please check your intennet connection and
         try again
+  - LocalizationGroupId: 12
+    LocalizationItems:
+    - LocalizationItemId: text
+      En: To^Vyacheslav Tkach (soundweaver)^Music and Sound
