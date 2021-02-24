@@ -74,7 +74,7 @@ public class TurretActionsMediator
                 turretNameId = "rocket";
                 break;
             case TurretType.SlowField:
-                turretNameId = "slow";
+                turretNameId = "slower";
                 break;
         }
         var turretName = Loc.Get(LocalizationGroupId.TurretName, turretNameId);

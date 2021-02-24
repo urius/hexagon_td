@@ -42,7 +42,7 @@ MonoBehaviour:
     LocalizationItems:
     - LocalizationItemId: wave
       En: WAVE
-      Ru: "\u0412\u041E\u041B\u041D\u0410"
+      Ru: "\u0432\u043E\u043B\u043D\u0430"
     - LocalizationItemId: start_wave
       En: START WAVE
       Ru: "\u041D\u0410\u0427\u0410\u0422\u042C \u0412\u041E\u041B\u041D\u0423"
@@ -143,7 +143,7 @@ MonoBehaviour:
       Ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
     - LocalizationItemId: main_menu
       En: Main menu
-      Ru: "\u0412\u044B\u0445\u043E\u0434 \u0432 \u043C\u0435\u043D\u044E"
+      Ru: "\u0412 \u043C\u0435\u043D\u044E"
     - LocalizationItemId: volume
       En: 'Volume: '
       Ru: "\u0417\u0432\u0443\u043A:"
@@ -184,11 +184,9 @@ MonoBehaviour:
     - LocalizationItemId: slide_5_description
       En: Make enemies move through modifiers to get profit. There are also negative
         modifiers, that should be avoided
-      Ru: "\u0421 \u043F\u043E\u043C\u043E\u0449\u0442\u044E \u0442\u0443\u0440\u0435\u043B\u0435\u0439
-        \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u044F\u0442\u044C
+      Ru: "\u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044C \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u044F\u0442\u044C
         \u0432\u0440\u0430\u0433\u043E\u0432 \u043D\u0430 \u043A\u043B\u0435\u0442\u043A\u0438
-        \u0441 \u043F\u043E\u043B\u0435\u0437\u043D\u044B\u043C\u0438 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430\u043C\u0438
-        (\u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B)
+        \u0441 \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u0430\u043C\u0438
         \u0434\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F
         \u0432\u044B\u0433\u043E\u0434\u044B \u0432 \u043E\u0431\u043E\u0440\u043E\u043D\u0435"
     - LocalizationItemId: modifiers_slide_1_title
@@ -255,11 +253,11 @@ MonoBehaviour:
       En: Goal base
       Ru: "\u0411\u0430\u0437\u0430 \u0438\u0433\u0440\u043E\u043A\u0430"
     - LocalizationItemId: slide_6_description
-      En: List of cell modifiers
-      Ru: "\u0421\u043F\u0438\u0441\u043E\u043A \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u0432"
+      En: 
+      Ru: 
     - LocalizationItemId: slide_7_description
-      En: List of cell modifiers
-      Ru: "\u0421\u043F\u0438\u0441\u043E\u043A \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u0432"
+      En: 
+      Ru: 
     - LocalizationItemId: modifier_speed_down_title
       En: Slow down
       Ru: "\u0417\u0430\u043C\u0435\u0434\u043B\u0435\u043D\u0438\u0435"
@@ -278,8 +276,8 @@ MonoBehaviour:
       En: Turrets
       Ru: "\u0422\u0443\u0440\u0435\u043B\u0438"
     - LocalizationItemId: slide_8_description
-      En: List of turrets
-      Ru: "\u0421\u043F\u0438\u0441\u043E\u043A \u0442\u0443\u0440\u0435\u043B\u0435\u0439"
+      En: Enjoy the game!
+      Ru: "\u041F\u0440\u0438\u044F\u0442\u043D\u043E\u0439 \u0438\u0433\u0440\u044B!"
     - LocalizationItemId: turret_1_description
       En: Cheap turret. Works on close distances. Good for making additional walls
         to confuse enemies
@@ -300,7 +298,7 @@ MonoBehaviour:
         \u0432 \u0443\u043C\u0435\u043B\u044B\u0445 \u0440\u0443\u043A\u0430\u0445"
     - LocalizationItemId: turret_3_description
       En: Heavy turret. Works on far distances. Can miss if enemies are too close
-      Ru: "\u0422\u044F\u0436\u0435\u043B\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C.
+      Ru: "\u041C\u043E\u0449\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C.
         \u0420\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043D\u0430 \u0434\u0430\u043B\u044C\u043D\u0438\u0445
         \u0434\u0438\u0441\u0442\u0430\u043D\u0446\u0438\u044F\u0445. \u041C\u043E\u0436\u0435\u0442
         \u043F\u0440\u043E\u043C\u0430\u0445\u0438\u0432\u0430\u0442\u044C\u0441\u044F
@@ -318,8 +316,8 @@ MonoBehaviour:
       En: Next
       Ru: "\u0414\u0430\u043B\u0435\u0435"
     - LocalizationItemId: finish_button
-      En: OK
-      Ru: "\u041F\u043E\u043D\u044F\u043B"
+      En: Thanks!
+      Ru: "\u0421\u043F\u0430\u0441\u0438\u0431\u043E!"
   - LocalizationGroupId: 11
     LocalizationItems:
     - LocalizationItemId: error
