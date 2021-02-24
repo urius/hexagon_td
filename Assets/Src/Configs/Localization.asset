@@ -17,189 +17,336 @@ MonoBehaviour:
     LocalizationItems:
     - LocalizationItemId: gun
       En: Blaster
+      Ru: "\u0411\u043B\u0430\u0441\u0442\u0435\u0440"
     - LocalizationItemId: laser
       En: Rail laser
+      Ru: "\u041B\u0430\u0437\u0435\u0440"
     - LocalizationItemId: rocket
       En: Rocket
+      Ru: "\u0420\u0430\u043A\u0435\u0442\u043D\u0438\u0446\u0430"
     - LocalizationItemId: slower
       En: Freezer
+      Ru: "\u0417\u0430\u043C\u0435\u0434\u043B\u0438\u0442\u0435\u043B\u044C"
   - LocalizationGroupId: 1
     LocalizationItems:
     - LocalizationItemId: sell
       En: Sell
+      Ru: "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
     - LocalizationItemId: upgrade
       En: Upgrade
+      Ru: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
     - LocalizationItemId: level
       En: Level
+      Ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
   - LocalizationGroupId: 2
     LocalizationItems:
     - LocalizationItemId: wave
       En: WAVE
+      Ru: "\u0412\u041E\u041B\u041D\u0410"
     - LocalizationItemId: start_wave
       En: START WAVE
+      Ru: "\u041D\u0410\u0427\u0410\u0422\u042C \u0412\u041E\u041B\u041D\u0423"
   - LocalizationGroupId: 3
     LocalizationItems:
     - LocalizationItemId: before_first_wave
       En: Prepare for first wave
+      Ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C\u0442\u0435\u0441\u044C
+        \u043A \u043F\u0435\u0440\u0432\u043E\u0439 \u0432\u043E\u043B\u043D\u0435"
     - LocalizationItemId: wave_started
       En: Wave {0} started!
+      Ru: "\u0412\u043E\u043B\u043D\u0430 {0} \u043D\u0430\u0447\u0430\u043B\u0430\u0441\u044C!"
     - LocalizationItemId: wave_finished
       En: Wave {0} finished!
+      Ru: "\u0412\u043E\u043B\u043D\u0430 {0} \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0430!"
     - LocalizationItemId: all_waves_finished
       En: VICTORY!
+      Ru: "\u041F\u041E\u0411\u0415\u0414\u0410!"
     - LocalizationItemId: defeat
       En: Defeat
+      Ru: "\u041F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u0435"
   - LocalizationGroupId: 4
     LocalizationItems:
     - LocalizationItemId: main_menu_play
       En: Play
+      Ru: "\u0418\u0433\u0440\u0430\u0442\u044C"
     - LocalizationItemId: main_menu_settings
       En: Settings
+      Ru: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
     - LocalizationItemId: main_menu_how_to_play
       En: How to play
+      Ru: "\u041A\u0430\u043A \u0438\u0433\u0440\u0430\u0442\u044C?"
     - LocalizationItemId: main_menu_special_thanks
       En: Special thanks
+      Ru: "\u0411\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u043D\u043E\u0441\u0442\u0438"
     - LocalizationItemId: levels_menu_start
       En: Start
+      Ru: "\u0421\u0442\u0430\u0440\u0442"
     - LocalizationItemId: levels_menu_level_locked
       En: Level {0} is locked.^Complete previous levels to unlock
+      Ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C {0} \u0437\u0430\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u0430\u043D.^\u041F\u0440\u043E\u0439\u0434\u0438\u0442\u0435
+        \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0435 \u0443\u0440\u043E\u0432\u043D\u0438
+        \u0434\u043B\u044F \u0440\u0430\u0437\u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438"
   - LocalizationGroupId: 5
     LocalizationItems:
     - LocalizationItemId: loading
       En: LOADING
+      Ru: "\u0417\u0410\u0413\u0420\u0423\u0417\u041A\u0410"
   - LocalizationGroupId: 6
     LocalizationItems:
     - LocalizationItemId: title
       En: Level {0} completed!
+      Ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C {0} \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D!"
     - LocalizationItemId: info
       En: Congratulations!^You completed the level
+      Ru: "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u0435\u043C!^\u0412\u044B
+        \u043F\u0440\u043E\u0448\u043B\u0438 \u0443\u0440\u043E\u0432\u0435\u043D\u044Cl"
     - LocalizationItemId: home
       En: Menu
+      Ru: "\u041C\u0435\u043D\u044E"
     - LocalizationItemId: next_level
       En: Next level
+      Ru: "\u0414\u0430\u043B\u0435\u0435"
   - LocalizationGroupId: 7
     LocalizationItems:
     - LocalizationItemId: title
       En: Defeated
+      Ru: "\u041F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u0435"
     - LocalizationItemId: info
       En: Critical amount of units have reached the goal base
+      Ru: "\u041A\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E
+        \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432 \u0434\u043E\u0441\u0442\u0438\u0433\u043B\u043E
+        \u0431\u0430\u0437\u044B"
     - LocalizationItemId: home
       En: Main menu
+      Ru: "\u041C\u0435\u043D\u044E"
     - LocalizationItemId: continue_level
-      En: Continue
+      En: Continue wave
+      Ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u0432\u043E\u043B\u043D\u0443"
   - LocalizationGroupId: 8
     LocalizationItems:
     - LocalizationItemId: loading
       En: LOADING...
+      Ru: "\u0417\u0410\u0413\u0420\u0423\u0417\u041A\u0410..."
   - LocalizationGroupId: 9
     LocalizationItems:
     - LocalizationItemId: title
-      En: SETTINGS
+      En: Settings
+      Ru: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
     - LocalizationItemId: music
       En: 'Music:'
+      Ru: "\u041C\u0443\u0437\u044B\u043A\u0430:"
     - LocalizationItemId: sounds
       En: 'Sounds:'
+      Ru: "\u0417\u0432\u0443\u043A\u0438:"
     - LocalizationItemId: continue
-      En: RESUME
+      En: Resume
+      Ru: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
     - LocalizationItemId: main_menu
-      En: MAIN MENU
+      En: Main menu
+      Ru: "\u0412\u044B\u0445\u043E\u0434 \u0432 \u043C\u0435\u043D\u044E"
     - LocalizationItemId: volume
       En: 'Volume: '
+      Ru: "\u0417\u0432\u0443\u043A:"
     - LocalizationItemId: close
       En: Close
+      Ru: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
     - LocalizationItemId: id_name
       En: 'id:'
+      Ru: 'id:'
   - LocalizationGroupId: 10
     LocalizationItems:
     - LocalizationItemId: title
-      En: Ho2 to play
+      En: How to play
+      Ru: "\u041A\u0430\u043A \u0438\u0433\u0440\u0430\u0442\u044C"
     - LocalizationItemId: slide_1_description
       En: Drag turret to a free place to build it
+      Ru: "\u0427\u0442\u043E\u0431\u044B \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C
+        \u0442\u0443\u0440\u0435\u043B\u044C, \u043F\u0435\u0440\u0435\u0442\u0430\u0449\u0438\u0442\u0435
+        \u0435\u0451 \u043D\u0430 \u0438\u0433\u0440\u043E\u0432\u043E\u0435 \u043F\u043E\u043B\u0435"
     - LocalizationItemId: slide_2_description
       En: Click on turret to open turret menu. Here you can upgrade or sell turret
+      Ru: "\u041A\u043B\u0438\u043A\u043D\u0438\u0442\u0435 \u043F\u043E \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u043D\u043E\u0439
+        \u0442\u0443\u0440\u0435\u043B\u0438 \u0434\u043B\u044F \u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F
+        \u043C\u0435\u043D\u044E \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439.
+        \u0417\u0434\u0435\u0441\u044C \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435
+        \u0443\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u0438\u043B\u0438 \u043F\u0440\u043E\u0434\u0430\u0442\u044C
+        \u0442\u0443\u0440\u0435\u043B\u044C"
     - LocalizationItemId: slide_3_description
       En: Click "Start wave" button when you are ready to start the wave
+      Ru: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \"\u041D\u0430\u0447\u0430\u0442\u044C
+        \u0432\u043E\u043B\u043D\u0443\" \u043A\u043E\u0433\u0434\u0430 \u0431\u0443\u0434\u0435\u0442\u0435
+        \u0433\u043E\u0442\u043E\u0432\u044B \u043A \u043E\u0431\u043E\u0440\u043E\u043D\u0435"
     - LocalizationItemId: slide_4_description
       En: Don't let enemies to reach your base
+      Ru: "\u041D\u0435 \u0434\u0430\u0432\u0430\u0439\u0442\u0435 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u0430\u043C
+        \u0434\u043E\u0431\u0440\u0430\u0442\u044C\u0441\u044F \u0434\u043E \u0432\u0430\u0448\u0435\u0439
+        \u0431\u0430\u0437\u044B"
     - LocalizationItemId: slide_5_description
       En: Make enemies move through modifiers to get profit. There are also negative
         modifiers, that should be avoided
+      Ru: "\u0421 \u043F\u043E\u043C\u043E\u0449\u0442\u044E \u0442\u0443\u0440\u0435\u043B\u0435\u0439
+        \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u044F\u0442\u044C
+        \u0432\u0440\u0430\u0433\u043E\u0432 \u043D\u0430 \u043A\u043B\u0435\u0442\u043A\u0438
+        \u0441 \u043F\u043E\u043B\u0435\u0437\u043D\u044B\u043C\u0438 \u0441\u0432\u043E\u0439\u0441\u0442\u0432\u0430\u043C\u0438
+        (\u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u044B)
+        \u0434\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F
+        \u0432\u044B\u0433\u043E\u0434\u044B \u0432 \u043E\u0431\u043E\u0440\u043E\u043D\u0435"
     - LocalizationItemId: modifiers_slide_1_title
       En: 'Modifiers (1/2):'
+      Ru: "\u0422\u0438\u043F\u044B \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u0432
+        (1/2):"
     - LocalizationItemId: modifiers_slide_2_title
       En: 'Modifiers (2/2):'
+      Ru: "\u0422\u0438\u043F\u044B \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u0432
+        (2/2):"
     - LocalizationItemId: modifier_money_title
       En: Money
+      Ru: "\u0414\u0435\u043D\u044C\u0433\u0438"
     - LocalizationItemId: modifier_money_description
       En: Adds extra amount of money for every enemy passed through
+      Ru: "\u041A\u0430\u0436\u0434\u044B\u0439 \u043F\u0440\u043E\u0448\u0435\u0434\u0448\u0438\u0439
+        \u0447\u0435\u0440\u0435\u0437 \u043A\u043B\u0435\u0442\u043A\u0443 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A
+        \u0434\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442 \u0440\u0435\u0441\u0443\u0440\u0441\u044B"
     - LocalizationItemId: modifier_big_money_title
       En: BIg money
+      Ru: "\u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u0434\u0435\u043D\u044C\u0433\u0438"
     - LocalizationItemId: modifier_big_money_description
       En: Adds extra big amount of money for every enemy passed through
+      Ru: "\u041A\u0430\u0436\u0434\u044B\u0439 \u043F\u0440\u043E\u0448\u0435\u0434\u0448\u0438\u0439
+        \u0447\u0435\u0440\u0435\u0437 \u043A\u043B\u0435\u0442\u043A\u0443 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A
+        \u0434\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442 \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u043D\u043E\u0435
+        \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432"
     - LocalizationItemId: modifier_mine_title
       En: Mine
+      Ru: "\u041C\u0438\u043D\u0430"
     - LocalizationItemId: modifier_mine_description
       En: Adds damage to every enemy passed through
+      Ru: "\u041D\u0430\u043D\u043E\u0441\u0438\u0442 \u043F\u043E\u0432\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u044F
+        \u0432\u0441\u0435\u043C \u043F\u0440\u043E\u0445\u043E\u0434\u044F\u0449\u0438\u043C
+        \u044E\u043D\u0438\u0442\u0430\u043C"
     - LocalizationItemId: modifier_repair_title
       En: Repair
+      Ru: "\u0420\u0435\u043C\u043E\u043D\u0442"
     - LocalizationItemId: modifier_repair_description
       En: Partially repairs all enemies passing through
+      Ru: "\u0427\u0430\u0441\u0442\u0438\u0447\u043D\u043E \u0440\u0435\u043C\u043E\u043D\u0442\u0438\u0440\u0443\u0435\u0442
+        \u0432\u0441\u0435 \u043F\u0440\u043E\u0445\u043E\u0434\u044F\u0449\u0438\u0435
+        \u044E\u043D\u0438\u0442\u044B"
     - LocalizationItemId: modifier_direction_title
       En: direction modifier
+      Ru: "\u041D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"
     - LocalizationItemId: modifier_direction_description
-      En: defines direction for enemies to move from current cell
+      En: Defines direction for enemies to move from current cell
+      Ru: "\u0423\u043A\u0430\u0437\u044B\u0432\u0430\u0435\u0442 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435,
+        \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443 \u044E\u043D\u0438\u0442
+        \u043C\u043E\u0436\u0435\u0442 \u0434\u0432\u0438\u0433\u0430\u0442\u044C\u0441\u044F
+        \u0438\u0437 \u0434\u0430\u043D\u043D\u043E\u0439 \u043A\u043B\u0435\u0442\u043A\u0438"
     - LocalizationItemId: modifier_no_build_title
       En: No build
+      Ru: "\u0417\u0430\u043F\u0440\u0435\u0442 \u043F\u043E\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
     - LocalizationItemId: modifier_no_build_description
-      En: you can't build turrets on cells with that modifier
+      En: You can't build turrets on cells with that modifier
+      Ru: "\u041D\u0435\u043B\u044C\u0437\u044F \u0441\u0442\u0440\u043E\u0438\u0442\u044C
+        \u043D\u0430 \u0434\u0430\u043D\u043D\u043E\u0439 \u043A\u043B\u0435\u0442\u043A\u0435"
     - LocalizationItemId: enemy_base
       En: Enemy base
+      Ru: "\u0412\u0440\u0430\u0436\u0435\u0441\u043A\u0430\u044F \u0431\u0430\u0437\u0430"
     - LocalizationItemId: goal_base
       En: Goal base
+      Ru: "\u0411\u0430\u0437\u0430 \u0438\u0433\u0440\u043E\u043A\u0430"
     - LocalizationItemId: slide_6_description
       En: List of cell modifiers
+      Ru: "\u0421\u043F\u0438\u0441\u043E\u043A \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u0432"
     - LocalizationItemId: slide_7_description
       En: List of cell modifiers
+      Ru: "\u0421\u043F\u0438\u0441\u043E\u043A \u043C\u043E\u0434\u0438\u0444\u0438\u043A\u0430\u0442\u043E\u0440\u043E\u0432"
     - LocalizationItemId: modifier_speed_down_title
       En: Slow down
+      Ru: "\u0417\u0430\u043C\u0435\u0434\u043B\u0435\u043D\u0438\u0435"
     - LocalizationItemId: modifier_speed_down_description
-      En: slows down enemies that are passing through
+      En: Slows down enemies that are passing through
+      Ru: "\u0417\u0430\u043C\u0435\u0434\u043B\u044F\u0435\u0442 \u043F\u0440\u043E\u0445\u043E\u0434\u044F\u0449\u0438\u0445
+        \u0447\u0435\u0440\u0435\u0437 \u043A\u043B\u0435\u0442\u043A\u0443 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432"
     - LocalizationItemId: modifier_speed_up_title
       En: Speed up
+      Ru: "\u0423\u0441\u043A\u043E\u0440\u0438\u0442\u0435\u043B\u044C"
     - LocalizationItemId: modifier_speed_up_description
-      En: speeds up enemies that are passing through
+      En: Speeds up enemies that are passing through
+      Ru: "\u0423\u0441\u043A\u043E\u0440\u044F\u0435\u0442 \u043F\u0440\u043E\u0445\u043E\u0434\u044F\u0449\u0438\u0445
+        \u0447\u0435\u0440\u0435\u0437 \u043A\u043B\u0435\u0442\u043A\u0443 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432"
     - LocalizationItemId: slide_8_title
       En: Turrets
+      Ru: "\u0422\u0443\u0440\u0435\u043B\u0438"
     - LocalizationItemId: slide_8_description
       En: List of turrets
+      Ru: "\u0421\u043F\u0438\u0441\u043E\u043A \u0442\u0443\u0440\u0435\u043B\u0435\u0439"
     - LocalizationItemId: turret_1_description
       En: Cheap turret. Works on close distances. Good for making additional walls
         to confuse enemies
+      Ru: "\u041D\u0435\u0434\u043E\u0440\u043E\u0433\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C.
+        \u0420\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043D\u0430 \u0431\u043B\u0438\u0436\u043D\u0438\u0445
+        \u0434\u0438\u0441\u0442\u0430\u043D\u0446\u0438\u044F\u0445. \u0425\u043E\u0440\u043E\u0448\u043E
+        \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u0434\u043B\u044F \u043F\u043E\u0441\u0442\u0440\u043E\u0439\u043A\u0438
+        \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445
+        \u043F\u0440\u0435\u043F\u044F\u0442\u0441\u0442\u0432\u0438\u0439"
     - LocalizationItemId: turret_2_description
       En: Can damage many enemies, if they are standing on one line. Works on middle
         distances
+      Ru: "\u041F\u043E\u0440\u0430\u0436\u0430\u0435\u0442 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u043E
+        \u0446\u0435\u043B\u0435\u0439 \u043E\u0434\u043D\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E,
+        \u0435\u0441\u043B\u0438 \u043E\u043D\u0438 \u0441\u0442\u043E\u044F\u0442
+        \u043D\u0430 \u043E\u0434\u043D\u043E\u0439 \u043B\u0438\u043D\u0438\u0438.
+        \u0413\u0440\u043E\u0437\u043D\u043E\u0435 \u043E\u0440\u0443\u0436\u0438\u0435
+        \u0432 \u0443\u043C\u0435\u043B\u044B\u0445 \u0440\u0443\u043A\u0430\u0445"
     - LocalizationItemId: turret_3_description
       En: Heavy turret. Works on far distances. Can miss if enemies are too close
+      Ru: "\u0422\u044F\u0436\u0435\u043B\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C.
+        \u0420\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043D\u0430 \u0434\u0430\u043B\u044C\u043D\u0438\u0445
+        \u0434\u0438\u0441\u0442\u0430\u043D\u0446\u0438\u044F\u0445. \u041C\u043E\u0436\u0435\u0442
+        \u043F\u0440\u043E\u043C\u0430\u0445\u0438\u0432\u0430\u0442\u044C\u0441\u044F
+        \u0435\u0441\u043B\u0438 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A
+        \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0431\u043B\u0438\u0437\u043A\u043E"
     - LocalizationItemId: turret_4_description
       En: Gives no damage. Slows down near enemies. Radius depends on turret level
+      Ru: "\u0417\u0430\u043C\u0435\u0434\u043B\u044F\u0435\u0442 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432
+        \u0440\u044F\u0434\u043E\u043C \u0441 \u0441\u043E\u0431\u043E\u0439. \u041D\u0435
+        \u043D\u0430\u043D\u043E\u0441\u0438\u0442 \u043F\u043E\u0432\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0439.
+        \u0420\u0430\u0434\u0438\u0443\u0441 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044F
+        \u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043E\u0442 \u0443\u0440\u043E\u0432\u043D\u044F
+        \u0443\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F"
     - LocalizationItemId: next_slide
       En: Next
+      Ru: "\u0414\u0430\u043B\u0435\u0435"
     - LocalizationItemId: finish_button
       En: OK
+      Ru: "\u041F\u043E\u043D\u044F\u043B"
   - LocalizationGroupId: 11
     LocalizationItems:
     - LocalizationItemId: error
       En: Error
+      Ru: "\u041E\u0448\u0438\u0431\u043A\u0430"
     - LocalizationItemId: try_again
       En: Try again
+      Ru: "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u044C"
     - LocalizationItemId: close
       En: Close
+      Ru: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
     - LocalizationItemId: retreive_data_error_description
       En: Unable to retreive data^^error code:{0}
+      Ru: "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F
+        \u0434\u0430\u043D\u043D\u044B\u0445^^\u043A\u043E\u0434 \u043E\u0448\u0438\u0431\u043A\u0438:{0}"
     - LocalizationItemId: connection_error_description
       En: Failed to connect to server.^^ Please check your intennet connection and
         try again
+      Ru: "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u044C\u0441\u044F
+        \u043A \u0441\u0435\u0440\u0432\u0435\u0440\u0443.^^ \u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435
+        \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u043A
+        \u0438\u043D\u0442\u0435\u0440\u043D\u0435\u0442\u0443 \u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435
+        \u043F\u043E\u043F\u044B\u0442\u043A\u0443"
   - LocalizationGroupId: 12
     LocalizationItems:
     - LocalizationItemId: text
       En: To^Vyacheslav Tkach (soundweaver)^Music and Sound
+      Ru: "\u0412\u044F\u0447\u0435\u0441\u043B\u0430\u0432\u0443 \u0422\u043A\u0430\u0447\u0443
+        (soundweaver)^\u0437\u0430 \u0437\u0432\u0443\u043A\u0438 \u0438 \u043C\u0443\u0437\u044B\u043A\u0443
+        \u0432 \u0438\u0433\u0440\u0435"

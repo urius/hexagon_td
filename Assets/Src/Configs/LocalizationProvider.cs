@@ -10,7 +10,9 @@ public class LocalizationProvider : ScriptableObject
     [SerializeField]
     private LocalizationGroup[] _localizationGroups;
 
-    private string _languageId = "en";
+    private SystemLanguage _debugSystemLanguage;
+
+    private SystemLanguage LanguageId => GetLanguage();
 
     public string Get(LocalizationGroupId groupId, string itemId)
     {
@@ -20,12 +22,14 @@ public class LocalizationProvider : ScriptableObject
             var item = group.LocalizationItems.FirstOrDefault(i => i.LocalizationItemId == itemId);
             if (item != null)
             {
-                switch (_languageId)
+                switch (LanguageId)
                 {
-                    case "en":
-                        return ProcessSpecialSymbols(item.En);
+                    case SystemLanguage.Russian:
+                    case SystemLanguage.Belarusian:
+                        return ProcessSpecialSymbols(item.Ru);
+                    case SystemLanguage.English:
                     default:
-                        return "unsupported lang: " + _languageId;
+                        return ProcessSpecialSymbols(item.En);
                 }
             }
         }
@@ -33,9 +37,23 @@ public class LocalizationProvider : ScriptableObject
         return groupId + ":" + itemId;
     }
 
+    public void SetDebugSystemLanguage(SystemLanguage debugLanguage)
+    {
+        _debugSystemLanguage = debugLanguage;
+    }
+
     private void OnEnable()
     {
         Instance = this;
+    }
+
+    private SystemLanguage GetLanguage()
+    {
+#if UNITY_EDITOR
+        return _debugSystemLanguage;
+#else
+        return Application.systemLanguage;
+#endif
     }
 
     private string ProcessSpecialSymbols(string original)
@@ -73,4 +91,5 @@ public class LocalizationItem
 {
     public string LocalizationItemId;
     public string En;
+    public string Ru;
 }
