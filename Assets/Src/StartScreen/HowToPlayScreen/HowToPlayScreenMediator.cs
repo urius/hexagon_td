@@ -33,6 +33,7 @@ public class HowToPlayScreenMediator : EventMediator
 
     private void Start()
     {
+        HowToPlayScreenView.SlideCanvasGroups[0].gameObject.SetActive(true);
         ShowSlide(_shownSlideIndex);
     }
 
@@ -59,7 +60,15 @@ public class HowToPlayScreenMediator : EventMediator
 
     private void TweenSlideVisibility(CanvasGroup canvasGroup, int targetAlpha, float duration)
     {
-        TweenFactory.Tween(canvasGroup, canvasGroup.alpha, targetAlpha, duration, TweenScaleFunctions.CubicEaseInOut, (t) => canvasGroup.alpha = t.CurrentValue);
+        if ((targetAlpha >= 1 && canvasGroup.alpha >= targetAlpha) || (targetAlpha <= 0 && canvasGroup.alpha <= 0))
+        {
+            return;
+        }
+
+        canvasGroup.gameObject.SetActive(true);
+        TweenFactory.Tween(canvasGroup, canvasGroup.alpha, targetAlpha, duration, TweenScaleFunctions.CubicEaseInOut,
+            t => canvasGroup.alpha = t.CurrentValue,
+            t => canvasGroup.gameObject.SetActive(t.CurrentValue > 0));
     }
 
     private void OnNextClicked()
