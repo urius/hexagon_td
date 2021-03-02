@@ -15,6 +15,8 @@ public class UIPrefabsConfig : ScriptableObject
     public GameObject SelectLevelItemContainerPrefab;
     public GameObject SelectLevelItemPrefab;
     public GameObject SelectLevelItemSelectionPrefab;
+    public GameObject BoostersScreenPrefab;
+    public GameObject BoosterItemPrefab;
 
     [AssetPath.Attribute(typeof(GameObject))] public string ErrorPopupPrefabPath;
     public GameObject ErrorPopupPrefab => LoadPrefab(ErrorPopupPrefabPath);

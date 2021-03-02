@@ -11,8 +11,15 @@ public class StartLevelClickedCommand : EventCommand
     {
         Retain();
 
-        var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);
-        await transitionHelper.SwitchAsync(SceneNames.MainMenu, SceneNames.Game);
+        var availableBoosters = PlayerSessionModel.Instance.SelectedLevelConfig.GetAvailableBoosters();
+        if (availableBoosters.Length <= 0)
+        {
+            var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);
+            await transitionHelper.SwitchAsync(SceneNames.MainMenu, SceneNames.Game);
+        } else
+        {
+            dispatcher.Dispatch(CommandEvents.UI_MENU_SCENE_REQUEST_BOOSTERS_SCREEN);
+        }
 
         Release();
     }

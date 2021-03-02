@@ -22,6 +22,10 @@ MonoBehaviour:
     type: 3}
   SelectLevelItemSelectionPrefab: {fileID: 3366146521097664114, guid: 55fe9359652d041c2bafc319d1ea6a28,
     type: 3}
+  BoostersScreenPrefab: {fileID: 594795715671629257, guid: 46878317dd9d04341ada392083ee5453,
+    type: 3}
+  BoosterItemPrefab: {fileID: 2353716484488416335, guid: 9735364a4394c4012b8c56115a76ddc7,
+    type: 3}
   ErrorPopupPrefabPath: Assets/Resources/Prefabs/UI/Common/ErrorPopupContainer.prefab
   HowToPlayScreenPrefabPath: Assets/Resources/Prefabs/UI/Start screen/HowToPlayScreen.prefab
   SettingsForStartScreenPrefabPath: Assets/Resources/Prefabs/UI/Start screen/SettingsPopup_StartScreen.prefab

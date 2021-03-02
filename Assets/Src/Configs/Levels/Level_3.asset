@@ -932,6 +932,8 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 0
+  IsBoostersDisabled: 0
+  SpecialDisabledBoosters: 020000000500000007000000
   _wavesSettings:
   - WaveParts:
     - UnitType: 1

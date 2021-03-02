@@ -24,6 +24,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
         dispatcher.AddListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_CLICKED, OnMainMenuSettingsClicked);
         dispatcher.AddListener(MediatorEvents.UI_SS_SPECIAL_THANKS_CLICKED, OnMainMenuSpecialThanksClicked);
+        dispatcher.AddListener(CommandEvents.UI_MENU_SCENE_REQUEST_BOOSTERS_SCREEN, OnRequestBoostersScreen);
     }
 
     private void OnDestroy()
@@ -34,6 +35,7 @@ public class MenuSceneCanvasViewMediator : EventMediator
         dispatcher.RemoveListener(MediatorEvents.UI_SS_HOW_TO_PLAY_CLICKED, OnMainMenuHowToPlayClicked);
         dispatcher.RemoveListener(MediatorEvents.UI_SETTINGS_CLICKED, OnMainMenuSettingsClicked);
         dispatcher.RemoveListener(MediatorEvents.UI_SS_SPECIAL_THANKS_CLICKED, OnMainMenuSpecialThanksClicked);
+        dispatcher.RemoveListener(CommandEvents.UI_MENU_SCENE_REQUEST_BOOSTERS_SCREEN, OnRequestBoostersScreen);
     }
 
     private void OnGoldClicked(IEvent payload)
@@ -58,6 +60,11 @@ public class MenuSceneCanvasViewMediator : EventMediator
         ShowScreen(UIPrefabsConfig.SelectLevelScreenPrefab);
     }
 
+    private void OnRequestBoostersScreen(IEvent payload)
+    {
+        ShowScreen(UIPrefabsConfig.BoostersScreenPrefab);
+    }
+
     private void OnMainMenuHowToPlayClicked(IEvent payload)
     {
         ShowScreen(UIPrefabsConfig.HowToPlayScreenPrefab);
@@ -75,7 +82,13 @@ public class MenuSceneCanvasViewMediator : EventMediator
 
     private void OnHomeClicked(IEvent payload)
     {
-        ShowScreen(UIPrefabsConfig.MainMenuScreenPrefab);
+        if(_currentActiveScreenPrefab == UIPrefabsConfig.BoostersScreenPrefab)
+        {
+            ShowScreen(UIPrefabsConfig.SelectLevelScreenPrefab);
+        } else
+        {
+            ShowScreen(UIPrefabsConfig.MainMenuScreenPrefab);
+        }
 
         AudioManager.Instance.Play(SoundId.ClickDefault);
     }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -362,6 +362,8 @@ MonoBehaviour:
   _levelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
     type: 2}
   _uiPrefabsConfig: {fileID: 11400000, guid: de2108373fb2244fa8fd1cdda7c9b93c, type: 2}
+  _boostersConfigProvider: {fileID: 11400000, guid: dfff4b255e0304d6297892ae9e1329f5,
+    type: 2}
 --- !u!1 &602336341
 GameObject:
   m_ObjectHideFlags: 0
