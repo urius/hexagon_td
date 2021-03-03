@@ -21,6 +21,10 @@ public class GoldStoreWindow : MonoBehaviour
     {
         _closeButton.onClick.AddListener(Close);
 
+        var loc = LocalizationProvider.Instance;
+        _titleText.text = loc.Get(LocalizationGroupId.GoldStoreWindow, "title");
+        _descriptionText.text = loc.Get(LocalizationGroupId.GoldStoreWindow, "description");
+
         var iapManager = IAPManager.Instance;
         var buttons = _buttons;
         for (var i = 0; i < _buttons.Length; i++)

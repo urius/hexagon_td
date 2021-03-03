@@ -79,6 +79,7 @@ public enum LocalizationGroupId
     SpecialThanksScreen,
     BoostersScreen,
     LevelNames,
+    GoldStoreWindow,
 }
 
 [Serializable]
