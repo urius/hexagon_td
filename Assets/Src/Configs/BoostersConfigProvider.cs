@@ -10,6 +10,13 @@ public class BoostersConfigProvider : ScriptableObject
 
     public BoosterConfig[] BoosterConfigs;
 
+    public static BoosterConfig GetBoosterConfigById(BoosterId boosterId)
+    {
+        if (boosterId == BoosterId.Undefined) return null;
+
+        return Array.Find(Instance.BoosterConfigs, c => c.BoosterId == boosterId);
+    }
+
     private void OnEnable()
     {
         Instance = this;

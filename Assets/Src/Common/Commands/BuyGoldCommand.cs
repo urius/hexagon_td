@@ -13,7 +13,8 @@ public struct BuyGoldCommand
             var saveResult = await NetworkManager.SaveUserGoldAsync(PlayerSessionModel.Model.Id, PlayerSessionModel.Model.Gold + addedAmount);
             if (saveResult.IsSuccess)
             {
-                PlayerSessionModel.Model.AddGold(addedAmount);
+                PlayerSessionModel.Model.AddGold(addedAmount, true);
+                PlayerSessionModel.Model.TriggerGoldAnimation(addedAmount);
                 return true;
             }
             else

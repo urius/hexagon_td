@@ -28,6 +28,7 @@ public class StartScreenContext : MVCSContext
         mediationBinder.Bind<LevelsScrollView>().To<LevelsScrollViewMediator>();
         mediationBinder.Bind<HowToPlayScreenView>().To<HowToPlayScreenMediator>();
         mediationBinder.Bind<SettingsPopupForStartScreen>().To<SettingsPopupForStartScreenMediator>();
+        mediationBinder.Bind<BoostersScreenView>().To<BoostersScreenViewMediator>();        
 
         //commands
         commandBinder.Bind(ContextEvent.START).To<StartScreenStartedCommand>().Once();

@@ -78,6 +78,7 @@ public enum LocalizationGroupId
     ErrorPopup,
     SpecialThanksScreen,
     BoostersScreen,
+    LevelNames,
 }
 
 [Serializable]

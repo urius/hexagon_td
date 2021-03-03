@@ -2,6 +2,6 @@
 {
     public override void Execute(int levelIndex)
     {
-        PlayerSessionModel.Instance.SelectedLevelIndex = levelIndex;
+        PlayerSessionModel.Instance.SelectedLevelData.LevelIndex = levelIndex;
     }
 }

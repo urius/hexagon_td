@@ -19,6 +19,7 @@ public class GoldWidgetMediator : EventMediator
         _playerModel = PlayerSessionModel.Model;
 
         WidgetView.ButtonClicked += OnButtonClicked;
+        _playerModel.GoldAnimationRequested += OnGoldAnimationRequested;
         _playerModel.GoldAmountUpdated += OnGoldAmountUpdated;
     }
 
@@ -36,19 +37,26 @@ public class GoldWidgetMediator : EventMediator
     public override void OnRemove()
     {
         WidgetView.ButtonClicked -= OnButtonClicked;
+        _playerModel.GoldAnimationRequested -= OnGoldAnimationRequested;
         _playerModel.GoldAmountUpdated -= OnGoldAmountUpdated;
+
         _isDestroyed = true;
 
         base.OnRemove();
     }
 
-    private async void OnGoldAmountUpdated(int amount)
+    private void OnGoldAmountUpdated(int amount)
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, new Vector2(Screen.width, Screen.height), Camera.main,
-            out var screenLocalDim);
+        WidgetView.SetAmountAnimated(_playerModel.Gold);
+    }
 
+    private async void OnGoldAnimationRequested(int amount)
+    {
         if (amount > 0)
         {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, new Vector2(Screen.width, Screen.height), Camera.main,
+                out var screenLocalDim);
+
             var particlesNum = 10;
             if (amount > 1000) particlesNum = 20;
             if (amount > 10000) particlesNum = 50;
@@ -59,10 +67,6 @@ public class GoldWidgetMediator : EventMediator
 
             await Task.Delay(500);
 
-            WidgetView.SetAmountAnimated(_playerModel.Gold);
-        }
-        else
-        {
             WidgetView.SetAmountAnimated(_playerModel.Gold);
         }
     }

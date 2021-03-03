@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerSessionModel", menuName = "Common/Model/PlayerSessionModel")]
 public class PlayerSessionModel : ScriptableObject
@@ -10,12 +11,30 @@ public class PlayerSessionModel : ScriptableObject
     private PlayerGlobalModel _playerGlobalModel;
     public PlayerGlobalModel PlayerGlobalModel => _playerGlobalModel;
 
-    public int SelectedLevelIndex = -1;
-    public LevelConfig SelectedLevelConfig => SelectedLevelIndex >= 0 ? LevelsCollectionProvider.Instance.Levels[SelectedLevelIndex] : null;
+    public bool SaveGoldFlag = false;
+
+    public SelectedLevelData SelectedLevelData;
+    public int SelectedLevelIndex => SelectedLevelData.LevelIndex;
+    public LevelConfig SelectedLevelConfig => SelectedLevelData.LevelConfig;
 
     public void Reset()
     {
-        SelectedLevelIndex = -1;
+        SelectedLevelData = new SelectedLevelData(LevelsCollectionProvider.Instance.Levels);
+    }
+
+    public void ResetSelectedBoosters()
+    {
+        if (SelectedLevelData.BoosterIds.Length > 0)
+        {
+            var refundAmount = 0;
+            foreach (var boosterId in SelectedLevelData.BoosterIds)
+            {
+                refundAmount += BoostersConfigProvider.GetBoosterConfigById(boosterId).Price;
+            }
+            PlayerGlobalModel.AddGold(refundAmount);
+
+            SelectedLevelData.ResetBoosters();
+        }
     }
 
     public void SetModel(PlayerGlobalModel model)
@@ -25,12 +44,7 @@ public class PlayerSessionModel : ScriptableObject
 
     public void AdvanceSelectedLevel()
     {
-        SelectedLevelIndex++;
-        var totalLevelsCount = LevelsCollectionProvider.Instance.Levels.Length;
-        if (SelectedLevelIndex > totalLevelsCount - 1)
-        {
-            SelectedLevelIndex = 0;
-        }
+        SelectedLevelData.AdvanceSelectedLevel();
     }
 
     private void OnEnable()

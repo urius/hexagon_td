@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerGlobalModel
 {
     public event Action<int> GoldAmountUpdated;
+    public event Action<int> GoldAnimationRequested;
 
     public string Id;
     public int LoadsCount;
@@ -28,6 +29,11 @@ public class PlayerGlobalModel
     }
     [SerializeField]
     private string GoldStr;
+
+    internal void TriggerGoldAnimation(int amount)
+    {
+        GoldAnimationRequested?.Invoke(amount);
+    }
 
     public PlayerGlobalModel(GetUserDataResponse dto)
     {
@@ -102,7 +108,7 @@ public class PlayerGlobalModel
         UpdateUnlockState();
     }
 
-    public void AddGold(int goldAmount)
+    public void AddGold(int goldAmount, bool silentMode = false)
     {
         var goldBefore = Gold;
         Gold += goldAmount;
@@ -111,7 +117,10 @@ public class PlayerGlobalModel
             Gold = 0;
         }
 
-        GoldAmountUpdated?.Invoke(goldAmount);
+        if (!silentMode)
+        {
+            GoldAmountUpdated?.Invoke(goldAmount);
+        }
     }
 
     public bool TrySpendGold(int amount)

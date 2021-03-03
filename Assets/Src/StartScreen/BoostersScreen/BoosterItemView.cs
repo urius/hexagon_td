@@ -31,6 +31,10 @@ public class BoosterItemView : MonoBehaviour
     {
         _bgImg.color = isChecked ? _isCheckedBgColor : _isNotCheckedBgColor;
         _checkboxImg.sprite = isChecked ? _isCheckedSprite : _isNotCheckedSprite;
+
+        var color = _iconImg.color;
+        color.a = isChecked ? 1f : 0.5f;
+        _iconImg.color = color;
     }
 
     private void OnEnable()

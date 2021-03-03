@@ -350,10 +350,15 @@ MonoBehaviour:
         \u0432 \u0438\u0433\u0440\u0435"
   - LocalizationGroupId: 13
     LocalizationItems:
+    - LocalizationItemId: level_title
+      En: Level {0}
+      Ru: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C {0}"
+    - LocalizationItemId: boosters_title
+      En: 'Available boosters:'
+      Ru: "\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0443\u0441\u0438\u043B\u0438\u0442\u0435\u043B\u0438:"
     - LocalizationItemId: start_money_title
       En: Start money boost
-      Ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0441\u0442\u0430\u0440\u0442\u043E\u0432\u043E\u0433\u043E
-        \u043A\u0430\u043F\u0438\u0442\u0430\u043B\u0430"
+      Ru: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439 \u043A\u0430\u043F\u0438\u0442\u0430\u043B"
     - LocalizationItemId: start_money_description
       En: Start money increased x{0} times
       Ru: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439 \u043A\u0430\u043F\u0438\u0442\u0430\u043B
@@ -361,17 +366,18 @@ MonoBehaviour:
         \u0432 {0} \u0440\u0430\u0437\u0430"
     - LocalizationItemId: increased_reward_title
       En: Increased reward
-      Ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0432\u043E\u0437\u043D\u0430\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u044F"
+      Ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u043D\u0430\u0433\u0440\u0430\u0434\u044B"
     - LocalizationItemId: increased_reward_description
-      En: x{0} reward for destroy enemies and finish wave
-      Ru: "x{0} \u043D\u0430\u0433\u0440\u0430\u0434\u0430 \u0437\u0430 \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0435\u043D\u0438\u0435
+      En: '{0}% more reward for destroy enemies and finish wave'
+      Ru: "\u041D\u0430\u0433\u0440\u0430\u0434\u0430 \u0437\u0430 \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0435\u043D\u0438\u0435
         \u0432\u0440\u0430\u0433\u043E\u0432 \u0438 \u043F\u0440\u043E\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435
-        \u0432\u043E\u043B\u043D"
+        \u0432\u043E\u043B\u043D \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0430
+        \u043D\u0430 {0}%"
     - LocalizationItemId: more_protection_title
       En: Better protection
       Ru: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u0437\u0430\u0449\u0438\u0442\u044B"
     - LocalizationItemId: more_protection_description
-      En: '{0} times more all player bases armor'
+      En: '{0} times more armor on all player bases'
       Ru: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u0437\u0430\u043F\u0430\u0441\u0430
         \u043F\u0440\u043E\u0447\u043D\u043E\u0441\u0442\u0438 \u0432\u0441\u0435\u0445
         \u0431\u0430\u0437 \u0438\u0433\u0440\u043E\u043A\u0430 \u0432 {0} \u0440\u0430\u0437\u0430"
@@ -407,3 +413,103 @@ MonoBehaviour:
       En: Slow down all enemies by {0}%
       Ru: "\u0412\u0441\u0435 \u0432\u0440\u0430\u0433\u0438 \u0434\u0432\u0438\u0433\u0430\u044E\u0442\u0441\u044F
         \u043D\u0430 {0}% \u043C\u0435\u0434\u043B\u0435\u043D\u043D\u0435\u0435"
+  - LocalizationGroupId: 14
+    LocalizationItems:
+    - LocalizationItemId: welcome_snake
+      En: "\u0414\u0435\u043D\u0435\u0436\u043D\u0430\u044F \u0437\u043C\u0435\u0439\u043A\u0430"
+      Ru: Money snake
+    - LocalizationItemId: slow_snake
+      En: Slow snake
+      Ru: "\u0422\u043E\u0440\u043C\u043E\u0437\u044F\u0449\u0430\u044F \u0437\u043C\u0435\u0439\u043A\u0430"
+    - LocalizationItemId: lets_be_faster
+      En: Lets be faster
+      Ru: "\u0423\u0441\u043A\u043E\u0440\u0438\u0442\u044C\u0441\u044F \u043D\u0435
+        \u043F\u043E\u043C\u0435\u0448\u0430\u0435\u0442"
+    - LocalizationItemId: symmetry
+      En: Symmetry
+      Ru: "\u0421\u0438\u043C\u043C\u0435\u0442\u0440\u0438\u044F"
+    - LocalizationItemId: short_not_better
+      En: Shot is not better
+      Ru: "\u041A\u043E\u0440\u043E\u0442\u043A\u0438\u0439 \u043F\u0443\u0442\u044C
+        - \u043D\u0435 \u043B\u0443\u0447\u0448\u0438\u0439"
+    - LocalizationItemId: the_x
+      En: The X
+      Ru: "\u041F\u0435\u0440\u0435\u043A\u0440\u0451\u0441\u0442\u043E\u043A"
+    - LocalizationItemId: the_x_2
+      En: The X. part 2
+      Ru: "\u041F\u0435\u0440\u0435\u043A\u0440\u0451\u0441\u0442\u043E\u043A 2"
+    - LocalizationItemId: slow_field
+      En: Slow field
+      Ru: "\u041F\u043E\u043B\u0435 \u0437\u0430\u043C\u0435\u0434\u043B\u0435\u043D\u0438\u044F"
+    - LocalizationItemId: meet_teleports
+      En: Meet teleports
+      Ru: "\u0417\u043D\u0430\u043A\u043E\u043C\u044C\u0442\u0435\u0441\u044C, \u0442\u0435\u043B\u0435\u043F\u043E\u0440\u0442\u044B"
+    - LocalizationItemId: long_way
+      En: A long way...
+      Ru: "\u0414\u043E\u043B\u0433\u0430\u044F \u0434\u043E\u0440\u043E\u0433\u0430..."
+    - LocalizationItemId: slow_or_rich
+      En: Slow or rich?
+      Ru: "\u041C\u0435\u0434\u043B\u0435\u043D\u043D\u043E \u0438\u043B\u0438 \u0431\u043E\u0433\u0430\u0442\u043E?"
+    - LocalizationItemId: teleports_can_help
+      En: Teleports can help
+      Ru: "\u0422\u0435\u043B\u0435\u043F\u043E\u0440\u0442\u044B \u043C\u043E\u0433\u0443\u0442
+        \u043F\u043E\u043C\u043E\u0447\u044C"
+    - LocalizationItemId: mine_field
+      En: Mine field
+      Ru: "\u041C\u0438\u043D\u043D\u043E\u0435 \u043F\u043E\u043B\u0435"
+    - LocalizationItemId: symmetry_2
+      En: Symmetry 2
+      Ru: "\u0421\u0438\u043C\u043C\u0435\u0442\u0440\u0438\u044F 2"
+    - LocalizationItemId: there_is_always_another_exit
+      En: There is always another exit
+      Ru: "\u0412\u0441\u0435\u0433\u0434\u0430 \u0435\u0441\u0442\u044C \u0434\u0440\u0443\u0433\u043E\u0439
+        \u0432\u044B\u0445\u043E\u0434"
+    - LocalizationItemId: conveyor
+      En: Conveyor
+      Ru: "\u041A\u043E\u043D\u0432\u0435\u0439\u0435\u0440"
+    - LocalizationItemId: teleports_can_help_2
+      En: Teleports can help 2
+      Ru: "\u0422\u0435\u043B\u0435\u043F\u043E\u0440\u0442\u044B \u043C\u043E\u0433\u0443\u0442
+        \u043F\u043E\u043C\u043E\u0447\u044C 2"
+    - LocalizationItemId: right_or_left
+      En: Right or left?
+      Ru: "\u041D\u0430\u043F\u0440\u0430\u0432\u043E \u0438\u043B\u0438 \u043D\u0430\u043B\u0435\u0432\u043E?"
+    - LocalizationItemId: build_your_way
+      En: Build your way
+      Ru: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0441\u0432\u043E\u0439 \u043F\u0443\u0442\u044C"
+    - LocalizationItemId: race
+      En: Race
+      Ru: "\u041D\u0430\u043F\u0435\u0440\u0435\u0433\u043E\u043D\u043A\u0438"
+    - LocalizationItemId: repair_station
+      En: Repair station
+      Ru: "\u0420\u0435\u043C\u043E\u043D\u0442\u043D\u0430\u044F \u0441\u0442\u0430\u043D\u0446\u0438\u044F"
+    - LocalizationItemId: build_your_way_2
+      En: Build your way 2
+      Ru: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0441\u0432\u043E\u0439 \u043F\u0443\u0442\u044C
+        2"
+    - LocalizationItemId: 2_faces_world
+      En: Two-faced world
+      Ru: "\u0414\u0432\u0443\u043B\u0438\u043A\u0438\u0439 \u043C\u0438\u0440"
+    - LocalizationItemId: sand_clock
+      En: Sand clock
+      Ru: "\u041F\u0435\u0441\u043E\u0447\u043D\u044B\u0435 \u0447\u0430\u0441\u044B"
+    - LocalizationItemId: smart_way
+      En: Smart way
+      Ru: "\u0423\u043C\u043D\u044B\u0439 \u043F\u0443\u0442\u044C"
+    - LocalizationItemId: your_face_when_playing
+      En: Your face when playing
+      Ru: "\u0422\u0432\u043E\u0451 \u043B\u0438\u0446\u043E \u043A\u043E\u0433\u0434\u0430
+        \u0438\u0433\u0440\u0430\u0435\u0448\u044C"
+    - LocalizationItemId: colored_wall
+      En: Colored wall
+      Ru: "\u041C\u043D\u043E\u0433\u043E\u0446\u0432\u0435\u0442\u043D\u0430\u044F
+        \u0441\u0442\u0435\u043D\u0430"
+    - LocalizationItemId: 2_faces_world_2
+      En: Two-faced world 2
+      Ru: "\u0414\u0432\u0443\u043B\u0438\u043A\u0438\u0439 \u043C\u0438\u0440 2"
+    - LocalizationItemId: hard_race
+      En: Hard race
+      Ru: "\u0421\u043B\u043E\u0436\u043D\u0430\u044F \u0433\u043E\u043D\u043A\u0430"
+    - LocalizationItemId: surrounded
+      En: Surrounded
+      Ru: "\u041E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0435"
