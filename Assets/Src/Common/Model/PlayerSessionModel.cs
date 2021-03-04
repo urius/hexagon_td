@@ -22,16 +22,20 @@ public class PlayerSessionModel : ScriptableObject
         SelectedLevelData = new SelectedLevelData(LevelsCollectionProvider.Instance.Levels);
     }
 
-    public void ResetSelectedBoosters()
+    public void ResetSelectedBoosters(bool needRefundGold)
     {
-        if (SelectedLevelData.BoosterIds.Length > 0)
+        var boosterIds = SelectedLevelData.BoosterIds;
+        if (boosterIds.Length > 0)
         {
             var refundAmount = 0;
-            foreach (var boosterId in SelectedLevelData.BoosterIds)
+            foreach (var boosterId in boosterIds)
             {
                 refundAmount += BoostersConfigProvider.GetBoosterConfigById(boosterId).Price;
             }
-            PlayerGlobalModel.AddGold(refundAmount);
+            if (needRefundGold)
+            {
+                PlayerGlobalModel.AddGold(refundAmount);
+            }
 
             SelectedLevelData.ResetBoosters();
         }

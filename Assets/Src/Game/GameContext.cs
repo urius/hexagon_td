@@ -22,7 +22,8 @@ public class GameContext : MVCSContext
 
         new GlobalBindingsHelper(injectionBinder, mediationBinder).Bind(gameContextView.GlobalObjectsHolder);
 
-        var levelModel = new LevelModel(PlayerSessionModel.Instance.SelectedLevelConfig);
+        var selectedLevelData = PlayerSessionModel.Instance.SelectedLevelData;
+        var levelModel = new LevelModel(selectedLevelData.LevelConfig, selectedLevelData.BoosterValues);
         LevelModel = levelModel;
 
         injectionBinder

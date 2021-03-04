@@ -57,7 +57,8 @@ public class BoostersScreenViewMediator : EventMediator
 
     private void CreateBoosterItems()
     {
-        var availableBoosters = PlayerSessionModel.Instance.SelectedLevelConfig.GetAvailableBoosters();
+        var selectedLevelData = PlayerSessionModel.Instance.SelectedLevelData;
+        var availableBoosters = selectedLevelData.LevelConfig.GetAvailableBoosters();
         System.Random rnd = new System.Random();
         availableBoosters = availableBoosters.OrderBy(b => rnd.Next()).ToArray();
 
@@ -75,7 +76,7 @@ public class BoostersScreenViewMediator : EventMediator
                 title,
                 description,
                 boosterConfig.Price.ToSpaceSeparatedAmount());
-            boosterItemView.SetCheckedState(false);
+            boosterItemView.SetCheckedState(selectedLevelData.IsBoosterSelected(boosterId));
 
             var boosterIdScoped = boosterId;
             void OnClickHandler()
@@ -110,6 +111,6 @@ public class BoostersScreenViewMediator : EventMediator
 
     private void OnPlayClicked()
     {
-        //TODO: handle play clicked
+        dispatcher.Dispatch(MediatorEvents.UI_BOOSTERS_SCREEN_PLAY_LEVEL_CLICKED);
     }
 }

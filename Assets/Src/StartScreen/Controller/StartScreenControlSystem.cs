@@ -8,6 +8,8 @@ public class StartScreenControlSystem : EventSystemBase
 
     public override void Start()
     {
+        PlayerSessionModel.Instance.ResetSelectedBoosters(false);
+
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_AUDIO_VALUE_CHANGED, OnSettingsPopupAudioValueChanged);
         dispatcher.AddListener(MediatorEvents.UI_SETTINGS_POPUP_CLOSE_CLICKED, OnSettingsPopupCloseClicked);
         dispatcher.AddListener(MediatorEvents.UI_BOOSTERS_SCREEN_BOOSTER_CLICKED, OnBoosterClicked);
@@ -16,7 +18,7 @@ public class StartScreenControlSystem : EventSystemBase
 
     private void OnHomeClicked(IEvent payload)
     {
-        PlayerSessionModel.Instance.ResetSelectedBoosters();
+        PlayerSessionModel.Instance.ResetSelectedBoosters(true);
     }
 
     private void OnBoosterClicked(IEvent payload)

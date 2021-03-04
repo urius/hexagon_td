@@ -40,6 +40,8 @@ public class WavesControlSystem : EventSystemBase
                 LevelModel.SetTimeScale(1);
 
                 WaveModel.EndWave();
+                LevelModel.RepairBases();
+
                 AudioManager.Instance.SetInWaveMusicMode(false);
                 if (WaveModel.WaveState == WaveState.AfterLastWave)
                 {

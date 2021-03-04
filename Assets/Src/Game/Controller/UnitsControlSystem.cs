@@ -12,6 +12,8 @@ public class UnitsControlSystem : EventSystemBase
     [Inject] public WaveModel WaveModel { get; set; }
     [Inject] public LevelTurretsModel LevelTurretsModel { get; set; }
 
+    private BoosterValues _boosterValues;
+
     private int _framesCount = 0;
 
     public UnitsControlSystem()
@@ -20,6 +22,8 @@ public class UnitsControlSystem : EventSystemBase
 
     public override void Start()
     {
+        _boosterValues = PlayerSessionModel.Instance.SelectedLevelData.BoosterValues;
+
         UpdateProvider.UpdateAction += OnUpdate;
         LevelTurretsModel.TurretAdded += OnTurretAdded;
         LevelTurretsModel.TurretRemoved += OnTurretRemoved;
@@ -111,7 +115,7 @@ public class UnitsControlSystem : EventSystemBase
                     //  OnRegister happens on next frame, so this workaround is not working
 
                     var path = LevelModel.GetPath(spawnCell.CellPosition);
-                    var unitModel = new UnitModel(path, unitConfig, unitSkinConfig);
+                    var unitModel = new UnitModel(path, unitConfig, unitSkinConfig, _boosterValues);
                     LevelUnitsModel.AddUnit(unitModel);
                     //LevelUnitsModel.OwnCellByUnit(unitModel);
 

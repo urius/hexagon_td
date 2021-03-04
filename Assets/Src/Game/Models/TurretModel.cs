@@ -10,7 +10,6 @@ public class TurretModel
     public event Action<int> SellAnimationTriggered = delegate { };
 
     public readonly Vector2Int Position;
-
     public TurretType TurretType;
     public float AttackRadiusCells;
     public int Damage;
@@ -20,8 +19,12 @@ public class TurretModel
 
     public bool IsDestroyed = false;
 
-    public TurretModel(TurretConfig turretConfig, Vector2Int position)
+    private readonly BoosterValues _boosterValues;
+
+    public TurretModel(TurretConfig turretConfig, Vector2Int position, BoosterValues boosterValues)
     {
+        _boosterValues = boosterValues;
+
         SetupConfig(turretConfig);
 
         ReloadFramesLeft = 0;
@@ -67,7 +70,7 @@ public class TurretModel
         AttackRadiusCells = turretConfig.AttackRadiusCells;
         Damage = turretConfig.Damage;
         SpeedMultiplier = turretConfig.SpeedMultiplier;
-        ReloadTimeFrames = turretConfig.ReloadTimeFrames;
+        ReloadTimeFrames = (int)(turretConfig.ReloadTimeFrames * _boosterValues.TurretReloadTimeMultiplier);
     }
 
     private void OnTargetUnitStateUpdated()

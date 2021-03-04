@@ -14,11 +14,12 @@ public class UnitModel
     private int _currentPathCellIndex = 0;
     private IReadOnlyList<Vector2Int> _path;
     private float _turretsSpeedMultiplier = 1;
+    private float _defaultSpeed;
 
     private readonly UnitConfig _config;
     private readonly LinkedList<TurretModel> _slowDownAffectors = new LinkedList<TurretModel>();
 
-    public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config, UnitSkinConfig skinConfig)
+    public UnitModel(IReadOnlyList<Vector2Int> path, UnitConfig config, UnitSkinConfig skinConfig, BoosterValues boosterValues)
     {
         _path = path;
         _config = config;
@@ -28,7 +29,8 @@ public class UnitModel
 
         MaxHP = config.HP;
         HP = MaxHP;
-        Speed = config.Speed;
+        _defaultSpeed = config.Speed * boosterValues.EnemiesSpeedMultiplier;
+        Speed = _defaultSpeed;
 
         Prefab = skinConfig.Prefab;
         ExplosionPrefab = skinConfig.ExplosionPrefab;
@@ -61,7 +63,7 @@ public class UnitModel
         if (state.StateName == UnitStateName.Moving)
         {
             _currentPathCellIndex++;
-            Speed = (state as MovingState).SpeedMultiplier * _turretsSpeedMultiplier * _config.Speed;
+            Speed = (state as MovingState).SpeedMultiplier * _turretsSpeedMultiplier * _defaultSpeed;
             PreviousCellPosition = CurrentCellPosition;
             CurrentCellPosition = NextCellPosition;
             NextCellPosition = _path[ClampCellIndex(_currentPathCellIndex + 1)];

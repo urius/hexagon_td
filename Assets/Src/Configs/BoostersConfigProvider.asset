@@ -16,19 +16,19 @@ MonoBehaviour:
   - BoosterId: 1
     IconSprite: {fileID: 21300000, guid: fc528e6a6ca994de2b804901f10f792b, type: 3}
     Value: 2
-    Price: 250
+    Price: 180
     LocaleTitleKey: start_money_title
     LocaleDescriptionKey: start_money_description
   - BoosterId: 2
     IconSprite: {fileID: 21300000, guid: e607138e236864440b675643da3baeb0, type: 3}
     Value: 10
-    Price: 150
+    Price: 120
     LocaleTitleKey: increased_reward_title
     LocaleDescriptionKey: increased_reward_description
   - BoosterId: 3
     IconSprite: {fileID: 21300000, guid: aee3e0de668ba4abab50f2fc73d344e9, type: 3}
     Value: 2
-    Price: 150
+    Price: 170
     LocaleTitleKey: more_protection_title
     LocaleDescriptionKey: more_protection_description
   - BoosterId: 4

@@ -21,7 +21,8 @@
 
             AudioManager.Instance.Play(SoundId.TurretPlaced);
 
-            var turretModel = new TurretModel(turretConfig, data.GridPosition);
+            var boosterValues = PlayerSessionModel.Instance.SelectedLevelData.BoosterValues;
+            var turretModel = new TurretModel(turretConfig, data.GridPosition, boosterValues);
             LevelModel.LevelTurretsModel.AddTurret(turretModel);
 
             switch (turretModel.TurretType)
