@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
@@ -77,9 +78,18 @@ public class GridViewMediator : EventMediator
         }
     }
 
-    private void OnGoalCountUpdated()
+    private void OnGoalCountUpdated(int delta)
     {
         UpdateGoalCount();
+
+        if (delta >= 0)
+        {
+            var cellWorldPositions = levelModel.GoalCells
+                .Select(c => gridView.GetGoalBaseCellView(c.CellPosition).transform.position)
+                .ToArray();
+
+            dispatcher.Dispatch(MediatorEvents.REPAIR_BASE_ANIMATION, new MediatorEventsParams.RepairBaseAnimationParams(cellWorldPositions, delta));
+        }
     }
 
     private void OnUnitRemoved(UnitModel unitModel)
@@ -121,7 +131,8 @@ public class GridViewMediator : EventMediator
                 var offset = new Vector3(0, 0, cellSizeProvider.CellSize.y);
                 dispatcher.Dispatch(MediatorEvents.REQUEST_BUILD_TURRET,
                     new MediatorEventsParams.RequestBuildParams(_flyingTurretType, gridView.WorldToCell(worldMousePositionProvider.Position + offset)));
-            } else
+            }
+            else
             {
                 AudioManager.Instance.Play(SoundId.BuildTurretCanceled);
             }

@@ -9,7 +9,7 @@ public class LevelModel
     public event Action<Vector2Int, Vector2Int> Teleporting = delegate { };
     public event Action MoneyAmountUpdated = delegate { };
     public event Action InsufficientMoneyTriggered = delegate { };
-    public event Action GoalCountUpdated = delegate { };
+    public event Action<int> GoalCountUpdated = delegate { };
     public event Action LevelFinished = delegate { };
     public event Action GameSpeedChanged = delegate { };
     public event Action PauseModeChanged = delegate { };
@@ -248,9 +248,10 @@ public class LevelModel
     {
         if (_boosterValues.RepairAfterWavePoints > 0 && GoalCount > 0 && GoalCount < _defaultGoalCount)
         {
+            var goalCountBefore = GoalCount;
             GoalCount += _boosterValues.RepairAfterWavePoints;
             GoalCount = Math.Min(GoalCount, _defaultGoalCount);
-            GoalCountUpdated();
+            GoalCountUpdated(GoalCount - goalCountBefore);
         }
     }
 
@@ -261,7 +262,7 @@ public class LevelModel
             return;
         }
         GoalCount--;
-        GoalCountUpdated();
+        GoalCountUpdated(-1);
 
         if (GoalCount == 0)
         {
@@ -300,8 +301,9 @@ public class LevelModel
 
     private void ResetGoalCapacity()
     {
+        var goalCountBefore = GoalCount;
         GoalCount = _defaultGoalCount;
-        GoalCountUpdated();
+        GoalCountUpdated(GoalCount - goalCountBefore);
     }
 }
 
