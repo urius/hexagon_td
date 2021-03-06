@@ -54,13 +54,13 @@ MonoBehaviour:
         \u043A \u043F\u0435\u0440\u0432\u043E\u0439 \u0432\u043E\u043B\u043D\u0435"
     - LocalizationItemId: wave_started
       En: Wave {0} started!
-      Ru: "\u0412\u043E\u043B\u043D\u0430 {0} \u043D\u0430\u0447\u0430\u043B\u0430\u0441\u044C!"
+      Ru: "\u0412\u043E\u043B\u043D\u0430 {0} \u043D\u0430\u0447\u0430\u043B\u0430\u0441\u044C"
     - LocalizationItemId: wave_finished
       En: Wave {0} finished!
-      Ru: "\u0412\u043E\u043B\u043D\u0430 {0} \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0430!"
+      Ru: "\u0412\u043E\u043B\u043D\u0430 {0} \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0430"
     - LocalizationItemId: all_waves_finished
       En: VICTORY!
-      Ru: "\u041F\u041E\u0411\u0415\u0414\u0410!"
+      Ru: "\u041F\u041E\u0411\u0415\u0414\u0410"
     - LocalizationItemId: defeat
       En: Defeat
       Ru: "\u041F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u0435"
