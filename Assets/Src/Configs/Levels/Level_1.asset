@@ -21,7 +21,7 @@ MonoBehaviour:
   ModifierMoneyAmount: 10
   ModifierBigMoneyAmount: 20
   DefaulGoalCapacity: 10
-  DestroyUnitReward: 10
+  DestroyUnitReward: 15
   _cellConfigs:
   - CellPosition: {x: -6, y: -3}
     CellConfigMin:
@@ -872,6 +872,7 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 2
+  DisabedMusicIds: 03000000
   IsBoostersDisabled: 1
   SpecialDisabledBoosters: 
   _wavesSettings:
