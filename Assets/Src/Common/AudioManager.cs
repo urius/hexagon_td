@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -29,6 +30,7 @@ public class AudioManager : MonoBehaviour
         _latestPlayedMusicId = musicId;
 
         var musicConfig = Array.Find(MusicConfigs, c => c.Id == musicId);
+        musicConfig.Preload();
         _musicSource.clip = musicConfig.AudioClip;
         _musicSource.Play();
 
@@ -39,6 +41,14 @@ public class AudioManager : MonoBehaviour
             _musicSecondarySource.clip = musicConfig.SecondaryAudioClip;
             _musicSecondarySource.Play();
         }
+    }
+
+    public MusicId[] GetGameplayMusicIds(MusicId[] excludedIds)
+    {
+        return MusicConfigs
+            .Where(c => c.IsGameplayMusic && (excludedIds == null || !excludedIds.Contains(c.Id)))
+            .Select(c => c.Id)
+            .ToArray();
     }
 
     public async Task FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
@@ -253,8 +263,24 @@ public class AudioManager : MonoBehaviour
 struct MusicConfig
 {
     public MusicId Id;
-    public AudioClip AudioClip;
-    public AudioClip SecondaryAudioClip;
+    [AssetPath.Attribute(typeof(AudioClip))]
+    public string AudioClipPath;
+    public AudioClip AudioClip => LoadAudioClip(AudioClipPath);
+    [AssetPath.Attribute(typeof(AudioClip))]
+    public string SecondaryAudioClipPath;
+    public AudioClip SecondaryAudioClip => LoadAudioClip(SecondaryAudioClipPath);
+    public bool IsGameplayMusic;
+
+    public void Preload()
+    {
+        LoadAudioClip(AudioClipPath);
+        LoadAudioClip(SecondaryAudioClipPath);
+    }
+
+    private AudioClip LoadAudioClip(string audioClipPath)
+    {
+        return audioClipPath != null ? AssetPath.Load<AudioClip>(audioClipPath) : null;
+    }
 }
 
 [Serializable]
@@ -269,6 +295,7 @@ public enum MusicId
     None,
     Menu_1,
     Game_1,
+    Game_2,
 }
 
 public enum SoundId
@@ -312,4 +339,6 @@ public enum SoundId
     GameTime3,
     ChooseTurretFouBuild,
     BuildTurretCanceled,
+    InAppPurchaseCompleted,
+    DNAAmountChanged,
 }

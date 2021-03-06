@@ -24,6 +24,9 @@ public class LevelConfig : ScriptableObject
     [SerializeField] private CellDataMin[] _modifierConfigs = new CellDataMin[0];
     public IReadOnlyList<CellDataMin> Modifiers => _modifierConfigs;
 
+    [Header("Audio settings")]
+    [SerializeField] public MusicId[] DisabedMusicIds = new MusicId[0];
+
     [Header("Boosters settings")]
     [SerializeField] public bool IsBoostersDisabled = false;
     [SerializeField] public BoosterId[] SpecialDisabledBoosters = new BoosterId[0];

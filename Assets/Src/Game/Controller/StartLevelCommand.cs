@@ -1,4 +1,5 @@
-﻿using strange.extensions.command.impl;
+﻿using System;
+using strange.extensions.command.impl;
 
 public class StartLevelCommand : Command
 {
@@ -11,10 +12,17 @@ public class StartLevelCommand : Command
         injectionBinder.GetInstance<BulletsHitSystem>().Start();
         injectionBinder.GetInstance<TurretsControlSystem>().Start();
         injectionBinder.GetInstance<WavesControlSystem>().Start();
-        injectionBinder.GetInstance<PlayerDataUpdateSystem>().Start();        
+        injectionBinder.GetInstance<PlayerDataUpdateSystem>().Start();
 
         LevelModel.SetLevelStarted();
 
-        AudioManager.Instance.FadeInAndPlayMusicIfNotPlayedAsync(MusicId.Game_1);
+        var tempMusicIds = AudioManager.Instance.GetGameplayMusicIds(LevelModel.LevelConfig.DisabedMusicIds);
+        if (tempMusicIds.Length > 0)
+        {
+            var rnd = new Random();
+            var musicId = tempMusicIds[rnd.Next(tempMusicIds.Length)];
+
+            AudioManager.Instance.FadeInAndPlayMusicIfNotPlayedAsync(musicId);
+        }
     }
 }

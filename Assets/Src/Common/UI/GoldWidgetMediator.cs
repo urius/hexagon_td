@@ -65,6 +65,8 @@ public class GoldWidgetMediator : EventMediator
                 AnimateGoldItem(UnityEngine.Random.insideUnitCircle * screenLocalDim.x, UnityEngine.Random.Range(0.5f, 1f));
             }
 
+            AudioManager.Instance.Play(SoundId.InAppPurchaseCompleted);
+
             await Task.Delay(500);
 
             WidgetView.SetAmountAnimated(_playerModel.Gold);

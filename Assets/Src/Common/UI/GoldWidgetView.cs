@@ -30,6 +30,8 @@ public class GoldWidgetView : View
 
     public void SetAmountAnimated(int amount)
     {
+        AudioManager.Instance.Play(SoundId.DNAAmountChanged);
+
         TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
         TweenFactory.Tween(this, _currentAmount, amount, 1f, TweenScaleFunctions.CubicEaseOut,
             t => _amountText.text = ((int)t.CurrentValue).ToSpaceSeparatedAmount(),

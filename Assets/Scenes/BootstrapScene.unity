@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -262,12 +262,17 @@ MonoBehaviour:
     type: 2}
   MusicConfigs:
   - Id: 1
-    AudioClip: {fileID: 8300000, guid: a47f3f6fc932d467dbb7bcc1a58abce6, type: 3}
-    SecondaryAudioClip: {fileID: 0}
+    AudioClipPath: Assets/Resources/audio/MenuTheme.ogg
+    SecondaryAudioClipPath: 
+    IsGameplayMusic: 0
   - Id: 2
-    AudioClip: {fileID: 8300000, guid: 6924baf4963484e4c9b64ac6e31b8d05, type: 3}
-    SecondaryAudioClip: {fileID: 8300000, guid: 91e9f5615f88a4a7a8e7cd5eb513f18d,
-      type: 3}
+    AudioClipPath: Assets/Resources/audio/InGameTrack1Layer1.ogg
+    SecondaryAudioClipPath: Assets/Resources/audio/InGameTrack1Layer2.ogg
+    IsGameplayMusic: 1
+  - Id: 3
+    AudioClipPath: Assets/Resources/audio/IngameTrack2Layer1.ogg
+    SecondaryAudioClipPath: Assets/Resources/audio/IngameTrack2Layer2.ogg
+    IsGameplayMusic: 1
   SoundConfigs:
   - Id: 1
     AudioClip: {fileID: 8300000, guid: 1a793353666934396a5c8fe701583e3b, type: 3}
@@ -343,6 +348,10 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: 4099e914399df42e2924f983fe96eb66, type: 3}
   - Id: 38
     AudioClip: {fileID: 8300000, guid: 0167dc938e9274b3ab10895a7cd93cb0, type: 3}
+  - Id: 39
+    AudioClip: {fileID: 8300000, guid: 0fa91ac71c3a34def92f95f8f7a7ca79, type: 3}
+  - Id: 40
+    AudioClip: {fileID: 8300000, guid: 235d21cbe68674460842588c953cd71d, type: 3}
 --- !u!114 &262952620
 MonoBehaviour:
   m_ObjectHideFlags: 0
