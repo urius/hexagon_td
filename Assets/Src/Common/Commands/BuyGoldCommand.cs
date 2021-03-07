@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Purchasing;
 
 public struct BuyGoldCommand
 {
@@ -24,7 +25,7 @@ public struct BuyGoldCommand
                 ErrorPopup.Show(errorPopupDisplayTransform, errorText + ": Save data error", closeText);
             }
         }
-        else
+        else if(buyResult.FailureReason != PurchaseFailureReason.UserCancelled)
         {
             var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
             var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
