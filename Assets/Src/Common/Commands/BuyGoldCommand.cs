@@ -23,6 +23,8 @@ public struct BuyGoldCommand
                 var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
                 var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
                 ErrorPopup.Show(errorPopupDisplayTransform, errorText + ": Save data error", closeText);
+
+                AnalyticsManager.Instance.SendBuyGoldError(productId, "SaveAfterBuyError");
             }
         }
         else if(buyResult.FailureReason != PurchaseFailureReason.UserCancelled)
@@ -30,6 +32,8 @@ public struct BuyGoldCommand
             var closeText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "close");
             var errorText = LocalizationProvider.Instance.Get(LocalizationGroupId.ErrorPopup, "error");
             ErrorPopup.Show(errorPopupDisplayTransform, errorText + $": {buyResult.FailureReason}", closeText);
+
+            AnalyticsManager.Instance.SendBuyGoldError(productId, buyResult.FailureReason.ToString());
         }
 
         return false;

@@ -135,6 +135,17 @@ public class UnitsControlSystem : EventSystemBase
         if (unit.IsOnLastCell)
         {
             LevelModel.SubstractGoalCapacity();
+            if (LevelModel.GoalCount == 0)
+            {
+                WaveModel.TerminateWave();
+                LevelModel.FinishLevel(false);
+
+                var result = AnalyticsManager.Instance.SendLevelFailed(
+                    PlayerSessionModel.Instance.SelectedLevelIndex,
+                    LevelModel.ContinuesUsed,
+                    LevelModel.BoosterValues.BoosterIds
+                );
+            }
             LevelUnitsModel.DestroyUnit(unit);
             dispatcher.Dispatch(CommandEvents.UI_REQUEST_SHAKE_CAMERA);
         }

@@ -35,6 +35,8 @@ public class HowToPlayScreenMediator : EventMediator
     {
         HowToPlayScreenView.SlideCanvasGroups[0].gameObject.SetActive(true);
         ShowSlide(_shownSlideIndex);
+
+        AnalyticsManager.Instance.SendHowToPlayOpened();
     }
 
     private void ShowSlide(int index, float duration = 0)
@@ -86,5 +88,7 @@ public class HowToPlayScreenMediator : EventMediator
     private void OnFinishClicked()
     {
         dispatcher.Dispatch(MediatorEvents.UI_HOME_CLICKED);
+
+        AnalyticsManager.Instance.SendHowToPlayFinishClicked();
     }
 }

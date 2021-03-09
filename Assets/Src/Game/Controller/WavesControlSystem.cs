@@ -1,4 +1,5 @@
 ﻿using strange.extensions.dispatcher.eventdispatcher.api;
+using UnityEngine;
 
 public class WavesControlSystem : EventSystemBase
 {
@@ -48,6 +49,13 @@ public class WavesControlSystem : EventSystemBase
                     UpdatePlayerData();
 
                     LevelModel.FinishLevel(true);
+
+                    AnalyticsManager.Instance.SendLevelCompleted(
+                        PlayerSessionModel.Instance.SelectedLevelIndex,
+                        LevelModel.GetAccuracyRate(),
+                        LevelModel.ContinuesUsed,
+                        LevelModel.BoosterValues.BoosterIds
+                    );
                 }
                 else
                 {
@@ -59,7 +67,7 @@ public class WavesControlSystem : EventSystemBase
     }
 
     private void UpdatePlayerData()
-    {        
+    {
         var levelIndex = LevelsCollectionProvider.Instance.GetLevelIndexByConfig(LevelModel.LevelConfig);
         var stars = LevelModel.GetAccuracyRate();
         PlayerSessionModel.Model.SetLevelPassed(levelIndex, stars);

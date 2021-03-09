@@ -36,6 +36,8 @@ public class GoldStoreWindow : MonoBehaviour
 
             buttons[i].Clicked += OnBuyProductClicked;
         }
+
+        AnalyticsManager.Instance.SendStoreOpened();
     }
 
     private async void OnBuyProductClicked(string productId)

@@ -75,6 +75,7 @@ public class BoosterValues
     public int RepairAfterWavePoints { get; private set; }
     public float TurretReloadTimeMultiplier { get; private set; }
     public float EnemiesSpeedMultiplier { get; private set; }
+    public IEnumerable<BoosterId> BoosterIds { get; private set; }
 
     public BoosterValues()
     {
@@ -89,11 +90,15 @@ public class BoosterValues
         RepairAfterWavePoints = 0;
         TurretReloadTimeMultiplier = 1;
         EnemiesSpeedMultiplier = 1;
+
+        BoosterIds = Array.Empty<BoosterId>();
     }
 
     public void Update(IEnumerable<BoosterId> boosterIds)
     {
         Reset();
+
+        BoosterIds = boosterIds;
         foreach(var boosterId in boosterIds)
         {
             var config = BoostersConfigProvider.GetBoosterConfigById(boosterId);

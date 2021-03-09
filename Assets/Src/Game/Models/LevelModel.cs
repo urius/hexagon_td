@@ -32,17 +32,17 @@ public class LevelModel
     public readonly int WaveCompletionReward;
     public readonly int DestroyUnitReward;
     public readonly LevelConfig LevelConfig;
+    public readonly BoosterValues BoosterValues;
 
     private readonly Vector2Int[] _teleportCellPositions;
     private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
     private readonly TaskCompletionSource<bool> _levelStartedTsc = new TaskCompletionSource<bool>();
-    private readonly BoosterValues _boosterValues;
     private readonly int _defaultGoalCount;
 
     public LevelModel(LevelConfig levelConfig, BoosterValues boosterValues)
     {
         LevelConfig = levelConfig;
-        _boosterValues = boosterValues;
+        BoosterValues = boosterValues;
         WaveModel = new WaveModel(levelConfig.WavesSettings);
 
         SpawnCells = LevelConfig.Cells.Where(c => c.CellConfigMin.CellType == CellType.EnemyBase).ToArray();
@@ -52,14 +52,14 @@ public class LevelModel
 
         PathsManager = new PathsManager(levelConfig.Cells, _modifiers, LevelTurretsModel, LevelUnitsModel);
 
-        Money = LevelConfig.StartMoneyAmount * _boosterValues.StartMoneyMultiplier;
+        Money = LevelConfig.StartMoneyAmount * BoosterValues.StartMoneyMultiplier;
         ModifierRepairValue = LevelConfig.ModifierRepairValue;
         ModifierMineDamage = LevelConfig.ModifierMineDamage;
         ModifierMoneyAmount = LevelConfig.ModifierMoneyAmount;
         ModifierBigMoneyAmount = LevelConfig.ModifierBigMoneyAmount;
-        WaveCompletionReward = (int)(LevelConfig.WaveCompletedReward * _boosterValues.IncreaseRewardMultiplier);
-        DestroyUnitReward = (int)(LevelConfig.DestroyUnitReward * _boosterValues.IncreaseRewardMultiplier);
-        _defaultGoalCount = LevelConfig.DefaulGoalCapacity * _boosterValues.BaseArmorMultiplier;
+        WaveCompletionReward = (int)(LevelConfig.WaveCompletedReward * BoosterValues.IncreaseRewardMultiplier);
+        DestroyUnitReward = (int)(LevelConfig.DestroyUnitReward * BoosterValues.IncreaseRewardMultiplier);
+        _defaultGoalCount = LevelConfig.DefaulGoalCapacity * BoosterValues.BaseArmorMultiplier;
 
         ResetGoalCapacity();
     }
@@ -71,6 +71,7 @@ public class LevelModel
     public Task StartLevelTask => _levelStartedTsc.Task;
     public bool IsLevelFinished => IsWon || IsDefeated;
     public bool IsPaused { get; private set; }
+    public int ContinuesUsed { get; private set; } = 0;    
 
     public void SetTimeScale(int timeScale)
     {
@@ -246,10 +247,10 @@ public class LevelModel
 
     public void RepairBases()
     {
-        if (_boosterValues.RepairAfterWavePoints > 0 && GoalCount > 0 && GoalCount < _defaultGoalCount)
+        if (BoosterValues.RepairAfterWavePoints > 0 && GoalCount > 0 && GoalCount < _defaultGoalCount)
         {
             var goalCountBefore = GoalCount;
-            GoalCount += _boosterValues.RepairAfterWavePoints;
+            GoalCount += BoosterValues.RepairAfterWavePoints;
             GoalCount = Math.Min(GoalCount, _defaultGoalCount);
             GoalCountUpdated(GoalCount - goalCountBefore);
         }
@@ -263,13 +264,6 @@ public class LevelModel
         }
         GoalCount--;
         GoalCountUpdated(-1);
-
-        if (GoalCount == 0)
-        {
-            WaveModel.TerminateWave();
-            SetTimeScale(1);
-            FinishLevel(false);
-        }
     }
 
     public void ResetLevel()
@@ -282,6 +276,8 @@ public class LevelModel
 
     public void ContinueCurrentWave()
     {
+        ContinuesUsed++;
+
         ResetGoalCapacity();
 
         WaveModel.StartWave();

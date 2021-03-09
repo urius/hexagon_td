@@ -12,8 +12,6 @@ public class GameScreenClickedCommand : ParamCommand<Vector2Int>
 
     public override void Execute(Vector2Int cellPosition)
     {
-        Debug.Log("GameScreenClickedCommand");
-
         if (LevelTurretsModel.TryGetTurret(cellPosition, out var turretModel))
         {
             injectionBinder.GetInstance<TurretActionsMediator>()
