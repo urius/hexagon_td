@@ -8,6 +8,7 @@ public class SelectedLevelData
     public event Action<BoosterId> BoosterRemoved = delegate { };
 
     public int LevelIndex = -1;
+    public MusicId MusicId;
 
     public readonly BoosterValues BoosterValues = new BoosterValues();
 
@@ -20,6 +21,7 @@ public class SelectedLevelData
     }
 
     public LevelConfig LevelConfig => LevelIndex >= 0 ? _allLevels[LevelIndex] : null;
+
     public BoosterId[] BoosterIds => _boosterIds.ToArray();
 
     public void ResetBoosters()

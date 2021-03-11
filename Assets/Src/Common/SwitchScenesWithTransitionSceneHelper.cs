@@ -16,18 +16,20 @@ public class SwitchScenesWithTransitionSceneHelper
     private string _switchToSceneName;
     private TaskCompletionSource<bool> _transitionFinishedTsc = new TaskCompletionSource<bool>();
     private bool _isSwitching = false;
+    private Func<Task> _additionalTaskAction;
 
     public SwitchScenesWithTransitionSceneHelper(IEventDispatcher globalDispatcher)
     {
         this.globalDispatcher = globalDispatcher;
     }
 
-    public async Task SwitchAsync(string switchFromSceneName, string switchToSceneName)
+    public async Task SwitchAsync(string switchFromSceneName, string switchToSceneName, Func<Task> additionalTaskAction = null)
     {
         if (_isSwitching)
         {
             await _transitionFinishedTsc.Task;
         }
+        _additionalTaskAction = additionalTaskAction;
         _transitionFinishedTsc = new TaskCompletionSource<bool>();
 
         _switchFromSceneName = switchFromSceneName;
@@ -49,6 +51,7 @@ public class SwitchScenesWithTransitionSceneHelper
 
         await LoadSceneHelper.UnloadSceneAsync(_switchFromSceneName);
 
+        var additionalTask = _additionalTaskAction != null ? _additionalTaskAction() : Task.CompletedTask;
         var loadGameTask = LoadSceneHelper.LoadSceneAdditiveAsync(_switchToSceneName, out var loadGameOperation);
         while (!loadGameTask.IsCompleted)
         {
@@ -56,6 +59,8 @@ public class SwitchScenesWithTransitionSceneHelper
             await Task.Delay(100);
         }
         //AddOverlayCameraToAllCameras();
+
+        await additionalTask;
 
         globalDispatcher.AddListener(MediatorEvents.UI_TS_HIDE_ANIM_ENDED, OnHideTransitionEnded);
         globalDispatcher.Dispatch(MediatorEvents.UI_TS_REQUEST_HIDE_ANIM);

@@ -16,13 +16,7 @@ public class StartLevelCommand : Command
 
         LevelModel.SetLevelStarted();
 
-        var tempMusicIds = AudioManager.Instance.GetGameplayMusicIds(LevelModel.LevelConfig.DisabedMusicIds);
-        if (tempMusicIds.Length > 0)
-        {
-            var rnd = new Random();
-            var musicId = tempMusicIds[rnd.Next(tempMusicIds.Length)];
-
-            AudioManager.Instance.FadeInAndPlayMusicIfNotPlayedAsync(musicId);
-        }
+        var musicId = PlayerSessionModel.Instance.SelectedLevelData.MusicId;
+        AudioManager.Instance.FadeInAndPlayMusicIfNotPlayedAsync(musicId);        
     }
 }

@@ -43,6 +43,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void Preloadmusic(MusicId musicId)
+    {
+        var musicConfig = Array.Find(MusicConfigs, c => c.Id == musicId);
+        musicConfig.Preload();
+    }
+
     public MusicId[] GetGameplayMusicIds(MusicId[] excludedIds)
     {
         return MusicConfigs

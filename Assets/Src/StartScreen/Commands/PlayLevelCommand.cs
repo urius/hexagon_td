@@ -1,4 +1,6 @@
-﻿using strange.extensions.command.impl;
+﻿using System;
+using System.Threading.Tasks;
+using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 
@@ -13,12 +15,30 @@ public class PlayLevelCommand : EventCommand
     {
         if (IsExecutingFlag) return;
         IsExecutingFlag = true;
-        Retain();
+        Retain();        
+        
+        var tempMusicId = GetMusicId();
+        Func<Task> preloadMusicAction = () => { AudioManager.Instance.Preloadmusic(tempMusicId); return Task.CompletedTask; };
 
         var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);
-        await transitionHelper.SwitchAsync(SceneNames.MainMenu, SceneNames.Game);
+        await transitionHelper.SwitchAsync(SceneNames.MainMenu, SceneNames.Game, preloadMusicAction);
 
         Release();
         IsExecutingFlag = false;
+    }
+
+    private MusicId GetMusicId()
+    {
+        var selectedLevelData = PlayerSessionModel.Instance.SelectedLevelData;
+        selectedLevelData.MusicId = MusicId.Game_1;
+        var tempMusicIds = AudioManager.Instance.GetGameplayMusicIds(selectedLevelData.LevelConfig.DisabedMusicIds);
+        if (tempMusicIds.Length > 0)
+        {
+            var rnd = new Random();
+            var musicId = tempMusicIds[rnd.Next(tempMusicIds.Length)];
+            selectedLevelData.MusicId = musicId;
+        }
+
+        return selectedLevelData.MusicId;
     }
 }
