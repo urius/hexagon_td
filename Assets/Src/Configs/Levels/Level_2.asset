@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: slow_snake
   IsTransposed: 1
-  StartMoneyAmount: 500
-  WaveCompletedReward: 120
+  StartMoneyAmount: 900
+  WaveCompletedReward: 200
   ModifierRepairValue: 5
   ModifierMineDamage: 5
   ModifierMoneyAmount: 10
@@ -948,30 +948,4 @@ MonoBehaviour:
     - UnitType: 12
       OverrideSkin: 5
       Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 13
-      OverrideSkin: 0
-      Amount: 10
-    - UnitType: 10
-      OverrideSkin: 0
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 2
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 18
-      OverrideSkin: 3
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 14
-      OverrideSkin: 1
-      Amount: 5
-    - UnitType: 11
-      OverrideSkin: 4
-      Amount: 15
     DisabledBaseIndices: 

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: lets_be_faster
   IsTransposed: 1
-  StartMoneyAmount: 700
-  WaveCompletedReward: 110
+  StartMoneyAmount: 800
+  WaveCompletedReward: 200
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 10
@@ -973,25 +973,4 @@ MonoBehaviour:
     - UnitType: 9
       OverrideSkin: 2
       Amount: 10
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 5
-      Amount: 10
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 13
-      OverrideSkin: 3
-      Amount: 10
-    - UnitType: 11
-      OverrideSkin: 1
-      Amount: 5
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 2
-      Amount: 10
-    - UnitType: 27
-      OverrideSkin: 3
-      Amount: 1
     DisabledBaseIndices: 

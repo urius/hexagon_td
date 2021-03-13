@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: symmetry
   IsTransposed: 1
-  StartMoneyAmount: 600
-  WaveCompletedReward: 100
+  StartMoneyAmount: 700
+  WaveCompletedReward: 150
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 5
   ModifierBigMoneyAmount: 20
   DefaulGoalCapacity: 10
-  DestroyUnitReward: 10
+  DestroyUnitReward: 15
   _cellConfigs:
   - CellPosition: {x: -6, y: -3}
     CellConfigMin:
@@ -945,17 +945,4 @@ MonoBehaviour:
     - UnitType: 18
       OverrideSkin: 5
       Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 19
-      OverrideSkin: 4
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 17
-      OverrideSkin: 1
-      Amount: 2
-    - UnitType: 22
-      OverrideSkin: 2
-      Amount: 15
     DisabledBaseIndices: 

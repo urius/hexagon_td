@@ -15,13 +15,13 @@ MonoBehaviour:
   NameKey: short_not_better
   IsTransposed: 1
   StartMoneyAmount: 600
-  WaveCompletedReward: 100
+  WaveCompletedReward: 150
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 5
   ModifierBigMoneyAmount: 20
   DefaulGoalCapacity: 10
-  DestroyUnitReward: 10
+  DestroyUnitReward: 15
   _cellConfigs:
   - CellPosition: {x: -8, y: 6}
     CellConfigMin:
@@ -1011,9 +1011,4 @@ MonoBehaviour:
     - UnitType: 24
       OverrideSkin: 2
       Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 23
-      OverrideSkin: 3
-      Amount: 15
     DisabledBaseIndices: 
