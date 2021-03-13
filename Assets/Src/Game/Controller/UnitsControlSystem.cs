@@ -143,6 +143,7 @@ public class UnitsControlSystem : EventSystemBase
                 var result = AnalyticsManager.Instance.SendLevelFailed(
                     PlayerSessionModel.Instance.SelectedLevelIndex,
                     LevelModel.ContinuesUsed,
+                    LevelModel.WaveModel.WaveIndex,
                     LevelModel.BoosterValues.BoosterIds
                 );
             }

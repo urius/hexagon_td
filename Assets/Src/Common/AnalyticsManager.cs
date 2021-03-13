@@ -10,6 +10,7 @@ public class AnalyticsManager
     private const string LevelParamName = "Level";
     private const string StarsParamName = "Stars";
     private const string ContinuesAmountParamName = "ContinuesAmount";    
+    private const string WaveNumParamName = "WaveNum";
     private const string BoosterIdsParamName = "BoosterIds";
     private const string SceneNameParamName = "SceneName";
     private const string ProductIdParamName = "ProductId";
@@ -39,12 +40,13 @@ public class AnalyticsManager
         });
     }
 
-    public AnalyticsResult SendLevelFailed(int levelIndex, int continuesAmount, IEnumerable<BoosterId> boosterIds)
+    public AnalyticsResult SendLevelFailed(int levelIndex, int continuesAmount, int waveIndex, IEnumerable<BoosterId> boosterIds)
     {
         var boosterIdsStr = string.Join(",", boosterIds.Select(id => id.ToString()));
         return AnalyticsEvent.Custom("LevelFailed", new Dictionary<string, object>() {
             { LevelParamName, levelIndex + 1 },
             { ContinuesAmountParamName, continuesAmount },
+            { WaveNumParamName, waveIndex},
             { BoosterIdsParamName, boosterIdsStr },
         });
     }
