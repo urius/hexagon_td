@@ -952,7 +952,7 @@ MonoBehaviour:
       Amount: 9
     DisabledBaseIndices: 
   - WaveParts:
-    - UnitType: 5
-      OverrideSkin: 1
-      Amount: 10
+    - UnitType: 12
+      OverrideSkin: 10
+      Amount: 3
     DisabledBaseIndices: 

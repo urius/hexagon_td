@@ -954,6 +954,7 @@ GameObject:
   - component: {fileID: 772409506}
   - component: {fileID: 772409505}
   - component: {fileID: 772409508}
+  - component: {fileID: 772409510}
   m_Layer: 5
   m_Name: StartWaveButton
   m_TagString: Untagged
@@ -1083,8 +1084,6 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 0289fc3e7dbf14e218bce8e6cacbac2c, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 0289fc3e7dbf14e218bce8e6cacbac2c, type: 2}
-  - {fileID: 7400000, guid: b64c6222a20614efab4f886c8c8816d1, type: 2}
-  - {fileID: 7400000, guid: cee72bc12b0744279b42ae5e098af5c4, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -1104,6 +1103,20 @@ MonoBehaviour:
   _text: {fileID: 1359261931}
   _sound: 21
   _animation: {fileID: 772409508}
+  _button: {fileID: 772409505}
+  _canvasGroup: {fileID: 772409510}
+--- !u!225 &772409510
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772409503}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &866889507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,8 +2235,6 @@ MonoBehaviour:
     LevelsCollectionProvider: {fileID: 11400000, guid: b071b4e08e60b419ea75508bb87a07db,
       type: 2}
     PlayerGlobalModelHolder: {fileID: 11400000, guid: 0b7d068b3556a4b15bd2341b3676fac9,
-      type: 2}
-    LevelConfigProvider: {fileID: 11400000, guid: 08caff59eb57d49c1844d72e1d2550ac,
       type: 2}
   CellConfigProvider: {fileID: 11400000, guid: c4b1198b8874144ac8c1f6d1dd25550c, type: 2}
   UnitConfigsProvider: {fileID: 11400000, guid: c8c8733d9b43e4594b9178143a4dd4b5,
