@@ -15,7 +15,7 @@ MonoBehaviour:
   NameKey: welcome_snake
   IsTransposed: 1
   StartMoneyAmount: 1000
-  WaveCompletedReward: 100
+  WaveCompletedReward: 200
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 10
@@ -884,15 +884,10 @@ MonoBehaviour:
   - WaveParts:
     - UnitType: 4
       OverrideSkin: 1
-      Amount: 8
+      Amount: 6
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 6
       OverrideSkin: 0
-      Amount: 10
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 7
-      OverrideSkin: 2
-      Amount: 10
+      Amount: 7
     DisabledBaseIndices: 

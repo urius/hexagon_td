@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameKey: the_x_2
   IsTransposed: 1
-  StartMoneyAmount: 600
-  WaveCompletedReward: 100
+  StartMoneyAmount: 800
+  WaveCompletedReward: 200
   ModifierRepairValue: 10
   ModifierMineDamage: 5
   ModifierMoneyAmount: 3
@@ -904,63 +904,48 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 4
+  DisabedMusicIds: 
+  IsBoostersDisabled: 0
+  SpecialDisabledBoosters: 
   _wavesSettings:
   - WaveParts:
     - UnitType: 4
       OverrideSkin: 1
-      Amount: 20
+      Amount: 8
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 7
       OverrideSkin: 4
-      Amount: 20
+      Amount: 10
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 9
       OverrideSkin: 2
-      Amount: 5
+      Amount: 2
     - UnitType: 7
       OverrideSkin: 1
-      Amount: 15
+      Amount: 8
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 12
       OverrideSkin: 3
-      Amount: 15
+      Amount: 5
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 15
       OverrideSkin: 2
-      Amount: 20
+      Amount: 5
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 18
       OverrideSkin: 8
-      Amount: 5
+      Amount: 3
     - UnitType: 16
       OverrideSkin: 3
-      Amount: 15
+      Amount: 7
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 14
       OverrideSkin: 4
-      Amount: 25
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 21
-      OverrideSkin: 3
-      Amount: 2
-    - UnitType: 22
-      OverrideSkin: 2
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 22
-      OverrideSkin: 5
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 31
-      OverrideSkin: 10
-      Amount: 4
+      Amount: 10
     DisabledBaseIndices: 

@@ -15,7 +15,7 @@ MonoBehaviour:
   NameKey: short_not_better
   IsTransposed: 1
   StartMoneyAmount: 600
-  WaveCompletedReward: 150
+  WaveCompletedReward: 250
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 5
@@ -967,48 +967,25 @@ MonoBehaviour:
   - WaveParts:
     - UnitType: 2
       OverrideSkin: 0
-      Amount: 15
+      Amount: 8
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 5
       OverrideSkin: 1
-      Amount: 15
+      Amount: 10
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 8
       OverrideSkin: 4
-      Amount: 15
+      Amount: 10
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 10
       OverrideSkin: 3
-      Amount: 15
+      Amount: 12
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 12
       OverrideSkin: 2
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 16
-      OverrideSkin: 2
-      Amount: 20
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 19
-      OverrideSkin: 3
-      Amount: 15
-    - UnitType: 21
-      OverrideSkin: 10
-      Amount: 2
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 22
-      OverrideSkin: 5
-      Amount: 10
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 24
-      OverrideSkin: 2
-      Amount: 20
+      Amount: 5
     DisabledBaseIndices: 

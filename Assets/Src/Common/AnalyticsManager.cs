@@ -46,7 +46,7 @@ public class AnalyticsManager
         return AnalyticsEvent.Custom("LevelFailed", new Dictionary<string, object>() {
             { LevelParamName, levelIndex + 1 },
             { ContinuesAmountParamName, continuesAmount },
-            { WaveNumParamName, waveIndex},
+            { WaveNumParamName, waveIndex + 1},
             { BoosterIdsParamName, boosterIdsStr },
         });
     }

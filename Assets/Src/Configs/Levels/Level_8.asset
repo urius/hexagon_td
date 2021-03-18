@@ -15,7 +15,7 @@ MonoBehaviour:
   NameKey: slow_field
   IsTransposed: 1
   StartMoneyAmount: 700
-  WaveCompletedReward: 250
+  WaveCompletedReward: 300
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 15
@@ -1124,69 +1124,56 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 1
+  DisabedMusicIds: 
+  IsBoostersDisabled: 0
+  SpecialDisabledBoosters: 
   _wavesSettings:
   - WaveParts:
     - UnitType: 1
       OverrideSkin: 1
-      Amount: 20
+      Amount: 15
     DisabledBaseIndices: 0000000001000000
   - WaveParts:
     - UnitType: 4
       OverrideSkin: 4
-      Amount: 20
+      Amount: 10
     DisabledBaseIndices: 0100000002000000
   - WaveParts:
     - UnitType: 7
       OverrideSkin: 1
-      Amount: 15
+      Amount: 5
     DisabledBaseIndices: 0000000001000000
   - WaveParts:
     - UnitType: 9
       OverrideSkin: 2
-      Amount: 20
+      Amount: 7
     DisabledBaseIndices: 0200000000000000
   - WaveParts:
     - UnitType: 9
       OverrideSkin: 4
-      Amount: 10
+      Amount: 5
     - UnitType: 8
       OverrideSkin: 1
-      Amount: 10
+      Amount: 8
     DisabledBaseIndices: 01000000
   - WaveParts:
     - UnitType: 16
       OverrideSkin: 3
-      Amount: 20
+      Amount: 7
     DisabledBaseIndices: 0000000002000000
   - WaveParts:
     - UnitType: 16
       OverrideSkin: 2
-      Amount: 10
+      Amount: 5
     - UnitType: 14
       OverrideSkin: 1
-      Amount: 10
+      Amount: 7
     DisabledBaseIndices: 00000000
   - WaveParts:
     - UnitType: 17
       OverrideSkin: 4
-      Amount: 5
+      Amount: 3
     - UnitType: 16
       OverrideSkin: 3
-      Amount: 15
+      Amount: 7
     DisabledBaseIndices: 0000000002000000
-  - WaveParts:
-    - UnitType: 18
-      OverrideSkin: 3
-      Amount: 15
-    - UnitType: 19
-      OverrideSkin: 3
-      Amount: 3
-    DisabledBaseIndices: 01000000
-  - WaveParts:
-    - UnitType: 21
-      OverrideSkin: 10
-      Amount: 10
-    - UnitType: 17
-      OverrideSkin: 1
-      Amount: 5
-    DisabledBaseIndices: 

@@ -15,7 +15,7 @@ MonoBehaviour:
   NameKey: symmetry
   IsTransposed: 1
   StartMoneyAmount: 700
-  WaveCompletedReward: 150
+  WaveCompletedReward: 250
   ModifierRepairValue: 5
   ModifierMineDamage: 30
   ModifierMoneyAmount: 5
@@ -903,22 +903,22 @@ MonoBehaviour:
   - WaveParts:
     - UnitType: 4
       OverrideSkin: 4
-      Amount: 15
+      Amount: 8
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 4
       OverrideSkin: 1
-      Amount: 15
+      Amount: 8
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 6
       OverrideSkin: 2
-      Amount: 15
+      Amount: 9
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 6
       OverrideSkin: 2
-      Amount: 20
+      Amount: 9
     DisabledBaseIndices: 
   - WaveParts:
     - UnitType: 12
@@ -926,23 +926,5 @@ MonoBehaviour:
       Amount: 1
     - UnitType: 9
       OverrideSkin: 3
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 12
-      OverrideSkin: 2
-      Amount: 15
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 15
-      OverrideSkin: 3
-      Amount: 5
-    - UnitType: 13
-      OverrideSkin: 1
       Amount: 10
-    DisabledBaseIndices: 
-  - WaveParts:
-    - UnitType: 18
-      OverrideSkin: 5
-      Amount: 20
     DisabledBaseIndices: 
