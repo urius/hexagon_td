@@ -27,7 +27,6 @@ public class GoldWidgetMediator : EventMediator
     {
         WidgetView.SetAmount(PlayerSessionModel.Model.Gold);
 
-        await IAPManager.Instance.InitializedTask;
         if (!_isDestroyed)
         {
             WidgetView.ToShowState();

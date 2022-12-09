@@ -28,11 +28,14 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 9ca1d0cbc720546b6a04cd7b0274e4b8, type: 3}
-    totalSpriteSurfaceArea: 1223452
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e0f4bb5070f4c854db6fa14e8e289c0e, type: 3}
@@ -90,5 +93,6 @@ SpriteAtlas:
   - icon_turret_1_2
   - Icon_Arrow1
   - bg_map
+  m_RenderDataMap: {}
   m_Tag: UI Atlas
   m_IsVariant: 0

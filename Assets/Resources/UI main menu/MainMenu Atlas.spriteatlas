@@ -28,11 +28,14 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 0c3df0b14d8b441bc8d8adeeadc42c64, type: 3}
-    totalSpriteSurfaceArea: 1912791
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e29f8730ee2ba410791df3212d87c347, type: 3}
@@ -118,5 +121,6 @@ SpriteAtlas:
   - Icon_Wrench
   - finger_click
   - ICON_play
+  m_RenderDataMap: {}
   m_Tag: MainMenu Atlas
   m_IsVariant: 0
