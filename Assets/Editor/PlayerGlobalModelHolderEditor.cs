@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.IO;
-using System;
+using Assets.Src.Common.Local_Save;
 
 [CustomEditor(typeof(PlayerSessionModel))]
 public class PlayerGlobalModelHolderEditor : Editor
@@ -47,36 +46,36 @@ public class PlayerGlobalModelHolderEditor : Editor
         }
     }
 
-    private async void Load(PlayerSessionModel modelHolder)
+    private void Load(PlayerSessionModel modelHolder)
     {
-        var result = await NetworkManager.GetUserDataAsync(_id);
-        modelHolder.SetModel(new PlayerGlobalModel(result.Result.payload));
+        LocalDataManager.Instance.TryLoadUserData(out var result);
+        modelHolder.SetModel(new PlayerGlobalModel(result));
         _gold = modelHolder.PlayerGlobalModel.Gold.ToString();
     }
 
-    private async void Save(PlayerGlobalModel playerGlobalModel)
+    private void Save(PlayerGlobalModel playerGlobalModel)
     {
         if (_gold != string.Empty && int.TryParse(_gold, out var intGold))
         {
             playerGlobalModel.Gold = intGold;
         }
-        var result = await NetworkManager.SaveUserDataAsync(_id, playerGlobalModel.ToSaveDto());
+        var result = LocalDataManager.Instance.SaveUserData(playerGlobalModel.ToSaveDto());
         Debug.Log("Save result: " + result);
     }
 
-    private async void SaveAudio(PlayerGlobalModel playerGlobalModel)
+    private void SaveAudio(PlayerGlobalModel playerGlobalModel)
     {
-        var result = await NetworkManager.SaveUserAudioSettingsAsync(playerGlobalModel.Id, playerGlobalModel.ToSaveSettingsDto());
+        var result = LocalDataManager.Instance.SaveUserData(playerGlobalModel.ToSaveDto());
         Debug.Log("Save audio result: " + result);
     }
 
-    private async void SaveGold(PlayerGlobalModel playerGlobalModel)
+    private void SaveGold(PlayerGlobalModel playerGlobalModel)
     {
         if (_gold != string.Empty && int.TryParse(_gold, out var intGold))
         {
             playerGlobalModel.Gold = intGold;
         }
-        var result = await NetworkManager.SaveUserGoldAsync(_id, playerGlobalModel.Gold);
+        var result = LocalDataManager.Instance.SaveUserData(playerGlobalModel.ToSaveDto());
         Debug.Log("Save Gold result: " + result);
     }
 }

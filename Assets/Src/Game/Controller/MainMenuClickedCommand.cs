@@ -5,7 +5,6 @@ using Cysharp.Threading.Tasks;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
-using UnityEngine;
 
 public class MainMenuClickedCommand : EventCommand
 {
@@ -16,12 +15,12 @@ public class MainMenuClickedCommand : EventCommand
     {
         Retain();
 
-        var saveDataTask = new SaveUserDataCommand().ExecuteAsync();
+        var saveDataTask = new SaveUserDataCommand().Execute();
 
         var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);
         var switchScenesTask = transitionHelper.SwitchAsync(SceneNames.Game, SceneNames.MainMenu).AsUniTask();
 
-        await UniTask.WhenAll(saveDataTask, switchScenesTask);
+        await switchScenesTask;
 
         Release();
     }

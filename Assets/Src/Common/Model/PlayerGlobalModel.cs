@@ -9,7 +9,6 @@ public class PlayerGlobalModel
     public event Action<int> GoldAmountUpdated;
     public event Action<int> GoldAnimationRequested;
 
-    public string Id;
     public int LoadsCount;
     public LevelProgressDataMin[] LevelsProgress;
     public float AudioVolume = 0.7f;
@@ -35,9 +34,8 @@ public class PlayerGlobalModel
         GoldAnimationRequested?.Invoke(amount);
     }
 
-    public PlayerGlobalModel(GetUserDataResponse dto)
+    public PlayerGlobalModel(UserDataDto dto)
     {
-        Id = dto.id;
         LoadsCount = dto.loads;
         LevelsProgress = FromLevelsProgressDto(dto.levels_progress);
         AudioVolume = dto.settings.audio;
@@ -46,22 +44,14 @@ public class PlayerGlobalModel
         GoldStr = dto.gold_str;
     }
 
-    public SavePlayerDataRequest ToSaveDto()
+    public UserDataDto ToSaveDto()
     {
-        return new SavePlayerDataRequest()
+        return new UserDataDto()
         {
             loads = LoadsCount,
             levels_progress = ToLevelsProgressDto(LevelsProgress),
             settings = GetAudioSettingsDto(),
             gold_str = GoldStr,
-        };
-    }
-
-    public SavePlayerSettingsRequest ToSaveSettingsDto()
-    {
-        return new SavePlayerSettingsRequest
-        {
-            settings = GetAudioSettingsDto(),
         };
     }
 

@@ -1,6 +1,5 @@
 ﻿using strange.extensions.dispatcher.eventdispatcher.api;
 using UnityEngine;
-
 public class PlayerDataUpdateSystem : EventSystemBase
 {
     [Inject] public LevelModel LevelModel { get; set; }
@@ -22,14 +21,14 @@ public class PlayerDataUpdateSystem : EventSystemBase
         LevelModel.SetPauseMode(true);
     }
 
-    private async void OnSettingsPopupCloseClicked(IEvent payload)
+    private void OnSettingsPopupCloseClicked(IEvent payload)
     {
         LevelModel.SetPauseMode(false);
 
         if (_needToSaveSettings)
         {
             _needToSaveSettings = false;
-            await new SaveSettingsCommand().ExecuteAsync();
+            new SaveSettingsCommand().Execute();
         }
     }
 

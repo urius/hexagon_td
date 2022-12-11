@@ -19,7 +19,7 @@ public class SettingsPopupForStartScreenMediator : EventMediator
     {
         var playerModel = PlayerSessionModel.Model;
         View.SetupVolumeIndicators(playerModel.AudioVolume, playerModel.MusicVolume, playerModel.SoundsVolume);
-        View.SetId(playerModel.Id);
+        View.SetId("?");
 
         await View.ShowTask;
 

@@ -52,13 +52,13 @@ public class StartScreenControlSystem : EventSystemBase
         new SetAudioCommand().Execute(data.AudioVolume, data.MusicVolume, data.SoundsVolume);
     }
 
-    private async void OnSettingsPopupCloseClicked(IEvent payload)
+    private void OnSettingsPopupCloseClicked(IEvent payload)
     {
         if (_needToSaveSettings)
         {
             _needToSaveSettings = false;
 
-            await new SaveSettingsCommand().ExecuteAsync();
+            new SaveSettingsCommand().Execute();
         }
     }
 }

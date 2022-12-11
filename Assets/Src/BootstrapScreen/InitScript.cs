@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,7 +20,6 @@ public class InitScript : MonoBehaviour
 
     private async UniTaskVoid StartLoadSequence()
     {
-        //AskPermissions();
         if (await LoadOrCreateData())
         {
             SetupAudioManager();
@@ -51,19 +49,9 @@ public class InitScript : MonoBehaviour
         _loadingText.text = "load data";
 
         var id = SystemInfo.deviceUniqueIdentifier;
-        var result = await new LoadDataCommand().ExecuteAsync(id, _canvasTransform);
+        var result = await new LoadDataCommand().ExecuteAsync(_canvasTransform);
 
         return result;
-    }
-
-    private void AskPermissions()
-    {
-#if UNITY_ANDROID
-        while (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
-        {
-            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
-        }
-#endif
     }
 
     private async void LoadScene()
@@ -71,6 +59,6 @@ public class InitScript : MonoBehaviour
         _loadingText.text = "load scene";
 
         await LoadSceneHelper.LoadSceneAdditiveAsync(SceneNames.MainMenu);
-        SceneManager.UnloadSceneAsync(SceneNames.Bootstrap, UnloadSceneOptions.None);
+        await SceneManager.UnloadSceneAsync(SceneNames.Bootstrap, UnloadSceneOptions.None);
     }
 }
