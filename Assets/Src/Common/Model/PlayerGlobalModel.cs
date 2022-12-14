@@ -93,6 +93,10 @@ public class PlayerGlobalModel
             var list = new List<LevelProgressDataMin>(LevelsProgress);
             list.AddRange(new LevelProgressDataMin[levelsAmount - LevelsProgress.Length]);
             LevelsProgress = list.ToArray();
+            if (LevelsProgress[0].IsUnlocked == false)
+            {
+                LevelsProgress[0].IsUnlocked = true;
+            }
         }
 
         UpdateUnlockState();
