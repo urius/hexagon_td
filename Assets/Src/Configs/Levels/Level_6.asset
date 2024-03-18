@@ -893,7 +893,7 @@ MonoBehaviour:
       CellType: 5
       CellSubType: 3
   DisabedMusicIds: 
-  IsBoostersDisabled: 0
+  IsBoostersDisabled: 1
   SpecialDisabledBoosters: 
   _wavesSettings:
   - WaveParts:

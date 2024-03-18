@@ -857,7 +857,7 @@ MonoBehaviour:
       CellSubType: 0
   _modifierConfigs: []
   DisabedMusicIds: 
-  IsBoostersDisabled: 0
+  IsBoostersDisabled: 1
   SpecialDisabledBoosters: 
   _wavesSettings:
   - WaveParts:

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GoldStoreWindow : MonoBehaviour
@@ -25,14 +24,14 @@ public class GoldStoreWindow : MonoBehaviour
         _titleText.text = loc.Get(LocalizationGroupId.GoldStoreWindow, "title");
         _descriptionText.text = loc.Get(LocalizationGroupId.GoldStoreWindow, "description");
 
-        var iapManager = IAPManager.Instance;
+        //var iapManager = IAPManager.Instance;
         var buttons = _buttons;
         for (var i = 0; i < _buttons.Length; i++)
         {
-            var productId = iapManager.Products[i];
-            var goldAmount = int.Parse(productId.Split('_')[1]);
-            var product = iapManager.GetProductData(productId);
-            buttons[i].Setup(productId, goldAmount, product.metadata.localizedPriceString, product.metadata.localizedTitle);
+            // var productId = iapManager.Products[i];
+            // var goldAmount = int.Parse(productId.Split('_')[1]);
+            // var product = iapManager.GetProductData(productId);
+            //buttons[i].Setup(productId, goldAmount, product.metadata.localizedPriceString, product.metadata.localizedTitle);
 
             buttons[i].Clicked += OnBuyProductClicked;
         }

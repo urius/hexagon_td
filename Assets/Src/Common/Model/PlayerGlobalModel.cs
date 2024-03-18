@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Src.Common.Dtos;
 using UnityEngine;
 
 [Serializable]
@@ -8,6 +9,8 @@ public class PlayerGlobalModel
 {
     public event Action<int> GoldAmountUpdated;
     public event Action<int> GoldAnimationRequested;
+
+    private const int DefaultGoldAmount = 50;
 
     public string Id;
     public int LoadsCount;
@@ -35,7 +38,7 @@ public class PlayerGlobalModel
         GoldAnimationRequested?.Invoke(amount);
     }
 
-    public PlayerGlobalModel(GetUserDataResponse dto)
+    public PlayerGlobalModel(SavePlayerDataDto dto)
     {
         Id = dto.id;
         LoadsCount = dto.loads;
@@ -45,11 +48,19 @@ public class PlayerGlobalModel
         SoundsVolume = dto.settings.sounds;
         GoldStr = dto.gold_str;
     }
-
-    public SavePlayerDataRequest ToSaveDto()
+    
+    public PlayerGlobalModel(string id)
     {
-        return new SavePlayerDataRequest()
+        Id = id;
+        LevelsProgress = FromLevelsProgressDto(Array.Empty<LevelProgressDto>());
+        Gold = DefaultGoldAmount;
+    }
+
+    public SavePlayerDataDto ToSaveDto()
+    {
+        return new SavePlayerDataDto()
         {
+            id = Id,
             loads = LoadsCount,
             levels_progress = ToLevelsProgressDto(LevelsProgress),
             settings = GetAudioSettingsDto(),
@@ -57,17 +68,11 @@ public class PlayerGlobalModel
         };
     }
 
-    public SavePlayerSettingsRequest ToSaveSettingsDto()
-    {
-        return new SavePlayerSettingsRequest
-        {
-            settings = GetAudioSettingsDto(),
-        };
-    }
-
     public void UpdateUnlockState()
     {
         var lastPassedLevelIndex = -1;
+        
+        LevelsProgress[0].IsUnlocked = true;
         for (var i = 0; i < LevelsProgress.Length; i++)
         {
             if (LevelsProgress[i].IsPassed)

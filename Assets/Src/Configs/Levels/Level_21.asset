@@ -996,6 +996,9 @@ MonoBehaviour:
     CellConfigMin:
       CellType: 5
       CellSubType: 5
+  DisabedMusicIds: 
+  IsBoostersDisabled: 1
+  SpecialDisabledBoosters: 
   _wavesSettings:
   - WaveParts:
     - UnitType: 1

@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public class InitScript : MonoBehaviour
     private async UniTaskVoid StartLoadSequence()
     {
         //AskPermissions();
-        if (await LoadOrCreateData())
+        if (LoadOrCreateData())
         {
             SetupAudioManager();
             LoadScene();
@@ -46,14 +47,14 @@ public class InitScript : MonoBehaviour
         AudioManager.Instance.SetSoundsVolume(playerModel.SoundsVolume);
     }
 
-    private async UniTask<bool> LoadOrCreateData()
+    private bool LoadOrCreateData()
     {
         _loadingText.text = "load data";
 
-        var id = SystemInfo.deviceUniqueIdentifier;
-        var result = await new LoadDataCommand().ExecuteAsync(id, _canvasTransform);
-
-        return result;
+        //var id = SystemInfo.deviceUniqueIdentifier;
+        new LoadDataCommand().Execute();
+        
+        return true;
     }
 
     private void AskPermissions()

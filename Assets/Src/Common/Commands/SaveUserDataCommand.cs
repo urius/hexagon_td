@@ -1,11 +1,9 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Src.Common.Commands;
 
 public struct SaveUserDataCommand
 {
-    public async UniTask<bool> ExecuteAsync()
+    public void Execute()
     {
-        var model = PlayerSessionModel.Model;
-        var result = await NetworkManager.SaveUserDataAsync(model.Id, model.ToSaveDto());
-        return result.IsSuccess;
+        new SaveUserModelCommand().Execute(PlayerSessionModel.Model);
     }
 }

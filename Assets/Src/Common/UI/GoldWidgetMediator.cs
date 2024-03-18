@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DigitalRuby.Tween;
 using strange.extensions.mediation.impl;
 using UnityEngine;
@@ -23,14 +22,13 @@ public class GoldWidgetMediator : EventMediator
         _playerModel.GoldAmountUpdated += OnGoldAmountUpdated;
     }
 
-    public async void Start()
+    public void Start()
     {
         WidgetView.SetAmount(PlayerSessionModel.Model.Gold);
 
-        await IAPManager.Instance.InitializedTask;
         if (!_isDestroyed)
         {
-            WidgetView.ToShowState();
+            //WidgetView.ToShowState();
         }
     }
 

@@ -961,7 +961,7 @@ MonoBehaviour:
       CellType: 5
       CellSubType: 2
   DisabedMusicIds: 02000000
-  IsBoostersDisabled: 0
+  IsBoostersDisabled: 1
   SpecialDisabledBoosters: 
   _wavesSettings:
   - WaveParts:

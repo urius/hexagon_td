@@ -16,12 +16,10 @@ public class MainMenuClickedCommand : EventCommand
     {
         Retain();
 
-        var saveDataTask = new SaveUserDataCommand().ExecuteAsync();
+        new SaveUserDataCommand().Execute();
 
         var transitionHelper = new SwitchScenesWithTransitionSceneHelper(globalDispatcher);
-        var switchScenesTask = transitionHelper.SwitchAsync(SceneNames.Game, SceneNames.MainMenu).AsUniTask();
-
-        await UniTask.WhenAll(saveDataTask, switchScenesTask);
+        await transitionHelper.SwitchAsync(SceneNames.Game, SceneNames.MainMenu).AsUniTask();
 
         Release();
     }
