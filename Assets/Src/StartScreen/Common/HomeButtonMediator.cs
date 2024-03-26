@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
-using DigitalRuby.Tween;
+﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using strange.extensions.mediation.impl;
-using UnityEngine;
 
 public class HomeButtonMediator : EventMediator
 {
@@ -19,7 +15,9 @@ public class HomeButtonMediator : EventMediator
         HomeButtonView.Alpha = 0;
 
         await UniTask.Delay(400);
-        TweenFactory.Tween(this, 0f, 1f, 0.2f, TweenScaleFunctions.Linear, t => HomeButtonView.Alpha = t.CurrentValue);
+
+        DOTween.To(() => HomeButtonView.Alpha, v => HomeButtonView.Alpha = v, 1f, 0.2f);
+        //TweenFactory.Tween(this, 0f, 1f, 0.2f, TweenScaleFunctions.Linear, t => HomeButtonView.Alpha = t.CurrentValue);
     }
 
     public override void OnRemove()

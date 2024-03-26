@@ -28,11 +28,42 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 33074db00059e4e348141a5b156b1068, type: 3}
-    totalSpriteSurfaceArea: 196608
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - e0f4bb5070f4c854db6fa14e8e289c0e: 21300000
+    - 0b56c590c21db4168bdad8f0985d8106: 21300000
+    - 06e34491b501847809a872f916e0a016: 21300000
+    - 8ba25df1cb9c447aa83816cd8c673fbe: 21300000
+    - f79b88828bef24771b521a5c24d86327: 21300000
+    - 8c7b98826e894455d9c7012ff7253377: 21300000
+    - 3864a3a2d34164e8e875d8aa1630ee3b: 21300000
+    - 2d405ba2b24734c459c457075a1e5cdf: 21300000
+    - 045811e2d8a314f22b1419373031e49a: 21300000
+    - f84565e29f13240de983c1f1be6f0dfc: 21300000
+    - b3ed97a3e7a1a4c3aad18084c6a850ee: 21300000
+    - 8f712814928de4ba2b0b5d47c1f2b0e5: 21300000
+    - 394d5e24da8cf44a184072ae872e747e: 21300000
+    - 7aac2a256a54a46a99cb6e0da60443f8: 21300000
+    - 778e3e55091484de2966e31ee224d670: 21300000
+    - 2a0829b5000d143d8a46aafb8af9742d: 21300000
+    - fe1d078694e1447d99bb23ec4470ab57: 21300000
+    - ff8b09a69483b46dfb055036e61f363c: 21300000
+    - 62d0dec67b6d44816bbc5f1ae004e311: 21300000
+    - 4cdedd2847c0a4bde8523eb5579f5ab7: 21300000
+    - 91199ca8743cd456dbc16d155a241535: 21300000
+    - 74b5f1790f8dc44719bab487221d9158: 21300000
+    - 3572c8f90f551f04c9af9ed33b5b33f5: 21300000
+    - 077e35bcf4912471083485a8653eca5d: 21300000
+    - 77a351bd2ce394cf9927377d080bb2ea: 21300000
+    - ac342ace89b384f2088bf5275b7e704f: 21300000
+    - d4b1ea3fa9c1744be9bfcd4526b0fb20: 21300000
   m_MasterAtlas: {fileID: 4343727234628468602, guid: 1e14f4f234006478987789022a635cff,
     type: 2}
   m_PackedSprites:
@@ -91,5 +122,6 @@ SpriteAtlas:
   - icon_turret_1_2
   - Icon_Arrow1
   - bg_map
+  m_RenderDataMap: {}
   m_Tag: UI Atlas
   m_IsVariant: 1

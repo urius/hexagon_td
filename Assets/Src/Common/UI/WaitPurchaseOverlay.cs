@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DigitalRuby.Tween;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class WaitPurchaseOverlay : MonoBehaviour
@@ -20,14 +17,20 @@ public class WaitPurchaseOverlay : MonoBehaviour
         _canvasGroup.alpha = 0;
         gameObject.SetActive(true);
 
-        TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
-        TweenFactory.Tween(this, 0f, 1f, 0.5f, TweenScaleFunctions.Linear, t => _canvasGroup.alpha = t.CurrentValue);
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(1f, 0.5f);
+        
+        //TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        //TweenFactory.Tween(this, 0f, 1f, 0.5f, TweenScaleFunctions.Linear, t => _canvasGroup.alpha = t.CurrentValue);
     }
 
     public void ToDefaultMode()
     {
-        TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
-        TweenFactory.Tween(this, 1f, 0f, 0.5f, TweenScaleFunctions.Linear, t => _canvasGroup.alpha = t.CurrentValue, _ => gameObject.SetActive(false));
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(0f, 0.5f);
+        
+        //TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        //TweenFactory.Tween(this, 1f, 0f, 0.5f, TweenScaleFunctions.Linear, t => _canvasGroup.alpha = t.CurrentValue, _ => gameObject.SetActive(false));
     }
 
     private void Update()
@@ -37,6 +40,7 @@ public class WaitPurchaseOverlay : MonoBehaviour
 
     private void OnDestroy()
     {
-        TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        _canvasGroup.DOKill();
+        //TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
     }
 }

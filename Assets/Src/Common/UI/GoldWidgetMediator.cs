@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using DigitalRuby.Tween;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GoldWidgetMediator : EventMediator
 {
@@ -28,7 +28,7 @@ public class GoldWidgetMediator : EventMediator
 
         if (!_isDestroyed)
         {
-            //WidgetView.ToShowState();
+            WidgetView.ToShowState();
         }
     }
 
@@ -82,12 +82,32 @@ public class GoldWidgetMediator : EventMediator
 
         DNAIconRect.localPosition = startPos;
 
-        var targetLocalPos = widgetRect.parent.InverseTransformPoint(targetRect.parent.TransformPoint(targetRect.localPosition));
-        TweenFactory.Tween(DNAIconImg, DNAIconImg.color.a, 0.4f, duration, TweenScaleFunctions.CubicEaseIn,
-            t => DNAIconImg.color = new Color(DNAIconImg.color.r, DNAIconImg.color.g, DNAIconImg.color.b, t.CurrentValue));
+        var targetLocalPos =
+            widgetRect.parent.InverseTransformPoint(targetRect.parent.TransformPoint(targetRect.localPosition));
 
-        TweenFactory.Tween(DNAIconGO, DNAIconRect.localPosition, targetLocalPos, duration, TweenScaleFunctions.CubicEaseIn,
-            t => DNAIconRect.localPosition = t.CurrentValue, t => Destroy(DNAIconGO));
+        DOTween.To(() => DNAIconImg.color.a,
+                a => DNAIconImg.color = new Color(DNAIconImg.color.r, DNAIconImg.color.g, DNAIconImg.color.b, a), 0.4f,
+                duration)
+            .SetEase(Ease.InCubic)
+            .SetTarget(DNAIconImg);
+
+        //TweenFactory.Tween(DNAIconImg, DNAIconImg.color.a, 0.4f, duration, TweenScaleFunctions.CubicEaseIn,
+        //  t => DNAIconImg.color = new Color(DNAIconImg.color.r, DNAIconImg.color.g, DNAIconImg.color.b, t.CurrentValue));
+
+        DOTween.To(() => DNAIconImg.color.a,
+                a => DNAIconImg.color = new Color(DNAIconImg.color.r, DNAIconImg.color.g, DNAIconImg.color.b, a),
+                0.4f,
+                duration)
+            .SetEase(Ease.InCubic)
+            .SetTarget(DNAIconImg);
+        
+        DNAIconRect.DOLocalMove(targetLocalPos, duration)
+            .SetEase(Ease.InCubic)
+            .SetTarget(DNAIconImg);
+            
+        // TweenFactory.Tween(DNAIconGO, DNAIconRect.localPosition, targetLocalPos, duration,
+        //     TweenScaleFunctions.CubicEaseIn,
+        //     t => DNAIconRect.localPosition = t.CurrentValue, t => Destroy(DNAIconGO));
     }
 
     private void OnButtonClicked()

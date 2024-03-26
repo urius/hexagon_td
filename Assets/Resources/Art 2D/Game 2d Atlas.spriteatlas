@@ -28,12 +28,43 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: fd177b1262698410f94cca68824160ba, type: 3}
     - {fileID: 102900000, guid: b90e40059e668426bb0c3c00a7ef263a, type: 3}
-    totalSpriteSurfaceArea: 236160
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - c935da60d081b403fbf2d48a202e5818: 21300000
+    - e8c99901171d8481f9b1ec027f226e9c: 21300000
+    - 5e329083df5a344e1a2b4869131e2e75: 21300000
+    - 6fe60e93610884dfdb14e91e156569ef: 21300000
+    - acabb2c34a9fa49ce943610f31d7a0af: 21300000
+    - d090d794990a746fd965a40933e7bd9a: 21300000
+    - e33f3bc49ef774e7bb50edc97c292b52: 21300000
+    - 3d71fcf4244cf4f7ebed77467899bdfa: 21300000
+    - 6b405f55a2ec8470a8522dab1e747a19: 21300000
+    - cd8cc6b588123416cba7fd7bd2871735: 21300000
+    - 406e2a47ea3cd4a2b95646c1398ab7b7: 21300000
+    - f7a58f09f8f1b40e48b7b88e7ffaec9e: 21300000
+    - 6d870ae9782654cc5b128bcffd6eb714: 21300000
+    - 521c772a53d4a4bf98ca864505231042: 21300000
+    - fe5425faa41a54879aed88d02988ccd3: 21300000
+    - 419c845b71d1a49be8e287412c3f5fdd: 21300000
+    - 2d2da3cb67b3a446b9350fb7726fd864: 21300000
+    - 00a921fb36d0843299ebaecff88240a5: 21300000
+    - 5eab216ca50294758b72425dd13ce482: 21300000
+    - 592f5f1dde8bc47aa993b7e61a0cad25: 21300000
+    - 5022b16d520404e18bfcf07b6e8dd6f9: 21300000
+    - 2d4a8aad1fa4b4488b937b055af3238b: 21300000
+    - aa2f8d9e42b6c4d4f90890c157e7f5f3: 21300000
+    - a5bd7ade82e344718bc30064c64e0490: 21300000
+    - bc6e6f2f5ed424f24a3267fcd87602b3: 21300000
+    - c7aa075f9d26d446d94431e11b6b8e01: 21300000
+    - cdb21daf3d79744398996d1da8e7586e: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: c935da60d081b403fbf2d48a202e5818, type: 3}
@@ -91,5 +122,6 @@ SpriteAtlas:
   - Floor_frame_inner
   - Floor_inner_lines
   - Floor_default
+  m_RenderDataMap: {}
   m_Tag: Game 2d Atlas
   m_IsVariant: 0

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DigitalRuby.Tween;
+using DG.Tweening;
+using DG.Tweening.Core;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
@@ -86,12 +87,19 @@ public class ShowPathsMediator : EventMediator
         UpdateProvider.UpdateActionRealtime += OnUpdate;
         LevelModel.PathsManager.PathsUpdated += OnPathsUpdated;
 
-        TweenFactory.Tween(PathsAlphaTweenKey, 0f, PathAlpha, 0.8f, TweenScaleFunctions.Linear, t => SetLinesAlpha(t.CurrentValue));
+        DOTween.To(GetLinesAlpha(), SetLinesAlpha, PathAlpha, 0.8f).SetId(PathsAlphaTweenKey);
+        //TweenFactory.Tween(PathsAlphaTweenKey, 0f, PathAlpha, 0.8f, TweenScaleFunctions.Linear, t => SetLinesAlpha(t.CurrentValue));
     }
 
     private void HidePaths()
     {
-        TweenFactory.Tween(PathsAlphaTweenKey, PathAlpha, 0f, 0.8f, TweenScaleFunctions.Linear, t => SetLinesAlpha(t.CurrentValue), t => RemovePaths());
+        DOTween.To(GetLinesAlpha(), SetLinesAlpha, 0f, 0.8f).SetId(PathsAlphaTweenKey);;
+        //TweenFactory.Tween(PathsAlphaTweenKey, PathAlpha, 0f, 0.8f, TweenScaleFunctions.Linear, t => SetLinesAlpha(t.CurrentValue), t => RemovePaths());
+    }
+
+    private DOGetter<float> GetLinesAlpha()
+    {
+        return () => _lines[0].startColor.a;
     }
 
     private void SetLinesAlpha(float alpha)
@@ -108,7 +116,8 @@ public class ShowPathsMediator : EventMediator
 
     private void RemovePaths()
     {
-        TweenFactory.RemoveTweenKey(PathsAlphaTweenKey, TweenStopBehavior.DoNotModify);
+        DOTween.Kill(PathsAlphaTweenKey);
+        //TweenFactory.RemoveTweenKey(PathsAlphaTweenKey, TweenStopBehavior.DoNotModify);
 
         UpdateProvider.UpdateActionRealtime -= OnUpdate;
         LevelModel.PathsManager.PathsUpdated -= OnPathsUpdated;

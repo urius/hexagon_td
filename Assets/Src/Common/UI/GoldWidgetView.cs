@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using DigitalRuby.Tween;
+using DG.Tweening;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +20,9 @@ public class GoldWidgetView : View
 
     public void SetAmount(int amount)
     {
-        TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        //TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        DOTween.Kill(this);
+        
         _currentAmount = amount;
         _amountText.text = amount.ToSpaceSeparatedAmount();
     }
@@ -32,10 +31,16 @@ public class GoldWidgetView : View
     {
         AudioManager.Instance.Play(SoundId.DNAAmountChanged);
 
-        TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
-        TweenFactory.Tween(this, _currentAmount, amount, 1f, TweenScaleFunctions.CubicEaseOut,
-            t => _amountText.text = ((int)t.CurrentValue).ToSpaceSeparatedAmount(),
-            t => _currentAmount = amount);
+        // TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        // TweenFactory.Tween(this, _currentAmount, amount, 1f, TweenScaleFunctions.CubicEaseOut,
+        //     t => _amountText.text = ((int)t.CurrentValue).ToSpaceSeparatedAmount(),
+        //     t => _currentAmount = amount);
+
+        DOTween.Kill(this);
+        DOTween.To(() => _currentAmount, v => _amountText.text = v.ToSpaceSeparatedAmount(), amount, 1f)
+            .OnComplete(() => _currentAmount = amount)
+            .SetEase(Ease.OutCubic)
+            .SetTarget(this);
     }
 
     public void ToShowState()
@@ -50,7 +55,8 @@ public class GoldWidgetView : View
 
     private void OnDisable()
     {
-        TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        //TweenFactory.RemoveTweenKey(this, TweenStopBehavior.DoNotModify);
+        DOTween.Kill(this);
 
         _button.onClick.RemoveListener(OnButtonClick);
     }

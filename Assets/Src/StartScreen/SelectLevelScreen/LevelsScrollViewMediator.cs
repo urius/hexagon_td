@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using DigitalRuby.Tween;
+using DG.Tweening;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -199,16 +199,25 @@ public class LevelsScrollViewMediator : EventMediator
 
     private void ScrollTo(float newPosition)
     {
-        TweenFactory.RemoveTweenKey(ScrollTweenId, TweenStopBehavior.DoNotModify);
+        DOTween.Kill(this);
+        
+        //TweenFactory.RemoveTweenKey(ScrollTweenId, TweenStopBehavior.DoNotModify);
+        
         SelectLevelScrollView.StopMovement();
 
-        _contentTransform.gameObject.Tween(ScrollTweenId,
-            _contentTransform.anchoredPosition,
-            new Vector2(newPosition, _contentTransform.anchoredPosition.y), 0.5f, TweenScaleFunctions.CubicEaseOut, OnScrollTween);
+        var anchoredPosition = _contentTransform.anchoredPosition;
+
+        DOTween.To(() => _contentTransform.anchoredPosition, v => _contentTransform.anchoredPosition = v,
+            new Vector2(newPosition, anchoredPosition.y), 0.5f)
+            .SetEase(Ease.OutCubic);
+        
+        // _contentTransform.gameObject.Tween(ScrollTweenId,
+        //     anchoredPosition,
+        //     new Vector2(newPosition, anchoredPosition.y), 0.5f, TweenScaleFunctions.CubicEaseOut, OnScrollTween);
     }
 
-    private void OnScrollTween(ITween<Vector2> tween)
-    {
-        _contentTransform.anchoredPosition = tween.CurrentValue;
-    }
+    // private void OnScrollTween(ITween<Vector2> tween)
+    // {
+    //     _contentTransform.anchoredPosition = tween.CurrentValue;
+    // }
 }

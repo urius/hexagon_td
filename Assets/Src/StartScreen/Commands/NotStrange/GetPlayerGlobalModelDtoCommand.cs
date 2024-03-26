@@ -1,6 +1,5 @@
 using Src.Common;
 using Src.Common.Dtos;
-using UnityEditor;
 using UnityEngine;
 
 namespace Src.StartScreen.Commands.NotStrange
@@ -18,7 +17,7 @@ namespace Src.StartScreen.Commands.NotStrange
 
         private static string GenerateId()
         {
-            return GUID.Generate().ToString();
+            return SystemInfo.deviceUniqueIdentifier;
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DigitalRuby.Tween;
+using DG.Tweening;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -68,9 +66,14 @@ public class HowToPlayScreenMediator : EventMediator
         }
 
         canvasGroup.gameObject.SetActive(true);
-        TweenFactory.Tween(canvasGroup, canvasGroup.alpha, targetAlpha, duration, TweenScaleFunctions.CubicEaseInOut,
-            t => canvasGroup.alpha = t.CurrentValue,
-            t => canvasGroup.gameObject.SetActive(t.CurrentValue > 0));
+        
+        canvasGroup.DOFade(targetAlpha, duration)
+            .SetEase(Ease.InOutCubic)
+            .OnComplete(() => canvasGroup.gameObject.SetActive(canvasGroup.alpha > 0));
+            
+        // TweenFactory.Tween(canvasGroup, canvasGroup.alpha, targetAlpha, duration, TweenScaleFunctions.CubicEaseInOut,
+        //     t => canvasGroup.alpha = t.CurrentValue,
+        //     t => canvasGroup.gameObject.SetActive(t.CurrentValue > 0));
     }
 
     private void OnNextClicked()
