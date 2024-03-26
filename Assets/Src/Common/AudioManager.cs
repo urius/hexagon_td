@@ -263,6 +263,24 @@ public class AudioManager : MonoBehaviour
 
         return tsc.Task;
     }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        HandleAudio(hasFocus);
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        HandleAudio(!pauseStatus);
+    }
+
+    private void HandleAudio(bool isEnabled)
+    {
+        var needMute = !isEnabled;
+        
+        AudioListener.pause = needMute;
+        AudioListener.volume = needMute ? 0 : 1;
+    }
 }
 
 [Serializable]
