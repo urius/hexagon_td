@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class LevelModel
@@ -36,7 +36,7 @@ public class LevelModel
 
     private readonly Vector2Int[] _teleportCellPositions;
     private readonly Dictionary<Vector2Int, ModifierType> _modifiers = new Dictionary<Vector2Int, ModifierType>();
-    private readonly TaskCompletionSource<bool> _levelStartedTsc = new TaskCompletionSource<bool>();
+    private readonly UniTaskCompletionSource<bool> _levelStartedTsc = new UniTaskCompletionSource<bool>();
     private readonly int _defaultGoalCount;
 
     public LevelModel(LevelConfig levelConfig, BoosterValues boosterValues)
@@ -68,7 +68,7 @@ public class LevelModel
     public int Money { get; private set; }
     public int GoalCount { get; private set; }
     public int MaxGoalCapacity => LevelConfig.DefaulGoalCapacity;
-    public Task StartLevelTask => _levelStartedTsc.Task;
+    public UniTask StartLevelTask => _levelStartedTsc.Task;
     public bool IsLevelFinished => IsWon || IsDefeated;
     public bool IsPaused { get; private set; }
     public int ContinuesUsed { get; private set; } = 0;    

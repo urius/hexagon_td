@@ -30,8 +30,6 @@ public class GameContextView : ContextView, IUpdateProvider, IRootTransformProvi
 
     private async void Awake()
     {
-        GameSettingsSetupHelper.Setup();
-
         var gameContext = new GameContext(this);
 
         context = gameContext;

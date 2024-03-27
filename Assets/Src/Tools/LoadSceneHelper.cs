@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadSceneHelper : MonoBehaviour
 {
-    public static Task<Scene> LoadSceneAdditiveAsync(string sceneName, out AsyncOperation asyncOperation)
+    public static UniTask<Scene> LoadSceneAdditiveAsync(string sceneName, out AsyncOperation asyncOperation)
     {
-        var _tsc = new TaskCompletionSource<Scene>();
+        var _tsc = new UniTaskCompletionSource<Scene>();
         asyncOperation = null;
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
@@ -25,14 +23,14 @@ public class LoadSceneHelper : MonoBehaviour
         return _tsc.Task;
     }
 
-    public static Task<Scene> LoadSceneAdditiveAsync(string sceneName)
+    public static UniTask<Scene> LoadSceneAdditiveAsync(string sceneName)
     {
         return LoadSceneAdditiveAsync(sceneName, out var _);
     }
 
-    public static Task UnloadSceneAsync(string sceneName)
+    public static UniTask UnloadSceneAsync(string sceneName)
     {
-        var _tsc = new TaskCompletionSource<bool>();
+        var _tsc = new UniTaskCompletionSource<bool>();
 
         void OnSceneUnloaded(Scene scene)
         {

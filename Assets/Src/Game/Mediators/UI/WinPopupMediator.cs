@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using strange.extensions.mediation.impl;
-using UnityEngine;
 
 public class WinPopupMediator : EventMediator
 {
@@ -60,14 +57,14 @@ public class WinPopupMediator : EventMediator
     private async void AnimateStarsAsync(int starsAmount)
     {
         await WinPopup.ShowTask;
-        await Task.Delay(300, _starsAnimCts.Token);
+        await UniTask.Delay(300, cancellationToken: _starsAnimCts.Token);
 
         for (var i = 0; i < starsAmount; i++)
         {
             if (_starsAnimCts.IsCancellationRequested) return;
             WinPopup.AnimateStar(i);
             PlayStarSound(i);
-            await Task.Delay(500, _starsAnimCts.Token);
+            await UniTask.Delay(500, cancellationToken: _starsAnimCts.Token);
         }
     }
 

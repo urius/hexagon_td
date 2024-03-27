@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class GameSettingsSetupHelper
 {
-    public static void Setup(int fps = 30)
+    public static void Setup(int fps = 31)
     {
+        QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = fps;
 
         Time.timeScale = 1;

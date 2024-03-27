@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +16,9 @@ public class ErrorPopup : MonoBehaviour
     [SerializeField]
     private Button _button;
 
-    private TaskCompletionSource<bool> _startTsc = new TaskCompletionSource<bool>();
-    private TaskCompletionSource<bool> _lifeTimeTsc = new TaskCompletionSource<bool>();
-    public Task LifeTimeTask => _lifeTimeTsc.Task;
+    private UniTaskCompletionSource<bool> _startTsc = new UniTaskCompletionSource<bool>();
+    private UniTaskCompletionSource<bool> _lifeTimeTsc = new UniTaskCompletionSource<bool>();
+    public UniTask LifeTimeTask => _lifeTimeTsc.Task;
 
     public static ErrorPopup Show(RectTransform targetTransform, string message, string closeButtonText)
     {

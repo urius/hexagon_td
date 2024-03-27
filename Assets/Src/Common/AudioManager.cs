@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -57,7 +58,7 @@ public class AudioManager : MonoBehaviour
             .ToArray();
     }
 
-    public async Task FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
+    public async UniTask FadeInAndPlayMusicIfNotPlayedAsync(MusicId musicId)
     {
         var playingMusic = GetPlayingMusic();
         if (GetPlayingMusic() != musicId)
@@ -82,7 +83,7 @@ public class AudioManager : MonoBehaviour
         return result;
     }
 
-    public Task PlayAsync(MusicId musicId)
+    public UniTask PlayAsync(MusicId musicId)
     {
         _musicSource.volume = 0;
         Play(musicId);
@@ -107,12 +108,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public async Task FadeOutAndStopMusicAsync()
+    public async UniTask FadeOutAndStopMusicAsync()
     {
         var mainMusicFadeOutTask = FadeOutAsync(_musicSource);
         var secondaryMusicFadeOutTask = FadeOutAsync(_musicSecondarySource);
 
-        await Task.WhenAll(mainMusicFadeOutTask, secondaryMusicFadeOutTask);
+        await UniTask.WhenAll(mainMusicFadeOutTask, secondaryMusicFadeOutTask);
 
         _musicSource.Stop();
         _musicSecondarySource.Stop();
@@ -120,9 +121,9 @@ public class AudioManager : MonoBehaviour
         _musicSecondarySource.volume = 0;
     }
 
-    public Task ResumeLatestPlayedMusicAsync()
+    public UniTask ResumeLatestPlayedMusicAsync()
     {
-        if (_latestPlayedMusicId == MusicId.None) return Task.CompletedTask;
+        if (_latestPlayedMusicId == MusicId.None) return UniTask.CompletedTask;
 
         _musicSource.Play();
         _musicSecondarySource.Play();
@@ -130,9 +131,9 @@ public class AudioManager : MonoBehaviour
         _musicSecondarySource.volume = 0;
 
         var mainMusicFadeInTask = FadeInAsync(_musicSource);
-        var secondaryMusicInWaveTask = _inWaveMusicMode ? FadeInAsync(_musicSecondarySource) : Task.CompletedTask;
+        var secondaryMusicInWaveTask = _inWaveMusicMode ? FadeInAsync(_musicSecondarySource) : UniTask.CompletedTask;
 
-        return Task.WhenAll(mainMusicFadeInTask, secondaryMusicInWaveTask);
+        return UniTask.WhenAll(mainMusicFadeInTask, secondaryMusicInWaveTask);
     }
 
     public void Play(SoundId soundId)
@@ -223,9 +224,9 @@ public class AudioManager : MonoBehaviour
         _primarySoundsSource.outputAudioMixerGroup = SoundsGroup;
     }
 
-    private Task FadeInAsync(AudioSource source)
+    private UniTask FadeInAsync(AudioSource source)
     {
-        var tsc = new TaskCompletionSource<bool>();
+        var tsc = new UniTaskCompletionSource<bool>();
         IEnumerator FadeIn()
         {
             var startVolume = source.volume;
@@ -243,9 +244,9 @@ public class AudioManager : MonoBehaviour
         return tsc.Task;
     }
 
-    private Task FadeOutAsync(AudioSource source)
+    private UniTask FadeOutAsync(AudioSource source)
     {
-        var tsc = new TaskCompletionSource<bool>();
+        var tsc = new UniTaskCompletionSource<bool>();
         IEnumerator FadeOut()
         {
             var startVolume = source.volume;

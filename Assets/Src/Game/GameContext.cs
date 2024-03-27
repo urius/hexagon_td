@@ -1,18 +1,17 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using strange.extensions.context.impl;
 using UnityEngine;
 
 public class GameContext : MVCSContext
 {
-    private TaskCompletionSource<bool> _initializedTsc = new TaskCompletionSource<bool>();
+    private UniTaskCompletionSource<bool> _initializedTsc = new UniTaskCompletionSource<bool>();
 
     public GameContext(GameContextView view) : base(view)
     {
     }
 
     public LevelModel LevelModel { get; private set; }
-    public Task InitializedTask => _initializedTsc.Task;
+    public UniTask InitializedTask => _initializedTsc.Task;
 
     protected override void mapBindings()
     {

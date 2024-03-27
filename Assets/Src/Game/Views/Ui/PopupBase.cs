@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 
@@ -8,13 +6,13 @@ public class PopupBase : View
 {
     [SerializeField] private Animation _animation;
 
-    private TaskCompletionSource<bool> _showTsc = new TaskCompletionSource<bool>();
+    private UniTaskCompletionSource<bool> _showTsc = new UniTaskCompletionSource<bool>();
 
-    public Task ShowTask => _showTsc.Task;
+    public UniTask ShowTask => _showTsc.Task;
 
     public void EventOnShowAnimationFinished()
     {
-        _showTsc.SetResult(true);
+        _showTsc.TrySetResult(true);
     }
 
     public void EventOnHideAnimationFinished()

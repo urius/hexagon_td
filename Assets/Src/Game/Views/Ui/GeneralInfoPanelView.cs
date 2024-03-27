@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +13,8 @@ public class GeneralInfoPanelView : View
     [SerializeField] private Text _text;
     [SerializeField] private Animation _animation;
 
-    private TaskCompletionSource<bool> _playShowTsc;
-    private TaskCompletionSource<bool> _playHideTsc;
+    private UniTaskCompletionSource<bool> _playShowTsc;
+    private UniTaskCompletionSource<bool> _playHideTsc;
 
     protected override void Awake()
     {
@@ -22,14 +23,14 @@ public class GeneralInfoPanelView : View
         _text.text = string.Empty;
     }
 
-    public Task ShowAsync()
+    public UniTask ShowAsync()
     {
         if (_animation.Play("GeneralInfoPanel_show"))
         {
-            _playShowTsc = new TaskCompletionSource<bool>();
+            _playShowTsc = new UniTaskCompletionSource<bool>();
             return _playShowTsc.Task;
         }
-        return Task.CompletedTask;
+        return UniTask.CompletedTask;
     }
 
     public void SetTextColor(Color color)
@@ -37,24 +38,24 @@ public class GeneralInfoPanelView : View
         _text.color = color;
     }
 
-    public Task HideAsync()
+    public UniTask HideAsync()
     {
         if (_animation.Play("GeneralInfoPanel_hide"))
         {
-            _playHideTsc = new TaskCompletionSource<bool>();
+            _playHideTsc = new UniTaskCompletionSource<bool>();
             return _playHideTsc.Task;
         }
-        return Task.CompletedTask;
+        return UniTask.CompletedTask;
     }
 
-    public async Task SetTextAsync(string text, CancellationToken stopToken = default)
+    public async UniTask SetTextAsync(string text, CancellationToken stopToken = default)
     {
         ClearText();
 
         foreach (var ch in text)
         {
             _text.text += ch;
-            await Task.Delay(35, stopToken).ContinueWith(_ => { });
+            await UniTask.Delay(35, cancellationToken: stopToken);
             if (stopToken.IsCancellationRequested)
             {
                 _text.text = text;
@@ -70,12 +71,12 @@ public class GeneralInfoPanelView : View
 
     public void EventOnShowAnimationFinished()
     {
-        _playShowTsc.SetResult(true);
+        _playShowTsc.TrySetResult(true);
     }
 
     public void EventOnHideAnimationFinished()
     {
-        _playHideTsc.SetResult(true);
+        _playHideTsc.TrySetResult(true);
     }
 
     private void ClearText()

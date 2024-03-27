@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
 using UnityEngine;
@@ -88,7 +89,7 @@ public class UiCanvasViewMediator : EventMediator
         }
     }
 
-    private async Task ShowGeneralInfo(string infoStr, int delayMs = 0, Color? textColor = null, int showTimeMs = 1000)
+    private async UniTask ShowGeneralInfo(string infoStr, int delayMs = 0, Color? textColor = null, int showTimeMs = 1000)
     {
         if (!_infoPanelCts.IsCancellationRequested)
         {
@@ -108,7 +109,7 @@ public class UiCanvasViewMediator : EventMediator
         }
         await infoPanel.ShowAsync();
         if (!stopToken.IsCancellationRequested) await infoPanel.SetTextAsync(infoStr, stopToken);
-        await Task.Delay(showTimeMs, stopToken).ContinueWith(_ => { });
+        await UniTask.Delay(showTimeMs, cancellationToken: stopToken);
         await infoPanel.HideAsync();
 
         Destroy(infoPanelGo);
@@ -124,8 +125,11 @@ public class UiCanvasViewMediator : EventMediator
         Instantiate(popupPrefab, UICanvasView.transform);
     }
 
-    private async Task DelayAsync(int delayMs, CancellationToken stopToken)
+    private async UniTask DelayAsync(int delayMs, CancellationToken stopToken)
     {
-        if (delayMs > 0 && !stopToken.IsCancellationRequested) await Task.Delay(delayMs, stopToken).ContinueWith(_ => { });
+        if (delayMs > 0 && !stopToken.IsCancellationRequested)
+        {
+            await UniTask.Delay(delayMs, cancellationToken: stopToken);
+        }
     }
 }

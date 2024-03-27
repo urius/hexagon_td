@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class SpawnBaseCellView : CellView
@@ -7,7 +8,7 @@ public class SpawnBaseCellView : CellView
     public event Action PLatformBottomPointReached = delegate { };
 
     [SerializeField] private Animation _spawnAnimation;
-    private TaskCompletionSource<bool> _animationTsc;
+    private UniTaskCompletionSource<bool> _animationTsc;
 
     [SerializeField] private Transform _spawnPoint;
     public Transform SpawnPoint => _spawnPoint;
@@ -22,13 +23,13 @@ public class SpawnBaseCellView : CellView
         _animationTsc.TrySetResult(true);
     }
 
-    public async Task PlaySpawnAnimationAsync()
+    public async UniTask PlaySpawnAnimationAsync()
     {
         if (_animationTsc != null)
         {
             await _animationTsc.Task;
         }
-        _animationTsc = new TaskCompletionSource<bool>();
+        _animationTsc = new UniTaskCompletionSource<bool>();
         _spawnAnimation.Stop();
         _spawnAnimation.Play();
 

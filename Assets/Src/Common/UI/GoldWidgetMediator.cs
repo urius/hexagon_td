@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,7 +65,7 @@ public class GoldWidgetMediator : EventMediator
 
             AudioManager.Instance.Play(SoundId.InAppPurchaseCompleted);
 
-            await Task.Delay(500);
+            await UniTask.Delay(500);
 
             WidgetView.SetAmountAnimated(_playerModel.Gold);
         }

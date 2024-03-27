@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UniTask = Cysharp.Threading.Tasks.UniTask;
 
 public class SwitchScenesWithTransitionSceneHelper
 {
@@ -14,23 +15,23 @@ public class SwitchScenesWithTransitionSceneHelper
     private Camera _transitionOverlayCamera;
     private string _switchFromSceneName;
     private string _switchToSceneName;
-    private TaskCompletionSource<bool> _transitionFinishedTsc = new TaskCompletionSource<bool>();
+    private UniTaskCompletionSource<bool> _transitionFinishedTsc = new UniTaskCompletionSource<bool>();
     private bool _isSwitching = false;
-    private Func<Task> _additionalTaskAction;
+    private Func<UniTask> _additionalTaskAction;
 
     public SwitchScenesWithTransitionSceneHelper(IEventDispatcher globalDispatcher)
     {
         this.globalDispatcher = globalDispatcher;
     }
 
-    public async Task SwitchAsync(string switchFromSceneName, string switchToSceneName, Func<Task> additionalTaskAction = null)
+    public async UniTask SwitchAsync(string switchFromSceneName, string switchToSceneName, Func<UniTask> additionalTaskAction = null)
     {
         if (_isSwitching)
         {
             await _transitionFinishedTsc.Task;
         }
         _additionalTaskAction = additionalTaskAction;
-        _transitionFinishedTsc = new TaskCompletionSource<bool>();
+        _transitionFinishedTsc = new UniTaskCompletionSource<bool>();
 
         _switchFromSceneName = switchFromSceneName;
         _switchToSceneName = switchToSceneName;
@@ -51,12 +52,12 @@ public class SwitchScenesWithTransitionSceneHelper
 
         await LoadSceneHelper.UnloadSceneAsync(_switchFromSceneName);
 
-        var additionalTask = _additionalTaskAction != null ? _additionalTaskAction() : Task.CompletedTask;
+        var additionalTask = _additionalTaskAction != null ? _additionalTaskAction() : UniTask.CompletedTask;
         var loadGameTask = LoadSceneHelper.LoadSceneAdditiveAsync(_switchToSceneName, out var loadGameOperation);
-        while (!loadGameTask.IsCompleted)
+        while (!loadGameTask.Status.IsCompleted())
         {
             globalDispatcher.Dispatch(MediatorEvents.UI_TS_LOAD_GAME_PROGRESS_UPDATED, loadGameOperation.progress);
-            await Task.Delay(100);
+            await UniTask.Delay(100);
         }
         //AddOverlayCameraToAllCameras();
 
