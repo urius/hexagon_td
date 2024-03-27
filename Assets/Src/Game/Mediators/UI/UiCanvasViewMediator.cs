@@ -67,7 +67,7 @@ public class UiCanvasViewMediator : EventMediator
                 await ShowGeneralInfo(text);
                 break;
             case WaveState.BetweenWaves:
-                await DelayAsync(800, CancellationToken.None);
+                await DelaySafeAsync(800, CancellationToken.None);
                 text = String.Format(Loc.Get(LocalizationGroupId.GeneralInfoPanel, "wave_finished"), WaveModel.WaveIndex + 1);
                 AudioManager.Instance.Play(SoundId.WaveFinished);
                 await ShowGeneralInfo(text);
@@ -99,7 +99,12 @@ public class UiCanvasViewMediator : EventMediator
         _infoPanelCts = new CancellationTokenSource();
         var stopToken = _infoPanelCts.Token;
 
-        await DelayAsync(delayMs, stopToken);
+        await DelaySafeAsync(delayMs, stopToken);
+        if (stopToken.IsCancellationRequested)
+        {
+            return;
+        }
+        
         var infoPanelGo = Instantiate(GUIPrefabsConfig.GeneralInfoPanelPrefab, UICanvasView.transform);
         var infoPanel = infoPanelGo.GetComponent<GeneralInfoPanelView>();
 
@@ -108,9 +113,12 @@ public class UiCanvasViewMediator : EventMediator
             infoPanel.SetTextColor(textColor.Value);
         }
         await infoPanel.ShowAsync();
-        if (!stopToken.IsCancellationRequested) await infoPanel.SetTextAsync(infoStr, stopToken);
-        await UniTask.Delay(showTimeMs, cancellationToken: stopToken);
-        await infoPanel.HideAsync();
+        if (!stopToken.IsCancellationRequested)
+        {
+            await infoPanel.SetTextAsync(infoStr, stopToken).SuppressCancellationThrow();
+            await DelaySafeAsync(showTimeMs, stopToken);
+            await infoPanel.HideAsync();
+        }
 
         Destroy(infoPanelGo);
     }
@@ -125,11 +133,11 @@ public class UiCanvasViewMediator : EventMediator
         Instantiate(popupPrefab, UICanvasView.transform);
     }
 
-    private async UniTask DelayAsync(int delayMs, CancellationToken stopToken)
+    private async UniTask DelaySafeAsync(int delayMs, CancellationToken stopToken)
     {
         if (delayMs > 0 && !stopToken.IsCancellationRequested)
         {
-            await UniTask.Delay(delayMs, cancellationToken: stopToken);
+            await UniTask.Delay(delayMs, cancellationToken: stopToken).SuppressCancellationThrow();
         }
     }
 }
